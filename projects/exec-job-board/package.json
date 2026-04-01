@@ -3,8 +3,10 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"build": "echo 'Build handled per-service'",
+		"dev": "cd site && pnpm dev",
+		"build": "cd site && pnpm build",
+		"collect": "python -m collector.main",
 		"lint": "echo 'Lint handled per-service'",
-		"typecheck": "echo 'Typecheck handled per-service'"
+		"typecheck": "cd site && pnpm typecheck"
 	}
 }

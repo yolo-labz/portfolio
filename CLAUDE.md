@@ -77,6 +77,8 @@ Design principles and governance rules are in `.specify/memory/constitution.md`.
 ## Active Technologies
 - TypeScript 6.0.2, React 19.2.4 + Next.js 16.2.1, Tailwind CSS 4.2.2, Motion 12.38.0 (001-production-ready-site)
 - N/A (static site, no database) (001-production-ready-site)
+- Python 3.12 (collector), TypeScript (site) + httpx, pydantic (collector); Next.js, Tailwind CSS v4, Fuse.js (site) (003-exec-job-board)
+- JSON file committed to git (`data/jobs.json`) (003-exec-job-board)
 
 ## Recent Changes
 - 001-production-ready-site: Added TypeScript 6.0.2, React 19.2.4 + Next.js 16.2.1, Tailwind CSS 4.2.2, Motion 12.38.0

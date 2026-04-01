@@ -1,0 +1,9 @@
+[project]
+name = "exec-job-board-collector"
+version = "0.1.0"
+description = "Executive job listing aggregator — collects from 4 public APIs, normalizes, and deduplicates"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.27",
+    "pydantic>=2.0",
+]
