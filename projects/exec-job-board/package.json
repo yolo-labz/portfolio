@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "cd site && pnpm dev",
-		"build": "cd site && pnpm build",
+		"build": "echo 'Build handled by site workspace'",
 		"collect": "python -m collector.main",
 		"lint": "echo 'Lint handled per-service'",
 		"typecheck": "cd site && pnpm typecheck"
