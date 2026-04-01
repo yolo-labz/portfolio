@@ -1,7 +1,6 @@
 import type { Filters, GeoProperty, MarketStats, Property } from "./types";
 
-const API_URL =
-	process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 function buildParams(filters: Partial<Filters>): URLSearchParams {
 	const params = new URLSearchParams();
@@ -13,9 +12,7 @@ function buildParams(filters: Partial<Filters>): URLSearchParams {
 	return params;
 }
 
-export async function fetchStats(
-	filters: Partial<Filters>,
-): Promise<MarketStats> {
+export async function fetchStats(filters: Partial<Filters>): Promise<MarketStats> {
 	try {
 		const params = buildParams(filters);
 		const res = await fetch(`${API_URL}/api/stats?${params.toString()}`);
@@ -34,9 +31,7 @@ export async function fetchStats(
 	}
 }
 
-export async function fetchGeoData(
-	filters: Partial<Filters>,
-): Promise<GeoProperty[]> {
+export async function fetchGeoData(filters: Partial<Filters>): Promise<GeoProperty[]> {
 	try {
 		const params = buildParams(filters);
 		const res = await fetch(`${API_URL}/api/geo?${params.toString()}`);
@@ -55,9 +50,7 @@ export async function fetchListings(
 	try {
 		const params = buildParams(filters);
 		params.set("page", String(page));
-		const res = await fetch(
-			`${API_URL}/api/listings?${params.toString()}`,
-		);
+		const res = await fetch(`${API_URL}/api/listings?${params.toString()}`);
 		if (!res.ok) throw new Error(`HTTP ${res.status}`);
 		return await res.json();
 	} catch (err) {
@@ -66,10 +59,7 @@ export async function fetchListings(
 	}
 }
 
-export function getExportUrl(
-	format: "csv" | "json",
-	filters: Partial<Filters>,
-): string {
+export function getExportUrl(format: "csv" | "json", filters: Partial<Filters>): string {
 	const params = buildParams(filters);
 	params.set("format", format);
 	return `${API_URL}/api/export?${params.toString()}`;

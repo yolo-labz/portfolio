@@ -1,14 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { fetchGeoData, fetchStats } from "@/lib/api";
-import type { Filters, GeoProperty, MarketStats } from "@/lib/types";
+import { ExportButtons } from "@/components/export-buttons";
+import { FilterSidebar } from "@/components/filter-sidebar";
 import { KpiCards } from "@/components/kpi-cards";
 import { PriceChart } from "@/components/price-chart";
 import { PriceHistogram } from "@/components/price-histogram";
 import { PropertyMap } from "@/components/property-map";
-import { FilterSidebar } from "@/components/filter-sidebar";
-import { ExportButtons } from "@/components/export-buttons";
+import { fetchGeoData, fetchStats } from "@/lib/api";
+import type { Filters, GeoProperty, MarketStats } from "@/lib/types";
 
 const EMPTY_FILTERS: Filters = {
 	neighborhood: "",
@@ -28,10 +28,7 @@ export default function DashboardPage() {
 	const loadData = useCallback(async (f: Filters) => {
 		setLoading(true);
 		try {
-			const [statsResult, geoResult] = await Promise.all([
-				fetchStats(f),
-				fetchGeoData(f),
-			]);
+			const [statsResult, geoResult] = await Promise.all([fetchStats(f), fetchGeoData(f)]);
 			setStats(statsResult);
 			setGeoData(geoResult);
 		} finally {
@@ -54,11 +51,7 @@ export default function DashboardPage() {
 		<div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">
 			{/* Sidebar - filters */}
 			<div className="lg:sticky lg:top-6 lg:self-start">
-				<FilterSidebar
-					filters={filters}
-					onChange={setFilters}
-					neighborhoods={neighborhoods}
-				/>
+				<FilterSidebar filters={filters} onChange={setFilters} neighborhoods={neighborhoods} />
 			</div>
 
 			{/* Main content */}
@@ -74,9 +67,7 @@ export default function DashboardPage() {
 				{/* Empty state */}
 				{!loading && isEmpty && (
 					<div className="rounded-lg border border-border bg-bg-card p-8 text-center">
-						<p className="text-text-muted">
-							No properties match your filters.
-						</p>
+						<p className="text-text-muted">No properties match your filters.</p>
 					</div>
 				)}
 

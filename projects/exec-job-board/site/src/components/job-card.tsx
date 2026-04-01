@@ -106,9 +106,7 @@ export function JobCard({ job }: { job: JobListing }) {
 			</div>
 
 			{job.source === "adzuna" && (
-				<p className="mt-3 text-[10px] text-text-muted/60">
-					Powered by Adzuna
-				</p>
+				<p className="mt-3 text-[10px] text-text-muted/60">Powered by Adzuna</p>
 			)}
 		</a>
 	);

@@ -20,16 +20,9 @@ export const metadata: Metadata = {
 		"Aggregated executive and leadership job listings from top sources. C-Suite, VP, and Director roles updated daily.",
 };
 
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html
-			lang="en"
-			className={`${inter.variable} ${jetbrainsMono.variable}`}
-		>
+		<html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
 			<body>
 				<header className="border-b border-border">
 					<div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">

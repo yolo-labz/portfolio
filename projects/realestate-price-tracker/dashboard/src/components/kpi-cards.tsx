@@ -28,22 +28,10 @@ function KpiCard({ label, value }: KpiCardProps) {
 export function KpiCards({ stats }: { stats: MarketStats }) {
 	return (
 		<div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-			<KpiCard
-				label="Median Price"
-				value={formatPrice(stats.median_price)}
-			/>
-			<KpiCard
-				label="Avg $/sqft"
-				value={`$${Math.round(stats.avg_price_per_sqft)}`}
-			/>
-			<KpiCard
-				label="Total Listings"
-				value={formatNumber(stats.total_listings)}
-			/>
-			<KpiCard
-				label="Avg Days on Market"
-				value={`${Math.round(stats.avg_days_on_market)}`}
-			/>
+			<KpiCard label="Median Price" value={formatPrice(stats.median_price)} />
+			<KpiCard label="Avg $/sqft" value={`$${Math.round(stats.avg_price_per_sqft)}`} />
+			<KpiCard label="Total Listings" value={formatNumber(stats.total_listings)} />
+			<KpiCard label="Avg Days on Market" value={`${Math.round(stats.avg_days_on_market)}`} />
 		</div>
 	);
 }

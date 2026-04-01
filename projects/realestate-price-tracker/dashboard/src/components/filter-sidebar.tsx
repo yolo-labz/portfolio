@@ -23,11 +23,7 @@ interface FilterSidebarProps {
 	neighborhoods: string[];
 }
 
-export function FilterSidebar({
-	filters,
-	onChange,
-	neighborhoods,
-}: FilterSidebarProps) {
+export function FilterSidebar({ filters, onChange, neighborhoods }: FilterSidebarProps) {
 	const update = (key: keyof Filters, value: string) => {
 		onChange({ ...filters, [key]: value });
 	};
@@ -40,10 +36,7 @@ export function FilterSidebar({
 
 			{/* Neighborhood */}
 			<div className="space-y-1.5">
-				<label
-					htmlFor="filter-neighborhood"
-					className="text-xs text-text-muted"
-				>
+				<label htmlFor="filter-neighborhood" className="text-xs text-text-muted">
 					Neighborhood
 				</label>
 				<select
@@ -64,7 +57,7 @@ export function FilterSidebar({
 
 			{/* Price Range */}
 			<div className="space-y-1.5">
-				<label className="text-xs text-text-muted">Price Range</label>
+				<span className="text-xs text-text-muted">Price Range</span>
 				<div className="flex gap-2">
 					<input
 						type="number"
@@ -87,7 +80,7 @@ export function FilterSidebar({
 
 			{/* Bedrooms */}
 			<div className="space-y-1.5">
-				<label className="text-xs text-text-muted">Bedrooms</label>
+				<span className="text-xs text-text-muted">Bedrooms</span>
 				<div className="flex gap-1">
 					{BEDROOM_OPTIONS.map((opt) => {
 						const value = opt === "All" ? "" : opt;
@@ -113,7 +106,7 @@ export function FilterSidebar({
 
 			{/* Date Range */}
 			<div className="space-y-1.5">
-				<label className="text-xs text-text-muted">Listed Date</label>
+				<span className="text-xs text-text-muted">Listed Date</span>
 				<div className="flex gap-2">
 					<input
 						type="date"

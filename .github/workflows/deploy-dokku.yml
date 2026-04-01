@@ -3,6 +3,10 @@ name: Deploy to Dokku
 on:
   push:
     branches: [main]
+    paths:
+      - "apps/web/**"
+      - "packages/ui/**"
+      - "Dockerfile.dokku"
   workflow_dispatch:
 
 concurrency:

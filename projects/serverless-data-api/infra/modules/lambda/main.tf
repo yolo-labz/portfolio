@@ -17,10 +17,10 @@ resource "aws_lambda_function" "api_handler" {
 
   environment {
     variables = {
-      TABLE_NAME               = var.table_name
-      POWERTOOLS_SERVICE_NAME  = var.function_name
-      POWERTOOLS_LOG_LEVEL     = var.environment == "prod" ? "INFO" : "DEBUG"
-      ENVIRONMENT              = var.environment
+      TABLE_NAME              = var.table_name
+      POWERTOOLS_SERVICE_NAME = var.function_name
+      POWERTOOLS_LOG_LEVEL    = var.environment == "prod" ? "INFO" : "DEBUG"
+      ENVIRONMENT             = var.environment
     }
   }
 

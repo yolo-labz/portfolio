@@ -1,6 +1,5 @@
 "use client";
 
-import type { MonthlyPrice } from "@/lib/types";
 import {
 	CartesianGrid,
 	Line,
@@ -10,10 +9,11 @@ import {
 	XAxis,
 	YAxis,
 } from "recharts";
+import type { MonthlyPrice } from "@/lib/types";
 
 function formatMonth(value: string): string {
 	try {
-		const date = new Date(value + "-01");
+		const date = new Date(`${value}-01`);
 		return date.toLocaleDateString("en-US", {
 			month: "short",
 			year: "2-digit",
@@ -46,11 +46,7 @@ export function PriceChart({ data }: { data: MonthlyPrice[] }) {
 	return (
 		<ResponsiveContainer width="100%" height={300}>
 			<LineChart data={data} margin={{ top: 8, right: 16, bottom: 8, left: 16 }}>
-				<CartesianGrid
-					strokeDasharray="3 3"
-					stroke="oklch(0.25 0.015 260)"
-					vertical={false}
-				/>
+				<CartesianGrid strokeDasharray="3 3" stroke="oklch(0.25 0.015 260)" vertical={false} />
 				<XAxis
 					dataKey="month"
 					tickFormatter={formatMonth}

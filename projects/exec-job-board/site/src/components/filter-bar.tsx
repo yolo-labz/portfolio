@@ -121,12 +121,7 @@ export function FilterBar({
 				{/* Seniority dropdown */}
 				<select
 					value={filters.seniority}
-					onChange={(e) =>
-						updateFilter(
-							"seniority",
-							e.target.value as Filters["seniority"],
-						)
-					}
+					onChange={(e) => updateFilter("seniority", e.target.value as Filters["seniority"])}
 					aria-label="Filter by seniority"
 					className="rounded-lg border border-border bg-bg-card px-3 py-2 text-sm text-text transition-colors focus:border-accent focus:outline-none"
 				>
@@ -137,7 +132,8 @@ export function FilterBar({
 				</select>
 
 				{/* Recency tabs */}
-				<div className="flex rounded-lg border border-border" role="group" aria-label="Filter by recency">
+				<fieldset className="flex rounded-lg border border-border">
+					<legend className="sr-only">Filter by recency</legend>
 					{RECENCY_OPTIONS.map((opt) => (
 						<button
 							key={opt.value}
@@ -153,7 +149,7 @@ export function FilterBar({
 							{opt.label}
 						</button>
 					))}
-				</div>
+				</fieldset>
 
 				{/* Source pills */}
 				{sources.length > 1 && (
@@ -162,12 +158,7 @@ export function FilterBar({
 							<button
 								key={src}
 								type="button"
-								onClick={() =>
-									updateFilter(
-										"source",
-										filters.source === src ? "" : src,
-									)
-								}
+								onClick={() => updateFilter("source", filters.source === src ? "" : src)}
 								aria-pressed={filters.source === src}
 								className={`rounded-full px-2.5 py-1 text-xs transition-colors ${
 									filters.source === src

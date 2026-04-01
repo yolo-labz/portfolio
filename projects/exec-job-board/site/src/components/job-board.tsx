@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo } from "react";
+import type { JobListing } from "@/lib/types";
 import { useJobFilter } from "@/lib/use-job-filter";
 import { FilterBar } from "./filter-bar";
 import { JobCard } from "./job-card";
-import type { JobListing } from "@/lib/types";
 
 export function JobBoard({ jobs }: { jobs: JobListing[] }) {
 	const {
@@ -41,9 +41,7 @@ export function JobBoard({ jobs }: { jobs: JobListing[] }) {
 
 			{results.length === 0 ? (
 				<div className="flex flex-col items-center justify-center rounded-xl border border-border bg-bg-card px-6 py-16 text-center">
-					<p className="mb-2 text-lg text-text-muted">
-						No listings match your criteria
-					</p>
+					<p className="mb-2 text-lg text-text-muted">No listings match your criteria</p>
 					<button
 						type="button"
 						onClick={clearFilters}

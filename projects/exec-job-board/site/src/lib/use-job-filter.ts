@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState, useCallback } from "react";
 import Fuse from "fuse.js";
+import { useCallback, useMemo, useState } from "react";
 import type { JobListing } from "./types";
 
 export interface Filters {
@@ -55,16 +55,12 @@ export function useJobFilter(jobs: JobListing[]) {
 		}
 
 		if (filters.remoteOnly) {
-			results = results.filter(
-				(j) => j.location.toLowerCase().includes("remote"),
-			);
+			results = results.filter((j) => j.location.toLowerCase().includes("remote"));
 		}
 
 		if (filters.location.trim()) {
 			const loc = filters.location.toLowerCase();
-			results = results.filter(
-				(j) => j.location.toLowerCase().includes(loc),
-			);
+			results = results.filter((j) => j.location.toLowerCase().includes(loc));
 		}
 
 		if (filters.seniority !== "all") {

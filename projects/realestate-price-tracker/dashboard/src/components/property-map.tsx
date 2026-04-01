@@ -1,7 +1,7 @@
 "use client";
 
-import type { GeoProperty } from "@/lib/types";
 import dynamic from "next/dynamic";
+import type { GeoProperty } from "@/lib/types";
 
 function getMarkerColor(price: number): string {
 	if (price < 400_000) return "#5ec4a0";
@@ -17,12 +17,7 @@ function formatPrice(price: number): string {
 }
 
 function MapInner({ properties }: { properties: GeoProperty[] }) {
-	const {
-		MapContainer,
-		TileLayer,
-		CircleMarker,
-		Popup,
-	} = require("react-leaflet");
+	const { MapContainer, TileLayer, CircleMarker, Popup } = require("react-leaflet");
 
 	return (
 		<MapContainer
@@ -50,9 +45,7 @@ function MapInner({ properties }: { properties: GeoProperty[] }) {
 					<Popup>
 						<div className="text-sm">
 							<p className="font-semibold">{property.neighborhood}</p>
-							<p className="text-accent font-mono">
-								{formatPrice(property.price)}
-							</p>
+							<p className="text-accent font-mono">{formatPrice(property.price)}</p>
 							<p className="text-text-muted">{property.bedrooms} bd</p>
 						</div>
 					</Popup>
@@ -62,14 +55,11 @@ function MapInner({ properties }: { properties: GeoProperty[] }) {
 	);
 }
 
-export const PropertyMap = dynamic(
-	() => Promise.resolve(MapInner),
-	{
-		ssr: false,
-		loading: () => (
-			<div className="flex items-center justify-center h-[400px] bg-bg-card rounded-lg border border-border text-text-muted text-sm">
-				Loading map...
-			</div>
-		),
-	},
-);
+export const PropertyMap = dynamic(() => Promise.resolve(MapInner), {
+	ssr: false,
+	loading: () => (
+		<div className="flex items-center justify-center h-[400px] bg-bg-card rounded-lg border border-border text-text-muted text-sm">
+			Loading map...
+		</div>
+	),
+});

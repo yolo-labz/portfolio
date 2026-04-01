@@ -1,15 +1,7 @@
 "use client";
 
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import type { GeoProperty } from "@/lib/types";
-import {
-	Bar,
-	BarChart,
-	CartesianGrid,
-	ResponsiveContainer,
-	Tooltip,
-	XAxis,
-	YAxis,
-} from "recharts";
 
 interface Bucket {
 	label: string;
@@ -46,11 +38,7 @@ export function PriceHistogram({ listings }: { listings: GeoProperty[] }) {
 	return (
 		<ResponsiveContainer width="100%" height={250}>
 			<BarChart data={data} margin={{ top: 8, right: 16, bottom: 8, left: 16 }}>
-				<CartesianGrid
-					strokeDasharray="3 3"
-					stroke="oklch(0.25 0.015 260)"
-					vertical={false}
-				/>
+				<CartesianGrid strokeDasharray="3 3" stroke="oklch(0.25 0.015 260)" vertical={false} />
 				<XAxis
 					dataKey="label"
 					tick={{ fill: "oklch(0.65 0.01 260)", fontSize: 12 }}
@@ -74,12 +62,7 @@ export function PriceHistogram({ listings }: { listings: GeoProperty[] }) {
 					itemStyle={{ color: "oklch(0.72 0.19 160)" }}
 					cursor={{ fill: "oklch(0.25 0.015 260 / 0.5)" }}
 				/>
-				<Bar
-					dataKey="count"
-					fill="oklch(0.72 0.19 160)"
-					radius={[4, 4, 0, 0]}
-					maxBarSize={48}
-				/>
+				<Bar dataKey="count" fill="oklch(0.72 0.19 160)" radius={[4, 4, 0, 0]} maxBarSize={48} />
 			</BarChart>
 		</ResponsiveContainer>
 	);

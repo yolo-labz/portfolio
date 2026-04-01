@@ -1,14 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { JobsData } from "@/lib/types";
-import { StatsBar } from "@/components/stats-bar";
 import { JobBoard } from "@/components/job-board";
+import { StatsBar } from "@/components/stats-bar";
+import type { JobsData } from "@/lib/types";
 
 function loadJobs(): JobsData {
 	// Try multiple possible locations for the data directory
 	const candidates = [
-		path.join(process.cwd(), "data"),           // monorepo: projects/exec-job-board/data
-		path.join(process.cwd(), "..", "data"),      // site/ subdirectory context
+		path.join(process.cwd(), "data"), // monorepo: projects/exec-job-board/data
+		path.join(process.cwd(), "..", "data"), // site/ subdirectory context
 		path.join(process.cwd(), "projects", "exec-job-board", "data"), // monorepo root
 	];
 
