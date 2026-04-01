@@ -2,14 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { navItems } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
-
-const navItems = [
-	{ href: "#projects", label: "Projects" },
-	{ href: "#skills", label: "Skills" },
-	{ href: "#experience", label: "Experience" },
-	{ href: "#contact", label: "Contact" },
-] as const;
+import { MobileNav } from "./mobile-nav";
 
 export function Header() {
 	const pathname = usePathname();
@@ -17,7 +12,10 @@ export function Header() {
 
 	return (
 		<header className="fixed top-0 z-50 w-full border-b border-border/50 bg-bg/80 backdrop-blur-md">
-			<nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
+			<nav
+				className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6"
+				aria-label="Main navigation"
+			>
 				<Link
 					href="/"
 					className="font-mono text-sm font-medium text-text hover:text-accent transition-colors"
@@ -25,14 +23,12 @@ export function Header() {
 					pedro.balbino
 				</Link>
 
-				<ul className="flex items-center gap-6">
+				<ul className="hidden items-center gap-6 md:flex">
 					{navItems.map(({ href, label }) => (
 						<li key={href}>
 							<Link
 								href={isHome ? href : `/${href}`}
-								className={cn(
-									"text-sm text-text-muted hover:text-text transition-colors",
-								)}
+								className={cn("text-sm text-text-muted hover:text-text transition-colors")}
 							>
 								{label}
 							</Link>
@@ -47,6 +43,8 @@ export function Header() {
 						</a>
 					</li>
 				</ul>
+
+				<MobileNav />
 			</nav>
 		</header>
 	);

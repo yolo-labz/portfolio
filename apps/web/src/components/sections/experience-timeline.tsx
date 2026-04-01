@@ -10,10 +10,12 @@ export function ExperienceTimeline() {
 	const reduced = useReducedMotion();
 
 	return (
-		<section id="experience" className="py-24 px-6" ref={ref}>
+		<section id="experience" aria-labelledby="experience-heading" className="py-24 px-6" ref={ref}>
 			<div className="mx-auto max-w-6xl">
 				<div className="mb-12">
-					<h2 className="text-3xl font-bold tracking-tight">Experience</h2>
+					<h2 id="experience-heading" className="text-3xl font-bold tracking-tight">
+						Experience
+					</h2>
 					<p className="mt-2 text-text-muted">What I shipped and where.</p>
 				</div>
 
@@ -32,18 +34,14 @@ export function ExperienceTimeline() {
 						>
 							<div
 								className={`absolute left-0 top-2 h-6 w-6 rounded-full border-2 ${
-									entry.current
-										? "border-accent bg-accent/20"
-										: "border-border bg-bg-card"
+									entry.current ? "border-accent bg-accent/20" : "border-border bg-bg-card"
 								}`}
 							/>
 
 							<div className="rounded-lg border border-border bg-bg-card p-6">
 								<div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
 									<h3 className="font-semibold">{entry.role}</h3>
-									<span className="font-mono text-xs text-text-muted">
-										{entry.period}
-									</span>
+									<span className="font-mono text-xs text-text-muted">{entry.period}</span>
 								</div>
 								<p className="mt-1 text-sm text-accent">{entry.company}</p>
 								<ul className="mt-4 space-y-2">

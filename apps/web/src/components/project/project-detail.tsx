@@ -1,8 +1,8 @@
 "use client";
 
+import { Badge, Button } from "@portfolio/ui";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { Badge, Button } from "@portfolio/ui";
 import type { Project } from "@/data/projects";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
@@ -66,9 +66,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 							key={metric.label}
 							className="rounded-lg border border-border bg-bg-card p-4 text-center"
 						>
-							<div className="font-mono text-2xl font-bold text-accent">
-								{metric.value}
-							</div>
+							<div className="font-mono text-2xl font-bold text-accent">{metric.value}</div>
 							<div className="mt-1 text-sm text-text-muted">{metric.label}</div>
 						</div>
 					))}
@@ -82,23 +80,17 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 				>
 					<div>
 						<h2 className="text-xl font-semibold mb-3">The Problem</h2>
-						<p className="text-text-muted leading-relaxed">
-							{project.problemStatement}
-						</p>
+						<p className="text-text-muted leading-relaxed">{project.problemStatement}</p>
 					</div>
 
 					<div>
 						<h2 className="text-xl font-semibold mb-3">The Solution</h2>
-						<p className="text-text-muted leading-relaxed">
-							{project.solutionSummary}
-						</p>
+						<p className="text-text-muted leading-relaxed">{project.solutionSummary}</p>
 					</div>
 
 					<div>
 						<h2 className="text-xl font-semibold mb-3">Overview</h2>
-						<p className="text-text-muted leading-relaxed">
-							{project.description}
-						</p>
+						<p className="text-text-muted leading-relaxed">{project.description}</p>
 					</div>
 				</motion.div>
 			</div>

@@ -35,3 +35,8 @@ body {
 ::selection {
 	background-color: oklch(0.72 0.19 160 / 0.3);
 }
+
+:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}

@@ -1,10 +1,10 @@
 "use client";
 
+import { Button } from "@portfolio/ui";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { AnimatedCounter } from "@/components/shared/animated-counter";
-import { Button } from "@portfolio/ui";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 const metrics = [
 	{ value: 5, suffix: "TB+", label: "daily data processed" },
@@ -21,6 +21,7 @@ export function HeroMetrics() {
 	return (
 		<section
 			ref={ref}
+			aria-labelledby="hero-heading"
 			className="relative flex min-h-[85vh] flex-col justify-center px-6 pt-14"
 		>
 			<div className="mx-auto w-full max-w-6xl">
@@ -30,15 +31,18 @@ export function HeroMetrics() {
 					transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 				>
 					<p className="font-mono text-sm text-accent mb-4">Software Engineer</p>
-					<h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+					<h1
+						id="hero-heading"
+						className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+					>
 						Pedro Henrique
 						<br />
 						<span className="text-text-muted">Souza Balbino</span>
 					</h1>
 					<p className="mt-6 max-w-2xl text-lg text-text-muted leading-relaxed">
-						I build data extraction pipelines, automation systems, and full-stack
-						applications. Python and TypeScript. AWS-native infrastructure with
-						Terraform. Everything ships with CI/CD and monitoring.
+						I build data extraction pipelines, automation systems, and full-stack applications.
+						Python and TypeScript. AWS-native infrastructure with Terraform. Everything ships with
+						CI/CD and monitoring.
 					</p>
 				</motion.div>
 
@@ -52,14 +56,7 @@ export function HeroMetrics() {
 						<div key={metric.label} className="space-y-1">
 							<div className="font-mono text-3xl font-bold text-text sm:text-4xl">
 								{"prefix" in metric && metric.prefix}
-								{isInView ? (
-									<AnimatedCounter
-										value={metric.value}
-										reduced={reduced}
-									/>
-								) : (
-									"0"
-								)}
+								{isInView ? <AnimatedCounter value={metric.value} reduced={reduced} /> : "0"}
 								<span className="text-accent">{metric.suffix}</span>
 							</div>
 							<p className="text-sm text-text-muted">{metric.label}</p>
