@@ -1,0 +1,27 @@
+{
+	"name": "@portfolio/realestate-tracker-dashboard",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbopack --port 3001",
+		"build": "next build",
+		"start": "next start"
+	},
+	"dependencies": {
+		"leaflet": "latest",
+		"next": "latest",
+		"react": "latest",
+		"react-dom": "latest",
+		"react-leaflet": "latest",
+		"recharts": "latest"
+	},
+	"devDependencies": {
+		"@tailwindcss/postcss": "latest",
+		"@types/leaflet": "latest",
+		"@types/node": "latest",
+		"@types/react": "latest",
+		"@types/react-dom": "latest",
+		"tailwindcss": "latest",
+		"typescript": "latest"
+	}
+}

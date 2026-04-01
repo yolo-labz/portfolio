@@ -3,7 +3,9 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"build": "echo 'Build handled per-service'",
+		"dev": "docker compose up",
+		"build": "echo 'Build handled via Docker'",
+		"seed": "docker compose --profile seed up seed",
 		"lint": "echo 'Lint handled per-service'",
 		"typecheck": "echo 'Typecheck handled per-service'"
 	}
