@@ -51,9 +51,17 @@ Biome handles both linting and formatting (no ESLint or Prettier):
 - **Double quotes**, **always semicolons**
 - `useConst` is an error; `noExplicitAny` and `noNonNullAssertion` are warnings
 
-## CI
+## CI & Deployment
 
-GitHub Actions on push/PR to `main`: lint → typecheck → build (sequential). Uses pnpm cache and `--frozen-lockfile`.
+**CI**: GitHub Actions on push/PR to `main`: lint → typecheck → build (sequential). Uses pnpm cache and `--frozen-lockfile`.
+
+**Deploy**: Dokku on Proxmox VM (`192.168.1.184`), triggered on push to `main` via `deploy-dokku.yml` using `self-hosted` runner and `dokku/github-action@master`. App name: `portfolio`. Domain: `portfolio.home301server.com.br`.
+
+- `Dockerfile.dokku` — 3-stage build: deps → build (standalone) → runner (non-root)
+- `app.json` — Health checks (startup/liveness/readiness) on `/api/health`
+- `output: "standalone"` in `next.config.ts` — required for Dokku Node.js deployment
+- `scripts/setup-dokku.sh` — One-time Dokku app provisioning (domain, env vars, Dockerfile path)
+- Secrets needed: `DOKKU_SSH_PRIVATE_KEY` on the `yolo-labz/portfolio` repo
 
 ## Content Guidelines
 
