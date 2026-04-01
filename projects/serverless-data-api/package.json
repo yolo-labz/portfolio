@@ -1,0 +1,10 @@
+{
+	"name": "@portfolio/serverless-data-api",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"build": "echo 'Build handled per-service'",
+		"lint": "echo 'Lint handled per-service'",
+		"typecheck": "echo 'Typecheck handled per-service'"
+	}
+}
