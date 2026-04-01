@@ -1,34 +1,25 @@
 # Note: Dokku sets build context to repo root.
-# All COPY paths are relative to the monorepo root.
 
 # Stage 1: Install dependencies
 FROM node:22-alpine AS deps
 RUN corepack enable && corepack prepare pnpm@10.28.2 --activate
-WORKDIR /app
+WORKDIR /app/site
 
-COPY projects/exec-job-board/site/package.json ./site/
-RUN cd site && pnpm install 2>/dev/null || true
+COPY projects/exec-job-board/site/package.json ./
+RUN pnpm install 2>/dev/null || true
 
 # Stage 2: Build
 FROM node:22-alpine AS builder
 RUN corepack enable && corepack prepare pnpm@10.28.2 --activate
-WORKDIR /app
+WORKDIR /app/site
 
-COPY --from=deps /app/site/node_modules ./site/node_modules
-COPY projects/exec-job-board/site/ ./site/
-COPY projects/exec-job-board/data/ ./data/
+COPY --from=deps /app/site/node_modules ./node_modules
+COPY projects/exec-job-board/site/ ./
+COPY projects/exec-job-board/data/ /app/data/
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN cd site && pnpm build
-
-# Flatten standalone output so server.js is at a predictable path
-RUN SERVER_JS=$(find /app/site/.next/standalone -name "server.js" -not -path "*/node_modules/*" | head -1) && \
-    SERVER_DIR=$(dirname "$SERVER_JS") && \
-    mkdir -p /app/standalone && \
-    cp -r "$SERVER_DIR"/* /app/standalone/ && \
-    cp -r "$SERVER_DIR"/node_modules /app/standalone/ 2>/dev/null || true && \
-    find /app/site/.next/standalone -maxdepth 1 -name "node_modules" -exec cp -r {} /app/standalone/ \; 2>/dev/null || true
+RUN pnpm build
 
 # Stage 3: Production runner
 FROM node:22-alpine AS runner
@@ -42,11 +33,17 @@ ENV HOSTNAME=0.0.0.0
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
+# Copy data for runtime reads
 COPY --from=builder /app/data ./data
-COPY --from=builder --chown=nextjs:nodejs /app/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/site/.next/static ./.next/static
+
+# Copy the standalone output — server.js is at the root since
+# there's no pnpm-workspace.yaml in the Docker build context
+COPY --from=builder --chown=nextjs:nodejs /app/site/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/site/.next/static ./site/.next/static
 
 USER nextjs
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+# The standalone server.js location depends on workspace detection.
+# In Docker (no workspace yaml), it's at site/server.js
+CMD ["node", "site/server.js"]
