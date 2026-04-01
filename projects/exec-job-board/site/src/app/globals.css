@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+	--font-sans: "Inter", system-ui, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+	--color-bg: oklch(0.13 0.02 260);
+	--color-bg-elevated: oklch(0.17 0.02 260);
+	--color-bg-card: oklch(0.20 0.02 260);
+	--color-surface: oklch(0.25 0.015 260);
+	--color-border: oklch(0.30 0.015 260);
+	--color-text: oklch(0.93 0.01 260);
+	--color-text-muted: oklch(0.65 0.01 260);
+	--color-accent: oklch(0.72 0.19 160);
+	--color-accent-hover: oklch(0.78 0.19 160);
+	--color-badge-vp: oklch(0.65 0.15 250);
+	--color-badge-director: oklch(0.65 0.15 300);
+}
+
+html {
+	color-scheme: dark;
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+::selection {
+	background-color: oklch(0.72 0.19 160 / 0.3);
+}
