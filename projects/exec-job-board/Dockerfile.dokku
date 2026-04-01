@@ -39,11 +39,9 @@ COPY --from=builder /app/data ./data
 # Copy the standalone output — server.js is at the root since
 # there's no pnpm-workspace.yaml in the Docker build context
 COPY --from=builder --chown=nextjs:nodejs /app/site/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/site/.next/static ./site/.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/site/.next/static ./.next/static
 
 USER nextjs
 EXPOSE 3000
 
-# The standalone server.js location depends on workspace detection.
-# In Docker (no workspace yaml), it's at site/server.js
-CMD ["node", "site/server.js"]
+CMD ["node", "server.js"]
