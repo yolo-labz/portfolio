@@ -3,3 +3,4 @@ packages:
   - "packages/*"
   - "projects/*"
   - "projects/*/site"
+  - "projects/*/dashboard"
