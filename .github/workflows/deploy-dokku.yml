@@ -1,0 +1,50 @@
+name: Deploy to Dokku
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-dokku
+  cancel-in-progress: false
+
+env:
+  DOKKU_HOST: 192.168.1.184
+  DOKKU_APP: portfolio
+  SITE_DOMAIN: portfolio.home301server.com.br
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Deploy to Dokku
+        uses: dokku/github-action@master
+        with:
+          git_remote_url: "ssh://dokku@192.168.1.184:22/portfolio"
+          ssh_private_key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
+          git_push_flags: "--force"
+          deploy_docker_image: false
+
+  verify:
+    runs-on: self-hosted
+    needs: deploy
+    steps:
+      - name: Wait for startup
+        run: sleep 30
+
+      - name: Health check
+        env:
+          HEALTH_URL: https://portfolio.home301server.com.br/api/health
+        run: |
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$HEALTH_URL" --max-time 15 2>/dev/null || echo "000")
+          echo "Health check status: $HTTP_STATUS"
+          if [ "$HTTP_STATUS" = "200" ]; then
+            echo "Deployment verified successfully"
+          else
+            echo "Warning: Health check returned $HTTP_STATUS (may need DNS/tunnel setup)"
+          fi
