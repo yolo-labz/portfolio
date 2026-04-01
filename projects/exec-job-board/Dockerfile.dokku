@@ -22,8 +22,15 @@ ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN cd site && pnpm build
 
+# Flatten standalone output so server.js is at a predictable path
+RUN SERVER_JS=$(find /app/site/.next/standalone -name "server.js" -not -path "*/node_modules/*" | head -1) && \
+    SERVER_DIR=$(dirname "$SERVER_JS") && \
+    mkdir -p /app/standalone && \
+    cp -r "$SERVER_DIR"/* /app/standalone/ && \
+    cp -r "$SERVER_DIR"/node_modules /app/standalone/ 2>/dev/null || true && \
+    find /app/site/.next/standalone -maxdepth 1 -name "node_modules" -exec cp -r {} /app/standalone/ \; 2>/dev/null || true
+
 # Stage 3: Production runner
-# Next.js standalone preserves monorepo path structure in output
 FROM node:22-alpine AS runner
 WORKDIR /app
 
@@ -35,15 +42,12 @@ ENV HOSTNAME=0.0.0.0
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-# Copy data for server-side reads
-COPY --from=builder /app/data ./projects/exec-job-board/data
 COPY --from=builder /app/data ./data
-
-# Standalone output nests at the monorepo path
-COPY --from=builder --chown=nextjs:nodejs /app/site/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/site/.next/static ./projects/exec-job-board/site/.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/site/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/site/public ./public 2>/dev/null || true
 
 USER nextjs
 EXPOSE 3000
 
-CMD ["node", "projects/exec-job-board/site/server.js"]
+CMD ["node", "server.js"]
