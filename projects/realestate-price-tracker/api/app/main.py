@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import logging
+import os
 
 from contextlib import asynccontextmanager
 from collections.abc import AsyncIterator
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
 from app.database import Base, engine
@@ -46,3 +48,9 @@ app.include_router(export.router, prefix="/api/v1")
 @app.get("/health")
 async def health_check() -> dict[str, str]:
     return {"status": "healthy"}
+
+
+# Serve static dashboard files in production (mounted by Dockerfile.dokku)
+STATIC_DIR = "/app/static"
+if os.path.isdir(STATIC_DIR):
+    app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
