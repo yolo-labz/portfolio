@@ -21,27 +21,12 @@ export const skills: SkillDomain[] = [
 	{
 		domain: "Backend Systems",
 		description: "APIs, services, and data layers that scale",
-		technologies: [
-			"FastAPI",
-			"Django",
-			"Node.js",
-			"Express",
-			"PostgreSQL",
-			"Redis",
-			"SQLAlchemy",
-		],
+		technologies: ["FastAPI", "Django", "Node.js", "Express", "PostgreSQL", "Redis", "SQLAlchemy"],
 	},
 	{
 		domain: "Frontend",
 		description: "Fast, accessible interfaces with modern tooling",
-		technologies: [
-			"Next.js",
-			"React",
-			"TypeScript",
-			"Tailwind CSS",
-			"Framer Motion",
-			"Recharts",
-		],
+		technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Recharts"],
 	},
 	{
 		domain: "Cloud & Infrastructure",

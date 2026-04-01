@@ -2,8 +2,7 @@ import type { ElementType, ReactNode } from "react";
 import { cn } from "./utils";
 
 const variants = {
-	primary:
-		"bg-accent text-bg font-medium hover:bg-accent-hover active:scale-[0.98] transition-all",
+	primary: "bg-accent text-bg font-medium hover:bg-accent-hover active:scale-[0.98] transition-all",
 	secondary:
 		"border border-border text-text hover:bg-surface hover:border-text-muted active:scale-[0.98] transition-all",
 	ghost: "text-text-muted hover:text-text hover:bg-surface transition-colors",

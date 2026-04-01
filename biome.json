@@ -1,13 +1,11 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.4.10/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
-	"organizeImports": {
-		"enabled": true
-	},
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
@@ -35,15 +33,22 @@
 			"semicolons": "always"
 		}
 	},
+	"css": {
+		"parser": {
+			"cssModules": false
+		}
+	},
 	"files": {
-		"ignore": [
-			"node_modules",
-			".next",
-			"dist",
-			".turbo",
-			"*.py",
-			"**/__pycache__",
-			"**/.venv"
+		"includes": [
+			"**",
+			"!**/node_modules",
+			"!**/.next",
+			"!**/dist",
+			"!**/.turbo",
+			"!**/*.py",
+			"!**/__pycache__",
+			"!**/.venv",
+			"!**/*.css"
 		]
 	}
 }

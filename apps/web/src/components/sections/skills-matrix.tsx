@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
 import { Badge } from "@portfolio/ui";
+import { motion } from "motion/react";
 import { skills } from "@/data/skills";
 import { useIntersection } from "@/hooks/use-intersection";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
@@ -11,10 +11,17 @@ export function SkillsMatrix() {
 	const reduced = useReducedMotion();
 
 	return (
-		<section id="skills" className="py-24 px-6 bg-bg-elevated" ref={ref}>
+		<section
+			id="skills"
+			aria-labelledby="skills-heading"
+			className="py-24 px-6 bg-bg-elevated"
+			ref={ref}
+		>
 			<div className="mx-auto max-w-6xl">
 				<div className="mb-12">
-					<h2 className="text-3xl font-bold tracking-tight">Technical Skills</h2>
+					<h2 id="skills-heading" className="text-3xl font-bold tracking-tight">
+						Technical Skills
+					</h2>
 					<p className="mt-2 text-text-muted">Organized by what I solve, not what I know.</p>
 				</div>
 

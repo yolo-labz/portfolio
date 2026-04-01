@@ -1,7 +1,8 @@
-import { notFound } from "next/navigation";
-import { projects } from "@/data/projects";
-import { ProjectDetail } from "@/components/project/project-detail";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { ProjectDetail } from "@/components/project/project-detail";
+import { projects } from "@/data/projects";
+import { SITE_URL } from "@/lib/constants";
 
 interface Props {
 	params: Promise<{ slug: string }>;
@@ -30,5 +31,24 @@ export default async function ProjectPage({ params }: Props) {
 
 	if (!project) notFound();
 
-	return <ProjectDetail project={project} />;
+	const projectJsonLd = {
+		"@context": "https://schema.org",
+		"@type": "CreativeWork",
+		name: project.title,
+		description: project.description,
+		url: `${SITE_URL}/projects/${project.slug}`,
+		author: {
+			"@type": "Person",
+			name: "Pedro Henrique Souza Balbino",
+		},
+	};
+
+	const jsonLdHtml = JSON.stringify(projectJsonLd).replace(/</g, "\\u003c");
+
+	return (
+		<>
+			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml }} />
+			<ProjectDetail project={project} />
+		</>
+	);
 }

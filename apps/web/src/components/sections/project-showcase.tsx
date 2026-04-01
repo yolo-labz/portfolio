@@ -1,8 +1,8 @@
 "use client";
 
+import { Badge } from "@portfolio/ui";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { Badge } from "@portfolio/ui";
 import { projects } from "@/data/projects";
 import { useIntersection } from "@/hooks/use-intersection";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
@@ -12,13 +12,13 @@ export function ProjectShowcase() {
 	const reduced = useReducedMotion();
 
 	return (
-		<section id="projects" className="py-24 px-6" ref={ref}>
+		<section id="projects" aria-labelledby="projects-heading" className="py-24 px-6" ref={ref}>
 			<div className="mx-auto max-w-6xl">
 				<div className="mb-12">
-					<h2 className="text-3xl font-bold tracking-tight">Projects</h2>
-					<p className="mt-2 text-text-muted">
-						Systems I have designed, built, and shipped.
-					</p>
+					<h2 id="projects-heading" className="text-3xl font-bold tracking-tight">
+						Projects
+					</h2>
+					<p className="mt-2 text-text-muted">Systems I have designed, built, and shipped.</p>
 				</div>
 
 				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -49,9 +49,7 @@ export function ProjectShowcase() {
 												<Badge key={tech.name}>{tech.name}</Badge>
 											))}
 											{project.techStack.length > 5 && (
-												<Badge variant="accent">
-													+{project.techStack.length - 5}
-												</Badge>
+												<Badge variant="accent">+{project.techStack.length - 5}</Badge>
 											)}
 										</div>
 
@@ -61,9 +59,7 @@ export function ProjectShowcase() {
 													<div className="font-mono text-sm font-bold text-accent">
 														{metric.value}
 													</div>
-													<div className="text-xs text-text-muted">
-														{metric.label}
-													</div>
+													<div className="text-xs text-text-muted">{metric.label}</div>
 												</div>
 											))}
 										</div>
