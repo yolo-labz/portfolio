@@ -3,8 +3,11 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"build": "echo 'Build handled per-service'",
-		"lint": "echo 'Lint handled per-service'",
-		"typecheck": "echo 'Typecheck handled per-service'"
+		"validate": "cd infra && terraform validate",
+		"plan": "cd infra && terraform plan",
+		"fmt": "cd infra && terraform fmt -recursive",
+		"build": "echo 'Deploy via: cd infra && terraform apply'",
+		"lint": "echo 'Lint via: cd infra && terraform fmt -check -recursive'",
+		"typecheck": "echo 'Typecheck not applicable for Terraform'"
 	}
 }

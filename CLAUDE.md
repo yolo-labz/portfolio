@@ -81,6 +81,8 @@ Design principles and governance rules are in `.specify/memory/constitution.md`.
 - JSON file committed to git (`data/jobs.json`) (003-exec-job-board)
 - Python 3.12 (API + pipeline), TypeScript (dashboard) + FastAPI, SQLAlchemy (async), asyncpg (API); Next.js, Recharts, React-Leaflet, Tailwind CSS v4 (dashboard) (004-realestate-price-tracker)
 - PostgreSQL 16 (Docker Compose) (004-realestate-price-tracker)
+- Python 3.12 (Lambda handlers), HCL (Terraform) + AWS Lambda Powertools v2, Pydantic v2 (Lambda); Terraform >= 1.7 (IaC) (005-serverless-data-api)
+- DynamoDB (single-table, on-demand, zero idle cost) (005-serverless-data-api)
 
 ## Recent Changes
 - 001-production-ready-site: Added TypeScript 6.0.2, React 19.2.4 + Next.js 16.2.1, Tailwind CSS 4.2.2, Motion 12.38.0

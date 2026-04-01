@@ -1,0 +1,326 @@
+openapi: "3.1.0"
+
+info:
+  title: Serverless Data API
+  version: "1.0.0"
+  description: >-
+    AWS Lambda + DynamoDB CRUD API provisioned via Terraform.
+    Provides a RESTful interface for managing items with full
+    create, read, update, and delete operations.
+  contact:
+    name: Pedro Balbino
+  license:
+    name: MIT
+    identifier: MIT
+
+servers:
+  - url: /
+    description: API Gateway
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /items:
+    get:
+      summary: List items
+      operationId: listItems
+      tags:
+        - Items
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          description: Maximum number of items to return (1-100).
+          schema:
+            type: integer
+            default: 50
+            minimum: 1
+            maximum: 100
+        - name: last_key
+          in: query
+          required: false
+          description: >-
+            JSON-encoded pagination token returned from a previous request
+            as `last_key`.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A paginated list of items.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/ItemResponse"
+                  count:
+                    type: integer
+                    description: Number of items in this page.
+                  last_key:
+                    type: object
+                    description: Pagination token for the next page (omitted on last page).
+                required:
+                  - items
+                  - count
+        "403":
+          description: Forbidden - invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    post:
+      summary: Create an item
+      operationId: createItem
+      tags:
+        - Items
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemCreate"
+      responses:
+        "201":
+          description: Item created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemResponse"
+        "403":
+          description: Forbidden - invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /items/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique item identifier (UUID v4).
+        schema:
+          type: string
+          format: uuid
+
+    get:
+      summary: Get an item
+      operationId: getItem
+      tags:
+        - Items
+      responses:
+        "200":
+          description: The requested item.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemResponse"
+        "403":
+          description: Forbidden - invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Item not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    put:
+      summary: Update an item
+      operationId: updateItem
+      tags:
+        - Items
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemUpdate"
+      responses:
+        "200":
+          description: Item updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemResponse"
+        "403":
+          description: Forbidden - invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Item not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    delete:
+      summary: Delete an item
+      operationId: deleteItem
+      tags:
+        - Items
+      responses:
+        "204":
+          description: Item deleted successfully (no content).
+        "403":
+          description: Forbidden - invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Item not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    ItemCreate:
+      type: object
+      required:
+        - name
+        - category
+        - price
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: Display name of the item.
+          examples:
+            - "Widget Pro"
+        description:
+          type: string
+          maxLength: 1000
+          description: Optional long-form description.
+          examples:
+            - "A versatile widget for everyday use."
+        category:
+          type: string
+          pattern: "^[a-z_]+$"
+          description: Lowercase snake_case category identifier.
+          examples:
+            - "electronics"
+        price:
+          type: number
+          format: double
+          exclusiveMinimum: 0
+          maximum: 999999.99
+          description: Unit price in USD.
+          examples:
+            - 29.99
+        tags:
+          type: array
+          items:
+            type: string
+          default: []
+          description: Free-form tags for filtering.
+          examples:
+            - ["featured", "sale"]
+
+    ItemUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        description:
+          type: string
+          maxLength: 1000
+        category:
+          type: string
+          pattern: "^[a-z_]+$"
+        price:
+          type: number
+          format: double
+          exclusiveMinimum: 0
+          maximum: 999999.99
+        tags:
+          type: array
+          items:
+            type: string
+
+    ItemResponse:
+      type: object
+      required:
+        - id
+        - name
+        - category
+        - price
+        - tags
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique item identifier.
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        price:
+          type: number
+          format: double
+        tags:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+          description: ISO 8601 creation timestamp.
+        updated_at:
+          type: string
+          format: date-time
+          description: ISO 8601 last-update timestamp.
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          description: Human-readable error summary.
+          examples:
+            - "Validation Error"
+        details:
+          type: array
+          items:
+            type: object
+          description: Structured error details (e.g. Pydantic validation errors).
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Gateway API key for request authentication.
