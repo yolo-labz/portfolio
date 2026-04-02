@@ -2,7 +2,7 @@ FROM node:22-alpine AS dashboard
 RUN corepack enable && corepack prepare pnpm@10.28.2 --activate
 WORKDIR /build
 COPY projects/ai-document-processor/dashboard/package.json ./
-RUN pnpm install 2>/dev/null || true
+RUN pnpm install --no-frozen-lockfile
 COPY projects/ai-document-processor/dashboard/ ./
 RUN printf 'import type { NextConfig } from "next";\nconst c: NextConfig = { output: "export" };\nexport default c;\n' > next.config.ts
 ENV NEXT_PUBLIC_API_URL="" NEXT_TELEMETRY_DISABLED=1
