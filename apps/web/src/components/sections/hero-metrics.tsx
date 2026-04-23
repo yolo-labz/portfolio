@@ -7,10 +7,10 @@ import { AnimatedCounter } from "@/components/shared/animated-counter";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 const metrics = [
-	{ value: 5, suffix: "TB+", label: "daily data processed" },
-	{ value: 12, suffix: "+", label: "production systems" },
-	{ value: 99.7, suffix: "%", label: "uptime on managed infra" },
-	{ value: 200, suffix: "ms", prefix: "<", label: "avg API response" },
+	{ value: 6, suffix: "", label: "public Claude Code plugins shipped" },
+	{ value: 152, suffix: "", label: "NixOS modules across 4-host fleet" },
+	{ value: 4.5, suffix: "/wk", label: "commit cadence sustained 90d" },
+	{ value: 5, suffix: "", label: "polyglot stacks in production" },
 ] as const;
 
 export function HeroMetrics() {
@@ -30,19 +30,22 @@ export function HeroMetrics() {
 					animate={isInView ? { opacity: 1, y: 0 } : {}}
 					transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 				>
-					<p className="font-mono text-sm text-accent mb-4">Software Engineer</p>
+					<p className="font-mono text-sm text-accent mb-4">Senior SWE — AI-native automation</p>
 					<h1
 						id="hero-heading"
 						className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
 					>
-						Pedro Henrique
+						Claude Code plugins,
 						<br />
-						<span className="text-text-muted">Souza Balbino</span>
+						<span className="text-text-muted">Chrome/macOS workflow tooling,</span>
+						<br />
+						<span className="text-text-muted">WhatsApp + LinkedIn copilots.</span>
 					</h1>
 					<p className="mt-6 max-w-2xl text-lg text-text-muted leading-relaxed">
-						I build data extraction pipelines, automation systems, and full-stack applications.
-						Python and TypeScript. AWS-native infrastructure with Terraform. Everything ships with
-						CI/CD and monitoring.
+						Six public Claude Code plugins under yolo-labz (wa, claude-mac-chrome,
+						linkedin-chrome-copilot, kokoro-speakd, claude-classroom-submit, fand). Python/Go
+						backends, Azure OpenAI agents, multi-cloud Terraform. 4-host NixOS fleet with SLSA L2
+						supply-chain hardening.
 					</p>
 				</motion.div>
 
@@ -55,7 +58,6 @@ export function HeroMetrics() {
 					{metrics.map((metric) => (
 						<div key={metric.label} className="space-y-1">
 							<div className="font-mono text-3xl font-bold text-text sm:text-4xl">
-								{"prefix" in metric && metric.prefix}
 								{isInView ? <AnimatedCounter value={metric.value} reduced={reduced} /> : "0"}
 								<span className="text-accent">{metric.suffix}</span>
 							</div>

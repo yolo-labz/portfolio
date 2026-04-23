@@ -109,17 +109,33 @@ export function MobileNav() {
 							aria-label="Navigation menu"
 						>
 							<ul className="mt-16 flex flex-col gap-1">
-								{navItems.map(({ href, label }) => (
-									<li key={href}>
-										<Link
-											href={isHome ? href : `/${href}`}
-											onClick={() => setOpen(false)}
-											className="block min-h-11 rounded-md px-4 py-3 text-lg text-text-muted transition-colors hover:bg-surface hover:text-text"
-										>
-											{label}
-										</Link>
-									</li>
-								))}
+								{navItems.map(({ href, label, external }) => {
+									const linkClass =
+										"block min-h-11 rounded-md px-4 py-3 text-lg text-text-muted transition-colors hover:bg-surface hover:text-text";
+									if (external) {
+										return (
+											<li key={href}>
+												<a
+													href={href}
+													target="_blank"
+													rel="noopener noreferrer"
+													onClick={() => setOpen(false)}
+													className={linkClass}
+												>
+													{label}
+												</a>
+											</li>
+										);
+									}
+									const target = href.startsWith("#") && !isHome ? `/${href}` : href;
+									return (
+										<li key={href}>
+											<Link href={target} onClick={() => setOpen(false)} className={linkClass}>
+												{label}
+											</Link>
+										</li>
+									);
+								})}
 								<li>
 									<a
 										href="/resume.pdf"

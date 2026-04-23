@@ -24,16 +24,31 @@ export function Header() {
 				</Link>
 
 				<ul className="hidden items-center gap-6 md:flex">
-					{navItems.map(({ href, label }) => (
-						<li key={href}>
-							<Link
-								href={isHome ? href : `/${href}`}
-								className={cn("text-sm text-text-muted hover:text-text transition-colors")}
-							>
-								{label}
-							</Link>
-						</li>
-					))}
+					{navItems.map(({ href, label, external }) => {
+						const linkClass = cn("text-sm text-text-muted hover:text-text transition-colors");
+						if (external) {
+							return (
+								<li key={href}>
+									<a
+										href={href}
+										target="_blank"
+										rel="noopener noreferrer"
+										className={linkClass}
+									>
+										{label}
+									</a>
+								</li>
+							);
+						}
+						const target = href.startsWith("#") && !isHome ? `/${href}` : href;
+						return (
+							<li key={href}>
+								<Link href={target} className={linkClass}>
+									{label}
+								</Link>
+							</li>
+						);
+					})}
 					<li>
 						<a
 							href="/resume.pdf"
