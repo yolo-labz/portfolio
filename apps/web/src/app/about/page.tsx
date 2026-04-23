@@ -61,9 +61,9 @@ const claimEvidenceMap: ClaimEvidence[] = [
 	},
 	{
 		claim: "Multi-host NixOS fleet (152 modules, 153 PRs)",
-		evidenceType: "public-repo",
-		url: "https://github.com/phsb5321/NixOS",
-		status: "backed",
+		evidenceType: "anonymized-writeup",
+		url: "https://blog.home301server.com.br/tags/nixos/",
+		status: "unbacked-anonymized-pending",
 	},
 	{
 		claim: "Compliance-grade RAG for tier-1 LATAM banking",
