@@ -18,25 +18,25 @@ export function ContactCTA() {
 				transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 			>
 				<h2 id="contact-heading" className="text-3xl font-bold tracking-tight">
-					Have a project in mind?
+					Contact
 				</h2>
 				<p className="mt-4 text-text-muted leading-relaxed">
-					I take on data extraction, automation, and full-stack projects. Fixed-price or hourly.
-					Fast turnaround, clean deliverables, async communication.
+					Questions about any of the patterns above — RAG architecture, Chrome automation,
+					Claude Code plugins, NixOS fleets? Email is the fastest way.
 				</p>
 				<div className="mt-8 flex items-center justify-center gap-4">
+					<Button variant="primary" size="lg" as="a" href="mailto:pedro@balbino.dev">
+						Email
+					</Button>
 					<Button
-						variant="primary"
+						variant="secondary"
 						size="lg"
 						as="a"
-						href="https://www.upwork.com/freelancers/~01dae7197e964ddf3f"
+						href="https://github.com/phsb5321"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						Hire on Upwork
-					</Button>
-					<Button variant="secondary" size="lg" as="a" href="mailto:pedro@balbino.dev">
-						Email Directly
+						GitHub
 					</Button>
 				</div>
 			</motion.div>
