@@ -97,6 +97,38 @@ const claimEvidenceMap: ClaimEvidence[] = [
 	},
 ];
 
+interface SonarRepo {
+	slug: string;
+	label: string;
+	language: string;
+}
+
+const SONAR_HOST = "https://sonarqube.home301server.com.br";
+
+const sonarRepos: SonarRepo[] = [
+	{ slug: "wa", label: "wa", language: "Go" },
+	{ slug: "claude-mac-chrome", label: "claude-mac-chrome", language: "Bash" },
+	{ slug: "linkedin-chrome-copilot", label: "linkedin-chrome-copilot", language: "Bash" },
+	{ slug: "kokoro-speakd", label: "kokoro-speakd", language: "Python" },
+	{ slug: "claude-classroom-submit", label: "claude-classroom-submit", language: "Python" },
+	{ slug: "fand", label: "fand", language: "Rust" },
+];
+
+const sonarMetrics: Array<{ key: string; alt: string }> = [
+	{ key: "alert_status", alt: "Quality Gate" },
+	{ key: "sqale_rating", alt: "Maintainability" },
+	{ key: "reliability_rating", alt: "Reliability" },
+	{ key: "security_rating", alt: "Security" },
+];
+
+function sonarBadgeUrl(slug: string, metric: string) {
+	return `${SONAR_HOST}/api/project_badges/measure?project=yolo-labz_${slug}&metric=${metric}`;
+}
+
+function sonarDashboardUrl(slug: string) {
+	return `${SONAR_HOST}/dashboard?id=yolo-labz_${slug}`;
+}
+
 function statusPill(status: ClaimStatus) {
 	if (status === "backed") {
 		return (
@@ -175,6 +207,61 @@ export default function AboutPage() {
 							</tbody>
 						</table>
 					</div>
+				</Card>
+			</div>
+
+			<div className="mt-16 space-y-6">
+				<div>
+					<h2 className="text-2xl font-semibold tracking-tight">Code quality</h2>
+					<p className="mt-2 max-w-2xl text-sm text-text-muted">
+						Every plugin runs Sonar quality + security gates per release; the dashboard is public.
+						Badges link straight to the live scan — no screenshots, no caching.
+					</p>
+				</div>
+
+				<Card className="p-0">
+					<ul className="divide-y divide-border/60">
+						{sonarRepos.map((repo) => (
+							<li
+								key={repo.slug}
+								className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between"
+							>
+								<div className="flex items-baseline gap-3">
+									<a
+										href={sonarDashboardUrl(repo.slug)}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="font-mono text-sm text-accent hover:underline"
+									>
+										{repo.label}
+									</a>
+									<span className="font-mono text-[10px] uppercase tracking-wide text-text-muted">
+										{repo.language}
+									</span>
+								</div>
+								<div className="flex flex-wrap items-center gap-2">
+									{sonarMetrics.map((m) => (
+										<a
+											key={m.key}
+											href={sonarDashboardUrl(repo.slug)}
+											target="_blank"
+											rel="noopener noreferrer"
+											aria-label={`${repo.label} ${m.alt}`}
+											className="inline-flex"
+										>
+											{/* eslint-disable-next-line @next/next/no-img-element */}
+											<img
+												src={sonarBadgeUrl(repo.slug, m.key)}
+												alt={`${repo.label} — ${m.alt}`}
+												loading="lazy"
+												className="h-5"
+											/>
+										</a>
+									))}
+								</div>
+							</li>
+						))}
+					</ul>
 				</Card>
 			</div>
 		</section>
