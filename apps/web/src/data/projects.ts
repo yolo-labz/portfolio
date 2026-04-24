@@ -177,4 +177,30 @@ export const projects: Project[] = [
 		featured: false,
 		gradient: "from-slate-500/20 to-gray-500/20",
 	},
+	{
+		slug: "pedro-portfolio-recipes",
+		title: "pedro-portfolio-recipes — code recipes",
+		tagline: "Short, copy-pasteable patterns from the stacks I ship",
+		description:
+			"Eight capability-first code recipes — Claude Code plugin skills, Chrome multi-profile automation, pgvector + BM25 hybrid RAG, Sigstore attestation verification, NixOS flake overlays, parallel Azure/GCP Terraform modules, sops-nix secrets, and polyglot lefthook pre-commit hooks. Each recipe is one directory with problem, working snippet, tradeoff, and anti-pattern.",
+		problemStatement:
+			"Recruiters and collaborators need fast evidence that a stack claim is backed by actual code — not marketing copy and not full apps. Long-form writeups are the wrong resolution for 'show me how you'd wire hybrid search' or 'what does your pre-commit look like'.",
+		solutionSummary:
+			"A public repo of short, self-contained recipes under `recipes/<topic>/README.md`. No build step, no shared framework. Each recipe stands alone at 200–500 words: problem statement, snippet, tradeoff, anti-pattern, reference. MIT licensed, SonarQube + Dependabot + lefthook baseline per yolo-labz Tier-1.",
+		techStack: [
+			{ name: "Bash", category: "language" },
+			{ name: "SQL", category: "language" },
+			{ name: "Nix", category: "language" },
+			{ name: "Terraform", category: "infrastructure" },
+			{ name: "GitHub Actions", category: "service" },
+		],
+		metrics: [
+			{ label: "Recipes seeded", value: "8" },
+			{ label: "License", value: "MIT" },
+			{ label: "Baseline", value: "SonarQube · lefthook · Dependabot" },
+		],
+		links: { source: "https://github.com/yolo-labz/pedro-portfolio-recipes" },
+		featured: false,
+		gradient: "from-lime-500/20 to-emerald-500/20",
+	},
 ];
