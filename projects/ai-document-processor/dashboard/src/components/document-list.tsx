@@ -69,6 +69,7 @@ export function DocumentList({ documents, onRefresh, searchQuery, onSearch }: Do
 					className="flex-1 rounded-md border border-border bg-bg-card px-4 py-2 text-sm text-text placeholder-text-muted outline-none transition-colors focus:border-accent"
 				/>
 				<button
+					type="button"
 					onClick={onRefresh}
 					className="rounded-md border border-border bg-bg-card px-4 py-2 text-sm text-text-muted transition-colors hover:border-accent hover:text-text"
 				>

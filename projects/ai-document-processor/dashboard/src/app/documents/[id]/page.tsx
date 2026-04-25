@@ -1,11 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useParams } from "next/navigation";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { DocumentDetail } from "@/components/document-detail";
 import { fetchDocument } from "@/lib/api";
 import type { Document } from "@/lib/types";
-import { DocumentDetail } from "@/components/document-detail";
 
 export default function DocumentPage() {
 	const params = useParams<{ id: string }>();
@@ -32,8 +32,7 @@ export default function DocumentPage() {
 
 	// Poll while processing
 	useEffect(() => {
-		const shouldPoll =
-			document?.status === "processing" || document?.status === "uploaded";
+		const shouldPoll = document?.status === "processing" || document?.status === "uploaded";
 
 		if (shouldPoll) {
 			pollRef.current = setInterval(loadDocument, 2000);
@@ -57,22 +56,16 @@ export default function DocumentPage() {
 					strokeWidth={2}
 					stroke="currentColor"
 				>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						d="M15.75 19.5L8.25 12l7.5-7.5"
-					/>
+					<title>icon</title>
+					<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
 				</svg>
 				Back to documents
 			</Link>
 
 			{loading ? (
 				<div className="flex justify-center py-12">
-					<svg
-						className="h-8 w-8 animate-spin text-accent"
-						viewBox="0 0 24 24"
-						fill="none"
-					>
+					<svg className="h-8 w-8 animate-spin text-accent" viewBox="0 0 24 24" fill="none">
+						<title>icon</title>
 						<circle
 							className="opacity-25"
 							cx="12"

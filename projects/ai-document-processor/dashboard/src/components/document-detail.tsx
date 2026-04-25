@@ -53,11 +53,8 @@ export function DocumentDetail({ document: doc }: DocumentDetailProps) {
 	if (doc.status === "processing" || doc.status === "uploaded") {
 		return (
 			<div className="flex flex-col items-center justify-center gap-4 rounded-lg border border-border bg-bg-card p-12">
-				<svg
-					className="h-10 w-10 animate-spin text-accent"
-					viewBox="0 0 24 24"
-					fill="none"
-				>
+				<svg className="h-10 w-10 animate-spin text-accent" viewBox="0 0 24 24" fill="none">
+					<title>icon</title>
 					<circle
 						className="opacity-25"
 						cx="12"
@@ -101,7 +98,7 @@ export function DocumentDetail({ document: doc }: DocumentDetailProps) {
 
 	const rawTextPreview =
 		doc.raw_text && doc.raw_text.length > 500 && !showFullText
-			? doc.raw_text.slice(0, 500) + "..."
+			? `${doc.raw_text.slice(0, 500)}...`
 			: doc.raw_text;
 
 	return (
@@ -140,10 +137,7 @@ export function DocumentDetail({ document: doc }: DocumentDetailProps) {
 			{doc.extracted_fields && Object.keys(doc.extracted_fields).length > 0 && (
 				<section>
 					<h2 className="mb-3 text-lg font-medium text-text">Extracted Fields</h2>
-					<FieldTable
-						fields={doc.extracted_fields}
-						documentType={doc.document_type || ""}
-					/>
+					<FieldTable fields={doc.extracted_fields} documentType={doc.document_type || ""} />
 				</section>
 			)}
 
@@ -157,6 +151,7 @@ export function DocumentDetail({ document: doc }: DocumentDetailProps) {
 						</pre>
 						{doc.raw_text.length > 500 && (
 							<button
+								type="button"
 								onClick={() => setShowFullText(!showFullText)}
 								className="mt-3 text-xs font-medium text-accent hover:underline"
 							>

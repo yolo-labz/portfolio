@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { DocumentList } from "@/components/document-list";
+import { UploadZone } from "@/components/upload-zone";
 import { fetchDocuments } from "@/lib/api";
 import type { Document, UploadResponse } from "@/lib/types";
-import { UploadZone } from "@/components/upload-zone";
-import { DocumentList } from "@/components/document-list";
 
 export default function Home() {
 	const [documents, setDocuments] = useState<Document[]>([]);
@@ -73,11 +73,8 @@ export default function Home() {
 
 			{loading ? (
 				<div className="flex justify-center py-12">
-					<svg
-						className="h-8 w-8 animate-spin text-accent"
-						viewBox="0 0 24 24"
-						fill="none"
-					>
+					<svg className="h-8 w-8 animate-spin text-accent" viewBox="0 0 24 24" fill="none">
+						<title>icon</title>
 						<circle
 							className="opacity-25"
 							cx="12"

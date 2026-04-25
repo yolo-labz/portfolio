@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { Card } from "@portfolio/ui";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "About — Pedro Balbino",
