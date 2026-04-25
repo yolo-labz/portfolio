@@ -21,8 +21,8 @@ export function ContactCTA() {
 					Contact
 				</h2>
 				<p className="mt-4 text-text-muted leading-relaxed">
-					Questions about any of the patterns above — RAG architecture, Chrome automation,
-					Claude Code plugins, NixOS fleets? Email is the fastest way.
+					Questions about any of the patterns above — RAG architecture, Chrome automation, Claude
+					Code plugins, NixOS fleets? Email is the fastest way.
 				</p>
 				<div className="mt-8 flex items-center justify-center gap-4">
 					<Button variant="primary" size="lg" as="a" href="mailto:pedro@balbino.dev">
