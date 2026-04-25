@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 	metadataBase: new URL(SITE_URL),
 	title: "Pedro Balbino — Software Engineer",
 	description:
-		"Production-grade data pipelines, automation systems, and full-stack applications. Python, TypeScript, AWS, Terraform.",
+		"Senior SWE specializing in AI-native automation. Ships Claude Code plugins, Chrome/macOS workflow tooling, and WhatsApp/LinkedIn copilots.",
 	openGraph: {
 		title: "Pedro Balbino — Software Engineer",
 		description:
-			"Production-grade data pipelines, automation systems, and full-stack applications.",
+			"Senior SWE specializing in AI-native automation. Ships Claude Code plugins, Chrome/macOS workflow tooling, and WhatsApp/LinkedIn copilots.",
 		type: "website",
 	},
 };
@@ -30,7 +30,7 @@ const jsonLd = {
 			url: SITE_URL,
 			name: "Pedro Balbino — Software Engineer",
 			description:
-				"Production-grade data pipelines, automation systems, and full-stack applications.",
+				"Senior SWE specializing in AI-native automation. Ships Claude Code plugins, Chrome/macOS workflow tooling, and WhatsApp/LinkedIn copilots.",
 		},
 		{
 			"@type": "Person",
@@ -38,20 +38,20 @@ const jsonLd = {
 			jobTitle: "Software Engineer",
 			url: SITE_URL,
 			knowsAbout: [
-				"Python",
+				"Go",
 				"TypeScript",
-				"AWS",
+				"Python",
+				"Rust",
+				"NixOS",
+				"Kubernetes",
 				"Terraform",
-				"Data Pipelines",
-				"Web Automation",
-				"FastAPI",
-				"Next.js",
+				"AWS",
+				"Claude Code",
+				"Retrieval-Augmented Generation",
+				"LLM Integration",
+				"Chrome Automation",
 			],
-			sameAs: [
-				"https://github.com/phsb5321",
-				"https://www.upwork.com/freelancers/~01dae7197e964ddf3f",
-				"https://linkedin.com/in/pedro-balbino",
-			],
+			sameAs: ["https://github.com/phsb5321", "https://linkedin.com/in/pedro-balbino"],
 		},
 	],
 };
