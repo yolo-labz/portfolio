@@ -85,6 +85,7 @@ export function UploadZone({ onUploadComplete }: UploadZoneProps) {
 	);
 
 	return (
+		// biome-ignore lint/a11y/useSemanticElements: drag-drop region needs <div> for native drag events
 		<div
 			role="button"
 			tabIndex={0}
@@ -96,9 +97,10 @@ export function UploadZone({ onUploadComplete }: UploadZoneProps) {
 			className={`
 				relative min-h-48 cursor-pointer rounded-lg border-2 border-dashed
 				transition-colors duration-200
-				${isDragOver
-					? "border-accent bg-accent/10"
-					: "border-border bg-bg-card hover:border-accent/50"
+				${
+					isDragOver
+						? "border-accent bg-accent/10"
+						: "border-border bg-bg-card hover:border-accent/50"
 				}
 				flex flex-col items-center justify-center gap-3 p-8
 			`}
@@ -113,11 +115,8 @@ export function UploadZone({ onUploadComplete }: UploadZoneProps) {
 
 			{isUploading ? (
 				<>
-					<svg
-						className="h-8 w-8 animate-spin text-accent"
-						viewBox="0 0 24 24"
-						fill="none"
-					>
+					<svg className="h-8 w-8 animate-spin text-accent" viewBox="0 0 24 24" fill="none">
+						<title>icon</title>
 						<circle
 							className="opacity-25"
 							cx="12"
@@ -143,24 +142,19 @@ export function UploadZone({ onUploadComplete }: UploadZoneProps) {
 						strokeWidth={1.5}
 						stroke="currentColor"
 					>
+						<title>icon</title>
 						<path
 							strokeLinecap="round"
 							strokeLinejoin="round"
 							d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
 						/>
 					</svg>
-					<p className="text-sm font-medium text-text">
-						Drop files here or click to upload
-					</p>
-					<p className="text-xs text-text-muted">
-						PDF, JPG, PNG, DOCX &mdash; Max 20MB
-					</p>
+					<p className="text-sm font-medium text-text">Drop files here or click to upload</p>
+					<p className="text-xs text-text-muted">PDF, JPG, PNG, DOCX &mdash; Max 20MB</p>
 				</>
 			)}
 
-			{error && (
-				<p className="mt-2 text-sm text-status-failed">{error}</p>
-			)}
+			{error && <p className="mt-2 text-sm text-status-failed">{error}</p>}
 		</div>
 	);
 }

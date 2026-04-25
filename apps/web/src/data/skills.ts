@@ -25,7 +25,8 @@ export const skills: SkillDomain[] = [
 	},
 	{
 		domain: "Cloud",
-		description: "Multi-cloud deployments on AWS, Azure, and GCP with serverless + container workloads",
+		description:
+			"Multi-cloud deployments on AWS, Azure, and GCP with serverless + container workloads",
 		technologies: [
 			"AWS Lambda",
 			"AWS Bedrock",
@@ -56,7 +57,8 @@ export const skills: SkillDomain[] = [
 	},
 	{
 		domain: "macOS / Chrome automation",
-		description: "Workflow tooling for operators: Chrome profile orchestration, macOS input synthesis",
+		description:
+			"Workflow tooling for operators: Chrome profile orchestration, macOS input synthesis",
 		technologies: ["cliclick", "AppleScript", "Playwright", "Puppeteer", "claude-mac-chrome"],
 	},
 ];

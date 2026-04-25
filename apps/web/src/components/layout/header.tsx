@@ -29,12 +29,7 @@ export function Header() {
 						if (external) {
 							return (
 								<li key={href}>
-									<a
-										href={href}
-										target="_blank"
-										rel="noopener noreferrer"
-										className={linkClass}
-									>
+									<a href={href} target="_blank" rel="noopener noreferrer" className={linkClass}>
 										{label}
 									</a>
 								</li>

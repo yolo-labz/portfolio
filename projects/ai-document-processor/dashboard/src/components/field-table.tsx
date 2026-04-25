@@ -4,9 +4,7 @@ interface FieldTableProps {
 }
 
 function formatKey(key: string): string {
-	return key
-		.replace(/_/g, " ")
-		.replace(/\b\w/g, (c) => c.toUpperCase());
+	return key.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 function isCurrencyKey(key: string): boolean {
@@ -83,7 +81,9 @@ function renderArray(items: unknown[]): React.ReactNode {
 	return (
 		<ul className="list-inside list-disc text-sm">
 			{items.map((item, i) => (
-				<li key={i} className="font-mono text-text">{String(item)}</li>
+				<li key={i} className="font-mono text-text">
+					{String(item)}
+				</li>
 			))}
 		</ul>
 	);
@@ -100,9 +100,7 @@ function renderObject(obj: Record<string, unknown>): React.ReactNode {
 					) : Array.isArray(value) ? (
 						renderArray(value)
 					) : (
-						<span className="font-mono text-sm text-text">
-							{formatValue(key, value)}
-						</span>
+						<span className="font-mono text-sm text-text">{formatValue(key, value)}</span>
 					)}
 				</div>
 			))}
@@ -132,18 +130,14 @@ export function FieldTable({ fields, documentType }: FieldTableProps) {
 				<tbody>
 					{entries.map(([key, value]) => (
 						<tr key={key} className="border-b border-border/50 last:border-0">
-							<td className="w-1/3 px-4 py-3 align-top text-text-muted">
-								{formatKey(key)}
-							</td>
+							<td className="w-1/3 px-4 py-3 align-top text-text-muted">{formatKey(key)}</td>
 							<td className="px-4 py-3 align-top">
 								{Array.isArray(value) ? (
 									renderArray(value)
 								) : typeof value === "object" && value !== null ? (
 									renderObject(value as Record<string, unknown>)
 								) : (
-									<span className="font-mono text-text">
-										{formatValue(key, value)}
-									</span>
+									<span className="font-mono text-text">{formatValue(key, value)}</span>
 								)}
 							</td>
 						</tr>
