@@ -81,23 +81,23 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "linkedin-chrome-copilot",
-		title: "linkedin-chrome-copilot — LinkedIn job-search copilot",
-		tagline: "Skill-routed Claude Code agent for LinkedIn DMs, Calendly bookings, CV tailoring",
+		title: "linkedin-chrome-copilot — Chrome automation for LinkedIn workflows",
+		tagline: "Per-locale form fills, profile audit, message-triage routing — Claude Code plugin",
 		description:
-			"Five user stories: resume + draft-reply + book-slot + CV tailor + guardrails. Skill routing per channel (LinkedIn DM tone ≠ email tone ≠ WhatsApp tone). Clipboard handoff fallback for React contenteditable surfaces.",
+			"Per-locale profile-edit forms (PT/EN/ES) gated behind separate URLs with `isTrusted=true` Save buttons. Plugin enumerates positions, materializes drafts, and saves each locale slot via `execCommand('insertText')` + Save-button event-chain click — Chrome stays background, browser session intact.",
 		problemStatement:
-			"Recruiter pipelines fragment across LinkedIn, email, WhatsApp, Calendly. Context resets every session. Manual outreach drift = lost momentum.",
+			"LinkedIn's profile editor in 2026 stores 3 locale slots per position (PT/EN/ES) behind separate URLs. The Save button discriminates `isTrusted=true` events, breaking Playwright synthetic dispatches. Algolia typeahead in skills section ignores synthetic input.",
 		solutionSummary:
-			"Persistent save-state file + per-contact thread context + channel-aware drafting + Chrome automation via claude-mac-chrome sibling plugin + manual paste-and-confirm gate for React-locked compose UIs. Schema validation + fuzz tests on skill outputs.",
+			"Bash 3.2 plugin sibling to claude-mac-chrome. Reads positions via owner-view DOM scrape, drives per-locale `/edit/forms/<id>/?language=<lang>&country=<cc>` saves via AppleScript JS-injection. cliclick fallback for paths gated on real OS pointer events. Audit log per action; two-phase confirm on any Send equivalent.",
 		techStack: [
+			{ name: "Bash", category: "language" },
+			{ name: "AppleScript", category: "language" },
 			{ name: "TypeScript", category: "language" },
-			{ name: "Claude Code SDK", category: "framework" },
-			{ name: "Anthropic API", category: "service" },
 			{ name: "claude-mac-chrome", category: "infrastructure" },
 		],
 		metrics: [
-			{ label: "User stories", value: "5" },
-			{ label: "Channel routing", value: "DM · email · WhatsApp · Calendly" },
+			{ label: "Plugin LOC", value: "2.8K+" },
+			{ label: "Locale slots", value: "PT · EN · ES per position" },
 			{ label: "Plugin tier", value: "Claude Code marketplace" },
 		],
 		links: { source: "https://github.com/yolo-labz/linkedin-chrome-copilot" },
@@ -184,7 +184,7 @@ export const projects: Project[] = [
 		description:
 			"Eight capability-first code recipes — Claude Code plugin skills, Chrome multi-profile automation, pgvector + BM25 hybrid RAG, Sigstore attestation verification, NixOS flake overlays, parallel Azure/GCP Terraform modules, sops-nix secrets, and polyglot lefthook pre-commit hooks. Each recipe is one directory with problem, working snippet, tradeoff, and anti-pattern.",
 		problemStatement:
-			"Recruiters and collaborators need fast evidence that a stack claim is backed by actual code — not marketing copy and not full apps. Long-form writeups are the wrong resolution for 'show me how you'd wire hybrid search' or 'what does your pre-commit look like'.",
+			"Reviewers and collaborators need fast evidence that a stack claim is backed by actual code — not marketing copy and not full apps. Long-form writeups are the wrong resolution for 'show me how you'd wire hybrid search' or 'what does your pre-commit look like'.",
 		solutionSummary:
 			"A public repo of short, self-contained recipes under `recipes/<topic>/README.md`. No build step, no shared framework. Each recipe stands alone at 200–500 words: problem statement, snippet, tradeoff, anti-pattern, reference. MIT licensed, SonarQube + Dependabot + lefthook baseline per yolo-labz Tier-1.",
 		techStack: [
