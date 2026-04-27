@@ -9,7 +9,7 @@ export interface ExperienceEntry {
 export const experience: ExperienceEntry[] = [
 	{
 		role: "Senior AI Developer / Cloud Architect",
-		company: "Stefanini LATAM (Gauge)",
+		company: "Stefanini LATAM",
 		period: "Jul 2025 — Present",
 		current: true,
 		deliverables: [
