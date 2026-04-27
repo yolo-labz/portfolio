@@ -8,6 +8,7 @@ from typing import AsyncGenerator
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
@@ -62,6 +63,12 @@ app.include_router(documents_router)
 async def health_check() -> dict[str, str]:
     """Health check endpoint."""
     return {"status": "healthy"}
+
+
+@app.get("/", include_in_schema=False)
+async def root_redirect() -> RedirectResponse:
+    """Root redirects to interactive Swagger UI when no static dashboard is mounted."""
+    return RedirectResponse(url="/docs", status_code=307)
 
 
 # Mount static files for combined Dokku deployment
