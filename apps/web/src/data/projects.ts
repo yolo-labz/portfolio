@@ -203,6 +203,145 @@ export const projects: Project[] = [
 		featured: false,
 		gradient: "from-lime-500/20 to-emerald-500/20",
 	},
+	{
+		slug: "ai-document-processor",
+		title: "ai-document-processor — multi-format document ingestion pipeline",
+		tagline: "PDF/DOCX/image upload → OCR → Claude classify + extract → PostgreSQL JSONB",
+		description:
+			"Upload PDFs, images, or DOCX files. Pipeline extracts text (OCR fallback for scanned input), Claude Haiku classifies the document type with a confidence score, Claude Sonnet pulls structured fields (vendor, amount, dates, line items) into clean JSON, and results land in PostgreSQL with JSONB + TSVECTOR full-text search. Next.js dashboard, Docker Compose orchestration, one command to bring the stack up.",
+		problemStatement:
+			"Document ingestion in regulated workflows needs to be format-agnostic (text PDF, scanned PDF, JPEG, DOCX), type-aware (invoice vs contract vs receipt), and queryable downstream — without hand-rolling per-format pipelines or buying a SaaS that can't be self-hosted.",
+		solutionSummary:
+			"Two-tier AI pipeline: cheap Haiku classifies, focused Sonnet extracts based on type. PyMuPDF + Tesseract handle text/OCR fallback. PostgreSQL JSONB stores extracted fields alongside TSVECTOR for free-text search. ~$0.006 per document; the system also runs without an API key (text extraction only) so the demo path is free.",
+		techStack: [
+			{ name: "Python", category: "language" },
+			{ name: "FastAPI", category: "framework" },
+			{ name: "Claude Haiku · Sonnet", category: "service" },
+			{ name: "Tesseract · PyMuPDF", category: "service" },
+			{ name: "PostgreSQL 16", category: "database" },
+			{ name: "Next.js 16", category: "framework" },
+			{ name: "Docker Compose", category: "infrastructure" },
+		],
+		metrics: [
+			{ label: "Cost per document", value: "~$0.006" },
+			{ label: "Storage", value: "JSONB + full-text TSVECTOR" },
+			{ label: "Formats", value: "PDF · scanned PDF · JPEG · PNG · DOCX" },
+			{ label: "License", value: "MIT" },
+		],
+		links: { demo: "https://ai-docs.home301server.com.br" },
+		featured: true,
+		gradient: "from-indigo-500/20 to-violet-500/20",
+	},
+	{
+		slug: "exec-job-board",
+		title: "exec-job-board — multi-source data aggregation pipeline",
+		tagline: "4 public APIs → Pydantic normalize + SHA-256 dedupe → Next.js SSG, daily GH Actions cron",
+		description:
+			"Automated daily pipeline collects executive-tier listings from 4 public data APIs (JSearch, Adzuna, The Muse, USAJobs), normalizes them into a unified Pydantic schema, deduplicates via SHA-256 content hashing, and emits a single `jobs.json` consumed by a Next.js static site at build time. Fuse.js client-side fuzzy search + 4-dimension filtering, sub-200ms response, zero runtime backend cost.",
+		problemStatement:
+			"Aggregating data across 4 third-party APIs with divergent response schemas, rate limits, and authentication models — without building a backend that has to be kept warm — is the canonical 'glue code that nobody wants to maintain' problem.",
+		solutionSummary:
+			"One adapter per source isolates response-shape drift. Pydantic v2 enforces the unified schema at the seam. SHA-256 over (title, employer, location, posted_date) handles dedupe. GitHub Actions cron runs the collector daily, commits the resulting JSON, and a webhook redeploys the static site. Site falls back to a curated 30-row seed dataset when the API output is missing — demo never breaks.",
+		techStack: [
+			{ name: "Python", category: "language" },
+			{ name: "httpx", category: "framework" },
+			{ name: "Pydantic v2", category: "framework" },
+			{ name: "Next.js 16", category: "framework" },
+			{ name: "Fuse.js", category: "service" },
+			{ name: "GitHub Actions", category: "service" },
+			{ name: "Dokku", category: "infrastructure" },
+		],
+		metrics: [
+			{ label: "Sources", value: "4 public APIs" },
+			{ label: "Pipeline cadence", value: "daily 06:00 UTC" },
+			{ label: "Search latency", value: "< 200 ms client-side" },
+			{ label: "Runtime cost", value: "$0 (SSG)" },
+		],
+		links: { demo: "https://exec-job-board.home301server.com.br" },
+		featured: true,
+		gradient: "from-sky-500/20 to-blue-500/20",
+	},
+	{
+		slug: "realestate-price-tracker",
+		title: "realestate-price-tracker — full-stack market dashboard",
+		tagline: "FastAPI + PostgreSQL 16 + Recharts + Leaflet, 800-row synthetic Austin dataset",
+		description:
+			"Full-stack dashboard tracking real estate market data for Austin, TX. FastAPI serves REST endpoints with filterable pagination, aggregate stats, and CSV/JSON export. Next.js dashboard renders interactive Recharts line/bar charts and a React-Leaflet map with color-coded markers. PostgreSQL 16 with indexed queries, 800 synthetic listings across 6 neighborhoods, all stitched together via Docker Compose.",
+		problemStatement:
+			"A market dashboard needs three layers wired correctly: filtered + paginated REST, indexed aggregate queries, and an interactive frontend with map + charts that stays responsive under filter combinations — and most demo stacks pick one and fake the rest.",
+		solutionSummary:
+			"SQLAlchemy async + asyncpg for non-blocking PostgreSQL access. Indexed columns on (neighborhood, price, posted_date) keep aggregates under a few ms. Seed script generates Gaussian-distributed prices around per-neighborhood medians for realistic-looking data. Single `docker compose up` brings PostgreSQL + API + dashboard online; CSV/JSON export endpoints respect the same filters as the live UI.",
+		techStack: [
+			{ name: "Python", category: "language" },
+			{ name: "FastAPI", category: "framework" },
+			{ name: "SQLAlchemy async · asyncpg", category: "framework" },
+			{ name: "PostgreSQL 16", category: "database" },
+			{ name: "Next.js 16", category: "framework" },
+			{ name: "Recharts · React-Leaflet", category: "service" },
+			{ name: "Docker Compose", category: "infrastructure" },
+		],
+		metrics: [
+			{ label: "Synthetic dataset", value: "800 listings · 6 neighborhoods" },
+			{ label: "Endpoints", value: "list · geo · stats · CSV · JSON" },
+			{ label: "Frontend", value: "charts + map + KPIs" },
+			{ label: "License", value: "MIT" },
+		],
+		links: { demo: "https://realestate-tracker.home301server.com.br" },
+		featured: false,
+		gradient: "from-fuchsia-500/20 to-pink-500/20",
+	},
+	{
+		slug: "serverless-data-api",
+		title: "serverless-data-api — Terraform-provisioned AWS CRUD API",
+		tagline: "5 modules, 15 resources, $0/month idle, API Gateway + Lambda + DynamoDB single-table",
+		description:
+			"Production-ready serverless CRUD API provisioned entirely via Terraform. API Gateway with API key auth and 1000-req/day rate limiting fronts a Python 3.12 Lambda on arm64 with AWS Powertools, backed by a single-table DynamoDB design with PITR. CloudWatch dashboard with 8 widgets covers invocations, latency, errors, and capacity. `terraform apply` brings it up; `terraform destroy` removes every resource — no orphans.",
+		problemStatement:
+			"Serverless tutorials almost always skip the boring layers: IAM least-privilege, API key + usage plan auth, structured logging, and a teardown story. The result is demos that can't be cloned into production without a rewrite.",
+		solutionSummary:
+			"Five composable Terraform modules (dynamodb, iam, lambda, api_gateway, monitoring) wire 15 resources end to end. Lambda execution role is least-privilege scoped to the table's ARN. API Gateway usage plan caps at 1000 req/day with burst 10. GitHub Actions runs fmt + validate + plan on every PR. Idle cost is $0 (or $3/month with the CloudWatch dashboard kept on).",
+		techStack: [
+			{ name: "Terraform", category: "infrastructure" },
+			{ name: "Python", category: "language" },
+			{ name: "AWS Lambda · arm64", category: "service" },
+			{ name: "API Gateway", category: "service" },
+			{ name: "DynamoDB · single-table", category: "database" },
+			{ name: "CloudWatch", category: "service" },
+			{ name: "GitHub Actions", category: "service" },
+		],
+		metrics: [
+			{ label: "Resources provisioned", value: "15" },
+			{ label: "Modules", value: "5 reusable" },
+			{ label: "Idle cost", value: "$0/month (no dashboard)" },
+			{ label: "Rate limit", value: "1000 req/day · burst 10" },
+		],
+		links: {},
+		featured: false,
+		gradient: "from-yellow-500/20 to-amber-500/20",
+	},
+	{
+		slug: "automation-hub",
+		title: "automation-hub — internal services workspace",
+		tagline: "pnpm workspace scaffold for batch + cron services across the home fleet — in progress",
+		description:
+			"Workspace package that hosts internal automation services — batch jobs, cron-driven sync tasks, and small daemons that run on the home Dokku/ProxMox fleet. Per-service build/lint/typecheck delegated through the workspace package; first services are in active scoping.",
+		problemStatement:
+			"A growing pile of one-off scripts (cron syncs, dokku healthchecks, NFCe ingestion, hledger imports) needs a single workspace home with shared lint/build hooks instead of N scattered repos and N copies of the same lefthook.yml.",
+		solutionSummary:
+			"Single pnpm workspace package (`@portfolio/automation-hub`) with delegating scripts so each service brings its own build/lint/typecheck under the same monorepo umbrella as the public web app. Currently scoping which services migrate first.",
+		techStack: [
+			{ name: "TypeScript", category: "language" },
+			{ name: "pnpm workspace", category: "framework" },
+			{ name: "Dokku", category: "infrastructure" },
+		],
+		metrics: [
+			{ label: "Status", value: "scoping · in progress" },
+			{ label: "Workspace package", value: "@portfolio/automation-hub" },
+		],
+		links: {},
+		featured: false,
+		gradient: "from-cyan-500/20 to-teal-500/20",
+	},
 ];
 
 // Cache-bust: dokku rebuild trigger 2026-04-27 (portfolio#12 stealth fix forced rebuild)
