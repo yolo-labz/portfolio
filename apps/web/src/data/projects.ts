@@ -204,3 +204,5 @@ export const projects: Project[] = [
 		gradient: "from-lime-500/20 to-emerald-500/20",
 	},
 ];
+
+// Cache-bust: dokku rebuild trigger 2026-04-27 (portfolio#12 stealth fix forced rebuild)
