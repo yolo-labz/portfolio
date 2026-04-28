@@ -235,7 +235,8 @@ export const projects: Project[] = [
 	{
 		slug: "exec-job-board",
 		title: "exec-job-board — multi-source data aggregation pipeline",
-		tagline: "4 public APIs → Pydantic normalize + SHA-256 dedupe → Next.js SSG, daily GH Actions cron",
+		tagline:
+			"4 public APIs → Pydantic normalize + SHA-256 dedupe → Next.js SSG, daily GH Actions cron",
 		description:
 			"Automated daily pipeline collects executive-tier listings from 4 public data APIs (JSearch, Adzuna, The Muse, USAJobs), normalizes them into a unified Pydantic schema, deduplicates via SHA-256 content hashing, and emits a single `jobs.json` consumed by a Next.js static site at build time. Fuse.js client-side fuzzy search + 4-dimension filtering, sub-200ms response, zero runtime backend cost.",
 		problemStatement:
@@ -322,7 +323,8 @@ export const projects: Project[] = [
 	{
 		slug: "automation-hub",
 		title: "automation-hub — internal services workspace",
-		tagline: "pnpm workspace scaffold for batch + cron services across the home fleet — in progress",
+		tagline:
+			"pnpm workspace scaffold for batch + cron services across the home fleet — in progress",
 		description:
 			"Workspace package that hosts internal automation services — batch jobs, cron-driven sync tasks, and small daemons that run on the home Dokku/ProxMox fleet. Per-service build/lint/typecheck delegated through the workspace package; first services are in active scoping.",
 		problemStatement:
