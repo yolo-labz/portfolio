@@ -24,3 +24,8 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# Playwright visual-regression
+test-results/
+playwright-report/
+playwright/.cache/

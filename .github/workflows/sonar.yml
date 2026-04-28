@@ -54,6 +54,6 @@ jobs:
             -Dsonar.sources=apps,packages,projects,scripts
             -Dsonar.tests=apps,packages,projects
             -Dsonar.test.inclusions=**/*.test.ts,**/*.test.tsx,**/*.spec.ts,**/*.spec.tsx,**/*.test.js,**/*.test.mjs
-            -Dsonar.exclusions=**/node_modules/**,**/.next/**,**/.turbo/**,**/dist/**,**/build/**,**/coverage/**,**/.specify/**,**/public/**,**/*.tsbuildinfo,**/next-env.d.ts,**/data/**
+            -Dsonar.exclusions=**/node_modules/**,**/.next/**,**/.turbo/**,**/dist/**,**/build/**,**/coverage/**,**/.specify/**,**/public/**,**/*.tsbuildinfo,**/next-env.d.ts,**/data/**,**/test-results/**,**/playwright-report/**,**/*.spec.ts-snapshots/**
             -Dsonar.typescript.tsconfigPath=tsconfig.base.json
             -Dsonar.sourceEncoding=UTF-8
