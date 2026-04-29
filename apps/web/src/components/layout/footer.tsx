@@ -21,7 +21,7 @@ export function Footer() {
 						Upwork
 					</a>
 					<a
-						href="https://linkedin.com/in/pedro-balbino"
+						href="https://linkedin.com/in/balbinopedro"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="hover:text-text transition-colors"

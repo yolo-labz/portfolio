@@ -51,7 +51,7 @@ const jsonLd = {
 				"LLM Integration",
 				"Chrome Automation",
 			],
-			sameAs: ["https://github.com/phsb5321", "https://linkedin.com/in/pedro-balbino"],
+			sameAs: ["https://github.com/phsb5321", "https://linkedin.com/in/balbinopedro"],
 		},
 	],
 };
