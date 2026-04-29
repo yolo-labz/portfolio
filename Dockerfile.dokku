@@ -40,8 +40,11 @@ ENV HOSTNAME=0.0.0.0
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/apps/web/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
+# Next.js standalone server runs from /app/apps/web/ via process.chdir(__dirname),
+# so static files in /public must be co-located with server.js, not at /app/public/.
+# Otherwise Next.js's static handler can't resolve them and returns 404.
+COPY --from=builder /app/apps/web/public ./apps/web/public
 COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
 
 USER nextjs
