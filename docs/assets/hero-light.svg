@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="portfolio-hero-light-title portfolio-hero-light-desc">
+  <title id="portfolio-hero-light-title">portfolio: Turborepo monorepo for Next.js portfolio site + case studies</title>
+  <desc id="portfolio-hero-light-desc">Catppuccin Latte card. Left panel shows the wordmark portfolio in monospaced ink over a serif tagline. Right panel shows a subtle bento grid of six modular cards arranged 3-by-2, with a single mauve accent square anchoring the top-right cell.</desc>
+  <rect width="1200" height="360" fill="#eff1f5"/>
+  <rect x="0" y="0" width="1200" height="3" fill="#8839ef"/>
+  <g font-family="ui-serif,Georgia,'Iowan Old Style','Apple Garamond',serif" fill="#4c4f69">
+    <text x="72" y="166" font-size="92" font-weight="700" letter-spacing="-3">portfolio</text>
+  </g>
+  <g font-family="ui-monospace,'JetBrains Mono','Fira Code',Menlo,monospace" fill="#6c6f85">
+    <text x="76" y="214" font-size="20">turborepo monorepo · next.js 16</text>
+    <text x="76" y="242" font-size="20">5 mixed-stack case studies</text>
+  </g>
+  <g font-family="ui-monospace,'JetBrains Mono','Fira Code',Menlo,monospace" fill="#8c8fa1">
+    <text x="76" y="296" font-size="14">pnpm install --frozen-lockfile &amp;&amp; pnpm dev</text>
+  </g>
+  <g transform="translate(688,56)" fill="none">
+    <rect x="0"   y="0"   width="132" height="84"  rx="8" fill="#ccd0da" stroke="#bcc0cc" stroke-width="1.5"/>
+    <rect x="148" y="0"   width="180" height="84"  rx="8" fill="#ccd0da" stroke="#bcc0cc" stroke-width="1.5"/>
+    <rect x="356" y="0"   width="100" height="84"  rx="8" fill="#8839ef" stroke="#8839ef" stroke-width="1.5"/>
+    <rect x="0"   y="112" width="180" height="136" rx="8" fill="#ccd0da" stroke="#bcc0cc" stroke-width="1.5"/>
+    <rect x="208" y="112" width="116" height="64"  rx="8" fill="#ccd0da" stroke="#bcc0cc" stroke-width="1.5"/>
+    <rect x="208" y="200" width="116" height="48"  rx="8" fill="#ccd0da" stroke="#bcc0cc" stroke-width="1.5"/>
+    <rect x="356" y="112" width="100" height="136" rx="8" fill="#ccd0da" stroke="#bcc0cc" stroke-width="1.5"/>
+    <g font-family="ui-monospace,'JetBrains Mono','Fira Code',Menlo,monospace" fill="#8c8fa1" font-size="11">
+      <text x="14" y="22">apps/web</text>
+      <text x="162" y="22">packages/ui</text>
+      <text x="14" y="134">projects/ai-docs</text>
+      <text x="222" y="134">jobs</text>
+      <text x="222" y="222">realestate</text>
+      <text x="370" y="134">api</text>
+    </g>
+    <g font-family="ui-monospace,'JetBrains Mono','Fira Code',Menlo,monospace" fill="#bcc0cc" font-size="9">
+      <text x="14" y="42">tsx · tailwind v4</text>
+      <text x="162" y="42">raw ts · polymorphic</text>
+      <text x="14" y="152">python · claude</text>
+      <text x="222" y="152">python · cron</text>
+      <text x="222" y="240">python</text>
+      <text x="370" y="152">terraform · lambda</text>
+    </g>
+  </g>
+  <g font-family="ui-monospace,'JetBrains Mono','Fira Code',Menlo,monospace" fill="#9ca0b0">
+    <text x="1128" y="338" font-size="11" text-anchor="end">yolo-labz/portfolio</text>
+  </g>
+</svg>
