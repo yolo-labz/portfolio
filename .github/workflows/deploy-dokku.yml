@@ -22,12 +22,12 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           fetch-depth: 0
 
       - name: Deploy to Dokku
-        uses: dokku/github-action@master
+        uses: dokku/github-action@cc7dec1d2b9fed249a14ae462bc953bba436f78c # v1.10.0
         with:
           git_remote_url: "ssh://dokku@192.168.1.184:22/portfolio"
           ssh_private_key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
