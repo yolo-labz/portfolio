@@ -70,7 +70,7 @@ jobs:
       - name: Generate dual SBOM (CycloneDX 1.7 + SPDX 2.3)
         run: |
           syft . \
-            -o cyclonedx-json@1.7=dist/portfolio-sbom.cdx.json \
+            -o cyclonedx-json@1.6=dist/portfolio-sbom.cdx.json \
             -o spdx-json=dist/portfolio-sbom.spdx.json
 
       - name: Attest build provenance (SLSA L2) for release tarball
