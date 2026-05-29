@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>portfolio — 3-up screenshot grid</title>
+  <meta name="description" content="Static 3-up screenshot grid of the portfolio site rendered from the live build at pedro.home301server.com.br. No autobiographical text overlays; only the live site content at three different routes.">
+  <style>
+    /* Catppuccin Mocha tokens — match docs/assets/portfolio-grid.png exactly */
+    :root {
+      --ctp-base:    #1e1e2e;
+      --ctp-mantle:  #181825;
+      --ctp-crust:   #11111b;
+      --ctp-text:    #cdd6f4;
+      --ctp-subtext0:#a6adc8;
+      --ctp-overlay0:#6c7086;
+      --ctp-mauve:   #cba6f7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1200px;
+      height: 900px;
+      background: var(--ctp-crust);
+      color: var(--ctp-text);
+      font-family: ui-serif, Georgia, 'Iowan Old Style', 'Apple Garamond', serif;
+      overflow: hidden;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 396px 6px 396px 6px 396px;
+      width: 1200px;
+      height: 900px;
+    }
+    .pane {
+      width: 396px;
+      height: 900px;
+      background-position: top center;
+      background-repeat: no-repeat;
+      background-size: 396px auto;
+      background-color: var(--ctp-base);
+    }
+    .pane.home     { background-image: url("./screenshots/home-tall.png"); }
+    .pane.project  { background-image: url("./screenshots/projects-tall.png"); }
+    .pane.about    { background-image: url("./screenshots/about-tall.png"); }
+    .divider {
+      width: 6px;
+      height: 900px;
+      background: var(--ctp-crust);
+    }
+  </style>
+</head>
+<body>
+  <div class="grid" aria-label="Portfolio screenshot grid: home view, project detail (wa case study), and about page.">
+    <div class="pane home"    aria-label="Home view — hero, metrics, project cards"></div>
+    <div class="divider" aria-hidden="true"></div>
+    <div class="pane project" aria-label="Project detail — wa WhatsApp daemon case study"></div>
+    <div class="divider" aria-hidden="true"></div>
+    <div class="pane about"   aria-label="About — capability claims with evidence links and code-quality matrix"></div>
+  </div>
+</body>
+</html>
