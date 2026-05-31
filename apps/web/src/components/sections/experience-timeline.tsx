@@ -16,7 +16,7 @@ export function ExperienceTimeline() {
 					<h2 id="experience-heading" className="text-3xl font-bold tracking-tight">
 						Experience
 					</h2>
-					<p className="mt-2 text-text-muted">What I shipped and where.</p>
+					<p className="mt-2 text-text-muted">Shipped systems and the outcomes they moved.</p>
 				</div>
 
 				<div className="relative space-y-8 before:absolute before:left-[11px] before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-border">

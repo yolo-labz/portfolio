@@ -21,12 +21,14 @@ export function ContactCTA() {
 					Contact
 				</h2>
 				<p className="mt-4 text-text-muted leading-relaxed">
-					Questions about any of the patterns above — RAG architecture, Chrome automation, Claude
-					Code plugins, NixOS fleets? Email is the fastest way.
+					Building for engineers who care that the audit chain is unbroken at 02:00 BRT, the cost
+					ceiling holds at peak, and the writeup is still reproducible six months later. Send a
+					brief — architecture, RAG, compliance, supply-chain — and I'll tell you straight if it's a
+					fit.
 				</p>
 				<div className="mt-8 flex items-center justify-center gap-4">
-					<Button variant="primary" size="lg" as="a" href="mailto:pedro@balbino.dev">
-						Email
+					<Button variant="primary" size="lg" as="a" href="mailto:pedrobalbino@proton.me">
+						Send a brief
 					</Button>
 					<Button
 						variant="secondary"

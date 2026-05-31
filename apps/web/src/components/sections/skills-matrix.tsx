@@ -22,7 +22,9 @@ export function SkillsMatrix() {
 					<h2 id="skills-heading" className="text-3xl font-bold tracking-tight">
 						Technical Skills
 					</h2>
-					<p className="mt-2 text-text-muted">Organized by what I solve, not what I know.</p>
+					<p className="mt-2 text-text-muted">
+						Organized by problem domain — what these stacks solve, not a checklist of what I know.
+					</p>
 				</div>
 
 				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

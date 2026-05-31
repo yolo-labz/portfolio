@@ -2,21 +2,30 @@
 @source "../../../../packages/ui/src";
 
 @theme {
-	--color-bg: oklch(0.13 0.02 260);
-	--color-bg-elevated: oklch(0.17 0.02 260);
-	--color-bg-card: oklch(0.20 0.02 260);
-	--color-surface: oklch(0.25 0.015 260);
-	--color-border: oklch(0.30 0.015 260);
-	--color-text: oklch(0.93 0.01 260);
-	--color-text-muted: oklch(0.65 0.01 260);
-	--color-accent: oklch(0.72 0.19 160);
-	--color-accent-hover: oklch(0.78 0.19 160);
-	--color-accent-dim: oklch(0.35 0.08 160);
+	/* Catppuccin Mocha — hex-pinned per VISUAL-IDENTITY.md §2.1. Color carries
+	   meaning (mauve = primary/stage-1, peach = audit, yellow = compliance),
+	   never decoration. No gradients, no glows. */
+	--color-bg: #1e1e2e; /* base */
+	--color-bg-elevated: #181825; /* mantle */
+	--color-bg-card: #181825; /* mantle */
+	--color-crust: #11111b;
+	--color-surface: #313244; /* surface0 */
+	--color-border: #45475a; /* surface1 */
+	--color-overlay: #6c7086; /* grid, dashed measurement leaders, hint text */
+	--color-text: #cdd6f4;
+	--color-text-muted: #a6adc8; /* subtext0 */
+	--color-accent: #cba6f7; /* mauve — primary CTA / data plane */
+	--color-accent-hover: #b4befe; /* lavender */
+	--color-accent-dim: #45475a; /* surface1 — accent badge background */
+	--color-link: #89b4fa; /* blue — embedding / links */
+	--color-warn: #fab387; /* peach — audit / persistence */
+	--color-compliance: #f9e2af; /* yellow — compliance badges */
 
-	--font-sans: "Inter Variable", "Inter", system-ui, sans-serif;
-	--font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+	--font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+	--font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
 
 	--ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+	--radius-card: 0.75rem; /* 12px per VISUAL-IDENTITY containers.radius_px */
 }
 
 html {
@@ -32,8 +41,21 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+/* Engineering-notebook dot-grid (VISUAL-IDENTITY.md §2.3 + §6.2). 40px spacing,
+   ~1.2px dots, overlay color, kept subtle so it structures without competing with
+   text. Replaces the banned hero glow blob. */
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background-image: radial-gradient(circle, rgba(108, 112, 134, 0.16) 1.2px, transparent 1.3px);
+	background-size: 38px 38px;
+}
+
 ::selection {
-	background-color: oklch(0.72 0.19 160 / 0.3);
+	background-color: rgba(203, 166, 247, 0.3); /* mauve */
 }
 
 :focus-visible {

@@ -4,29 +4,57 @@ export interface SkillDomain {
 	technologies: string[];
 }
 
+// Ordered by recruiter/buyer weight for the Compliance-Grade AI Architect category.
+// Regulated AI leads — it is the category's defining skill, not a bonus.
 export const skills: SkillDomain[] = [
 	{
-		domain: "AI agents & automation",
-		description: "RAG pipelines, Claude Code plugins, LLM-driven workflow copilots",
+		domain: "Regulated AI & compliance",
+		description:
+			"RAG with retrieval lineage, hash-chained audit ledgers, and decision provenance — mapped to LGPD, BCB 4.893, and the EU AI Act Art. 12 logging mandate.",
+		technologies: [
+			"LGPD",
+			"BCB 4.893",
+			"EU AI Act Art. 12",
+			"Audit-trail design",
+			"Decision provenance",
+			"RAG evaluation",
+			"PII controls",
+		],
+	},
+	{
+		domain: "AI agents & RAG",
+		description:
+			"Production RAG pipelines, typed-tool agent loops with bounded turns, and Model Context Protocol integrations — grounded retrieval with frozen-eval regression checks.",
 		technologies: [
 			"Claude Code",
 			"Anthropic SDK",
 			"Azure OpenAI",
+			"AWS Bedrock",
 			"RAG",
-			"LangChain",
 			"MCP",
-			"Bedrock",
+			"pgvector",
+			"LangGraph",
 		],
 	},
 	{
 		domain: "Backend",
-		description: "Polyglot services: Go daemons, TypeScript APIs, Python pipelines, Rust binaries",
-		technologies: ["Go", "TypeScript", "Node.js", "Python", "FastAPI", "Rust", "PostgreSQL"],
+		description:
+			"Polyglot services that hold under load: Go daemons, TypeScript APIs, Python pipelines, Rust binaries — event-driven with outbox + idempotency.",
+		technologies: [
+			"Go",
+			"TypeScript",
+			"Node.js",
+			"Python",
+			"FastAPI",
+			"Rust",
+			"PostgreSQL",
+			"Kafka",
+		],
 	},
 	{
 		domain: "Cloud",
 		description:
-			"Multi-cloud deployments on AWS, Azure, and GCP with serverless + container workloads",
+			"Multi-cloud deployments on AWS, Azure, and GCP — serverless and container workloads sized to a cost ceiling, not left to drift.",
 		technologies: [
 			"AWS Lambda",
 			"AWS Bedrock",
@@ -39,12 +67,14 @@ export const skills: SkillDomain[] = [
 	},
 	{
 		domain: "Infra-as-Code",
-		description: "Declarative infrastructure across cloud and bare-metal fleets",
+		description:
+			"Declarative infrastructure across cloud and bare-metal fleets — reproducible, with a teardown story that leaves zero orphans.",
 		technologies: ["Terraform", "Helm", "Kubernetes", "NixOS", "Docker", "Docker Compose"],
 	},
 	{
 		domain: "Release engineering",
-		description: "Supply-chain hardening, reproducible builds, signed provenance",
+		description:
+			"Supply-chain hardening as a first-class deliverable: reproducible builds, signed provenance, dual-format SBOMs.",
 		technologies: [
 			"GitHub Actions",
 			"Sigstore",
@@ -54,11 +84,5 @@ export const skills: SkillDomain[] = [
 			"Dependabot",
 			"Syft",
 		],
-	},
-	{
-		domain: "macOS / Chrome automation",
-		description:
-			"Workflow tooling for operators: Chrome profile orchestration, macOS input synthesis",
-		technologies: ["cliclick", "AppleScript", "Playwright", "Puppeteer", "claude-mac-chrome"],
 	},
 ];
