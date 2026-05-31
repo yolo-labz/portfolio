@@ -1,0 +1,54 @@
+# One-shot / re-runnable refresh of the Playwright visual-regression baselines.
+# The relaunch (PR #39) is a full redesign, so every committed screenshot baseline
+# is stale. This regenerates them inside the SAME pinned Playwright image the
+# visual-regression check uses (byte-stable fonts) on the self-hosted runner, then
+# commits them back to the branch. Trigger by pushing this branch or via dispatch.
+name: refresh-visual-baselines
+on:
+  push:
+    branches: ["040-refresh-visual-baselines"]
+  workflow_dispatch:
+permissions: {}
+jobs:
+  refresh:
+    name: update snapshots
+    runs-on: [self-hosted, Linux, X64]
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    container:
+      image: mcr.microsoft.com/playwright:v1.60.0-noble
+      options: --ipc=host --user 1000:1000
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          ref: 040-refresh-visual-baselines
+          persist-credentials: true
+      - uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6.0.8
+        with:
+          version: 10.28.2
+          run_install: false
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: "22"
+          cache: "pnpm"
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+      - name: Update snapshots
+        env:
+          CI: "true"
+          NEXT_TELEMETRY_DISABLED: "1"
+          NEXT_PUBLIC_SITE_URL: "http://localhost:3000"
+        run: pnpm exec playwright test --update-snapshots
+      - name: Commit refreshed baselines
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tests/visual
+          if git diff --cached --quiet; then
+            echo "No baseline changes."
+          else
+            git commit -m "test: refresh visual baselines for compliance-architect redesign"
+            git push origin HEAD:040-refresh-visual-baselines
+          fi
