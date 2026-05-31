@@ -35,23 +35,37 @@ jobs:
         with:
           git_remote_url: "ssh://dokku@192.168.1.184:22/portfolio"
           ssh_private_key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
+          # The action defaults `branch` to "master"; this app's Dokku
+          # deploy-branch is "main" (verified via `dokku git:report portfolio`).
+          # Without this, the action pushes HEAD:refs/heads/master, Dokku stores
+          # the ref but does NOT rebuild, emitting "WARNING: deploy did not
+          # complete, you must push to main" — a silent no-op deploy.
+          branch: "main"
           git_push_flags: "--force"
 
   verify:
     runs-on: self-hosted
     needs: deploy
     steps:
-      - name: Wait for startup
-        run: sleep 30
-
-      - name: Health check
+      - name: Assert the live container is serving this commit
         env:
           HEALTH_URL: https://portfolio.home301server.com.br/api/health
+          EXPECTED_SHA: ${{ github.sha }}
         run: |
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$HEALTH_URL" --max-time 15 2>/dev/null || echo "000")
-          echo "Health check status: $HTTP_STATUS"
-          if [ "$HTTP_STATUS" = "200" ]; then
-            echo "Deployment verified successfully"
-          else
-            echo "Warning: Health check returned $HTTP_STATUS (may need DNS/tunnel setup)"
-          fi
+          set -uo pipefail
+          echo "Expecting /api/health to report rev == ${EXPECTED_SHA}"
+          REV=""
+          for attempt in $(seq 1 12); do
+            BODY=$(curl -fsS --max-time 15 "$HEALTH_URL" 2>/dev/null || echo '{}')
+            STATUS=$(printf '%s' "$BODY" | sed -n 's/.*"status"[ :]*"\([^"]*\)".*/\1/p')
+            REV=$(printf '%s' "$BODY" | sed -n 's/.*"rev"[ :]*"\([^"]*\)".*/\1/p')
+            echo "attempt ${attempt}/12: status=${STATUS:-none} rev=${REV:-none}"
+            if [ "$STATUS" = "healthy" ] && [ "$REV" = "$EXPECTED_SHA" ]; then
+              echo "Verified: live container is serving ${EXPECTED_SHA}"
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "::error::Deploy verification FAILED: /api/health did not report rev=${EXPECTED_SHA} after 12 attempts (live rev='${REV:-none}')."
+          echo "::error::Container was not swapped to this commit — likely a no-op deploy or deploy-branch mismatch."
+          exit 1
