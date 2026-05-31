@@ -3,26 +3,34 @@
 import { Badge } from "@portfolio/ui";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { FigStamp } from "@/components/shared/fig-stamp";
 import { projects } from "@/data/projects";
 import { useIntersection } from "@/hooks/use-intersection";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+
+const featured = projects.filter((p) => p.featured);
+const others = projects.filter((p) => !p.featured);
 
 export function ProjectShowcase() {
 	const { ref, isVisible } = useIntersection(0.05);
 	const reduced = useReducedMotion();
 
 	return (
-		<section id="projects" aria-labelledby="projects-heading" className="py-24 px-6" ref={ref}>
+		<section id="projects" aria-labelledby="projects-heading" className="px-6 py-24" ref={ref}>
 			<div className="mx-auto max-w-6xl">
 				<div className="mb-12">
-					<h2 id="projects-heading" className="text-3xl font-bold tracking-tight">
-						Projects
+					<FigStamp n="01" label="selected work" />
+					<h2 id="projects-heading" className="mt-3 text-3xl font-bold tracking-tight">
+						Selected work
 					</h2>
-					<p className="mt-2 text-text-muted">Systems I have designed, built, and shipped.</p>
+					<p className="mt-2 max-w-2xl text-text-muted">
+						The constraint that made it hard, the decision taken, and the measured outcome — not
+						just the result.
+					</p>
 				</div>
 
-				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-					{projects.map((project, i) => (
+				<div className="grid gap-6 md:grid-cols-2">
+					{featured.map((project, i) => (
 						<motion.div
 							key={project.slug}
 							initial={reduced ? {} : { opacity: 0, y: 20 }}
@@ -34,40 +42,61 @@ export function ProjectShowcase() {
 							}}
 						>
 							<Link href={`/projects/${project.slug}`} className="group block h-full">
-								<div className="relative h-full rounded-lg border border-border bg-bg-card p-6 transition-all group-hover:border-text-muted group-hover:shadow-lg group-hover:shadow-accent/5">
-									<div
-										className={`absolute inset-0 rounded-lg bg-gradient-to-br ${project.gradient} opacity-0 transition-opacity group-hover:opacity-100`}
-									/>
-									<div className="relative">
-										<h3 className="text-lg font-semibold">{project.title}</h3>
-										<p className="mt-2 text-sm text-text-muted leading-relaxed">
-											{project.tagline}
-										</p>
+								<div className="h-full rounded-lg border border-border border-l-2 border-l-accent bg-bg-card p-6 transition-colors group-hover:border-text-muted group-hover:border-l-accent">
+									<h3 className="text-lg font-semibold">{project.title}</h3>
+									<p className="mt-2 text-sm leading-relaxed text-text-muted">{project.tagline}</p>
 
-										<div className="mt-4 flex flex-wrap gap-1.5">
-											{project.techStack.slice(0, 5).map((tech) => (
-												<Badge key={tech.name}>{tech.name}</Badge>
-											))}
-											{project.techStack.length > 5 && (
-												<Badge variant="accent">+{project.techStack.length - 5}</Badge>
-											)}
-										</div>
-
-										<div className="mt-6 grid grid-cols-3 gap-3 border-t border-border/50 pt-4">
-											{project.metrics.map((metric) => (
-												<div key={metric.label}>
-													<div className="font-mono text-sm font-bold text-accent">
-														{metric.value}
-													</div>
-													<div className="text-xs text-text-muted">{metric.label}</div>
-												</div>
-											))}
-										</div>
+									<div className="mt-4 flex flex-wrap gap-1.5">
+										{project.techStack.slice(0, 5).map((tech) => (
+											<Badge key={tech.name}>{tech.name}</Badge>
+										))}
+										{project.techStack.length > 5 && (
+											<Badge variant="accent">+{project.techStack.length - 5}</Badge>
+										)}
 									</div>
+
+									<dl className="mt-6 space-y-3 border-t border-border/50 pt-4">
+										{project.metrics.map((metric) => (
+											<div
+												key={metric.label}
+												className="border-l border-dashed border-overlay pl-3"
+											>
+												<dt className="text-xs text-text-muted">{metric.label}</dt>
+												<dd className="font-mono text-sm font-medium text-text">{metric.value}</dd>
+											</div>
+										))}
+									</dl>
 								</div>
 							</Link>
 						</motion.div>
 					))}
+				</div>
+
+				<div className="mt-16">
+					<FigStamp n="02" label="open-source & demos" />
+					<h3 className="mt-3 text-xl font-semibold tracking-tight">Open-source &amp; demos</h3>
+					<ul className="mt-6 divide-y divide-border/60 border-t border-border/60">
+						{others.map((project) => (
+							<li key={project.slug}>
+								<Link
+									href={`/projects/${project.slug}`}
+									className="group flex flex-col gap-2 py-4 sm:flex-row sm:items-baseline sm:justify-between"
+								>
+									<div className="sm:max-w-xl">
+										<span className="font-mono text-sm text-text transition-colors group-hover:text-accent">
+											{project.title.split(" — ")[0]}
+										</span>
+										<p className="mt-1 text-sm text-text-muted">{project.tagline}</p>
+									</div>
+									<div className="flex shrink-0 flex-wrap gap-1.5">
+										{project.techStack.slice(0, 3).map((tech) => (
+											<Badge key={tech.name}>{tech.name}</Badge>
+										))}
+									</div>
+								</Link>
+							</li>
+						))}
+					</ul>
 				</div>
 			</div>
 		</section>

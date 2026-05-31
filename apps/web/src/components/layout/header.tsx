@@ -44,14 +44,6 @@ export function Header() {
 							</li>
 						);
 					})}
-					<li>
-						<a
-							href="/resume.pdf"
-							className="text-sm text-accent hover:text-accent-hover transition-colors font-medium"
-						>
-							Resume
-						</a>
-					</li>
 				</ul>
 
 				<MobileNav />

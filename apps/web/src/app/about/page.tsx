@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
 	title: "About — Pedro Balbino",
 	description:
-		"Senior SWE shipping AI-native automation: Claude Code plugins, Chrome/macOS workflow tooling, WhatsApp + LinkedIn copilots. Claims mapped to evidence.",
+		"Compliance-Grade AI Architect for regulated LATAM & global workloads. Production RAG, agent systems, and MCP integrations with audit trails and decision provenance — every claim mapped to verifiable evidence.",
 };
 
 type ClaimStatus = "backed" | "unbacked-anonymized-pending";
@@ -16,11 +16,13 @@ interface ClaimEvidence {
 	status: ClaimStatus;
 }
 
-const lockedNarrative =
-	"Senior SWE — AI-native automation specialist. Claude Code plugins, Chrome/macOS workflow tooling, WhatsApp/LinkedIn copilots.";
+const category = "Compliance-Grade AI Architect for Regulated LATAM & Global Workloads";
+
+const diagnostic =
+	"Most AI stacks fail audit at the same three seams — prompt provenance, retrieval lineage, output attestation. The fix is architectural, not procedural: a three-plane topology — data, control, compliance — with the compliance plane as a sidecar and a hash-chained audit ledger anchored to a public transparency log.";
 
 const aboutSummary =
-	"Engineer shipping six public Claude Code plugins under yolo-labz (wa, claude-mac-chrome, linkedin-chrome-copilot, kokoro-speakd, claude-classroom-submit, fand). Recent work: AI-native automation for compliance-heavy domains — Python/Go backend, Azure OpenAI agents, multi-cloud Terraform. Maintains 4-host NixOS fleet (152 modules, 153 PRs) with SLSA L2 supply-chain hardening.";
+	"Production proof spans a 100K+ DAU multilingual RAG (+40% knowledge-base precision), a 10K+ transactions/day event-driven retail backend, a tier-1 LATAM legal-domain RAG (−60% manual documentation), and a Brazilian IRPF tax-compliance agent (0 hallucinated numerical fields across 18 months, ≤40 turns per filing). Open-source: six public Claude Code plugins on github.com/yolo-labz — SLSA L2 + Sigstore signed, dual-format SBOMs.";
 
 const claimEvidenceMap: ClaimEvidence[] = [
 	{
@@ -149,8 +151,9 @@ export default function AboutPage() {
 		<section className="mx-auto w-full max-w-5xl px-6 py-24">
 			<header className="space-y-6">
 				<p className="font-mono text-sm text-accent">About</p>
-				<h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{lockedNarrative}</h1>
-				<p className="max-w-3xl text-lg leading-relaxed text-text-muted">{aboutSummary}</p>
+				<h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl">{category}</h1>
+				<p className="max-w-3xl text-lg leading-relaxed text-text">{diagnostic}</p>
+				<p className="max-w-3xl text-base leading-relaxed text-text-muted">{aboutSummary}</p>
 			</header>
 
 			<div className="mt-16 space-y-6">
@@ -158,9 +161,10 @@ export default function AboutPage() {
 					<div>
 						<h2 className="text-2xl font-semibold tracking-tight">Claim → Evidence</h2>
 						<p className="mt-2 max-w-2xl text-sm text-text-muted">
-							Every headline claim maps to a verifiable artifact: a public repo, or an anonymized
-							writeup on the blog. Rows marked "writeup pending" publish on the dates encoded in the
-							URL.
+							Every headline claim maps to a verifiable artifact. Public repositories link straight
+							to the source. Rows marked "writeup pending" are anonymized architecture writeups
+							publishing on a rolling cadence — client work stays behind the curtain until the
+							writeup is cleared.
 						</p>
 					</div>
 				</div>
@@ -189,14 +193,20 @@ export default function AboutPage() {
 									>
 										<td className="px-5 py-4 text-text">{row.claim}</td>
 										<td className="px-5 py-4">
-											<a
-												href={row.url}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="break-all font-mono text-xs text-accent hover:underline"
-											>
-												{row.url.replace(/^https?:\/\//, "")}
-											</a>
+											{row.status === "backed" ? (
+												<a
+													href={row.url}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="break-all font-mono text-xs text-accent hover:underline"
+												>
+													{row.url.replace(/^https?:\/\//, "")}
+												</a>
+											) : (
+												<span className="font-mono text-xs text-text-muted">
+													anonymized writeup
+												</span>
+											)}
 											<div className="mt-1 font-mono text-[10px] uppercase tracking-wide text-text-muted">
 												{row.evidenceType}
 											</div>

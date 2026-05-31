@@ -136,15 +136,6 @@ export function MobileNav() {
 										</li>
 									);
 								})}
-								<li>
-									<a
-										href="/resume.pdf"
-										onClick={() => setOpen(false)}
-										className="block min-h-11 rounded-md px-4 py-3 text-lg font-medium text-accent transition-colors hover:bg-surface hover:text-accent-hover"
-									>
-										Resume
-									</a>
-								</li>
 							</ul>
 						</motion.nav>
 					</>

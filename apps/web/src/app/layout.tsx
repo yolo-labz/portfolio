@@ -7,19 +7,19 @@ import "./globals.css";
 
 export const metadata: Metadata = {
 	metadataBase: new URL(SITE_URL),
-	title: "Pedro Balbino — Software Engineer",
+	title: "Pedro Balbino — Compliance-Grade AI Architect",
 	description:
-		"Senior SWE specializing in AI-native automation. Ships Claude Code plugins, Chrome/macOS workflow tooling, and WhatsApp/LinkedIn copilots.",
+		"Compliance-grade AI architecture for regulated LATAM & global workloads: production RAG, agent systems, and MCP integrations with audit trails, decision provenance, and cost ceilings designed in from day one.",
 	openGraph: {
-		title: "Pedro Balbino — Software Engineer",
+		title: "Pedro Balbino — Compliance-Grade AI Architect",
 		description:
-			"Senior SWE specializing in AI-native automation. Ships Claude Code plugins, Chrome/macOS workflow tooling, and WhatsApp/LinkedIn copilots.",
+			"Production RAG, agent systems, and MCP integrations for regulated workloads — where the audit trail, decision provenance, and cost ceiling are first-class architectural citizens.",
 		type: "website",
 	},
 };
 
 export const viewport: Viewport = {
-	themeColor: "#1a1a2e",
+	themeColor: "#1e1e2e",
 };
 
 const jsonLd = {
@@ -28,28 +28,29 @@ const jsonLd = {
 		{
 			"@type": "WebSite",
 			url: SITE_URL,
-			name: "Pedro Balbino — Software Engineer",
+			name: "Pedro Balbino — Compliance-Grade AI Architect",
 			description:
-				"Senior SWE specializing in AI-native automation. Ships Claude Code plugins, Chrome/macOS workflow tooling, and WhatsApp/LinkedIn copilots.",
+				"Production RAG, agent systems, and MCP integrations for regulated LATAM & global workloads — audit trails, decision provenance, and cost ceilings designed in from day one.",
 		},
 		{
 			"@type": "Person",
 			name: "Pedro Henrique Souza Balbino",
-			jobTitle: "Software Engineer",
+			jobTitle: "Compliance-Grade AI Architect",
 			url: SITE_URL,
 			knowsAbout: [
+				"Retrieval-Augmented Generation",
+				"Model Context Protocol",
+				"LLM agent systems",
+				"AI compliance",
+				"Audit-trail design",
+				"LGPD",
+				"pgvector",
 				"Go",
 				"TypeScript",
 				"Python",
 				"Rust",
-				"NixOS",
-				"Kubernetes",
 				"Terraform",
 				"AWS",
-				"Claude Code",
-				"Retrieval-Augmented Generation",
-				"LLM Integration",
-				"Chrome Automation",
 			],
 			sameAs: ["https://github.com/phsb5321", "https://linkedin.com/in/balbinopedro"],
 		},

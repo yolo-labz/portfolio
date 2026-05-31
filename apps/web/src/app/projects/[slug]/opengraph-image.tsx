@@ -15,13 +15,14 @@ export default async function ProjectOGImage({ params }: { params: Promise<{ slu
 	return new ImageResponse(
 		<div
 			style={{
-				background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%)",
+				background: "#1e1e2e",
 				width: "100%",
 				height: "100%",
 				display: "flex",
 				flexDirection: "column",
 				justifyContent: "flex-end",
 				padding: "60px 80px",
+				borderLeft: "10px solid #cba6f7",
 			}}
 		>
 			<div style={{ display: "flex", flexDirection: "column" }}>
@@ -29,7 +30,7 @@ export default async function ProjectOGImage({ params }: { params: Promise<{ slu
 					style={{
 						fontSize: 52,
 						fontWeight: 700,
-						color: "#e8e8ec",
+						color: "#cdd6f4",
 						lineHeight: 1.2,
 					}}
 				>
@@ -38,7 +39,7 @@ export default async function ProjectOGImage({ params }: { params: Promise<{ slu
 				<div
 					style={{
 						fontSize: 24,
-						color: "#9898a8",
+						color: "#a6adc8",
 						marginTop: 16,
 						lineHeight: 1.4,
 					}}
@@ -48,7 +49,7 @@ export default async function ProjectOGImage({ params }: { params: Promise<{ slu
 				<div
 					style={{
 						fontSize: 18,
-						color: "#5ec4a0",
+						color: "#cba6f7",
 						marginTop: 24,
 					}}
 				>
