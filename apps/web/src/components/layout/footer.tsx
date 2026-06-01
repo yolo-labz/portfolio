@@ -13,14 +13,6 @@ export function Footer() {
 						GitHub
 					</a>
 					<a
-						href="https://www.upwork.com/freelancers/~01dae7197e964ddf3f"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="hover:text-text transition-colors"
-					>
-						Upwork
-					</a>
-					<a
 						href="https://linkedin.com/in/balbinopedro"
 						target="_blank"
 						rel="noopener noreferrer"
