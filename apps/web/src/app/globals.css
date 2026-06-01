@@ -2,9 +2,11 @@
 @source "../../../../packages/ui/src";
 
 @theme {
-	/* Catppuccin Mocha — hex-pinned per VISUAL-IDENTITY.md §2.1. Color carries
-	   meaning (mauve = primary/stage-1, peach = audit, yellow = compliance),
-	   never decoration. No gradients, no glows. */
+	/* Catppuccin Mocha — hex-pinned per VISUAL-IDENTITY.md §2.1, EXCEPT the
+	   primary accent: restored to the pre-relaunch emerald (oklch(0.72 0.19 160),
+	   hex-pinned) per Pedro 01/06/2026 — Catppuccin mauve read as generic
+	   "AI purple". Color carries meaning (emerald = primary/stage-1, peach =
+	   audit, yellow = compliance), never decoration. No gradients, no glows. */
 	--color-bg: #1e1e2e; /* base */
 	--color-bg-elevated: #181825; /* mantle */
 	--color-bg-card: #181825; /* mantle */
@@ -14,8 +16,8 @@
 	--color-overlay: #6c7086; /* grid, dashed measurement leaders, hint text */
 	--color-text: #cdd6f4;
 	--color-text-muted: #a6adc8; /* subtext0 */
-	--color-accent: #cba6f7; /* mauve — primary CTA / data plane */
-	--color-accent-hover: #b4befe; /* lavender */
+	--color-accent: #00c77a; /* emerald — primary CTA / data plane (restored pre-relaunch hue) */
+	--color-accent-hover: #00db8c; /* brighter emerald */
 	--color-accent-dim: #45475a; /* surface1 — accent badge background */
 	--color-link: #89b4fa; /* blue — embedding / links */
 	--color-warn: #fab387; /* peach — audit / persistence */
@@ -55,7 +57,7 @@ body::before {
 }
 
 ::selection {
-	background-color: rgba(203, 166, 247, 0.3); /* mauve */
+	background-color: rgba(0, 199, 122, 0.3); /* emerald */
 }
 
 :focus-visible {
