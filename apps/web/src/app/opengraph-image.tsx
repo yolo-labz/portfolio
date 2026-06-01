@@ -15,7 +15,7 @@ export default function OGImage() {
 				flexDirection: "column",
 				justifyContent: "flex-end",
 				padding: "60px 80px",
-				borderLeft: "10px solid #cba6f7",
+				borderLeft: "10px solid #00c77a",
 			}}
 		>
 			<div style={{ display: "flex", flexDirection: "column" }}>
@@ -25,7 +25,7 @@ export default function OGImage() {
 				<div style={{ fontSize: 60, fontWeight: 700, color: "#cdd6f4", lineHeight: 1.1 }}>
 					Pedro Balbino
 				</div>
-				<div style={{ fontSize: 30, color: "#cba6f7", marginTop: 16 }}>
+				<div style={{ fontSize: 30, color: "#00c77a", marginTop: 16 }}>
 					Compliance-Grade AI Architect
 				</div>
 				<div style={{ fontSize: 20, color: "#a6adc8", marginTop: 14 }}>

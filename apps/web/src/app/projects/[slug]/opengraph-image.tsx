@@ -22,7 +22,7 @@ export default async function ProjectOGImage({ params }: { params: Promise<{ slu
 				flexDirection: "column",
 				justifyContent: "flex-end",
 				padding: "60px 80px",
-				borderLeft: "10px solid #cba6f7",
+				borderLeft: "10px solid #00c77a",
 			}}
 		>
 			<div style={{ display: "flex", flexDirection: "column" }}>
@@ -49,7 +49,7 @@ export default async function ProjectOGImage({ params }: { params: Promise<{ slu
 				<div
 					style={{
 						fontSize: 18,
-						color: "#cba6f7",
+						color: "#00c77a",
 						marginTop: 24,
 					}}
 				>
