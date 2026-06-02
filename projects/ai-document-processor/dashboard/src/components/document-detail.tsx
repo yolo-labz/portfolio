@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { type ReactNode, useState } from "react";
 import type { Document } from "@/lib/types";
 import { FieldTable } from "./field-table";
 
@@ -47,10 +47,13 @@ function typeBadgeClass(docType: string | null): string {
 	}
 }
 
-export function DocumentDetail({ document: doc }: DocumentDetailProps) {
-	const [showFullText, setShowFullText] = useState(false);
-
-	if (doc.status === "processing" || doc.status === "uploaded") {
+// Terminal-state placeholders (spinner / failed / pending). Extracted from
+// DocumentDetail so its render stays under the cognitive-complexity budget.
+function statusNotice(
+	status: Document["status"],
+	errorMessage: Document["error_message"],
+): ReactNode | null {
+	if (status === "processing" || status === "uploaded") {
 		return (
 			<div className="flex flex-col items-center justify-center gap-4 rounded-lg border border-border bg-bg-card p-12">
 				<svg className="h-10 w-10 animate-spin text-accent" viewBox="0 0 24 24" fill="none">
@@ -74,18 +77,18 @@ export function DocumentDetail({ document: doc }: DocumentDetailProps) {
 		);
 	}
 
-	if (doc.status === "failed") {
+	if (status === "failed") {
 		return (
 			<div className="rounded-lg border border-status-failed/30 bg-status-failed/10 p-6">
 				<h3 className="mb-2 font-medium text-status-failed">Processing Failed</h3>
 				<p className="text-sm text-text-muted">
-					{doc.error_message || "An unknown error occurred during processing."}
+					{errorMessage || "An unknown error occurred during processing."}
 				</p>
 			</div>
 		);
 	}
 
-	if (doc.status === "ai_pending") {
+	if (status === "ai_pending") {
 		return (
 			<div className="rounded-lg border border-status-pending/30 bg-status-pending/10 p-6">
 				<h3 className="mb-2 font-medium text-status-pending">AI Processing Pending</h3>
@@ -95,6 +98,15 @@ export function DocumentDetail({ document: doc }: DocumentDetailProps) {
 			</div>
 		);
 	}
+
+	return null;
+}
+
+export function DocumentDetail({ document: doc }: DocumentDetailProps) {
+	const [showFullText, setShowFullText] = useState(false);
+
+	const notice = statusNotice(doc.status, doc.error_message);
+	if (notice) return notice;
 
 	const rawTextPreview =
 		doc.raw_text && doc.raw_text.length > 500 && !showFullText
