@@ -6,6 +6,24 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { navItems } from "@/lib/navigation";
 
+// Tab focus-trap for the open drawer — cycles keyboard focus inside the dialog.
+// Extracted from the keydown handler to keep that handler's complexity low.
+function trapFocus(e: KeyboardEvent, container: HTMLElement) {
+	const focusable = container.querySelectorAll<HTMLElement>(
+		'a, button, [tabindex]:not([tabindex="-1"])',
+	);
+	const first = focusable[0];
+	const last = focusable[focusable.length - 1];
+
+	if (e.shiftKey && document.activeElement === first) {
+		e.preventDefault();
+		last?.focus();
+	} else if (!e.shiftKey && document.activeElement === last) {
+		e.preventDefault();
+		first?.focus();
+	}
+}
+
 export function MobileNav() {
 	const [open, setOpen] = useState(false);
 	const pathname = usePathname();
@@ -31,23 +49,8 @@ export function MobileNav() {
 			if (e.key === "Escape") {
 				setOpen(false);
 				buttonRef.current?.focus();
-				return;
-			}
-
-			if (e.key === "Tab" && drawerRef.current) {
-				const focusable = drawerRef.current.querySelectorAll<HTMLElement>(
-					'a, button, [tabindex]:not([tabindex="-1"])',
-				);
-				const first = focusable[0];
-				const last = focusable[focusable.length - 1];
-
-				if (e.shiftKey && document.activeElement === first) {
-					e.preventDefault();
-					last?.focus();
-				} else if (!e.shiftKey && document.activeElement === last) {
-					e.preventDefault();
-					first?.focus();
-				}
+			} else if (e.key === "Tab" && drawerRef.current) {
+				trapFocus(e, drawerRef.current);
 			}
 		}
 

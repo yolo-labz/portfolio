@@ -32,7 +32,9 @@ function formatSalary(min: number | null, max: number | null, currency: string):
 		return `${fmt(min)} \u2013 ${fmt(max)} ${currency}`;
 	}
 	if (min !== null) return `From ${fmt(min)} ${currency}`;
-	return `Up to ${fmt(max!)} ${currency}`;
+	if (max !== null) return `Up to ${fmt(max)} ${currency}`;
+	// Unreachable — the both-null case returned "Salary not disclosed" above.
+	return "Salary not disclosed";
 }
 
 const SENIORITY_STYLES: Record<string, string> = {
