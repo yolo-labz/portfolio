@@ -1,5 +1,6 @@
 import { Card } from "@portfolio/ui";
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
 	title: "About — Pedro Balbino",
@@ -146,7 +147,10 @@ function statusPill(status: ClaimStatus) {
 	);
 }
 
-export default function AboutPage() {
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+	const { locale } = await params;
+	setRequestLocale(locale);
+
 	return (
 		<section className="mx-auto w-full max-w-5xl px-6 py-24">
 			<header className="space-y-6">

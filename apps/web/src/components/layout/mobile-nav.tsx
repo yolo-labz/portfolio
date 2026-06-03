@@ -1,9 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import { Link, usePathname } from "@/i18n/navigation";
 import { navItems } from "@/lib/navigation";
 
 // Tab focus-trap for the open drawer — cycles keyboard focus inside the dialog.
@@ -25,6 +25,7 @@ function trapFocus(e: KeyboardEvent, container: HTMLElement) {
 }
 
 export function MobileNav() {
+	const t = useTranslations("Nav");
 	const [open, setOpen] = useState(false);
 	const pathname = usePathname();
 	const isHome = pathname === "/";
@@ -112,29 +113,41 @@ export function MobileNav() {
 							aria-label="Navigation menu"
 						>
 							<ul className="mt-16 flex flex-col gap-1">
-								{navItems.map(({ href, label, external }) => {
+								{navItems.map((item) => {
 									const linkClass =
 										"block min-h-11 rounded-md px-4 py-3 text-lg text-text-muted transition-colors hover:bg-surface hover:text-text";
-									if (external) {
+									if (item.external) {
 										return (
-											<li key={href}>
+											<li key={item.key}>
 												<a
-													href={href}
+													href={item.href}
 													target="_blank"
 													rel="noopener noreferrer"
 													onClick={() => setOpen(false)}
 													className={linkClass}
 												>
-													{label}
+													{t(item.key)}
 												</a>
 											</li>
 										);
 									}
-									const target = href.startsWith("#") && !isHome ? `/${href}` : href;
+									if (item.href.startsWith("#")) {
+										return (
+											<li key={item.key}>
+												<a
+													href={isHome ? item.href : `/${item.href}`}
+													onClick={() => setOpen(false)}
+													className={linkClass}
+												>
+													{t(item.key)}
+												</a>
+											</li>
+										);
+									}
 									return (
-										<li key={href}>
-											<Link href={target} onClick={() => setOpen(false)} className={linkClass}>
-												{label}
+										<li key={item.key}>
+											<Link href={item.href} onClick={() => setOpen(false)} className={linkClass}>
+												{t(item.key)}
 											</Link>
 										</li>
 									);

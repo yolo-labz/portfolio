@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { FigStamp } from "@/components/shared/fig-stamp";
 
 export const metadata: Metadata = {
@@ -7,7 +8,10 @@ export const metadata: Metadata = {
 		"A working argument for designing the audit trail before the prompt: prompt provenance, retrieval lineage, and output attestation are the primary architectural constraint for regulated AI — not the model.",
 };
 
-export default function ThesisPage() {
+export default async function ThesisPage({ params }: { params: Promise<{ locale: string }> }) {
+	const { locale } = await params;
+	setRequestLocale(locale);
+
 	return (
 		<article className="mx-auto w-full max-w-3xl px-6 pt-32 pb-24">
 			<FigStamp n="00" label="position · regulated AI architecture" />

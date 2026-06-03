@@ -1,14 +1,15 @@
 export interface NavItem {
 	href: string;
-	label: string;
+	// Translation key under the `Nav` namespace (see messages/*.json).
+	key: string;
 	external?: boolean;
 }
 
 export const navItems: readonly NavItem[] = [
-	{ href: "#projects", label: "Projects" },
-	{ href: "#services", label: "Services" },
-	{ href: "/thesis", label: "Thesis" },
-	{ href: "/about", label: "About" },
-	{ href: "https://blog.home301server.com.br", label: "Blog", external: true },
-	{ href: "#contact", label: "Contact" },
+	{ href: "#projects", key: "projects" },
+	{ href: "#services", key: "services" },
+	{ href: "/thesis", key: "thesis" },
+	{ href: "/about", key: "about" },
+	{ href: "https://blog.home301server.com.br", key: "blog", external: true },
+	{ href: "#contact", key: "contact" },
 ] as const;
