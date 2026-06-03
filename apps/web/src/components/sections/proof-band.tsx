@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
-import Link from "next/link";
 import { FigStamp } from "@/components/shared/fig-stamp";
 import { useIntersection } from "@/hooks/use-intersection";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { Link } from "@/i18n/navigation";
 
 // Homepage proof strip — only links to surfaces that are live right now (public
 // GitHub repos + the /about claim map). No links to unpublished writeups, so the
