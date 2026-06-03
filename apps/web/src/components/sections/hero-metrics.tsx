@@ -66,10 +66,10 @@ export function HeroMetrics() {
 						</span>
 					</h1>
 					<p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-muted">
-						I architect retrieval-augmented and agentic systems for regulated LATAM and global
-						workloads — where the audit chain, decision provenance, and cost ceiling are first-class
-						citizens, not bolted on after the demo. Production RAG mapped to LGPD, BCB 4.893, and
-						the EU AI Act Art. 12 logging mandate (enforceable 02/08/2026).
+						I architect RAG and agent systems for regulated workloads — banking, tax, legal — where
+						the audit trail is the deliverable. Every figure cites its source. Every decision
+						reconstructs six months later. The cost ceiling holds at peak. Built to LGPD, BCB 4.893,
+						and the EU AI Act&rsquo;s Article 12 logging mandate.
 					</p>
 				</motion.div>
 
