@@ -2,11 +2,11 @@
 
 import { Badge } from "@portfolio/ui";
 import { motion } from "motion/react";
-import Link from "next/link";
 import { FigStamp } from "@/components/shared/fig-stamp";
 import { projects } from "@/data/projects";
 import { useIntersection } from "@/hooks/use-intersection";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { Link } from "@/i18n/navigation";
 
 const featured = projects.filter((p) => p.featured);
 const others = projects.filter((p) => !p.featured);

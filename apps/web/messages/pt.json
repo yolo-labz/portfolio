@@ -1,0 +1,20 @@
+{
+	"Nav": {
+		"home": "pedro.balbino",
+		"projects": "Projetos",
+		"services": "Serviços",
+		"thesis": "Tese",
+		"about": "Sobre",
+		"blog": "Blog",
+		"contact": "Contato"
+	},
+	"Layout": {
+		"skipToContent": "Pular para o conteúdo principal"
+	},
+	"LocaleSwitcher": {
+		"label": "Mudar idioma",
+		"en": "English",
+		"pt": "Português",
+		"es": "Español"
+	}
+}

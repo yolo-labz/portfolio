@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import { ProjectDetail } from "@/components/project/project-detail";
 import { projects } from "@/data/projects";
 import { SITE_URL } from "@/lib/constants";
 
 interface Props {
-	params: Promise<{ slug: string }>;
+	params: Promise<{ locale: string; slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -26,7 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProjectPage({ params }: Props) {
-	const { slug } = await params;
+	const { locale, slug } = await params;
+	setRequestLocale(locale);
 	const project = projects.find((p) => p.slug === slug);
 
 	if (!project) notFound();

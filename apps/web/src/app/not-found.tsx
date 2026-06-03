@@ -1,22 +1,49 @@
-import { Button } from "@portfolio/ui";
-import Link from "next/link";
-
-export default function NotFound() {
+// Global 404 — renders for requests that never resolve to a valid [locale]
+// segment (e.g. /unknown.txt, or an invalid locale that fails hasLocale in the
+// locale layout). It renders OUTSIDE app/[locale]/layout.tsx, so it must
+// provide its own <html>/<body>. The localized 404 lives at
+// app/[locale]/not-found.tsx. Inline styles keep it self-contained (no reliance
+// on the CSS cascade for this rare fallback). Emerald accent per VISUAL-IDENTITY.
+export default function GlobalNotFound() {
 	return (
-		<div className="flex min-h-[70vh] flex-col items-center justify-center px-6 text-center">
-			<p className="font-mono text-sm text-accent">404</p>
-			<h1 className="mt-2 text-3xl font-bold tracking-tight">This page doesn&apos;t exist</h1>
-			<p className="mt-3 text-text-muted">
-				The URL you followed may be broken, or the page may have been removed.
-			</p>
-			<div className="mt-8 flex gap-4">
-				<Button as={Link} href="/" variant="primary" size="md">
-					Go Home
-				</Button>
-				<Button as={Link} href="/#projects" variant="secondary" size="md">
-					View Projects
-				</Button>
-			</div>
-		</div>
+		<html lang="en">
+			<body
+				style={{
+					margin: 0,
+					background: "#1e1e2e",
+					color: "#cdd6f4",
+					fontFamily: "system-ui, -apple-system, sans-serif",
+				}}
+			>
+				<div
+					style={{
+						minHeight: "100vh",
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						justifyContent: "center",
+						gap: "0.75rem",
+						padding: "1.5rem",
+						textAlign: "center",
+					}}
+				>
+					<p
+						style={{
+							fontFamily: "ui-monospace, monospace",
+							color: "#00c77a",
+							fontSize: "0.875rem",
+						}}
+					>
+						404
+					</p>
+					<h1 style={{ fontSize: "1.875rem", fontWeight: 700, margin: 0 }}>
+						This page doesn&rsquo;t exist
+					</h1>
+					<a href="/" style={{ color: "#00c77a", marginTop: "1rem", textDecoration: "none" }}>
+						Go home &rarr;
+					</a>
+				</div>
+			</body>
+		</html>
 	);
 }

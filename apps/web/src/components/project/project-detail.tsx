@@ -2,10 +2,10 @@
 
 import { Badge, Button } from "@portfolio/ui";
 import { motion } from "motion/react";
-import Link from "next/link";
 import { FigStamp } from "@/components/shared/fig-stamp";
 import type { Project } from "@/data/projects";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { Link } from "@/i18n/navigation";
 
 interface ProjectDetailProps {
 	project: Project;
@@ -24,7 +24,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 					transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
 				>
 					<Link
-						href="/#projects"
+						href={{ pathname: "/", hash: "projects" }}
 						className="mb-8 inline-flex items-center text-sm text-text-muted transition-colors hover:text-text"
 					>
 						&larr; Back to projects

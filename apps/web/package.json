@@ -14,6 +14,7 @@
 		"clsx": "latest",
 		"motion": "latest",
 		"next": "latest",
+		"next-intl": "latest",
 		"react": "latest",
 		"react-dom": "latest",
 		"tailwind-merge": "latest"
