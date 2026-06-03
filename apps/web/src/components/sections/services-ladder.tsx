@@ -93,8 +93,8 @@ export function ServicesLadder() {
 						Start with a verdict. Scale when the proof holds.
 					</h2>
 					<p className="mt-2 max-w-2xl text-text-muted">
-						Each offer is a complete, deliverable-scoped engagement — not billed hours. Most clients
-						start with a diagnostic and expand into a build once the architecture is proven against
+						Each offer ships a defined deliverable, scoped and fixed at signature. Most clients open
+						with a diagnostic, then expand into a build once the architecture proves out against
 						their own data.
 					</p>
 				</div>

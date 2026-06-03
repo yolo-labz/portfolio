@@ -52,10 +52,10 @@ export default async function ThesisPage({ params }: { params: Promise<{ locale:
 					The shape that survives an audit is a <strong>three-plane topology</strong>. A data plane
 					carries the primary flow — ingest, retrieve, infer. A control plane holds orchestration,
 					agent state, and configuration as first-class, versioned objects. A compliance plane runs
-					alongside as a sidecar — not inline boxes bolted into the flow, but an append-only ledger
-					that taps the other two planes and records signed, hash-chained events. The compliance
-					plane is the only one whose output the auditor reads. Designing it last means designing
-					the system to lie to itself about what happened.
+					alongside as a sidecar. An append-only ledger taps the other two planes and records
+					signed, hash-chained events; it never sits inline in the data path. The compliance plane
+					is the only one whose output the auditor reads. Designing it last means designing the
+					system to lie to itself about what happened.
 				</p>
 				<p>
 					Concretely: a tax-compliance agent that prepares regulated filings runs as a typed-tool

@@ -35,9 +35,9 @@ export function ProofBand() {
 					Every claim here is auditable
 				</h2>
 				<p className="mt-2 max-w-2xl text-text-muted">
-					No screenshots, no caching. Six public repositories under{" "}
-					<span className="font-mono text-text">yolo-labz</span> — SLSA L2, Sigstore-signed, with
-					live SonarQube quality gates. Client work links to anonymized writeups, never names.
+					Six public repositories under <span className="font-mono text-text">yolo-labz</span>, each
+					SLSA L2, Sigstore-signed, and gated on live SonarQube quality checks. Read the source, not
+					a screenshot. Client work links to anonymized writeups, never names.
 				</p>
 				<ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
 					{repos.map((repo) => (
