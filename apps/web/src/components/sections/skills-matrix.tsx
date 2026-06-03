@@ -23,7 +23,8 @@ export function SkillsMatrix() {
 						Technical Skills
 					</h2>
 					<p className="mt-2 text-text-muted">
-						Organized by problem domain — what these stacks solve, not a checklist of what I know.
+						Grouped by the problem each stack solves, so you can scan for the one that matches
+						yours.
 					</p>
 				</div>
 

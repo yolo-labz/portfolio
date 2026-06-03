@@ -38,13 +38,13 @@ export const projects: Project[] = [
 		slug: "compliance-tax-agent",
 		title: "Compliance-grade tax-filing agent — Brazilian IRPF",
 		tagline:
-			"A typed-tool LLM agent for regulated tax filings, where a single hallucinated number is a compliance failure — not a UX bug.",
+			"A typed-tool LLM agent for regulated tax filings. One hallucinated number is a compliance failure, so every step is schema-validated and every figure cites its source.",
 		description:
-			"An LLM agent that prepares and validates Brazilian income-tax (IRPF) filings under a strict compliance regime. Instead of a free-form chat loop, it runs a typed-tool loop bounded at ≤40 turns per filing: each step is a schema-validated tool call, retrieval is scoped to the filing year, and every emitted number is forced to cite — then re-validated against its source span before it can land in the return. The decision log is hash-chained and anchored to a transparency log, so any filing can be replayed years later.",
+			"An LLM agent that prepares and validates Brazilian income-tax (IRPF) filings. The loop is bounded at ≤40 turns per filing. Each step is a schema-validated tool call. Retrieval is scoped to the filing year. Every emitted number cites its source span and is re-validated against that span before it lands in the return. The decision log is hash-chained and anchored to a transparency log, so any filing replays years later.",
 		problemStatement:
-			"A regulated tax-filing agent cannot hallucinate a single numerical field, and every output has to be replayable for a five-year audit window under LGPD — on-premise, with no data egress. General-purpose RAG fails this twice: it can't prove where a number came from, and it can't bound how long it 'thinks'.",
+			"A regulated tax-filing agent cannot hallucinate one numerical field. Every output has to replay for a five-year audit window under LGPD, on-premise, with no data egress. General-purpose RAG fails this twice: it can't prove where a number came from, and it can't bound how long it 'thinks'.",
 		solutionSummary:
-			"A typed-tool loop capped at ≤40 turns per filing instead of an unbounded agent; per-year retrieval scoping where the router rejects any cross-year hit; forced citation with post-hoc span validation so the model's arithmetic is never trusted blind; 80 deterministic anomaly rules catch out-of-policy values before they land; and a hash-chained audit ledger anchored to a public transparency log. Per-field retry (instead of re-running the whole filing) cut LLM cost ~80%. Rejected alternatives: a single large-context prompt (no provenance) and an open-ended agent loop (no audit ceiling).",
+			"The loop caps at ≤40 turns per filing. The router rejects any cross-year retrieval hit. Forced citation plus post-hoc span validation means the model's arithmetic is never trusted blind. 80 deterministic anomaly rules catch out-of-policy values before they land, and a hash-chained audit ledger anchors to a public transparency log. Per-field retry, rather than re-running the whole filing, cut LLM cost ~80%. Rejected: a single large-context prompt (no provenance) and an open-ended agent loop (no audit ceiling).",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "Typed-tool agent loop", category: "framework" },
@@ -62,23 +62,23 @@ export const projects: Project[] = [
 		links: {},
 		featured: true,
 		constraint:
-			"LGPD plus a five-year audit-replay mandate, on-premise, zero data egress. One hallucinated numerical field is a regulatory failure, not a bug ticket.",
+			"LGPD plus a five-year audit-replay mandate, on-premise, zero data egress. One hallucinated numerical field is a regulatory failure.",
 		decision:
-			"Bound the agent at ≤40 typed-tool turns per filing rather than let it run open-ended; scope retrieval per filing year and reject cross-year hits at the router; force every number to cite and re-validate it against its source span before it lands. Rejected a single large-context prompt (no provenance) and an unbounded loop (no audit ceiling).",
+			"Bound the agent at ≤40 typed-tool turns per filing. Scope retrieval per filing year and reject cross-year hits at the router. Force every number to cite, then re-validate it against its source span before it lands. Rejected a single large-context prompt (no provenance) and an unbounded loop (no audit ceiling).",
 		outcome:
-			"Zero hallucinated numerical fields across 18 months in production, ~10K filings/day at peak, 80 deterministic anomaly rules gating every value, and ~80% lower LLM cost from per-field retry — every field replayable to the source span that produced it.",
+			"Zero hallucinated numerical fields across 18 months in production. ~10K filings/day at peak. 80 deterministic anomaly rules gate every value, and per-field retry cut LLM cost ~80%. Every field replays to the source span that produced it.",
 	},
 	{
 		slug: "event-driven-retail",
 		title: "Event-driven retail backend — clearing 10K+ transactions/day",
 		tagline:
-			"A multi-channel commerce backend where every state change is idempotent and auditable — Go + TypeScript on Kafka, outbox pattern, exactly-once effects.",
+			"A multi-channel commerce backend where every state change is idempotent and auditable. Go + TypeScript on Kafka, outbox pattern, exactly-once effects.",
 		description:
-			"An event-driven backend clearing 10K+ transactions/day (~250 orders/min at peak) across multiple commerce surfaces, carved out of a 1M+ LOC Rails monolith over an 18-month strangler-fig migration. A BFF fronts the channels; a broker fans domain events out to dispatchers; the outbox pattern guarantees an event is published exactly once per committed transaction, and idempotency keys make every downstream effect safe to retry. Checkout p99 stayed ≤500ms under load, with a BACEN Circular 3.978/2020-traceable audit path throughout.",
+			"An event-driven backend clearing 10K+ transactions/day (~250 orders/min at peak) across multiple commerce surfaces, carved out of a 1M+ LOC Rails monolith over an 18-month strangler-fig migration. A BFF fronts the channels. A broker fans domain events out to dispatchers. The outbox publishes each event exactly once per committed transaction, and idempotency keys make every downstream effect safe to retry. Checkout p99 stayed ≤500ms under load. The audit path traces to BACEN Circular 3.978/2020 throughout.",
 		problemStatement:
-			"Multi-channel commerce means the same order can arrive twice, a partner webhook can fire three times, and a network blip can drop an event mid-flight — yet the ledger has to stay exactly right and auditable under load.",
+			"In multi-channel commerce the same order can arrive twice, a partner webhook can fire three times, a network blip can drop an event mid-flight. The ledger still has to stay exactly right and auditable under load.",
 		solutionSummary:
-			"BFF + Broker + Dispatcher: the broker decouples producers from consumers, the transactional outbox publishes each event exactly once per committed write, and idempotency keys dedupe at every effect boundary. Kafka carries the event log; Go and TypeScript services consume it. Retries are safe by construction, so partner flakiness degrades gracefully instead of corrupting state.",
+			"BFF + Broker + Dispatcher. The broker decouples producers from consumers. The transactional outbox publishes each event exactly once per committed write, and idempotency keys dedupe at every effect boundary. Kafka carries the event log; Go and TypeScript services consume it. Retries are safe by construction, so partner flakiness degrades gracefully instead of corrupting state.",
 		techStack: [
 			{ name: "Go", category: "language" },
 			{ name: "TypeScript", category: "language" },
@@ -95,23 +95,23 @@ export const projects: Project[] = [
 		links: {},
 		featured: true,
 		constraint:
-			"A 1M+ LOC monolith couldn't scale checkout under load and lacked a regulator-traceable audit path — and the cutover couldn't stop the business selling. The same order can arrive twice and a partner webhook can fire repeatedly, yet the ledger must stay exactly right (checkout p99 ≤500ms, BACEN 3.978-traceable) across an 18-month migration.",
+			"A 1M+ LOC monolith couldn't scale checkout under load and lacked a regulator-traceable audit path. The cutover couldn't stop the business selling. The same order can arrive twice and a partner webhook can fire repeatedly, yet the ledger must stay exactly right (checkout p99 ≤500ms, BACEN 3.978-traceable) across an 18-month migration.",
 		decision:
-			"Strangler-fig the monolith — carve domain capabilities into a BFF + Broker + Dispatcher instead of a big-bang rewrite. Decouple producers from consumers with the broker, publish via a transactional outbox (exactly-once per committed write), and make every downstream effect idempotent so retries are safe by construction. Rejected a big-bang rewrite (the business can't stop selling), synchronous point-to-point calls (cascading failure), and at-least-once delivery without dedupe (double effects).",
+			"Strangler-fig the monolith. Carve domain capabilities into a BFF + Broker + Dispatcher. Decouple producers from consumers, publish via a transactional outbox (exactly-once per committed write), make every downstream effect idempotent so retries are safe by construction. Rejected a big-bang rewrite (the business can't stop selling), synchronous point-to-point calls (cascading failure), and at-least-once delivery without dedupe (double effects).",
 		outcome:
-			"A 1M+ LOC monolith migrated over 18 months without halting sales: 10K+ transactions/day (~250 orders/min peak), checkout p99 ≤500ms, BACEN 3.978-traceable, with retry-safe exactly-once effects so partner flakiness degrades gracefully instead of corrupting the ledger.",
+			"A 1M+ LOC monolith migrated over 18 months without halting sales. 10K+ transactions/day (~250 orders/min peak), checkout p99 ≤500ms, BACEN 3.978-traceable. Retry-safe exactly-once effects mean partner flakiness degrades gracefully instead of corrupting the ledger.",
 	},
 	{
 		slug: "legal-domain-rag",
 		title: "Legal-domain RAG — −60% manual documentation, citations that hold",
 		tagline:
-			"Per-jurisdiction retrieval with a deterministic citation validator, so every answer is grounded in a real source — AWS Bedrock + Lambda + pgvector.",
+			"Per-jurisdiction retrieval with a deterministic citation validator. Every answer grounds in a real source. AWS Bedrock + Lambda + pgvector.",
 		description:
-			"A legal-tech automation pipeline doing retrieval-augmented generation across a 15M-document corpus spanning 5 jurisdictions. Each jurisdiction gets its own pgvector index so retrieval never bleeds across legal regimes, and a deterministic citation validator checks that every cited passage actually exists and supports the claim before the answer is returned. Serverless on AWS Bedrock + Lambda, so cost tracks usage instead of idle capacity.",
+			"A legal-tech RAG pipeline over a 15M-document corpus spanning 5 jurisdictions. Each jurisdiction gets its own pgvector index, so retrieval never bleeds across legal regimes. A deterministic citation validator checks that every cited passage exists and supports the claim before the answer returns. Serverless on AWS Bedrock + Lambda, so cost tracks usage instead of idle capacity.",
 		problemStatement:
-			"In legal work a fabricated or mis-attributed citation is malpractice, and an answer grounded in the wrong jurisdiction is worse than no answer — but the manual documentation effort to do it by hand doesn't scale.",
+			"In legal work a fabricated or mis-attributed citation is malpractice. An answer grounded in the wrong jurisdiction is worse than no answer. Doing it by hand doesn't scale.",
 		solutionSummary:
-			"Per-jurisdiction pgvector indexes keep retrieval inside the correct legal regime. A deterministic citation validator verifies every cited span exists and supports the statement before generation returns — the model is never trusted to cite from memory. AWS Bedrock handles inference; Lambda keeps it serverless and cost-bounded.",
+			"Per-jurisdiction pgvector indexes keep retrieval inside the correct legal regime. A deterministic citation validator verifies every cited span exists and supports the statement before generation returns. The model is never trusted to cite from memory. AWS Bedrock handles inference; Lambda keeps it serverless and cost-bounded.",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "AWS Bedrock", category: "service" },
@@ -128,23 +128,23 @@ export const projects: Project[] = [
 		links: {},
 		featured: true,
 		constraint:
-			"A fabricated citation is malpractice and a cross-jurisdiction answer is worse than none — but manual documentation doesn't scale.",
+			"A fabricated citation is malpractice. A cross-jurisdiction answer is worse than none. Manual documentation doesn't scale.",
 		decision:
-			"Isolate retrieval per jurisdiction so a query can't pull from the wrong regime, and gate generation behind a deterministic citation validator that confirms every cited span exists and supports the claim. Rejected a single shared index (cross-regime bleed) and trusting model-generated citations (hallucination risk).",
+			"Isolate retrieval per jurisdiction so a query can't pull from the wrong regime. Gate generation behind a deterministic citation validator that confirms every cited span exists and supports the claim. Rejected a single shared index (cross-regime bleed) and trusting model-generated citations (hallucination risk).",
 		outcome:
-			"−60% manual documentation effort across a 15M-document, 5-jurisdiction corpus, with every citation deterministically validated against the source — never generated from memory.",
+			"−60% manual documentation effort across a 15M-document, 5-jurisdiction corpus. Every citation is deterministically validated against the source, never generated from memory.",
 	},
 	{
 		slug: "multilingual-rag",
 		title: "Multilingual RAG at 100K+ DAU — +40% knowledge-base precision",
 		tagline:
-			"Grounded retrieval with frozen-eval regression checks for a multilingual user base — AWS Bedrock + pgvector, precision measured before every rollout.",
+			"Grounded retrieval with frozen-eval regression checks for a multilingual user base. Precision is measured before every rollout. AWS Bedrock + pgvector.",
 		description:
-			"A retrieval-augmented assistant serving 100K+ daily active users across a multilingual population. Grounded retrieval keeps answers tied to the knowledge base, and a frozen evaluation set gates every rollout — precision is measured on held-out questions before a change ships, so the knowledge base improves monotonically instead of regressing silently. AWS Bedrock + pgvector under the hood.",
+			"A retrieval-augmented assistant serving 100K+ daily active users across a multilingual population. Grounded retrieval keeps answers tied to the knowledge base. A frozen evaluation set gates every rollout: precision is measured on held-out questions before a change ships, so the knowledge base improves monotonically instead of regressing silently. AWS Bedrock + pgvector under the hood.",
 		problemStatement:
-			"A 100K-DAU multilingual assistant can't regress silently: a prompt or model change that helps one language can quietly degrade another, and nobody notices until the users do.",
+			"A 100K-DAU multilingual assistant can't regress silently. A prompt or model change that helps one language can quietly degrade another, and nobody notices until the users do.",
 		solutionSummary:
-			"Grounded retrieval anchors answers to the knowledge base rather than the model's memory. A frozen-eval regression suite measures precision on a held-out question set before any rollout, so a change that improves one cohort can't silently degrade another. AWS Bedrock for inference, pgvector for retrieval.",
+			"Grounded retrieval anchors answers to the knowledge base, not the model's memory. A frozen-eval regression suite measures precision on a held-out question set before any rollout. A change that improves one cohort can't silently degrade another. AWS Bedrock for inference, pgvector for retrieval.",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "AWS Bedrock", category: "service" },
@@ -161,23 +161,23 @@ export const projects: Project[] = [
 		links: {},
 		featured: true,
 		constraint:
-			"At 100K DAU across many languages, a change that helps one cohort can silently degrade another — and you only find out from the users.",
+			"At 100K DAU across many languages, a change that helps one cohort can silently degrade another. You find out from the users.",
 		decision:
 			"Ground every answer in the knowledge base and gate rollouts behind a frozen evaluation set, so precision is measured on held-out questions before shipping. Rejected ungated prompt iteration (silent regressions) and ungrounded generation (hallucination at scale).",
 		outcome:
-			"+40% knowledge-base precision at 100K+ daily active users, with a frozen-eval gate that blocks silent regressions before they reach users.",
+			"+40% knowledge-base precision at 100K+ daily active users. A frozen-eval gate blocks silent regressions before they reach users.",
 	},
 	{
 		slug: "ai-document-processor",
 		title: "ai-document-processor — auditable document extraction pipeline",
 		tagline:
-			"A format-agnostic ingestion pipeline where every extracted field traces back to the source span it came from — PDF/DOCX/image → OCR → classify → extract → queryable JSONB.",
+			"A format-agnostic ingestion pipeline where every extracted field traces back to its source span. PDF/DOCX/image → OCR → classify → extract → queryable JSONB.",
 		description:
-			"Upload PDFs, images, or DOCX files. The pipeline extracts text (OCR fallback for scanned input), a cheap model classifies the document type with a confidence score, a focused model pulls structured fields (vendor, amount, dates, line items) into clean JSON, and results land in PostgreSQL with JSONB + TSVECTOR full-text search. Next.js dashboard, Docker Compose orchestration, one command to bring the stack up. Runs without an API key (text extraction only) so the demo path is free.",
+			"Upload PDFs, images, or DOCX files. The pipeline extracts text with an OCR fallback for scanned input. A cheap model classifies the document type with a confidence score. A focused model pulls structured fields (vendor, amount, dates, line items) into clean JSON. Results land in PostgreSQL with JSONB + TSVECTOR full-text search. Next.js dashboard, Docker Compose orchestration, one command to bring the stack up. With no API key it runs text extraction only, so the demo path is free.",
 		problemStatement:
-			"A regulated-document pipeline has to be format-agnostic (text PDF, scanned PDF, JPEG, DOCX), type-aware (invoice vs contract vs receipt), and queryable downstream — without hand-rolling a parser per format or buying a SaaS that can't be self-hosted.",
+			"A regulated-document pipeline has to be format-agnostic (text PDF, scanned PDF, JPEG, DOCX), type-aware (invoice vs contract vs receipt), and queryable downstream. It also has to self-host, which rules out hand-rolling a parser per format or buying a closed SaaS.",
 		solutionSummary:
-			"A two-tier AI pipeline: a cheap model classifies, a focused model extracts based on type, and every extracted field is traced to the source span it came from. PyMuPDF + Tesseract handle text/OCR fallback. PostgreSQL JSONB stores extracted fields alongside TSVECTOR for free-text search. ~$0.006 per document.",
+			"A two-tier AI pipeline: a cheap model classifies, a focused model extracts by type. Every extracted field traces to its source span. PyMuPDF + Tesseract handle text and OCR fallback. PostgreSQL JSONB stores extracted fields alongside TSVECTOR for free-text search. ~$0.006 per document.",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "FastAPI", category: "framework" },
@@ -196,21 +196,21 @@ export const projects: Project[] = [
 		links: { demo: "https://ai-docs.home301server.com.br" },
 		featured: true,
 		constraint:
-			"Self-hostable, format-agnostic, and type-aware — extraction has to be queryable downstream and auditable per field, not a black box.",
+			"Self-hostable, format-agnostic, and type-aware. Extraction has to be queryable downstream and auditable per field.",
 		decision:
-			"Split the work: a cheap classifier first, then a focused extractor keyed to the document type, with a free no-API-key text path so the system degrades instead of failing. Store JSONB + TSVECTOR so downstream queries hit one table.",
+			"Split the work: a cheap classifier first, then a focused extractor keyed to the document type. A free no-API-key text path means the system degrades instead of failing. Store JSONB + TSVECTOR so downstream queries hit one table.",
 		outcome:
-			"A live, self-hostable pipeline at ~$0.006/document where every extracted field is traceable to its source span and searchable in full text.",
+			"A live, self-hostable pipeline at ~$0.006/document. Every extracted field traces to its source span and is searchable in full text.",
 	},
 	{
 		slug: "wa",
 		title: "wa — WhatsApp daemon with an auditable trust boundary",
 		tagline:
-			"A persistent agent channel that treats the inbound message body as an untrusted audit perimeter — Go, hexagonal, Sigstore-signed.",
+			"A persistent agent channel that treats the inbound message body as an untrusted audit perimeter. Go, hexagonal, Sigstore-signed.",
 		description:
 			"A persistent WhatsApp session wrapped in a daemon (`wad`) with a thin CLI client (`wa`) that issues commands over a JSON-RPC unix socket. SQLite ratchet store, allowlist + rate limiter + warmup ramp before the first send. Inbound messages are wrapped in <channel> tags so a downstream agent cannot trust a message body to mutate the allowlist or trigger sends. Apache-2.0, GoReleaser to GitHub Releases + homebrew-tap + flake.nix.",
 		problemStatement:
-			"Giving an autonomous agent a real WhatsApp channel turns every inbound message body into an injection surface: a crafted message must never be able to mutate the allowlist or trigger a send. And a partner-API library leaking across the codebase makes the trust boundary impossible to audit.",
+			"Give an autonomous agent a real WhatsApp channel and every inbound message body becomes an injection surface. A crafted message must never mutate the allowlist or trigger a send. A partner-API library leaking across the codebase makes the trust boundary impossible to audit.",
 		solutionSummary:
 			"Hexagonal layering enforced by golangci-lint, so domain and app code physically cannot import the WhatsApp library — it is quarantined to adapters. Inbound messages arrive wrapped in <channel> tags, so the agent can't trust a body to mutate state. Default-deny allowlist + per-second/minute/day rate limits + a 25/50/100% warmup ramp before the first send. SQLite ratchet store on modernc.org/sqlite — CGO_ENABLED=0, no CGO build chain.",
 		techStack: [
@@ -242,11 +242,11 @@ export const projects: Project[] = [
 		slug: "serverless-data-api",
 		title: "serverless-data-api — the boring layers tutorials skip",
 		tagline:
-			"Production-grade serverless CRUD with IAM least-privilege, API-key usage plans, PITR, and a teardown that leaves zero orphans — all in Terraform.",
+			"Production-grade serverless CRUD in Terraform: IAM least-privilege, API-key usage plans, PITR, and a teardown that leaves zero orphans.",
 		description:
 			"A production-ready serverless CRUD API provisioned entirely via Terraform. API Gateway with API-key auth and 1000-req/day rate limiting fronts a Python 3.12 Lambda on arm64 with AWS Powertools, backed by a single-table DynamoDB design with PITR. A CloudWatch dashboard with 8 widgets covers invocations, latency, errors, and capacity. `terraform apply` brings it up; `terraform destroy` removes every resource — no orphans.",
 		problemStatement:
-			"Serverless tutorials almost always skip the boring layers: IAM least-privilege, API-key + usage-plan auth, structured logging, and a teardown story. The result is demos that can't be cloned into production without a rewrite.",
+			"Serverless tutorials skip the boring layers: IAM least-privilege, API-key + usage-plan auth, structured logging, a teardown story. The result is a demo that can't reach production without a rewrite.",
 		solutionSummary:
 			"Five composable Terraform modules (dynamodb, iam, lambda, api_gateway, monitoring) wire 15 resources end to end. The Lambda execution role is least-privilege scoped to the table's ARN. The API Gateway usage plan caps at 1000 req/day with burst 10. GitHub Actions runs fmt + validate + plan on every PR. Idle cost is $0 (or $3/month with the CloudWatch dashboard kept on).",
 		techStack: [

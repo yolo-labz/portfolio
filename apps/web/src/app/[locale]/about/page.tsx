@@ -20,10 +20,10 @@ interface ClaimEvidence {
 const category = "Compliance-Grade AI Architect for Regulated LATAM & Global Workloads";
 
 const diagnostic =
-	"Most AI stacks fail audit at the same three seams — prompt provenance, retrieval lineage, output attestation. The fix is architectural, not procedural: a three-plane topology — data, control, compliance — with the compliance plane as a sidecar and a hash-chained audit ledger anchored to a public transparency log.";
+	"Most regulated AI stacks fail audit at the same three seams: prompt provenance, retrieval lineage, output attestation. The fix lives in the architecture. Three planes — data, control, compliance — with the compliance plane running as a sidecar: a hash-chained audit ledger anchored to a public transparency log.";
 
 const aboutSummary =
-	"Production proof spans a 100K+ DAU multilingual RAG (+40% knowledge-base precision), a 10K+ transactions/day event-driven retail backend, a tier-1 LATAM legal-domain RAG (−60% manual documentation), and a Brazilian IRPF tax-compliance agent (0 hallucinated numerical fields across 18 months, ≤40 turns per filing). Open-source: six public Claude Code plugins on github.com/yolo-labz — SLSA L2 + Sigstore signed, dual-format SBOMs.";
+	"Four systems carry the proof. A multilingual RAG at 100K+ DAU, +40% knowledge-base precision. An event-driven retail backend clearing 10K+ transactions/day. A tier-1 LATAM legal-domain RAG, −60% manual documentation. A Brazilian IRPF tax-compliance agent: 0 hallucinated numerical fields across 18 months, ≤40 turns per filing. Then the open source — six Claude Code plugins on github.com/yolo-labz, SLSA L2 + Sigstore signed, dual-format SBOMs.";
 
 const claimEvidenceMap: ClaimEvidence[] = [
 	{
@@ -166,9 +166,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 						<h2 className="text-2xl font-semibold tracking-tight">Claim → Evidence</h2>
 						<p className="mt-2 max-w-2xl text-sm text-text-muted">
 							Every headline claim maps to a verifiable artifact. Public repositories link straight
-							to the source. Rows marked "writeup pending" are anonymized architecture writeups
-							publishing on a rolling cadence — client work stays behind the curtain until the
-							writeup is cleared.
+							to the source. Rows marked "writeup pending" are anonymized architecture writeups; the
+							client name never ships, only the architecture, and only after the writeup clears
+							review.
 						</p>
 					</div>
 				</div>

@@ -21,10 +21,10 @@ export function ContactCTA() {
 					Contact
 				</h2>
 				<p className="mt-4 text-text-muted leading-relaxed">
-					Building for engineers who care that the audit chain is unbroken at 02:00 BRT, the cost
-					ceiling holds at peak, and the writeup is still reproducible six months later. Send a
-					brief — architecture, RAG, compliance, supply-chain — and I'll tell you straight if it's a
-					fit.
+					I build for the engineer who gets paged at 02:00 BRT and needs the audit chain to still
+					hold. The cost ceiling stays put at peak. The writeup still reconstructs six months later.
+					Send a brief on architecture, RAG, compliance, or supply-chain. I'll tell you straight
+					whether it's a fit.
 				</p>
 				<div className="mt-8 flex items-center justify-center gap-4">
 					<Button variant="primary" size="lg" as="a" href="mailto:pedrobalbino@proton.me">
