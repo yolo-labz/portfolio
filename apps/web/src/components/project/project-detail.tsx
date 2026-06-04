@@ -2,6 +2,7 @@
 
 import { Badge, Button } from "@portfolio/ui";
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { FigStamp } from "@/components/shared/fig-stamp";
 import type { Project } from "@/data/projects";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
@@ -13,7 +14,19 @@ interface ProjectDetailProps {
 
 export function ProjectDetail({ project }: ProjectDetailProps) {
 	const reduced = useReducedMotion();
-	const hasArc = Boolean(project.constraint || project.decision || project.outcome);
+	// Per-project prose lives under the "Projects" namespace, keyed by slug.
+	const t = useTranslations("Projects");
+	// Static case-study UI labels.
+	const ui = useTranslations("ProjectDetail");
+	const slug = project.slug;
+
+	// Optional narrative-arc fields. `hasArc` flags featured/case-study projects;
+	// each field is then guarded with t.has so a project that carries only some of
+	// the three (constraint/decision/outcome) never renders an empty row.
+	const hasConstraint = Boolean(project.hasArc) && t.has(`${slug}.constraint`);
+	const hasDecision = Boolean(project.hasArc) && t.has(`${slug}.decision`);
+	const hasOutcome = Boolean(project.hasArc) && t.has(`${slug}.outcome`);
+	const hasArc = hasConstraint || hasDecision || hasOutcome;
 
 	return (
 		<article className="px-6 pt-32 pb-16">
@@ -27,11 +40,11 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 						href={{ pathname: "/", hash: "projects" }}
 						className="mb-8 inline-flex items-center text-sm text-text-muted transition-colors hover:text-text"
 					>
-						&larr; Back to projects
+						&larr; {ui("backToProjects")}
 					</Link>
 
 					<h1 className="text-4xl font-bold tracking-tight">{project.title}</h1>
-					<p className="mt-3 text-lg text-text-muted">{project.tagline}</p>
+					<p className="mt-3 text-lg text-text-muted">{t(`${slug}.tagline`)}</p>
 
 					<div className="mt-6 flex flex-wrap gap-2">
 						{project.techStack.map((tech) => (
@@ -52,7 +65,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									Live demo
+									{ui("liveDemo")}
 								</Button>
 							)}
 							{project.links.source && (
@@ -64,7 +77,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									View source
+									{ui("viewSource")}
 								</Button>
 							)}
 						</div>
@@ -92,41 +105,45 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 					transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
 				>
 					<div>
-						<h2 className="mb-3 text-xl font-semibold">The problem</h2>
-						<p className="leading-relaxed text-text-muted">{project.problemStatement}</p>
+						<h2 className="mb-3 text-xl font-semibold">{ui("problemHeading")}</h2>
+						<p className="leading-relaxed text-text-muted">{t(`${slug}.problemStatement`)}</p>
 					</div>
 
 					<div>
-						<h2 className="mb-3 text-xl font-semibold">The solution</h2>
-						<p className="leading-relaxed text-text-muted">{project.solutionSummary}</p>
+						<h2 className="mb-3 text-xl font-semibold">{ui("solutionHeading")}</h2>
+						<p className="leading-relaxed text-text-muted">{t(`${slug}.solutionSummary`)}</p>
 					</div>
 
 					{hasArc && (
 						<div className="rounded-lg border border-border border-l-2 border-l-accent bg-bg-card p-6">
-							<FigStamp n="01" label="decision record" />
+							<FigStamp n="01" label={ui("decisionRecord")} />
 							<dl className="mt-4 space-y-5">
-								{project.constraint && (
+								{hasConstraint && (
 									<div>
 										<dt className="font-mono text-xs uppercase tracking-wide text-accent">
-											Constraint
+											{ui("constraint")}
 										</dt>
-										<dd className="mt-1 leading-relaxed text-text-muted">{project.constraint}</dd>
+										<dd className="mt-1 leading-relaxed text-text-muted">
+											{t(`${slug}.constraint`)}
+										</dd>
 									</div>
 								)}
-								{project.decision && (
+								{hasDecision && (
 									<div>
 										<dt className="font-mono text-xs uppercase tracking-wide text-accent">
-											Decision
+											{ui("decision")}
 										</dt>
-										<dd className="mt-1 leading-relaxed text-text-muted">{project.decision}</dd>
+										<dd className="mt-1 leading-relaxed text-text-muted">
+											{t(`${slug}.decision`)}
+										</dd>
 									</div>
 								)}
-								{project.outcome && (
+								{hasOutcome && (
 									<div>
 										<dt className="font-mono text-xs uppercase tracking-wide text-accent">
-											Outcome
+											{ui("outcome")}
 										</dt>
-										<dd className="mt-1 leading-relaxed text-text-muted">{project.outcome}</dd>
+										<dd className="mt-1 leading-relaxed text-text-muted">{t(`${slug}.outcome`)}</dd>
 									</div>
 								)}
 							</dl>
@@ -134,8 +151,8 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 					)}
 
 					<div>
-						<h2 className="mb-3 text-xl font-semibold">Overview</h2>
-						<p className="leading-relaxed text-text-muted">{project.description}</p>
+						<h2 className="mb-3 text-xl font-semibold">{ui("overviewHeading")}</h2>
+						<p className="leading-relaxed text-text-muted">{t(`${slug}.description`)}</p>
 					</div>
 				</motion.div>
 			</div>
