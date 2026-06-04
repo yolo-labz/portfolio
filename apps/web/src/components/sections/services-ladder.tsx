@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { FigStamp } from "@/components/shared/fig-stamp";
 import { useIntersection } from "@/hooks/use-intersection";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
@@ -19,63 +20,9 @@ interface Rung {
 	offers: Offer[];
 }
 
-const rungs: Rung[] = [
-	{
-		rung: "Pattern",
-		tag: "prove it",
-		offers: [
-			{
-				name: "Regulated-AI Architecture Review",
-				scope:
-					"A fixed-week diagnostic of your existing LLM stack — three-plane topology memo, severity-ranked findings, annotated reference repo.",
-				outcome:
-					"A go/no-go verdict and a scoped remediation map before you commit engineering quarters.",
-			},
-			{
-				name: "MCP Tool-Boundary Security Audit",
-				scope:
-					"STRIDE threat model of every exposed tool, LLM-vs-operator input-boundary review, deny-by-default permission matrix, signed-release hardening (Sigstore + SLSA L2 + dual SBOM).",
-				outcome:
-					"A severity-ranked report with concrete patches, and a pipeline where every binary verifies with one command.",
-			},
-		],
-	},
-	{
-		rung: "Pipeline",
-		tag: "make it real",
-		offers: [
-			{
-				name: "RAG Audit-Chain Readiness Sprint",
-				scope:
-					"A production retrieval pipeline — pgvector + hybrid retrieval + rerank, forced-citation answers, recall measured on your own holdout set, a decision-trace ledger keyed to (prompt, docs, model, output).",
-				outcome:
-					"Provably-grounded answers, accuracy measured against your data, and behaviour auditable from day one.",
-			},
-			{
-				name: "Event-Driven Backend Build & Rescue",
-				scope:
-					"An authenticated, production-shape backend — typed schema, audit ledger, outbox + idempotency, fitness-function tests, CI gate, observability. Serverless variant ships at $0 idle.",
-				outcome:
-					"A backend that survives load, costs nothing idle, and provisions and tears down reproducibly — owned in your repo.",
-			},
-		],
-	},
-	{
-		rung: "Platform",
-		tag: "keep custody",
-		offers: [
-			{
-				name: "Embedded AI-Platform Custody",
-				scope:
-					"Fractional architecture custody — weekly fitness-function review, monthly audit-chain integrity probe, compliance-plane ownership, participation in the AI hiring loop.",
-				outcome:
-					"An audit-grade AI capability your whole org reuses, with the audit chain kept green between releases.",
-			},
-		],
-	},
-];
-
 export function ServicesLadder() {
+	const t = useTranslations("Services");
+	const rungs = t.raw("rungs") as Rung[];
 	const { ref, isVisible } = useIntersection(0.1);
 	const reduced = useReducedMotion();
 
@@ -88,15 +35,11 @@ export function ServicesLadder() {
 		>
 			<div className="mx-auto max-w-6xl">
 				<div className="mb-12">
-					<FigStamp n="05" label="how an engagement scales" />
+					<FigStamp n="05" label={t("figLabel")} />
 					<h2 id="services-heading" className="mt-3 text-3xl font-bold tracking-tight">
-						Start with a verdict. Scale when the proof holds.
+						{t("heading")}
 					</h2>
-					<p className="mt-2 max-w-2xl text-text-muted">
-						Each offer ships a defined deliverable, scoped and fixed at signature. Most clients open
-						with a diagnostic, then expand into a build once the architecture proves out against
-						their own data.
-					</p>
+					<p className="mt-2 max-w-2xl text-text-muted">{t("intro")}</p>
 				</div>
 
 				<div className="space-y-12">
@@ -122,7 +65,7 @@ export function ServicesLadder() {
 										<p className="mt-2 text-sm leading-relaxed text-text-muted">{offer.scope}</p>
 										<p className="mt-3 text-sm leading-relaxed text-text">
 											<span className="font-mono text-xs uppercase tracking-wide text-accent">
-												Outcome —{" "}
+												{t("outcomeLabel")}{" "}
 											</span>
 											{offer.outcome}
 										</p>
@@ -134,10 +77,9 @@ export function ServicesLadder() {
 				</div>
 
 				<p className="mt-12 text-sm text-text-muted">
-					Every engagement opens with a short discovery call and a written diagnostic. Scope is
-					fixed at signature.{" "}
+					{t("footer")}{" "}
 					<a href="mailto:pedrobalbino@proton.me" className="font-mono text-accent hover:underline">
-						Send a brief →
+						{t("footerCta")}
 					</a>
 				</p>
 			</div>

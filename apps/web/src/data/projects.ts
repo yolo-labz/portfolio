@@ -4,17 +4,20 @@ export interface TechItem {
 }
 
 export interface Metric {
+	// `label` is short prose and is translated in next-intl messages
+	// (Projects.<slug>.metrics[]); `value` carries the load-bearing numbers and
+	// stays here verbatim, locale-independent.
 	label: string;
 	value: string;
 }
 
 export interface Project {
 	slug: string;
+	// `title` is the project NAME (mostly proper/technical, e.g. "wa") — kept here,
+	// not localized. All per-project PROSE (tagline, description, problemStatement,
+	// solutionSummary, constraint/decision/outcome) lives in next-intl messages
+	// under the "Projects" namespace, keyed by slug. See apps/web/messages.
 	title: string;
-	tagline: string;
-	description: string;
-	problemStatement: string;
-	solutionSummary: string;
 	techStack: TechItem[];
 	metrics: Metric[];
 	links: {
@@ -22,29 +25,25 @@ export interface Project {
 		source?: string;
 	};
 	featured: boolean;
-	// Narrative-arc fields — rendered on featured deep-dive pages so the page shows
-	// the decision and the tradeoff, not just the result.
-	constraint?: string;
-	decision?: string;
-	outcome?: string;
+	// `hasArc` marks featured projects that carry a narrative-arc record
+	// (constraint / decision / outcome prose in messages) so the deep-dive page can
+	// render the decision block without trusting message-key presence at runtime.
+	hasArc?: boolean;
 }
 
 // Featured projects (featured: true) carry the compliance-architecture thesis and
 // render full case-study cards. The rest render in a compact "open-source & demos"
 // shelf. Client work is anonymized; every featured metric is either locked-verified
 // (positioning corpus) or stated in the public repo it links to.
+//
+// PROSE (tagline/description/problemStatement/solutionSummary + the optional
+// constraint/decision/outcome arc) is NOT here — it is localized in next-intl
+// messages under Projects.<slug>.*. This array is structure only: slug, title,
+// techStack, metric VALUES, links, featured, hasArc.
 export const projects: Project[] = [
 	{
 		slug: "compliance-tax-agent",
 		title: "Compliance-grade tax-filing agent — Brazilian IRPF",
-		tagline:
-			"A typed-tool LLM agent for regulated tax filings. One hallucinated number is a compliance failure, so every step is schema-validated and every figure cites its source.",
-		description:
-			"An LLM agent that prepares and validates Brazilian income-tax (IRPF) filings. The loop is bounded at ≤40 turns per filing. Each step is a schema-validated tool call. Retrieval is scoped to the filing year. Every emitted number cites its source span and is re-validated against that span before it lands in the return. The decision log is hash-chained and anchored to a transparency log, so any filing replays years later.",
-		problemStatement:
-			"A regulated tax-filing agent cannot hallucinate one numerical field. Every output has to replay for a five-year audit window under LGPD, on-premise, with no data egress. General-purpose RAG fails this twice: it can't prove where a number came from, and it can't bound how long it 'thinks'.",
-		solutionSummary:
-			"The loop caps at ≤40 turns per filing. The router rejects any cross-year retrieval hit. Forced citation plus post-hoc span validation means the model's arithmetic is never trusted blind. 80 deterministic anomaly rules catch out-of-policy values before they land, and a hash-chained audit ledger anchors to a public transparency log. Per-field retry, rather than re-running the whole filing, cut LLM cost ~80%. Rejected: a single large-context prompt (no provenance) and an open-ended agent loop (no audit ceiling).",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "Typed-tool agent loop", category: "framework" },
@@ -61,24 +60,11 @@ export const projects: Project[] = [
 		],
 		links: {},
 		featured: true,
-		constraint:
-			"LGPD plus a five-year audit-replay mandate, on-premise, zero data egress. One hallucinated numerical field is a regulatory failure.",
-		decision:
-			"Bound the agent at ≤40 typed-tool turns per filing. Scope retrieval per filing year and reject cross-year hits at the router. Force every number to cite, then re-validate it against its source span before it lands. Rejected a single large-context prompt (no provenance) and an unbounded loop (no audit ceiling).",
-		outcome:
-			"Zero hallucinated numerical fields across 18 months in production. ~10K filings/day at peak. 80 deterministic anomaly rules gate every value, and per-field retry cut LLM cost ~80%. Every field replays to the source span that produced it.",
+		hasArc: true,
 	},
 	{
 		slug: "event-driven-retail",
 		title: "Event-driven retail backend — clearing 10K+ transactions/day",
-		tagline:
-			"A multi-channel commerce backend where every state change is idempotent and auditable. Go + TypeScript on Kafka, outbox pattern, exactly-once effects.",
-		description:
-			"An event-driven backend clearing 10K+ transactions/day (~250 orders/min at peak) across multiple commerce surfaces, carved out of a 1M+ LOC Rails monolith over an 18-month strangler-fig migration. A BFF fronts the channels. A broker fans domain events out to dispatchers. The outbox publishes each event exactly once per committed transaction, and idempotency keys make every downstream effect safe to retry. Checkout p99 stayed ≤500ms under load. The audit path traces to BACEN Circular 3.978/2020 throughout.",
-		problemStatement:
-			"In multi-channel commerce the same order can arrive twice, a partner webhook can fire three times, a network blip can drop an event mid-flight. The ledger still has to stay exactly right and auditable under load.",
-		solutionSummary:
-			"BFF + Broker + Dispatcher. The broker decouples producers from consumers. The transactional outbox publishes each event exactly once per committed write, and idempotency keys dedupe at every effect boundary. Kafka carries the event log; Go and TypeScript services consume it. Retries are safe by construction, so partner flakiness degrades gracefully instead of corrupting state.",
 		techStack: [
 			{ name: "Go", category: "language" },
 			{ name: "TypeScript", category: "language" },
@@ -94,24 +80,11 @@ export const projects: Project[] = [
 		],
 		links: {},
 		featured: true,
-		constraint:
-			"A 1M+ LOC monolith couldn't scale checkout under load and lacked a regulator-traceable audit path. The cutover couldn't stop the business selling. The same order can arrive twice and a partner webhook can fire repeatedly, yet the ledger must stay exactly right (checkout p99 ≤500ms, BACEN 3.978-traceable) across an 18-month migration.",
-		decision:
-			"Strangler-fig the monolith. Carve domain capabilities into a BFF + Broker + Dispatcher. Decouple producers from consumers, publish via a transactional outbox (exactly-once per committed write), make every downstream effect idempotent so retries are safe by construction. Rejected a big-bang rewrite (the business can't stop selling), synchronous point-to-point calls (cascading failure), and at-least-once delivery without dedupe (double effects).",
-		outcome:
-			"A 1M+ LOC monolith migrated over 18 months without halting sales. 10K+ transactions/day (~250 orders/min peak), checkout p99 ≤500ms, BACEN 3.978-traceable. Retry-safe exactly-once effects mean partner flakiness degrades gracefully instead of corrupting the ledger.",
+		hasArc: true,
 	},
 	{
 		slug: "legal-domain-rag",
 		title: "Legal-domain RAG — −60% manual documentation, citations that hold",
-		tagline:
-			"Per-jurisdiction retrieval with a deterministic citation validator. Every answer grounds in a real source. AWS Bedrock + Lambda + pgvector.",
-		description:
-			"A legal-tech RAG pipeline over a 15M-document corpus spanning 5 jurisdictions. Each jurisdiction gets its own pgvector index, so retrieval never bleeds across legal regimes. A deterministic citation validator checks that every cited passage exists and supports the claim before the answer returns. Serverless on AWS Bedrock + Lambda, so cost tracks usage instead of idle capacity.",
-		problemStatement:
-			"In legal work a fabricated or mis-attributed citation is malpractice. An answer grounded in the wrong jurisdiction is worse than no answer. Doing it by hand doesn't scale.",
-		solutionSummary:
-			"Per-jurisdiction pgvector indexes keep retrieval inside the correct legal regime. A deterministic citation validator verifies every cited span exists and supports the statement before generation returns. The model is never trusted to cite from memory. AWS Bedrock handles inference; Lambda keeps it serverless and cost-bounded.",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "AWS Bedrock", category: "service" },
@@ -127,24 +100,11 @@ export const projects: Project[] = [
 		],
 		links: {},
 		featured: true,
-		constraint:
-			"A fabricated citation is malpractice. A cross-jurisdiction answer is worse than none. Manual documentation doesn't scale.",
-		decision:
-			"Isolate retrieval per jurisdiction so a query can't pull from the wrong regime. Gate generation behind a deterministic citation validator that confirms every cited span exists and supports the claim. Rejected a single shared index (cross-regime bleed) and trusting model-generated citations (hallucination risk).",
-		outcome:
-			"−60% manual documentation effort across a 15M-document, 5-jurisdiction corpus. Every citation is deterministically validated against the source, never generated from memory.",
+		hasArc: true,
 	},
 	{
 		slug: "multilingual-rag",
 		title: "Multilingual RAG at 100K+ DAU — +40% knowledge-base precision",
-		tagline:
-			"Grounded retrieval with frozen-eval regression checks for a multilingual user base. Precision is measured before every rollout. AWS Bedrock + pgvector.",
-		description:
-			"A retrieval-augmented assistant serving 100K+ daily active users across a multilingual population. Grounded retrieval keeps answers tied to the knowledge base. A frozen evaluation set gates every rollout: precision is measured on held-out questions before a change ships, so the knowledge base improves monotonically instead of regressing silently. AWS Bedrock + pgvector under the hood.",
-		problemStatement:
-			"A 100K-DAU multilingual assistant can't regress silently. A prompt or model change that helps one language can quietly degrade another, and nobody notices until the users do.",
-		solutionSummary:
-			"Grounded retrieval anchors answers to the knowledge base, not the model's memory. A frozen-eval regression suite measures precision on a held-out question set before any rollout. A change that improves one cohort can't silently degrade another. AWS Bedrock for inference, pgvector for retrieval.",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "AWS Bedrock", category: "service" },
@@ -160,24 +120,11 @@ export const projects: Project[] = [
 		],
 		links: {},
 		featured: true,
-		constraint:
-			"At 100K DAU across many languages, a change that helps one cohort can silently degrade another. You find out from the users.",
-		decision:
-			"Ground every answer in the knowledge base and gate rollouts behind a frozen evaluation set, so precision is measured on held-out questions before shipping. Rejected ungated prompt iteration (silent regressions) and ungrounded generation (hallucination at scale).",
-		outcome:
-			"+40% knowledge-base precision at 100K+ daily active users. A frozen-eval gate blocks silent regressions before they reach users.",
+		hasArc: true,
 	},
 	{
 		slug: "ai-document-processor",
 		title: "ai-document-processor — auditable document extraction pipeline",
-		tagline:
-			"A format-agnostic ingestion pipeline where every extracted field traces back to its source span. PDF/DOCX/image → OCR → classify → extract → queryable JSONB.",
-		description:
-			"Upload PDFs, images, or DOCX files. The pipeline extracts text with an OCR fallback for scanned input. A cheap model classifies the document type with a confidence score. A focused model pulls structured fields (vendor, amount, dates, line items) into clean JSON. Results land in PostgreSQL with JSONB + TSVECTOR full-text search. Next.js dashboard, Docker Compose orchestration, one command to bring the stack up. With no API key it runs text extraction only, so the demo path is free.",
-		problemStatement:
-			"A regulated-document pipeline has to be format-agnostic (text PDF, scanned PDF, JPEG, DOCX), type-aware (invoice vs contract vs receipt), and queryable downstream. It also has to self-host, which rules out hand-rolling a parser per format or buying a closed SaaS.",
-		solutionSummary:
-			"A two-tier AI pipeline: a cheap model classifies, a focused model extracts by type. Every extracted field traces to its source span. PyMuPDF + Tesseract handle text and OCR fallback. PostgreSQL JSONB stores extracted fields alongside TSVECTOR for free-text search. ~$0.006 per document.",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "FastAPI", category: "framework" },
@@ -195,24 +142,11 @@ export const projects: Project[] = [
 		],
 		links: { demo: "https://ai-docs.home301server.com.br" },
 		featured: true,
-		constraint:
-			"Self-hostable, format-agnostic, and type-aware. Extraction has to be queryable downstream and auditable per field.",
-		decision:
-			"Split the work: a cheap classifier first, then a focused extractor keyed to the document type. A free no-API-key text path means the system degrades instead of failing. Store JSONB + TSVECTOR so downstream queries hit one table.",
-		outcome:
-			"A live, self-hostable pipeline at ~$0.006/document. Every extracted field traces to its source span and is searchable in full text.",
+		hasArc: true,
 	},
 	{
 		slug: "wa",
 		title: "wa — WhatsApp daemon with an auditable trust boundary",
-		tagline:
-			"A persistent agent channel that treats the inbound message body as an untrusted audit perimeter. Go, hexagonal, Sigstore-signed.",
-		description:
-			"A persistent WhatsApp session wrapped in a daemon (`wad`) with a thin CLI client (`wa`) that issues commands over a JSON-RPC unix socket. SQLite ratchet store, allowlist + rate limiter + warmup ramp before the first send. Inbound messages are wrapped in <channel> tags so a downstream agent cannot trust a message body to mutate the allowlist or trigger sends. Apache-2.0, GoReleaser to GitHub Releases + homebrew-tap + flake.nix.",
-		problemStatement:
-			"Give an autonomous agent a real WhatsApp channel and every inbound message body becomes an injection surface. A crafted message must never mutate the allowlist or trigger a send. A partner-API library leaking across the codebase makes the trust boundary impossible to audit.",
-		solutionSummary:
-			"Hexagonal layering enforced by golangci-lint, so domain and app code physically cannot import the WhatsApp library — it is quarantined to adapters. Inbound messages arrive wrapped in <channel> tags, so the agent can't trust a body to mutate state. Default-deny allowlist + per-second/minute/day rate limits + a 25/50/100% warmup ramp before the first send. SQLite ratchet store on modernc.org/sqlite — CGO_ENABLED=0, no CGO build chain.",
 		techStack: [
 			{ name: "Go", category: "language" },
 			{ name: "whatsmeow", category: "framework" },
@@ -231,24 +165,11 @@ export const projects: Project[] = [
 		],
 		links: { source: "https://github.com/yolo-labz/wa" },
 		featured: false,
-		constraint:
-			"An autonomous agent with a real WhatsApp channel makes every inbound message body an injection surface — and a partner-API library leaking across the codebase makes the trust boundary impossible to audit.",
-		decision:
-			"Quarantine the WhatsApp library to adapters and let golangci-lint fail the build if domain/app code imports it; wrap inbound bodies in <channel> tags so they can't be trusted to mutate state; default-deny the allowlist and ramp sends 25/50/100% on a fresh session.",
-		outcome:
-			"A daemon whose trust boundary is auditable: the library is contained, the message body can't escalate privilege, and every release is Sigstore-signed at SLSA L2.",
+		hasArc: true,
 	},
 	{
 		slug: "serverless-data-api",
 		title: "serverless-data-api — the boring layers tutorials skip",
-		tagline:
-			"Production-grade serverless CRUD in Terraform: IAM least-privilege, API-key usage plans, PITR, and a teardown that leaves zero orphans.",
-		description:
-			"A production-ready serverless CRUD API provisioned entirely via Terraform. API Gateway with API-key auth and 1000-req/day rate limiting fronts a Python 3.12 Lambda on arm64 with AWS Powertools, backed by a single-table DynamoDB design with PITR. A CloudWatch dashboard with 8 widgets covers invocations, latency, errors, and capacity. `terraform apply` brings it up; `terraform destroy` removes every resource — no orphans.",
-		problemStatement:
-			"Serverless tutorials skip the boring layers: IAM least-privilege, API-key + usage-plan auth, structured logging, a teardown story. The result is a demo that can't reach production without a rewrite.",
-		solutionSummary:
-			"Five composable Terraform modules (dynamodb, iam, lambda, api_gateway, monitoring) wire 15 resources end to end. The Lambda execution role is least-privilege scoped to the table's ARN. The API Gateway usage plan caps at 1000 req/day with burst 10. GitHub Actions runs fmt + validate + plan on every PR. Idle cost is $0 (or $3/month with the CloudWatch dashboard kept on).",
 		techStack: [
 			{ name: "Terraform", category: "infrastructure" },
 			{ name: "Python", category: "language" },
@@ -266,24 +187,11 @@ export const projects: Project[] = [
 		],
 		links: {},
 		featured: false,
-		constraint:
-			"A serverless API that can be cloned straight into production — IAM least-privilege, auth, observability, and a clean teardown — not a demo that needs a rewrite first.",
-		decision:
-			"Scope the Lambda role to the table ARN (never a wildcard), gate the API behind an API-key usage plan, cap at 1000 req/day, and make `terraform destroy` leave zero orphans. Provision every layer as a reusable module so the pattern is copyable.",
-		outcome:
-			"15 resources across 5 modules, least-privilege IAM, PITR, and a teardown that removes everything — at $0/month idle.",
+		hasArc: true,
 	},
 	{
 		slug: "exec-job-board",
 		title: "exec-job-board — multi-source data aggregation pipeline",
-		tagline:
-			"Four divergent public APIs normalized behind one Pydantic schema, deduped by content hash, and served as a zero-backend static site — refreshed daily by cron.",
-		description:
-			"An automated daily pipeline collects executive-tier listings from 4 public data APIs (JSearch, Adzuna, The Muse, USAJobs), normalizes them into a unified Pydantic schema, deduplicates via SHA-256 content hashing, and emits a single `jobs.json` consumed by a Next.js static site at build time. Fuse.js client-side fuzzy search + 4-dimension filtering, sub-200ms response, zero runtime backend cost.",
-		problemStatement:
-			"Aggregating data across 4 third-party APIs with divergent response schemas, rate limits, and auth models — without a backend that has to be kept warm — is the canonical 'glue code nobody wants to maintain' problem.",
-		solutionSummary:
-			"One adapter per source isolates response-shape drift. Pydantic v2 enforces the unified schema at the seam. SHA-256 over (title, employer, location, posted_date) handles dedupe. A GitHub Actions cron runs the collector daily, commits the JSON, and redeploys the static site. The site falls back to a curated 30-row seed when the API output is missing — the demo never breaks.",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "httpx", category: "framework" },
@@ -305,14 +213,6 @@ export const projects: Project[] = [
 	{
 		slug: "realestate-price-tracker",
 		title: "realestate-price-tracker — full-stack market dashboard",
-		tagline:
-			"Three layers most demo stacks fake one of: filtered + paginated REST, indexed aggregate queries, and a map/charts frontend that stays responsive under every filter combination.",
-		description:
-			"A full-stack dashboard tracking real-estate market data. FastAPI serves REST endpoints with filterable pagination, aggregate stats, and CSV/JSON export. A Next.js dashboard renders interactive Recharts line/bar charts and a React-Leaflet map with color-coded markers. PostgreSQL 16 with indexed queries, 800 synthetic listings across 6 neighborhoods, stitched together via Docker Compose.",
-		problemStatement:
-			"A market dashboard needs three layers wired correctly: filtered + paginated REST, indexed aggregate queries, and an interactive frontend with map + charts that stays responsive under filter combinations — and most demo stacks pick one and fake the rest.",
-		solutionSummary:
-			"SQLAlchemy async + asyncpg for non-blocking PostgreSQL access. Indexed columns on (neighborhood, price, posted_date) keep aggregates under a few ms. A seed script generates Gaussian-distributed prices around per-neighborhood medians. A single `docker compose up` brings PostgreSQL + API + dashboard online; CSV/JSON export endpoints respect the same filters as the live UI.",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "FastAPI", category: "framework" },
@@ -334,14 +234,6 @@ export const projects: Project[] = [
 	{
 		slug: "claude-mac-chrome",
 		title: "claude-mac-chrome — Chrome automation for Claude Code on macOS",
-		tagline:
-			"Drives React/Ember SPAs that reject synthetic events, by sending real OS pointer events at computed screen coordinates.",
-		description:
-			"Reads Chrome's Local State authoritative profile catalog and matches profiles to open windows via emails embedded in tab titles. Stable window/tab IDs across opens. Combined with cliclick + pbcopy, it drives single-page apps that reject programmatic events.",
-		problemStatement:
-			"LinkedIn, Calendly, and Upwork single-page apps gate programmatic clicks via `event.isTrusted === true`. Browser extensions can't bypass it; Playwright via remote-debugging-port works but disrupts the user session.",
-		solutionSummary:
-			"macOS-native automation: cliclick at computed screen coords (window bounds + viewport rect) sends real OS pointer events with isTrusted=true. Chrome profile detection via Local State JSON. AppleScript orchestrates window + tab focus. Combined with pbcopy + Cmd+V for React contenteditable input.",
 		techStack: [
 			{ name: "Bash", category: "language" },
 			{ name: "AppleScript", category: "language" },
@@ -359,14 +251,6 @@ export const projects: Project[] = [
 	{
 		slug: "linkedin-chrome-copilot",
 		title: "linkedin-chrome-copilot — per-locale LinkedIn form automation",
-		tagline:
-			"Materializes and saves per-locale (PT/EN/ES) profile slots behind isTrusted-gated Save buttons, with a two-phase confirm on any send.",
-		description:
-			"Per-locale profile-edit forms (PT/EN/ES) gated behind separate URLs with isTrusted=true Save buttons. The plugin enumerates positions, materializes drafts, and saves each locale slot via execCommand('insertText') + a Save-button event-chain click — Chrome stays in the background, browser session intact.",
-		problemStatement:
-			"LinkedIn's 2026 profile editor stores 3 locale slots per position (PT/EN/ES) behind separate URLs. The Save button discriminates isTrusted=true events, breaking synthetic dispatches; the Algolia typeahead in the skills section ignores synthetic input.",
-		solutionSummary:
-			"A Bash 3.2 plugin sibling to claude-mac-chrome. Reads positions via owner-view DOM scrape, drives per-locale /edit/forms/<id>/?language=<lang>&country=<cc> saves via AppleScript JS-injection. cliclick fallback for paths gated on real OS pointer events. Audit log per action; two-phase confirm on any Send equivalent.",
 		techStack: [
 			{ name: "Bash", category: "language" },
 			{ name: "AppleScript", category: "language" },
@@ -383,14 +267,6 @@ export const projects: Project[] = [
 	{
 		slug: "kokoro-speakd",
 		title: "kokoro-speakd — persistent Kokoro TTS daemon",
-		tagline:
-			"Loads the TTS model once and serves synthesis over a unix socket — sub-200ms warm response instead of a 3-5s per-call cold load.",
-		description:
-			"Loads the Kokoro 82M model once at daemon start and exposes a unix socket for repeat synthesis requests. Native macOS launchd + Linux systemd integration. PyPI-published with PEP 740 attestations.",
-		problemStatement:
-			"Per-request model load adds 3-5s latency to every TTS call. Claude Code session-level voice feedback needs sub-second response.",
-		solutionSummary:
-			"Daemon architecture: the model is held in memory, requests arrive via unix socket, with optional GPU acceleration via ONNX Runtime. Distributed via PyPI Trusted Publishing with PEP 740 build-provenance attestations.",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "ONNX Runtime", category: "framework" },
@@ -408,14 +284,6 @@ export const projects: Project[] = [
 	{
 		slug: "claude-classroom-submit",
 		title: "claude-classroom-submit — autonomous Google Classroom turn-in",
-		tagline:
-			"Skips the cross-origin Drive Picker iframe entirely — uploads via rclone, attaches and turns in via the Classroom REST API.",
-		description:
-			"Uploads a file to Drive via rclone, finds the target assignment by query, attaches the Drive file via studentSubmissions.modifyAttachments, and finalizes with studentSubmissions.turnIn — all via REST API.",
-		problemStatement:
-			"Browser automation hits the Drive Picker iframe sandbox; programmatic file selection is blocked by cross-origin policy. Manual submit takes ~2 minutes per assignment.",
-		solutionSummary:
-			"Skip the browser entirely. rclone uploads to Drive, the Classroom REST API attaches + turns in. OAuth 2.0 refresh-token flow stored at ~/.config/claude-classroom-submit/tokens.json.",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "Google Classroom API", category: "service" },
@@ -432,14 +300,6 @@ export const projects: Project[] = [
 	{
 		slug: "fand",
 		title: "fand — Apple Silicon thermal daemon",
-		tagline:
-			"Ramps fans on temperature-driven curves before thermal throttling starts, with zero-downtime SIGHUP config reload — Rust + launchd.",
-		description:
-			"Reads SMC sensors via direct system calls, applies user-configured fan curves, and supports per-machine overrides. Hot-reload on SIGHUP. Rust 1.84 with exact-pin dependencies for reproducible builds.",
-		problemStatement:
-			"Apple Silicon fan defaults are too conservative under sustained CPU + GPU load (Claude Code + Docker + browser + ffmpeg). Fans don't ramp up until thermal throttling has already started.",
-		solutionSummary:
-			"A userspace daemon polls the SMC, applies aggressive curves before throttle, and reloads config without restart. Distributed as a universal2 binary via brew + GitHub Releases.",
 		techStack: [
 			{ name: "Rust", category: "language" },
 			{ name: "SMC", category: "service" },
@@ -455,14 +315,6 @@ export const projects: Project[] = [
 	{
 		slug: "pedro-portfolio-recipes",
 		title: "pedro-portfolio-recipes — capability-first code recipes",
-		tagline:
-			"Short, copy-pasteable patterns from the stacks I ship — each one is problem, working snippet, tradeoff, anti-pattern.",
-		description:
-			"Eight capability-first code recipes — Claude Code plugin skills, Chrome multi-profile automation, pgvector + BM25 hybrid RAG, Sigstore attestation verification, NixOS flake overlays, parallel Azure/GCP Terraform modules, sops-nix secrets, and polyglot lefthook pre-commit hooks. Each recipe is one directory: problem, working snippet, tradeoff, anti-pattern.",
-		problemStatement:
-			"Reviewers and collaborators need fast evidence that a stack claim is backed by actual code — not marketing copy, and not full apps. Long-form writeups are the wrong resolution for 'show me how you'd wire hybrid search'.",
-		solutionSummary:
-			"A public repo of short, self-contained recipes under recipes/<topic>/README.md. No build step, no shared framework. Each recipe stands alone at 200–500 words: problem, snippet, tradeoff, anti-pattern, reference. MIT, with a SonarQube + Dependabot + lefthook baseline.",
 		techStack: [
 			{ name: "Bash", category: "language" },
 			{ name: "SQL", category: "language" },

@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { getTranslations } from "next-intl/server";
 import { projects } from "@/data/projects";
 
 export const size = { width: 1200, height: 630 };
@@ -8,9 +9,15 @@ export function generateStaticParams() {
 	return projects.map((p) => ({ slug: p.slug }));
 }
 
-export default async function ProjectOGImage({ params }: { params: Promise<{ slug: string }> }) {
-	const { slug } = await params;
+export default async function ProjectOGImage({
+	params,
+}: {
+	params: Promise<{ locale: string; slug: string }>;
+}) {
+	const { locale, slug } = await params;
 	const project = projects.find((p) => p.slug === slug);
+	const t = await getTranslations({ locale, namespace: "Projects" });
+	const tagline = project ? t(`${slug}.tagline`) : "";
 
 	return new ImageResponse(
 		<div
@@ -44,7 +51,7 @@ export default async function ProjectOGImage({ params }: { params: Promise<{ slu
 						lineHeight: 1.4,
 					}}
 				>
-					{project?.tagline ?? ""}
+					{tagline}
 				</div>
 				<div
 					style={{
