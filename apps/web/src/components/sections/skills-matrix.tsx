@@ -2,11 +2,14 @@
 
 import { Badge } from "@portfolio/ui";
 import { motion } from "motion/react";
-import { skills } from "@/data/skills";
+import { useTranslations } from "next-intl";
+import type { SkillDomain } from "@/data/skills";
 import { useIntersection } from "@/hooks/use-intersection";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 export function SkillsMatrix() {
+	const t = useTranslations("Skills");
+	const skills = t.raw("domains") as SkillDomain[];
 	const { ref, isVisible } = useIntersection(0.05);
 	const reduced = useReducedMotion();
 
@@ -20,12 +23,9 @@ export function SkillsMatrix() {
 			<div className="mx-auto max-w-6xl">
 				<div className="mb-12">
 					<h2 id="skills-heading" className="text-3xl font-bold tracking-tight">
-						Technical Skills
+						{t("heading")}
 					</h2>
-					<p className="mt-2 text-text-muted">
-						Grouped by the problem each stack solves, so you can scan for the one that matches
-						yours.
-					</p>
+					<p className="mt-2 text-text-muted">{t("intro")}</p>
 				</div>
 
 				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

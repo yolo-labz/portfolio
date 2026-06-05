@@ -12,21 +12,27 @@
 
 import { expect, test } from "@playwright/test";
 
+// Paths are explicit-locale (localePrefix: "always" → "/" redirects to "/en").
 const PAGES: ReadonlyArray<{ name: string; path: string }> = [
-	{ name: "home", path: "/" },
-	{ name: "about", path: "/about" },
+	{ name: "home", path: "/en" },
+	{ name: "about", path: "/en/about" },
 	// Top 5 featured projects (apps/web/src/data/projects.ts: featured === true).
-	{ name: "project-wa", path: "/projects/wa" },
-	{ name: "project-claude-mac-chrome", path: "/projects/claude-mac-chrome" },
+	{ name: "project-wa", path: "/en/projects/wa" },
+	{ name: "project-claude-mac-chrome", path: "/en/projects/claude-mac-chrome" },
 	{
 		name: "project-linkedin-chrome-copilot",
-		path: "/projects/linkedin-chrome-copilot",
+		path: "/en/projects/linkedin-chrome-copilot",
 	},
 	{
 		name: "project-ai-document-processor",
-		path: "/projects/ai-document-processor",
+		path: "/en/projects/ai-document-processor",
 	},
-	{ name: "project-exec-job-board", path: "/projects/exec-job-board" },
+	{ name: "project-exec-job-board", path: "/en/projects/exec-job-board" },
+	// Locale coverage: translated home + about for pt-BR and es.
+	{ name: "home-pt", path: "/pt" },
+	{ name: "about-pt", path: "/pt/about" },
+	{ name: "home-es", path: "/es" },
+	{ name: "about-es", path: "/es/about" },
 ];
 
 // Block all third-party requests (font CDNs, analytics, etc). External
