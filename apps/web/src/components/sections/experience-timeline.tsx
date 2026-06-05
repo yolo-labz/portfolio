@@ -1,11 +1,14 @@
 "use client";
 
 import { motion } from "motion/react";
-import { experience } from "@/data/experience";
+import { useTranslations } from "next-intl";
+import type { ExperienceEntry } from "@/data/experience";
 import { useIntersection } from "@/hooks/use-intersection";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 export function ExperienceTimeline() {
+	const t = useTranslations("Experience");
+	const experience = t.raw("entries") as ExperienceEntry[];
 	const { ref, isVisible } = useIntersection(0.05);
 	const reduced = useReducedMotion();
 
@@ -14,9 +17,9 @@ export function ExperienceTimeline() {
 			<div className="mx-auto max-w-6xl">
 				<div className="mb-12">
 					<h2 id="experience-heading" className="text-3xl font-bold tracking-tight">
-						Experience
+						{t("heading")}
 					</h2>
-					<p className="mt-2 text-text-muted">Shipped systems and the outcomes they moved.</p>
+					<p className="mt-2 text-text-muted">{t("intro")}</p>
 				</div>
 
 				<div className="relative space-y-8 before:absolute before:left-[11px] before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-border">
