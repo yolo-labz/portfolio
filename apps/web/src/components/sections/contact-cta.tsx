@@ -2,10 +2,12 @@
 
 import { Button } from "@portfolio/ui";
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useIntersection } from "@/hooks/use-intersection";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 export function ContactCTA() {
+	const t = useTranslations("Contact");
 	const { ref, isVisible } = useIntersection(0.1);
 	const reduced = useReducedMotion();
 
@@ -18,17 +20,12 @@ export function ContactCTA() {
 				transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 			>
 				<h2 id="contact-heading" className="text-3xl font-bold tracking-tight">
-					Contact
+					{t("heading")}
 				</h2>
-				<p className="mt-4 text-text-muted leading-relaxed">
-					I build for the engineer who gets paged at 02:00 BRT and needs the audit chain to still
-					hold. The cost ceiling stays put at peak. The writeup still reconstructs six months later.
-					Send a brief on architecture, RAG, compliance, or supply-chain. I'll tell you straight
-					whether it's a fit.
-				</p>
+				<p className="mt-4 text-text-muted leading-relaxed">{t("body")}</p>
 				<div className="mt-8 flex items-center justify-center gap-4">
 					<Button variant="primary" size="lg" as="a" href="mailto:pedrobalbino@proton.me">
-						Send a brief
+						{t("ctaPrimary")}
 					</Button>
 					<Button
 						variant="secondary"
@@ -38,7 +35,7 @@ export function ContactCTA() {
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						GitHub
+						{t("ctaSecondary")}
 					</Button>
 				</div>
 			</motion.div>

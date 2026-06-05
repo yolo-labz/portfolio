@@ -18,7 +18,7 @@
 		"test:visual:report": "playwright show-report test-results/playwright-report"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "latest",
+		"@biomejs/biome": "2.4.16",
 		"@playwright/test": "1.60.0",
 		"@types/node": "25.9.1",
 		"turbo": "latest",
