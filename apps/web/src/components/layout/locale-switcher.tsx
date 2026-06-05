@@ -16,11 +16,7 @@ export function LocaleSwitcher() {
 	const pathname = usePathname();
 
 	return (
-		<div
-			role="group"
-			aria-label={t("label")}
-			className="flex items-center gap-1.5 font-mono text-xs"
-		>
+		<nav aria-label={t("label")} className="flex items-center gap-1.5 font-mono text-xs">
 			{routing.locales.map((loc, index) => (
 				<Fragment key={loc}>
 					{index > 0 && (
@@ -40,6 +36,6 @@ export function LocaleSwitcher() {
 					</button>
 				</Fragment>
 			))}
-		</div>
+		</nav>
 	);
 }
