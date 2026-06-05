@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { FigStamp } from "@/components/shared/fig-stamp";
 import { useIntersection } from "@/hooks/use-intersection";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
@@ -19,6 +20,7 @@ const repos = [
 ];
 
 export function ProofBand() {
+	const t = useTranslations("ProofBand");
 	const { ref, isVisible } = useIntersection(0.1);
 	const reduced = useReducedMotion();
 
@@ -30,14 +32,13 @@ export function ProofBand() {
 				animate={isVisible ? { opacity: 1, y: 0 } : {}}
 				transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 			>
-				<FigStamp n="06" label="claim → evidence" />
+				<FigStamp n="06" label={t("figLabel")} />
 				<h2 id="proof-heading" className="mt-3 text-3xl font-bold tracking-tight">
-					Every claim here is auditable
+					{t("heading")}
 				</h2>
 				<p className="mt-2 max-w-2xl text-text-muted">
-					Six public repositories under <span className="font-mono text-text">yolo-labz</span>, each
-					SLSA L2, Sigstore-signed, and gated on live SonarQube quality checks. Read the source, not
-					a screenshot. Client work links to anonymized writeups, never names.
+					{t("bodyBefore")} <span className="font-mono text-text">yolo-labz</span>
+					{t("bodyAfter")}
 				</p>
 				<ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
 					{repos.map((repo) => (
@@ -56,7 +57,7 @@ export function ProofBand() {
 				</ul>
 				<div className="mt-6">
 					<Link href="/about" className="font-mono text-sm text-accent hover:underline">
-						See the full claim → evidence map &rarr;
+						{t("aboutLink")}
 					</Link>
 				</div>
 			</motion.div>

@@ -2,6 +2,7 @@
 
 import { Button } from "@portfolio/ui";
 import { motion, useInView } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import { AnimatedCounter } from "@/components/shared/animated-counter";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
@@ -13,34 +14,9 @@ type HeroStat =
 	| { value: number; suffix: string; label: string; detail: string }
 	| { display: string; label: string; detail: string };
 
-const stats: HeroStat[] = [
-	{
-		value: 0,
-		suffix: "",
-		label: "hallucinated numerical fields",
-		detail: "18 months · regulated tax-filing agent in production",
-	},
-	{
-		value: 100,
-		suffix: "K+",
-		label: "daily active users",
-		detail: "multilingual RAG · +40% knowledge-base precision",
-	},
-	{
-		value: 10,
-		suffix: "K+/day",
-		label: "transactions cleared",
-		detail: "event-driven retail backend · outbox + idempotency",
-	},
-	{
-		value: 60,
-		suffix: "%",
-		label: "less manual review",
-		detail: "tier-1 LATAM legal-domain RAG · validated citations",
-	},
-];
-
 export function HeroMetrics() {
+	const t = useTranslations("Hero");
+	const stats = t.raw("stats") as HeroStat[];
 	const ref = useRef<HTMLElement>(null);
 	const isInView = useInView(ref, { once: true, margin: "-100px" });
 	const reduced = useReducedMotion();
@@ -53,24 +29,14 @@ export function HeroMetrics() {
 					animate={isInView ? { opacity: 1, y: 0 } : {}}
 					transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 				>
-					<p className="mb-5 font-mono text-sm tracking-tight text-accent">
-						Compliance-grade AI architecture · RAG · agents · MCP
-					</p>
+					<p className="mb-5 font-mono text-sm tracking-tight text-accent">{t("eyebrow")}</p>
 					<h1
 						id="hero-heading"
 						className="max-w-4xl text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
 					>
-						Most AI stacks fail audit at the same three seams —{" "}
-						<span className="text-accent">
-							prompt provenance, retrieval lineage, output attestation.
-						</span>
+						{t("headingLead")} <span className="text-accent">{t("headingSeams")}</span>
 					</h1>
-					<p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-muted">
-						I architect RAG and agent systems for regulated workloads — banking, tax, legal — where
-						the audit trail is the deliverable. Every figure cites its source. Every decision
-						reconstructs six months later. The cost ceiling holds at peak. Built to LGPD, BCB 4.893,
-						and the EU AI Act&rsquo;s Article 12 logging mandate.
-					</p>
+					<p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-muted">{t("body")}</p>
 				</motion.div>
 
 				<motion.div
@@ -104,7 +70,7 @@ export function HeroMetrics() {
 					transition={{ duration: 0.6, delay: 0.4 }}
 				>
 					<Button variant="primary" size="lg" as="a" href="mailto:pedrobalbino@proton.me">
-						Send a brief
+						{t("ctaPrimary")}
 					</Button>
 					<Button
 						variant="secondary"
@@ -114,7 +80,7 @@ export function HeroMetrics() {
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						Read the architecture writeups
+						{t("ctaSecondary")}
 					</Button>
 				</motion.div>
 			</div>
