@@ -19,9 +19,9 @@
 	},
 	"Hero": {
 		"eyebrow": "Arquitetura de IA com rigor de compliance · RAG · agentes · MCP",
-		"headingLead": "A maioria das stacks de IA reprova em auditoria nas mesmas três costuras —",
-		"headingSeams": "proveniência do prompt, linhagem da recuperação, atestação do output.",
-		"body": "Eu arquiteto sistemas de RAG e agentes para cargas reguladas — bancário, fiscal, jurídico — onde a trilha de auditoria é a entrega. Cada número cita sua fonte. Cada decisão se reconstrói seis meses depois. O teto de custo se mantém no pico. Construído conforme a LGPD, a BCB 4.893 e o mandato de logging do Article 12 do EU AI Act.",
+		"headingLead": "A maioria das stacks de IA reprova na auditoria pelos mesmos três pontos —",
+		"headingSeams": "proveniência do prompt, linhagem da recuperação, comprovação do resultado.",
+		"body": "Projeto e construo sistemas de RAG e de agentes para cargas reguladas — bancário, fiscal, jurídico — onde a trilha de auditoria é a entrega. Cada número aponta para a sua fonte. Cada decisão se reconstrói seis meses depois. O teto de custo se sustenta sob pico de carga. Tudo aderente à LGPD, à BCB 4.893 e à exigência de registro (logging) do Artigo 12 do EU AI Act.",
 		"ctaPrimary": "Enviar um briefing",
 		"ctaSecondary": "Ler os writeups de arquitetura",
 		"stats": [
@@ -34,7 +34,7 @@
 			{
 				"value": 100,
 				"suffix": "K+",
-				"label": "usuários ativos diários",
+				"label": "usuários ativos por dia",
 				"detail": "RAG multilíngue · +40% de precisão na base de conhecimento"
 			},
 			{
@@ -47,7 +47,7 @@
 				"value": 60,
 				"suffix": "%",
 				"label": "menos revisão manual",
-				"detail": "RAG jurídico tier-1 na LATAM · citações validadas"
+				"detail": "RAG jurídico tier-1 · LATAM · citações validadas"
 			}
 		]
 	},
@@ -55,15 +55,15 @@
 		"figLabel": "alegação → evidência",
 		"heading": "Toda alegação aqui é auditável",
 		"bodyBefore": "Seis repositórios públicos em",
-		"bodyAfter": ", cada um SLSA L2, assinado com Sigstore e verificado por checks de qualidade SonarQube ao vivo. Leia o código-fonte, não um screenshot. O trabalho com clientes aponta para writeups anonimizados, nunca para nomes.",
+		"bodyAfter": ", cada um com SLSA L2, assinatura Sigstore e bloqueio em verificações de qualidade do SonarQube ao vivo. Leia o código, não um screenshot. O trabalho com clientes aponta para writeups anonimizados, nunca para nomes.",
 		"aboutLink": "Veja o mapa completo de alegação → evidência →"
 	},
 	"Services": {
-		"figLabel": "como um engajamento escala",
-		"heading": "Comece com um veredito. Escale quando a prova se sustentar.",
-		"intro": "Cada oferta entrega um deliverable definido, escopado e fixado na assinatura. A maioria dos clientes começa por um diagnóstico e depois expande para um build, quando a arquitetura se prova contra os próprios dados deles.",
+		"figLabel": "como um contrato evolui",
+		"heading": "Comece por um veredito. Escale quando a prova se sustentar.",
+		"intro": "Cada oferta tem uma entrega definida, com escopo fechado na assinatura. A maioria dos clientes começa por um diagnóstico e expande para a construção quando a arquitetura se prova contra os próprios dados.",
 		"outcomeLabel": "Resultado —",
-		"footer": "Todo engajamento começa com uma call de discovery curta e um diagnóstico por escrito. O escopo é fixado na assinatura.",
+		"footer": "Todo contrato começa por uma conversa de discovery curta e um diagnóstico por escrito. O escopo é fechado na assinatura.",
 		"footerCta": "Enviar um briefing →",
 		"rungs": [
 			{
@@ -72,29 +72,29 @@
 				"offers": [
 					{
 						"name": "Revisão de Arquitetura de IA Regulada",
-						"scope": "Um diagnóstico de prazo fechado da sua stack de LLM atual — memo de topologia de três planos, achados ranqueados por severidade, repositório de referência anotado.",
-						"outcome": "Um veredito go/no-go e um mapa de remediação escopado antes de você comprometer trimestres de engenharia."
+						"scope": "Diagnóstico de prazo fechado da sua stack de LLM atual — memorando da topologia de três planos, achados ranqueados por severidade e repositório de referência anotado.",
+						"outcome": "Um veredito de seguir ou parar e um mapa de remediação com escopo definido, antes de você comprometer trimestres de engenharia."
 					},
 					{
 						"name": "Auditoria de Segurança da Fronteira de Ferramentas MCP",
-						"scope": "Modelo de ameaças STRIDE de cada ferramenta exposta, revisão da fronteira de input LLM-vs-operador, matriz de permissões deny-by-default, hardening de releases assinados (Sigstore + SLSA L2 + SBOM duplo).",
-						"outcome": "Um relatório ranqueado por severidade com patches concretos, e um pipeline onde cada binário se verifica com um único comando."
+						"scope": "Modelagem de ameaças STRIDE de cada ferramenta exposta, revisão da fronteira de entrada entre LLM e operador, matriz de permissões com negação por padrão e hardening de releases assinados (Sigstore + SLSA L2 + SBOM duplo).",
+						"outcome": "Um relatório ranqueado por severidade com correções concretas e um pipeline onde cada binário se verifica com um único comando."
 					}
 				]
 			},
 			{
 				"rung": "Pipeline",
-				"tag": "torne real",
+				"tag": "coloque de pé",
 				"offers": [
 					{
 						"name": "Sprint de Prontidão da Cadeia de Auditoria de RAG",
-						"scope": "Um pipeline de recuperação em produção — pgvector + recuperação híbrida + rerank, respostas com citação forçada, recall medido no seu próprio conjunto de holdout, um ledger de rastro de decisão chaveado por (prompt, docs, model, output).",
+						"scope": "Um pipeline de recuperação em produção — pgvector + recuperação híbrida + rerank, respostas com citação obrigatória, recall medido no seu próprio conjunto de holdout e um ledger de rastro de decisão indexado por (prompt, docs, model, output).",
 						"outcome": "Respostas comprovadamente fundamentadas, acurácia medida contra os seus dados e comportamento auditável desde o primeiro dia."
 					},
 					{
-						"name": "Build e Resgate de Backend Orientado a Eventos",
-						"scope": "Um backend autenticado, com formato de produção — schema tipado, ledger de auditoria, outbox + idempotência, testes de fitness-function, gate de CI, observabilidade. A variante serverless roda a $0 ocioso.",
-						"outcome": "Um backend que aguenta carga, custa zero ocioso, e provisiona e destrói de forma reprodutível — sob sua posse, no seu repositório."
+						"name": "Construção e Resgate de Backend Orientado a Eventos",
+						"scope": "Um backend autenticado, em formato de produção — schema tipado, ledger de auditoria, outbox + idempotência, testes de fitness-function, gate de CI e observabilidade. A variante serverless roda com custo zero quando ociosa.",
+						"outcome": "Um backend que aguenta carga, não custa nada ocioso e sobe e é destruído de forma reprodutível — sob sua posse, no seu repositório."
 					}
 				]
 			},
@@ -103,26 +103,26 @@
 				"tag": "mantenha a custódia",
 				"offers": [
 					{
-						"name": "Custódia de Plataforma de IA Embarcada",
-						"scope": "Custódia de arquitetura fracionada — revisão semanal de fitness-functions, sondagem mensal de integridade da cadeia de auditoria, propriedade do plano de compliance, participação no processo de contratação de IA.",
-						"outcome": "Uma capacidade de IA com nível de auditoria que toda a sua organização reutiliza, com a cadeia de auditoria mantida verde entre releases."
+						"name": "Custódia Embarcada de Plataforma de IA",
+						"scope": "Custódia de arquitetura em regime fracionado — revisão semanal de fitness-functions, sondagem mensal da integridade da cadeia de auditoria, posse do plano de compliance e participação no processo de contratação de IA.",
+						"outcome": "Uma capacidade de IA com nível de auditoria que toda a sua empresa reaproveita, com a cadeia de auditoria mantida verde entre releases."
 					}
 				]
 			}
 		]
 	},
 	"Skills": {
-		"heading": "Habilidades Técnicas",
-		"intro": "Agrupadas pelo problema que cada stack resolve, para você localizar rápido a que combina com o seu.",
+		"heading": "Competências Técnicas",
+		"intro": "Agrupadas pelo problema que cada stack resolve, para você achar rápido a que combina com o seu.",
 		"domains": [
 			{
 				"domain": "IA regulada & compliance",
-				"description": "RAG com linhagem de recuperação, ledgers de auditoria encadeados por hash e proveniência de decisão — mapeados à LGPD, à BCB 4.893 e ao mandato de logging do Art. 12 do EU AI Act.",
+				"description": "RAG com linhagem de recuperação, ledgers de auditoria encadeados por hash e proveniência de decisão — mapeados à LGPD, à BCB 4.893 e à exigência de registro do Art. 12 do EU AI Act.",
 				"technologies": [
 					"LGPD",
 					"BCB 4.893",
 					"EU AI Act Art. 12",
-					"Design de trilha de auditoria",
+					"Desenho de trilha de auditoria",
 					"Proveniência de decisão",
 					"Avaliação de RAG",
 					"Controles de PII"
@@ -130,7 +130,7 @@
 			},
 			{
 				"domain": "Agentes de IA & RAG",
-				"description": "Pipelines de RAG em produção, loops de agente com ferramentas tipadas e turnos limitados, e integrações com o Model Context Protocol — recuperação fundamentada com checks de regressão de eval congelada.",
+				"description": "Pipelines de RAG em produção, loops de agente com ferramentas tipadas e número de turnos limitado, e integrações com o Model Context Protocol — recuperação fundamentada com verificações de regressão sobre eval congelada.",
 				"technologies": [
 					"Claude Code",
 					"Anthropic SDK",
@@ -144,7 +144,7 @@
 			},
 			{
 				"domain": "Backend",
-				"description": "Serviços poliglotas que aguentam sob carga: daemons em Go, APIs em TypeScript, pipelines em Python, binários em Rust — orientados a eventos com outbox + idempotência.",
+				"description": "Serviços poliglotas que aguentam sob carga: daemons em Go, APIs em TypeScript, pipelines em Python, binários em Rust — orientados a eventos, com outbox + idempotência.",
 				"technologies": [
 					"Go",
 					"TypeScript",
@@ -171,12 +171,12 @@
 			},
 			{
 				"domain": "Infra-as-Code",
-				"description": "Infraestrutura declarativa em frotas cloud e bare-metal — reprodutível, com uma história de teardown que não deixa nenhum órfão.",
+				"description": "Infraestrutura declarativa em frotas na nuvem e em bare-metal — reprodutível e com um teardown que não deixa nenhum órfão.",
 				"technologies": ["Terraform", "Helm", "Kubernetes", "NixOS", "Docker", "Docker Compose"]
 			},
 			{
 				"domain": "Release engineering",
-				"description": "Hardening da cadeia de suprimentos como deliverable de primeira classe: builds reprodutíveis, proveniência assinada, SBOMs em formato duplo.",
+				"description": "Hardening da cadeia de suprimentos como entrega de primeira classe: builds reprodutíveis, proveniência assinada e SBOMs em formato duplo.",
 				"technologies": [
 					"GitHub Actions",
 					"Sigstore",
@@ -196,56 +196,56 @@
 			{
 				"role": "Arquiteto de IA com Rigor de Compliance / Arquiteto de Cloud",
 				"company": "Grupo de serviços de TI tier-1 · LATAM",
-				"period": "Jul 2025 — Presente",
+				"period": "jul 2025 — presente",
 				"current": true,
 				"deliverables": [
-					"Arquitetei RAG com rigor de compliance no Azure OpenAI — proveniência de decisão, logging de trilha de auditoria e checks de regressão de eval congelada para cargas reguladas",
-					"Entreguei um assistente educacional multilíngue atendendo 100K+ usuários ativos diários — +40% de precisão na base de conhecimento após o rollout",
-					"Levantei Terraform multi-cloud (Azure + GCP) reduzindo o provisionamento de ambientes para menos de 10 minutos",
-					"Cortei 30% do gasto em cloud via right-sizing de Lambda e planejamento de capacidade reservada"
+					"Arquitetei RAG com rigor de compliance no Azure OpenAI — proveniência de decisão, registro de trilha de auditoria e verificações de regressão sobre eval congelada para cargas reguladas",
+					"Entreguei um assistente educacional multilíngue para 100K+ usuários ativos por dia — +40% de precisão na base de conhecimento após o rollout",
+					"Coloquei de pé Terraform multi-cloud (Azure + GCP), reduzindo o provisionamento de ambientes para menos de 10 minutos",
+					"Reduzi 30% do gasto em nuvem com right-sizing de Lambda e planejamento de capacidade reservada"
 				]
 			},
 			{
 				"role": "Engenheiro de Software de Sistemas",
 				"company": "Operadora de telecom · LATAM",
-				"period": "Out 2024 — Set 2025",
+				"period": "out 2024 — set 2025",
 				"current": false,
 				"deliverables": [
 					"Projetei ETL serverless em AWS Lambda + Step Functions para dados de billing de telecom tier-1",
-					"Publiquei módulos Terraform provisionando infraestrutura multi-região em menos de 10 minutos",
-					"Implantei uma stack de observabilidade em CloudWatch — dashboards, alarmes, resposta automatizada a incidentes",
+					"Publiquei módulos Terraform que provisionam infraestrutura multi-região em menos de 10 minutos",
+					"Implantei uma stack de observabilidade em CloudWatch — dashboards, alarmes e resposta automatizada a incidentes",
 					"Endureci o pipeline de release com proveniência Sigstore + SLSA para uma cadeia de suprimentos regulada"
 				]
 			},
 			{
 				"role": "Engenheiro de Software Sênior",
 				"company": "Estúdio de engenharia de produto · e-commerce / fintech / logística",
-				"period": "Jul 2021 — Out 2024",
+				"period": "jul 2021 — out 2024",
 				"current": false,
 				"deliverables": [
-					"Entreguei 12+ sistemas em produção em e-commerce, fintech e logística",
-					"Construí um BFF + Broker + Dispatcher orientado a eventos liquidando 10K+ transações/dia com o padrão outbox e chaves de idempotência",
+					"Entreguei mais de 12 sistemas em produção em e-commerce, fintech e logística",
+					"Construí um BFF + Broker + Dispatcher orientado a eventos liquidando 10K+ transações/dia, com padrão outbox e chaves de idempotência",
 					"Introduzi CI em matriz no GitHub Actions com gitleaks + OSV-Scanner para higiene da cadeia de suprimentos",
-					"Defini os padrões de arquitetura e de gate de release adotados por múltiplas squads"
+					"Defini os padrões de arquitetura e de gate de release adotados por vários squads"
 				]
 			}
 		]
 	},
 	"Contact": {
 		"heading": "Contato",
-		"body": "Eu construo para o engenheiro que é acionado às 02:00 BRT e precisa que a cadeia de auditoria ainda se sustente. O teto de custo não se mexe no pico. O writeup ainda reconstrói seis meses depois. Envie um briefing sobre arquitetura, RAG, compliance ou cadeia de suprimentos. Vou te dizer na lata se faz sentido.",
+		"body": "Construo para o engenheiro que é acionado às 02:00 BRT e precisa que a cadeia de auditoria ainda se sustente. O teto de custo não cede no pico. O writeup ainda reconstrói o caso seis meses depois. Mande um briefing sobre arquitetura, RAG, compliance ou cadeia de suprimentos. Te digo na lata se faz sentido.",
 		"ctaPrimary": "Enviar um briefing",
 		"ctaSecondary": "GitHub"
 	},
 	"About": {
 		"metaTitle": "Sobre — Pedro Balbino",
-		"metaDescription": "Arquiteto de IA com Rigor de Compliance para cargas reguladas na LATAM e globais. RAG em produção, sistemas de agentes e integrações MCP com trilhas de auditoria e proveniência de decisão — cada alegação mapeada a evidência verificável.",
+		"metaDescription": "Arquiteto de IA com Rigor de Compliance para cargas reguladas na LATAM e no mundo. RAG em produção, sistemas de agentes e integrações MCP com trilhas de auditoria e proveniência de decisão — cada alegação mapeada a evidência verificável.",
 		"eyebrow": "Sobre",
-		"category": "Arquiteto de IA com Rigor de Compliance para Cargas Reguladas na LATAM e Globais",
-		"diagnostic": "A maioria das stacks de IA regulada reprova em auditoria nas mesmas três costuras: proveniência do prompt, linhagem da recuperação, atestação do output. A correção mora na arquitetura. Três planos — dados, controle, compliance — com o plano de compliance rodando como sidecar: um ledger de auditoria encadeado por hash, ancorado a um log público de transparência.",
-		"summary": "Quatro sistemas sustentam a prova. Um RAG multilíngue a 100K+ DAU, +40% de precisão na base de conhecimento. Um backend de varejo orientado a eventos liquidando 10K+ transações/dia. Um RAG jurídico tier-1 na LATAM, −60% de documentação manual. Um agente de compliance fiscal de IRPF brasileiro: 0 campos numéricos alucinados ao longo de 18 meses, ≤40 turnos por declaração. E mais o open source — seis plugins de Claude Code em github.com/yolo-labz, assinados com SLSA L2 + Sigstore, SBOMs em formato duplo.",
+		"category": "Arquiteto de IA com Rigor de Compliance para Cargas Reguladas na LATAM e no Mundo",
+		"diagnostic": "A maioria das stacks de IA regulada reprova na auditoria pelos mesmos três pontos: proveniência do prompt, linhagem da recuperação, comprovação do resultado. A correção está na arquitetura. Três planos — dados, controle, compliance — com o plano de compliance rodando como sidecar: um ledger de auditoria encadeado por hash, ancorado a um log público de transparência.",
+		"summary": "Quatro sistemas sustentam a prova. Um RAG multilíngue a 100K+ DAU, com +40% de precisão na base de conhecimento. Um backend de varejo orientado a eventos liquidando 10K+ transações/dia. Um RAG jurídico tier-1 na LATAM, com −60% de documentação manual. Um agente de compliance fiscal para o IRPF brasileiro: 0 campos numéricos alucinados em 18 meses, ≤40 turnos por declaração. E o open source — seis plugins de Claude Code em github.com/yolo-labz, assinados com SLSA L2 + Sigstore e com SBOMs em formato duplo.",
 		"claimEvidenceHeading": "Alegação → Evidência",
-		"claimEvidenceIntro": "Cada alegação de destaque mapeia a um artefato verificável. Repositórios públicos apontam direto para o código-fonte. As linhas marcadas como \"writeup pendente\" são writeups de arquitetura anonimizados; o nome do cliente nunca vai junto, só a arquitetura, e só depois que o writeup passa pela revisão.",
+		"claimEvidenceIntro": "Cada alegação de destaque corresponde a um artefato verificável. Repositórios públicos apontam direto para o código. As linhas marcadas como \"writeup pendente\" são writeups de arquitetura anonimizados; o nome do cliente nunca vai junto, só a arquitetura, e só depois que o writeup passa pela revisão.",
 		"tableHeaderClaim": "Alegação",
 		"tableHeaderEvidence": "Evidência",
 		"tableHeaderStatus": "Status",
@@ -253,10 +253,10 @@
 		"statusBacked": "comprovada",
 		"statusPending": "writeup pendente",
 		"codeQualityHeading": "Qualidade de código",
-		"codeQualityIntro": "Cada plugin roda gates de qualidade + segurança do Sonar a cada release; o dashboard é público. Os badges apontam direto para o scan ao vivo — sem screenshots, sem cache.",
+		"codeQualityIntro": "Cada plugin roda os gates de qualidade + segurança do Sonar a cada release; o dashboard é público. Os selos apontam direto para o scan ao vivo — sem screenshots, sem cache.",
 		"claims": [
 			"Plugins de Claude Code entregues",
-			"Ferramental de workflow Chrome/macOS",
+			"Ferramental de workflow para Chrome/macOS",
 			"Copilot de LinkedIn",
 			"Daemon de WhatsApp (Go, hexagonal)",
 			"Daemon de TTS (Python, ONNX, PyPI)",
@@ -271,129 +271,129 @@
 	},
 	"Thesis": {
 		"metaTitle": "IA regulada reprova na primeira auditoria na camada de recuperação — Pedro Balbino",
-		"metaDescription": "Um argumento de trabalho para projetar a trilha de auditoria antes do prompt: proveniência do prompt, linhagem da recuperação e atestação do output são a restrição arquitetural primária da IA regulada — não o modelo.",
+		"metaDescription": "Um argumento em construção para desenhar a trilha de auditoria antes do prompt: proveniência do prompt, linhagem da recuperação e comprovação do resultado são a restrição arquitetural primária da IA regulada — não o modelo.",
 		"figLabel": "posição · arquitetura de IA regulada",
 		"title": "IA regulada reprova na primeira auditoria na camada de recuperação — não no modelo.",
-		"subtitle": "Um argumento de trabalho para projetar a trilha de auditoria antes do prompt.",
-		"p1": "A maioria dos projetos de IA regulada orça seu risco no lugar errado. O modelo recebe todo o escrutínio — qual fornecedor, qual eval, qual guardrail — enquanto a parte que de fato reprova na auditoria entra como detalhe de última hora: como um dado output pode ser reconstruído, seis meses depois, a partir dos inputs que o produziram. Em cargas reguladas, essa reconstrução não é um luxo. <strong>É a entrega.</strong>",
-		"p2": "Auditorias reprovam em três costuras, e são sempre as mesmas três. <strong>Proveniência do prompt:</strong> qual prompt exato, qual versão do template e qual contexto de sistema produziram este output? <strong>Linhagem da recuperação:</strong> quais documentos foram recuperados, em quais versões, e por que esses e não outros? <strong>Atestação do output:</strong> dá para provar que a resposta foi derivada da evidência recuperada, e não da memória paramétrica do modelo? Uma stack que não responde às três sob exame não está \"quase em conformidade\". Está sem documentação.",
-		"p3": "Um modelo melhor não fecha nenhuma dessas costuras. Uma janela de contexto maior torna a proveniência mais difícil, não mais fácil, porque mais do input vira implícito. Um agente com mais autonomia torna a linhagem mais difícil, porque o caminho da pergunta à resposta deixa de ser inspecionável. As capacidades que a área otimiza — mais contexto, mais autonomia, mais fluência — vão diretamente contra a auditabilidade. O que significa que o design da trilha de auditoria não pode ser parafusado depois em um sistema otimizado para o oposto. Tem de ser uma restrição desde o primeiro diagrama.",
-		"p4": "O formato que sobrevive a uma auditoria é uma <strong>topologia de três planos</strong>. Um plano de dados carrega o fluxo primário — ingestão, recuperação, inferência. Um plano de controle mantém orquestração, estado do agente e configuração como objetos versionados de primeira classe. Um plano de compliance roda ao lado, como sidecar. Um ledger append-only escuta os outros dois planos e registra eventos assinados e encadeados por hash; ele nunca fica inline no caminho dos dados. O plano de compliance é o único cujo output o auditor lê. Projetá-lo por último é projetar o sistema para mentir a si mesmo sobre o que aconteceu.",
-		"p5": "Concretamente: um agente de compliance fiscal que prepara declarações reguladas roda como um loop de ferramentas tipadas limitado a um teto fixo de turnos, não uma cadeia aberta — porque um agente sem limite não tem teto de auditoria. A recuperação é escopada por período de declaração e o roteador rejeita hits de outros períodos, porque uma linhagem que pode puxar de qualquer lugar não se reconstrói. Todo número emitido é forçado a citar e revalidado contra o trecho-fonte antes de entrar, porque atestação de output sai mais barato impor na escrita do que provar depois do fato. O resultado ao longo de dezoito meses em produção: <strong>zero campos numéricos alucinados</strong>. Não porque o modelo seja incapaz de alucinar — porque a arquitetura nunca confia nele para isso.",
-		"p6": "A disciplina se transfere. A LGPD, a BCB 4.893 e o mandato de logging do Art. 12 do EU AI Act fazem a mesma pergunta em palavras diferentes: me mostre como esta decisão foi tomada, e prove que o registro não foi editado depois. Os sistemas que respondem limpo são aqueles em que alguém desenhou o plano de compliance antes de escrever o primeiro prompt.",
+		"subtitle": "Um argumento em construção para desenhar a trilha de auditoria antes do prompt.",
+		"p1": "A maioria dos projetos de IA regulada aloca o risco no lugar errado. O modelo recebe todo o escrutínio — qual fornecedor, qual eval, qual guardrail — enquanto a parte que de fato reprova na auditoria entra como detalhe de última hora: como reconstruir um resultado, seis meses depois, a partir das entradas que o produziram. Em cargas reguladas, essa reconstrução não é um luxo. <strong>É a entrega.</strong>",
+		"p2": "As auditorias reprovam em três pontos, e são sempre os mesmos três. <strong>Proveniência do prompt:</strong> qual foi o prompt exato, a versão do template e o contexto de sistema que produziram este resultado? <strong>Linhagem da recuperação:</strong> quais documentos foram recuperados, em quais versões, e por que esses e não outros? <strong>Comprovação do resultado:</strong> dá para provar que a resposta veio da evidência recuperada, e não da memória paramétrica do modelo? Uma stack que não responde aos três sob exame não está \"quase em conformidade\". Está sem documentação.",
+		"p3": "Um modelo melhor não fecha nenhum desses pontos. Uma janela de contexto maior torna a proveniência mais difícil, não mais fácil, porque mais da entrada fica implícito. Um agente com mais autonomia torna a linhagem mais difícil, porque o caminho da pergunta à resposta deixa de ser inspecionável. As capacidades que a área persegue — mais contexto, mais autonomia, mais fluência — vão diretamente contra a auditabilidade. Ou seja: o desenho da trilha de auditoria não pode ser parafusado depois num sistema otimizado para o oposto. Tem de ser uma restrição desde o primeiro diagrama.",
+		"p4": "O formato que sobrevive a uma auditoria é uma <strong>topologia de três planos</strong>. Um plano de dados carrega o fluxo principal — ingestão, recuperação, inferência. Um plano de controle mantém orquestração, estado do agente e configuração como objetos versionados de primeira classe. Um plano de compliance roda ao lado, como sidecar. Um ledger append-only observa os outros dois planos e registra eventos assinados e encadeados por hash; ele nunca fica no meio do caminho dos dados. O plano de compliance é o único cujo resultado o auditor lê. Desenhá-lo por último é desenhar o sistema para mentir a si mesmo sobre o que aconteceu.",
+		"p5": "Na prática: um agente de compliance fiscal que prepara declarações reguladas roda como um loop de ferramentas tipadas com teto fixo de turnos, não como uma cadeia aberta — porque um agente sem limite não tem teto de auditoria. A recuperação tem escopo por período de declaração e o roteador rejeita resultados de outros períodos, porque uma linhagem que pode puxar de qualquer lugar não se reconstrói. Todo número emitido é obrigado a citar a fonte e revalidado contra o trecho de origem antes de entrar, porque comprovar o resultado sai mais barato impondo na escrita do que provando depois. O resultado, ao longo de dezoito meses em produção: <strong>zero campos numéricos alucinados</strong>. Não porque o modelo seja incapaz de alucinar — mas porque a arquitetura nunca confia nele para isso.",
+		"p6": "A disciplina se transfere. A LGPD, a BCB 4.893 e a exigência de registro do Art. 12 do EU AI Act fazem a mesma pergunta com palavras diferentes: me mostre como esta decisão foi tomada e prove que o registro não foi editado depois. Os sistemas que respondem com clareza são aqueles em que alguém desenhou o plano de compliance antes de escrever o primeiro prompt.",
 		"writeupsLink": "Writeups de arquitetura anonimizados →"
 	},
 	"Projects": {
 		"compliance-tax-agent": {
-			"tagline": "Um agente LLM de ferramentas tipadas para declarações fiscais reguladas. Um número alucinado é uma falha de compliance, então cada passo é validado por schema e cada cifra cita sua fonte.",
-			"description": "Um agente LLM que prepara e valida declarações de imposto de renda brasileiro (IRPF). O loop é limitado a ≤40 turnos por declaração. Cada passo é uma chamada de ferramenta validada por schema. A recuperação é escopada ao ano-base. Todo número emitido cita seu trecho-fonte e é revalidado contra esse trecho antes de entrar na declaração. O log de decisão é encadeado por hash e ancorado a um log de transparência, de modo que qualquer declaração se reproduz anos depois.",
-			"problemStatement": "Um agente de declaração fiscal regulada não pode alucinar um único campo numérico. Todo output tem de se reproduzir por uma janela de auditoria de cinco anos sob a LGPD, on-premise, sem egress de dados. RAG de propósito geral falha nisso duas vezes: não consegue provar de onde veio um número, e não consegue limitar quanto tempo 'pensa'.",
-			"solutionSummary": "O loop tem teto de ≤40 turnos por declaração. O roteador rejeita qualquer hit de recuperação de outro ano. Citação forçada mais validação posterior do trecho significam que a aritmética do modelo nunca é confiada às cegas. 80 regras determinísticas de anomalia pegam valores fora de política antes de entrarem, e um ledger de auditoria encadeado por hash ancora a um log público de transparência. Retry por campo, em vez de rodar a declaração inteira de novo, cortou o custo de LLM em ~80%. Rejeitados: um único prompt de contexto grande (sem proveniência) e um loop de agente aberto (sem teto de auditoria).",
-			"constraint": "LGPD mais um mandato de reprodução de auditoria de cinco anos, on-premise, zero egress de dados. Um campo numérico alucinado é uma falha regulatória.",
-			"decision": "Limitar o agente a ≤40 turnos de ferramentas tipadas por declaração. Escopar a recuperação por ano-base e rejeitar hits de outros anos no roteador. Forçar todo número a citar e então revalidá-lo contra o trecho-fonte antes de entrar. Rejeitados um único prompt de contexto grande (sem proveniência) e um loop sem limite (sem teto de auditoria).",
-			"outcome": "Zero campos numéricos alucinados ao longo de 18 meses em produção. ~10K declarações/dia no pico. 80 regras determinísticas de anomalia controlam cada valor, e o retry por campo cortou o custo de LLM em ~80%. Cada campo se reproduz até o trecho-fonte que o gerou."
+			"tagline": "Um agente LLM de ferramentas tipadas para declarações fiscais reguladas. Um número alucinado é uma falha de compliance, então cada passo é validado por schema e cada cifra aponta para a sua fonte.",
+			"description": "Um agente LLM que prepara e valida declarações de imposto de renda brasileiro (IRPF). O loop é limitado a ≤40 turnos por declaração. Cada passo é uma chamada de ferramenta validada por schema. A recuperação tem escopo no ano-base. Todo número emitido cita o seu trecho de origem e é revalidado contra esse trecho antes de entrar na declaração. O log de decisão é encadeado por hash e ancorado a um log de transparência, de modo que qualquer declaração pode ser reproduzida anos depois.",
+			"problemStatement": "Um agente de declaração fiscal regulada não pode alucinar um único campo numérico. Todo resultado tem de poder ser reproduzido por uma janela de auditoria de cinco anos sob a LGPD, on-premise e sem saída de dados. RAG de propósito geral falha nisso duas vezes: não consegue provar de onde veio um número, nem limitar quanto tempo o agente \"pensa\".",
+			"solutionSummary": "O loop tem teto de ≤40 turnos por declaração. O roteador rejeita qualquer resultado de recuperação de outro ano. Citação obrigatória somada à revalidação posterior do trecho garante que a aritmética do modelo nunca seja aceita às cegas. 80 regras determinísticas de anomalia pegam valores fora de política antes que entrem, e um ledger de auditoria encadeado por hash ancora num log público de transparência. Refazer apenas o campo, em vez de rodar a declaração inteira de novo, cortou o custo de LLM em ~80%. Descartados: um único prompt de contexto grande (sem proveniência) e um loop de agente aberto (sem teto de auditoria).",
+			"constraint": "LGPD somada a uma obrigação de reproduzir a auditoria por cinco anos, on-premise e sem saída de dados. Um único campo numérico alucinado é uma falha regulatória.",
+			"decision": "Limitar o agente a ≤40 turnos de ferramentas tipadas por declaração. Dar escopo à recuperação por ano-base e rejeitar resultados de outros anos no roteador. Obrigar todo número a citar a fonte e então revalidá-lo contra o trecho de origem antes de entrar. Descartados um único prompt de contexto grande (sem proveniência) e um loop sem limite (sem teto de auditoria).",
+			"outcome": "Zero campos numéricos alucinados em 18 meses de produção. ~10K declarações/dia no pico. 80 regras determinísticas de anomalia controlam cada valor, e refazer só o campo cortou o custo de LLM em ~80%. Cada campo pode ser reproduzido até o trecho de origem que o gerou."
 		},
 		"event-driven-retail": {
 			"tagline": "Um backend de comércio multicanal onde cada mudança de estado é idempotente e auditável. Go + TypeScript sobre Kafka, padrão outbox, efeitos exactly-once.",
-			"description": "Um backend orientado a eventos liquidando 10K+ transações/dia (~250 pedidos/min no pico) por múltiplas superfícies de comércio, extraído de um monolito Rails de 1M+ LOC ao longo de uma migração strangler-fig de 18 meses. Um BFF faz a frente dos canais. Um broker distribui eventos de domínio para os dispatchers. O outbox publica cada evento exatamente uma vez por transação commitada, e chaves de idempotência tornam cada efeito downstream seguro para retry. O p99 do checkout ficou em ≤500ms sob carga. O caminho de auditoria rastreia até a BACEN Circular 3.978/2020 do começo ao fim.",
-			"problemStatement": "No comércio multicanal o mesmo pedido pode chegar duas vezes, um webhook de parceiro pode disparar três vezes, uma instabilidade de rede pode derrubar um evento no meio do caminho. O ledger ainda tem de ficar exatamente certo e auditável sob carga.",
-			"solutionSummary": "BFF + Broker + Dispatcher. O broker desacopla produtores de consumidores. O outbox transacional publica cada evento exatamente uma vez por write commitado, e chaves de idempotência deduplicam em cada fronteira de efeito. O Kafka carrega o log de eventos; serviços em Go e TypeScript o consomem. Retries são seguros por construção, então a instabilidade de parceiros degrada com elegância em vez de corromper o estado.",
-			"constraint": "Um monolito de 1M+ LOC não conseguia escalar o checkout sob carga e não tinha um caminho de auditoria rastreável pelo regulador. A virada não podia parar o negócio de vender. O mesmo pedido pode chegar duas vezes e um webhook de parceiro pode disparar repetidamente, mas o ledger tem de ficar exatamente certo (p99 de checkout ≤500ms, rastreável pela BACEN 3.978) ao longo de uma migração de 18 meses.",
-			"decision": "Aplicar strangler-fig ao monolito. Extrair capacidades de domínio em um BFF + Broker + Dispatcher. Desacoplar produtores de consumidores, publicar via outbox transacional (exactly-once por write commitado), tornar todo efeito downstream idempotente para que retries sejam seguros por construção. Rejeitados um rewrite big-bang (o negócio não pode parar de vender), chamadas síncronas ponto a ponto (falha em cascata) e entrega at-least-once sem dedupe (efeitos duplicados).",
-			"outcome": "Um monolito de 1M+ LOC migrado ao longo de 18 meses sem parar as vendas. 10K+ transações/dia (~250 pedidos/min no pico), p99 de checkout ≤500ms, rastreável pela BACEN 3.978. Efeitos exactly-once seguros para retry fazem a instabilidade de parceiros degradar com elegância em vez de corromper o ledger."
+			"description": "Um backend orientado a eventos liquidando 10K+ transações/dia (~250 pedidos/min no pico) em vários canais de comércio, extraído de um monolito Rails de 1M+ LOC ao longo de uma migração strangler-fig de 18 meses. Um BFF fica na frente dos canais. Um broker distribui eventos de domínio para os dispatchers. O outbox publica cada evento exatamente uma vez por transação commitada, e chaves de idempotência tornam cada efeito downstream seguro para reprocessar. O p99 do checkout ficou em ≤500ms sob carga. O caminho de auditoria rastreia até a BACEN Circular 3.978/2020 de ponta a ponta.",
+			"problemStatement": "No comércio multicanal o mesmo pedido pode chegar duas vezes, um webhook de parceiro pode disparar três vezes, uma instabilidade de rede pode derrubar um evento no meio do caminho. E o ledger ainda tem de ficar exatamente certo e auditável sob carga.",
+			"solutionSummary": "BFF + Broker + Dispatcher. O broker desacopla produtores de consumidores. O outbox transacional publica cada evento exatamente uma vez por write commitado, e chaves de idempotência fazem a deduplicação em cada fronteira de efeito. O Kafka carrega o log de eventos; serviços em Go e TypeScript o consomem. Os reprocessamentos são seguros por construção, então a instabilidade de parceiros degrada com elegância em vez de corromper o estado.",
+			"constraint": "Um monolito de 1M+ LOC não conseguia escalar o checkout sob carga e não tinha um caminho de auditoria rastreável pelo regulador. A virada não podia parar o negócio de vender. O mesmo pedido pode chegar duas vezes e um webhook de parceiro pode disparar repetidas vezes, mas o ledger tem de ficar exatamente certo (p99 de checkout ≤500ms, rastreável pela BACEN 3.978) ao longo de uma migração de 18 meses.",
+			"decision": "Aplicar strangler-fig ao monolito. Recortar capacidades de domínio em um BFF + Broker + Dispatcher. Desacoplar produtores de consumidores, publicar via outbox transacional (exactly-once por write commitado) e tornar todo efeito downstream idempotente, para que reprocessar seja seguro por construção. Descartados um rewrite big-bang (o negócio não pode parar de vender), chamadas síncronas ponto a ponto (falha em cascata) e entrega at-least-once sem deduplicação (efeitos em duplicidade).",
+			"outcome": "Um monolito de 1M+ LOC migrado em 18 meses sem parar as vendas. 10K+ transações/dia (~250 pedidos/min no pico), p99 de checkout ≤500ms, rastreável pela BACEN 3.978. Efeitos exactly-once seguros para reprocessar fazem a instabilidade de parceiros degradar com elegância em vez de corromper o ledger."
 		},
 		"legal-domain-rag": {
 			"tagline": "Recuperação por jurisdição com um validador determinístico de citações. Toda resposta se fundamenta numa fonte real. AWS Bedrock + Lambda + pgvector.",
-			"description": "Um pipeline de RAG legal-tech sobre um corpus de 15M documentos abrangendo 5 jurisdições. Cada jurisdição ganha seu próprio índice pgvector, então a recuperação nunca vaza entre regimes legais. Um validador determinístico de citações confere que cada passagem citada existe e sustenta a alegação antes de a resposta retornar. Serverless em AWS Bedrock + Lambda, então o custo acompanha o uso em vez de capacidade ociosa.",
-			"problemStatement": "No trabalho jurídico uma citação fabricada ou mal atribuída é má prática. Uma resposta fundamentada na jurisdição errada é pior do que nenhuma resposta. Fazer isso à mão não escala.",
-			"solutionSummary": "Índices pgvector por jurisdição mantêm a recuperação dentro do regime legal correto. Um validador determinístico de citações verifica que cada trecho citado existe e sustenta a afirmação antes de a geração retornar. O modelo nunca é confiado para citar de memória. O AWS Bedrock cuida da inferência; o Lambda mantém tudo serverless e com custo limitado.",
-			"constraint": "Uma citação fabricada é má prática. Uma resposta entre jurisdições é pior do que nenhuma. Documentação manual não escala.",
-			"decision": "Isolar a recuperação por jurisdição para que uma query não possa puxar do regime errado. Bloquear a geração atrás de um validador determinístico de citações que confirma que cada trecho citado existe e sustenta a alegação. Rejeitados um único índice compartilhado (vazamento entre regimes) e confiar em citações geradas pelo modelo (risco de alucinação).",
+			"description": "Um pipeline de RAG legal-tech sobre um corpus de 15M documentos em 5 jurisdições. Cada jurisdição tem o seu próprio índice pgvector, então a recuperação nunca atravessa regimes jurídicos. Um validador determinístico de citações confere se cada passagem citada existe e sustenta a alegação antes de a resposta retornar. Serverless em AWS Bedrock + Lambda, então o custo acompanha o uso em vez de capacidade ociosa.",
+			"problemStatement": "No trabalho jurídico, uma citação fabricada ou mal atribuída é má prática profissional. Uma resposta fundamentada na jurisdição errada é pior do que resposta nenhuma. E fazer isso na mão não escala.",
+			"solutionSummary": "Índices pgvector por jurisdição mantêm a recuperação dentro do regime jurídico correto. Um validador determinístico de citações verifica se cada trecho citado existe e sustenta a afirmação antes de a geração retornar. O modelo nunca é aceito para citar de memória. O AWS Bedrock cuida da inferência; o Lambda mantém tudo serverless e com custo limitado.",
+			"constraint": "Uma citação fabricada é má prática profissional. Uma resposta entre jurisdições é pior do que nenhuma. Documentação manual não escala.",
+			"decision": "Isolar a recuperação por jurisdição, para que uma consulta não possa puxar do regime errado. Bloquear a geração atrás de um validador determinístico de citações que confirma que cada trecho citado existe e sustenta a alegação. Descartados um único índice compartilhado (vazamento entre regimes) e confiar em citações geradas pelo modelo (risco de alucinação).",
 			"outcome": "−60% de esforço de documentação manual num corpus de 15M documentos e 5 jurisdições. Cada citação é validada deterministicamente contra a fonte, nunca gerada de memória."
 		},
 		"multilingual-rag": {
-			"tagline": "Recuperação fundamentada com checks de regressão de eval congelada para uma base de usuários multilíngue. A precisão é medida antes de cada rollout. AWS Bedrock + pgvector.",
-			"description": "Um assistente com recuperação aumentada atendendo 100K+ usuários ativos diários numa população multilíngue. A recuperação fundamentada mantém as respostas atreladas à base de conhecimento. Um conjunto de avaliação congelada controla cada rollout: a precisão é medida em perguntas de holdout antes de uma mudança subir, então a base de conhecimento melhora de forma monotônica em vez de regredir em silêncio. AWS Bedrock + pgvector por baixo dos panos.",
-			"problemStatement": "Um assistente multilíngue de 100K DAU não pode regredir em silêncio. Uma mudança de prompt ou de modelo que ajuda um idioma pode degradar outro sem alarde, e ninguém percebe até os usuários perceberem.",
-			"solutionSummary": "A recuperação fundamentada ancora as respostas à base de conhecimento, não à memória do modelo. Uma suíte de regressão de eval congelada mede a precisão num conjunto de perguntas de holdout antes de qualquer rollout. Uma mudança que melhora uma coorte não pode degradar outra em silêncio. AWS Bedrock para inferência, pgvector para recuperação.",
-			"constraint": "Com 100K DAU em vários idiomas, uma mudança que ajuda uma coorte pode degradar outra em silêncio. Você descobre pelos usuários.",
-			"decision": "Fundamentar toda resposta na base de conhecimento e bloquear rollouts atrás de um conjunto de avaliação congelada, de modo que a precisão seja medida em perguntas de holdout antes de subir. Rejeitados iteração de prompt sem gate (regressões silenciosas) e geração sem fundamentação (alucinação em escala).",
-			"outcome": "+40% de precisão na base de conhecimento com 100K+ usuários ativos diários. Um gate de eval congelada bloqueia regressões silenciosas antes que cheguem aos usuários."
+			"tagline": "Recuperação fundamentada com verificações de regressão sobre eval congelada para uma base de usuários multilíngue. A precisão é medida antes de cada rollout. AWS Bedrock + pgvector.",
+			"description": "Um assistente com recuperação aumentada atendendo 100K+ usuários ativos por dia numa população multilíngue. A recuperação fundamentada mantém as respostas atreladas à base de conhecimento. Um conjunto de avaliação congelada controla cada rollout: a precisão é medida em perguntas separadas de holdout antes de qualquer mudança subir, então a base de conhecimento melhora de forma monotônica em vez de regredir em silêncio. AWS Bedrock + pgvector por baixo dos panos.",
+			"problemStatement": "Um assistente multilíngue com 100K DAU não pode regredir em silêncio. Uma mudança de prompt ou de modelo que ajuda um idioma pode degradar outro sem alarde, e ninguém percebe até os usuários perceberem.",
+			"solutionSummary": "A recuperação fundamentada ancora as respostas à base de conhecimento, não à memória do modelo. Uma suíte de regressão sobre eval congelada mede a precisão num conjunto de perguntas de holdout antes de qualquer rollout. Uma mudança que melhora um grupo não pode degradar outro em silêncio. AWS Bedrock para inferência, pgvector para recuperação.",
+			"constraint": "Com 100K DAU em vários idiomas, uma mudança que ajuda um grupo pode degradar outro em silêncio. Você descobre pelos usuários.",
+			"decision": "Fundamentar toda resposta na base de conhecimento e bloquear rollouts atrás de um conjunto de avaliação congelada, de modo que a precisão seja medida em perguntas de holdout antes de subir. Descartados iteração de prompt sem gate (regressões silenciosas) e geração sem fundamentação (alucinação em escala).",
+			"outcome": "+40% de precisão na base de conhecimento com 100K+ usuários ativos por dia. Um gate de eval congelada bloqueia regressões silenciosas antes que cheguem aos usuários."
 		},
 		"ai-document-processor": {
-			"tagline": "Um pipeline de ingestão agnóstico a formato onde cada campo extraído rastreia de volta ao seu trecho-fonte. PDF/DOCX/imagem → OCR → classifica → extrai → JSONB consultável.",
-			"description": "Suba PDFs, imagens ou arquivos DOCX. O pipeline extrai texto com um fallback de OCR para entradas escaneadas. Um modelo barato classifica o tipo de documento com um score de confiança. Um modelo focado puxa campos estruturados (fornecedor, valor, datas, itens de linha) para um JSON limpo. Os resultados caem no PostgreSQL com busca full-text via JSONB + TSVECTOR. Dashboard em Next.js, orquestração via Docker Compose, um comando para subir a stack. Sem API key, roda só a extração de texto, então o caminho de demo é gratuito.",
-			"problemStatement": "Um pipeline de documentos regulados tem de ser agnóstico a formato (PDF de texto, PDF escaneado, JPEG, DOCX), ciente de tipo (nota fiscal vs contrato vs recibo) e consultável downstream. Também tem de ser self-host, o que descarta escrever um parser por formato na mão ou comprar um SaaS fechado.",
-			"solutionSummary": "Um pipeline de IA em dois níveis: um modelo barato classifica, um modelo focado extrai por tipo. Cada campo extraído rastreia até seu trecho-fonte. PyMuPDF + Tesseract cuidam do texto e do fallback de OCR. O PostgreSQL JSONB armazena os campos extraídos ao lado do TSVECTOR para busca em texto livre. ~$0,006 por documento.",
-			"constraint": "Self-hostável, agnóstico a formato e ciente de tipo. A extração tem de ser consultável downstream e auditável por campo.",
-			"decision": "Dividir o trabalho: primeiro um classificador barato, depois um extrator focado chaveado ao tipo de documento. Um caminho de texto gratuito sem API key faz o sistema degradar em vez de falhar. Armazenar JSONB + TSVECTOR para que as queries downstream batam em uma só tabela.",
-			"outcome": "Um pipeline ao vivo e self-hostável a ~$0,006/documento. Cada campo extraído rastreia até seu trecho-fonte e é buscável em texto completo."
+			"tagline": "Um pipeline de ingestão agnóstico a formato onde cada campo extraído rastreia de volta ao seu trecho de origem. PDF/DOCX/imagem → OCR → classifica → extrai → JSONB consultável.",
+			"description": "Suba PDFs, imagens ou arquivos DOCX. O pipeline extrai o texto com fallback de OCR para entradas escaneadas. Um modelo barato classifica o tipo de documento com um score de confiança. Um modelo focado puxa campos estruturados (fornecedor, valor, datas, itens de linha) para um JSON limpo. Os resultados caem no PostgreSQL com busca full-text via JSONB + TSVECTOR. Dashboard em Next.js, orquestração via Docker Compose, um comando para subir a stack. Sem API key, roda só a extração de texto, então o caminho de demonstração é gratuito.",
+			"problemStatement": "Um pipeline de documentos regulados tem de ser agnóstico a formato (PDF de texto, PDF escaneado, JPEG, DOCX), ciente do tipo (nota fiscal vs. contrato vs. recibo) e consultável a jusante. Também tem de rodar self-hosted, o que descarta escrever um parser por formato na mão ou comprar um SaaS fechado.",
+			"solutionSummary": "Um pipeline de IA em dois níveis: um modelo barato classifica, um modelo focado extrai por tipo. Cada campo extraído rastreia até o seu trecho de origem. PyMuPDF + Tesseract cuidam do texto e do fallback de OCR. O PostgreSQL JSONB guarda os campos extraídos ao lado do TSVECTOR para busca em texto livre. ~US$ 0,006 por documento.",
+			"constraint": "Self-hostável, agnóstico a formato e ciente do tipo. A extração tem de ser consultável a jusante e auditável campo a campo.",
+			"decision": "Dividir o trabalho: primeiro um classificador barato, depois um extrator focado, indexado ao tipo de documento. Um caminho de texto gratuito, sem API key, faz o sistema degradar em vez de falhar. Guardar JSONB + TSVECTOR para que as consultas a jusante batam numa só tabela.",
+			"outcome": "Um pipeline ao vivo e self-hostável a ~US$ 0,006/documento. Cada campo extraído rastreia até o seu trecho de origem e pode ser buscado em texto completo."
 		},
 		"wa": {
 			"tagline": "Um canal de agente persistente que trata o corpo da mensagem de entrada como um perímetro de auditoria não confiável. Go, hexagonal, assinado com Sigstore.",
-			"description": "Uma sessão de WhatsApp persistente embrulhada em um daemon (`wad`) com um cliente CLI fino (`wa`) que emite comandos sobre um socket unix JSON-RPC. Ratchet store em SQLite, allowlist + rate limiter + rampa de warmup antes do primeiro envio. As mensagens de entrada são embrulhadas em tags <channel> para que um agente downstream não possa confiar no corpo de uma mensagem para mutar a allowlist ou disparar envios. Apache-2.0, GoReleaser para GitHub Releases + homebrew-tap + flake.nix.",
-			"problemStatement": "Dê a um agente autônomo um canal de WhatsApp de verdade e todo corpo de mensagem de entrada vira uma superfície de injeção. Uma mensagem forjada nunca pode mutar a allowlist ou disparar um envio. Uma biblioteca de API de parceiro vazando pela base de código torna a fronteira de confiança impossível de auditar.",
-			"solutionSummary": "Camadas hexagonais impostas pelo golangci-lint, de modo que o código de domínio e de aplicação fisicamente não possa importar a biblioteca do WhatsApp — ela fica em quarentena nos adapters. As mensagens de entrada chegam embrulhadas em tags <channel>, então o agente não pode confiar num corpo para mutar estado. Allowlist default-deny + rate limits por segundo/minuto/dia + uma rampa de warmup 25/50/100% antes do primeiro envio. Ratchet store em SQLite sobre modernc.org/sqlite — CGO_ENABLED=0, sem cadeia de build CGO.",
+			"description": "Uma sessão de WhatsApp persistente embrulhada num daemon (`wad`), com um cliente CLI enxuto (`wa`) que emite comandos por um socket unix JSON-RPC. Ratchet store em SQLite, allowlist + rate limiter + rampa de warmup antes do primeiro envio. As mensagens de entrada são embrulhadas em tags <channel> para que um agente downstream não possa confiar no corpo de uma mensagem para alterar a allowlist ou disparar envios. Apache-2.0, GoReleaser para GitHub Releases + homebrew-tap + flake.nix.",
+			"problemStatement": "Dê a um agente autônomo um canal de WhatsApp de verdade e todo corpo de mensagem de entrada vira uma superfície de injeção. Uma mensagem forjada nunca pode alterar a allowlist nem disparar um envio. E uma biblioteca de API de parceiro vazando pela base de código torna a fronteira de confiança impossível de auditar.",
+			"solutionSummary": "Camadas hexagonais impostas pelo golangci-lint, de modo que o código de domínio e de aplicação fisicamente não consiga importar a biblioteca do WhatsApp — ela fica em quarentena nos adapters. As mensagens de entrada chegam embrulhadas em tags <channel>, então o agente não pode confiar num corpo para alterar estado. Allowlist com negação por padrão + rate limits por segundo/minuto/dia + uma rampa de warmup de 25/50/100% antes do primeiro envio. Ratchet store em SQLite sobre modernc.org/sqlite — CGO_ENABLED=0, sem cadeia de build CGO.",
 			"constraint": "Um agente autônomo com um canal de WhatsApp de verdade faz de todo corpo de mensagem de entrada uma superfície de injeção — e uma biblioteca de API de parceiro vazando pela base de código torna a fronteira de confiança impossível de auditar.",
-			"decision": "Pôr a biblioteca do WhatsApp em quarentena nos adapters e deixar o golangci-lint reprovar o build se o código de domínio/aplicação a importar; embrulhar os corpos de entrada em tags <channel> para que não possam ser confiados para mutar estado; aplicar default-deny na allowlist e escalonar os envios em 25/50/100% numa sessão nova.",
-			"outcome": "Um daemon cuja fronteira de confiança é auditável: a biblioteca está contida, o corpo da mensagem não pode escalar privilégio, e cada release é assinado com Sigstore em SLSA L2."
+			"decision": "Pôr a biblioteca do WhatsApp em quarentena nos adapters e deixar o golangci-lint reprovar o build se o código de domínio/aplicação a importar; embrulhar os corpos de entrada em tags <channel> para que não possam ser aceitos como gatilho de mudança de estado; aplicar negação por padrão na allowlist e escalonar os envios em 25/50/100% numa sessão nova.",
+			"outcome": "Um daemon cuja fronteira de confiança é auditável: a biblioteca está contida, o corpo da mensagem não consegue escalar privilégio e cada release é assinado com Sigstore em SLSA L2."
 		},
 		"serverless-data-api": {
-			"tagline": "CRUD serverless de nível produção em Terraform: IAM least-privilege, planos de uso por API-key, PITR e um teardown que não deixa nenhum órfão.",
-			"description": "Uma API CRUD serverless pronta para produção, provisionada inteiramente via Terraform. Um API Gateway com auth por API-key e rate limiting de 1000 req/dia faz a frente de uma Lambda em Python 3.12 sobre arm64 com AWS Powertools, apoiada num design DynamoDB de tabela única com PITR. Um dashboard CloudWatch com 8 widgets cobre invocações, latência, erros e capacidade. `terraform apply` sobe tudo; `terraform destroy` remove cada recurso — sem órfãos.",
-			"problemStatement": "Tutoriais de serverless pulam as camadas chatas: IAM least-privilege, auth por API-key + plano de uso, logging estruturado, uma história de teardown. O resultado é uma demo que não chega à produção sem um rewrite.",
-			"solutionSummary": "Cinco módulos Terraform componíveis (dynamodb, iam, lambda, api_gateway, monitoring) ligam 15 recursos de ponta a ponta. A role de execução da Lambda é least-privilege, escopada ao ARN da tabela. O plano de uso do API Gateway tem teto de 1000 req/dia com burst 10. O GitHub Actions roda fmt + validate + plan em cada PR. O custo ocioso é $0 (ou $3/mês com o dashboard CloudWatch ligado).",
-			"constraint": "Uma API serverless que pode ser clonada direto para produção — IAM least-privilege, auth, observabilidade e um teardown limpo — não uma demo que precisa de um rewrite antes.",
-			"decision": "Escopar a role da Lambda ao ARN da tabela (nunca um wildcard), bloquear a API atrás de um plano de uso por API-key, limitar a 1000 req/dia e fazer o `terraform destroy` não deixar nenhum órfão. Provisionar cada camada como um módulo reutilizável para que o padrão seja copiável.",
-			"outcome": "15 recursos em 5 módulos, IAM least-privilege, PITR e um teardown que remove tudo — a $0/mês ocioso."
+			"tagline": "CRUD serverless em nível de produção em Terraform: IAM com privilégio mínimo, planos de uso por API-key, PITR e um teardown que não deixa nenhum órfão.",
+			"description": "Uma API CRUD serverless pronta para produção, provisionada inteiramente via Terraform. Um API Gateway com auth por API-key e rate limiting de 1000 req/dia fica na frente de uma Lambda em Python 3.12 sobre arm64 com AWS Powertools, apoiada num design DynamoDB de tabela única com PITR. Um dashboard CloudWatch com 8 widgets cobre invocações, latência, erros e capacidade. `terraform apply` sobe tudo; `terraform destroy` remove cada recurso — sem órfãos.",
+			"problemStatement": "Tutoriais de serverless pulam as camadas chatas: IAM com privilégio mínimo, auth por API-key + plano de uso, logging estruturado e um teardown de verdade. O resultado é uma demo que não chega à produção sem um rewrite.",
+			"solutionSummary": "Cinco módulos Terraform combináveis (dynamodb, iam, lambda, api_gateway, monitoring) ligam 15 recursos de ponta a ponta. A role de execução da Lambda tem privilégio mínimo, restrita ao ARN da tabela. O plano de uso do API Gateway tem teto de 1000 req/dia com burst de 10. O GitHub Actions roda fmt + validate + plan em cada PR. O custo ocioso é $0 (ou $3/mês com o dashboard CloudWatch ligado).",
+			"constraint": "Uma API serverless que pode ser clonada direto para produção — IAM com privilégio mínimo, auth, observabilidade e um teardown limpo — não uma demo que precisa de um rewrite antes.",
+			"decision": "Restringir a role da Lambda ao ARN da tabela (nunca um wildcard), bloquear a API atrás de um plano de uso por API-key, limitar a 1000 req/dia e fazer o `terraform destroy` não deixar nenhum órfão. Provisionar cada camada como um módulo reutilizável, para que o padrão seja copiável.",
+			"outcome": "15 recursos em 5 módulos, IAM com privilégio mínimo, PITR e um teardown que remove tudo — a $0/mês ocioso."
 		},
 		"exec-job-board": {
-			"tagline": "Quatro APIs públicas divergentes normalizadas atrás de um único schema Pydantic, deduplicadas por hash de conteúdo e servidas como site estático zero-backend — atualizado diariamente por cron.",
-			"description": "Um pipeline diário automatizado coleta vagas de nível executivo de 4 APIs públicas de dados (JSearch, Adzuna, The Muse, USAJobs), as normaliza em um schema Pydantic unificado, deduplica via hashing de conteúdo SHA-256 e emite um único `jobs.json` consumido por um site estático em Next.js no build. Busca fuzzy client-side com Fuse.js + filtragem em 4 dimensões, resposta abaixo de 200ms, zero custo de backend em runtime.",
-			"problemStatement": "Agregar dados de 4 APIs de terceiros com schemas de resposta divergentes, rate limits e modelos de auth distintos — sem um backend que precise ser mantido quente — é o problema canônico do 'código de cola que ninguém quer manter'.",
-			"solutionSummary": "Um adapter por fonte isola o drift de formato de resposta. O Pydantic v2 impõe o schema unificado na costura. SHA-256 sobre (title, employer, location, posted_date) cuida da deduplicação. Um cron no GitHub Actions roda o coletor diariamente, commita o JSON e redeploya o site estático. O site cai para um seed curado de 30 linhas quando o output da API está ausente — a demo nunca quebra."
+			"tagline": "Quatro APIs públicas divergentes normalizadas atrás de um único schema Pydantic, deduplicadas por hash de conteúdo e servidas como site estático sem backend — atualizado todo dia por cron.",
+			"description": "Um pipeline diário automatizado coleta vagas de nível executivo de 4 APIs públicas de dados (JSearch, Adzuna, The Muse, USAJobs), normaliza tudo num schema Pydantic unificado, deduplica via hashing de conteúdo SHA-256 e emite um único `jobs.json` consumido por um site estático em Next.js no build. Busca fuzzy no cliente com Fuse.js + filtragem em 4 dimensões, resposta abaixo de 200ms e custo zero de backend em runtime.",
+			"problemStatement": "Agregar dados de 4 APIs de terceiros com schemas de resposta divergentes, rate limits e modelos de auth distintos — sem um backend que precise ficar quente — é o problema clássico do \"código de cola que ninguém quer manter\".",
+			"solutionSummary": "Um adapter por fonte isola a variação no formato da resposta. O Pydantic v2 impõe o schema unificado no ponto de junção. SHA-256 sobre (title, employer, location, posted_date) cuida da deduplicação. Um cron no GitHub Actions roda o coletor todo dia, commita o JSON e refaz o deploy do site estático. O site cai para um seed curado de 30 linhas quando o output da API está ausente — a demonstração nunca quebra."
 		},
 		"realestate-price-tracker": {
-			"tagline": "Três camadas que a maioria das stacks de demo simula só uma: REST filtrado + paginado, queries agregadas indexadas e um frontend de mapa/gráficos que se mantém responsivo sob qualquer combinação de filtros.",
-			"description": "Um dashboard full-stack acompanhando dados de mercado imobiliário. O FastAPI serve endpoints REST com paginação filtrável, estatísticas agregadas e export CSV/JSON. Um dashboard em Next.js renderiza gráficos de linha/barra interativos em Recharts e um mapa React-Leaflet com marcadores coloridos por categoria. PostgreSQL 16 com queries indexadas, 800 listagens sintéticas em 6 bairros, costurados via Docker Compose.",
+			"tagline": "Três camadas que a maioria das stacks de demo só finge entregar: REST filtrado + paginado, queries agregadas indexadas e um frontend de mapa/gráficos que se mantém responsivo sob qualquer combinação de filtros.",
+			"description": "Um dashboard full-stack acompanhando dados do mercado imobiliário. O FastAPI serve endpoints REST com paginação filtrável, estatísticas agregadas e exportação CSV/JSON. Um dashboard em Next.js renderiza gráficos de linha/barra interativos em Recharts e um mapa React-Leaflet com marcadores coloridos por categoria. PostgreSQL 16 com queries indexadas, 800 listagens sintéticas em 6 bairros, costurados via Docker Compose.",
 			"problemStatement": "Um dashboard de mercado precisa de três camadas ligadas corretamente: REST filtrado + paginado, queries agregadas indexadas e um frontend interativo com mapa + gráficos que se mantém responsivo sob combinações de filtros — e a maioria das stacks de demo escolhe uma e finge o resto.",
-			"solutionSummary": "SQLAlchemy async + asyncpg para acesso não-bloqueante ao PostgreSQL. Colunas indexadas em (neighborhood, price, posted_date) mantêm os agregados em poucos ms. Um script de seed gera preços com distribuição gaussiana em torno das medianas por bairro. Um único `docker compose up` coloca PostgreSQL + API + dashboard no ar; os endpoints de export CSV/JSON respeitam os mesmos filtros da UI ao vivo."
+			"solutionSummary": "SQLAlchemy async + asyncpg para acesso não-bloqueante ao PostgreSQL. Colunas indexadas em (neighborhood, price, posted_date) mantêm os agregados em poucos ms. Um script de seed gera preços com distribuição gaussiana em torno das medianas por bairro. Um único `docker compose up` coloca PostgreSQL + API + dashboard no ar; os endpoints de exportação CSV/JSON respeitam os mesmos filtros da UI ao vivo."
 		},
 		"claude-mac-chrome": {
-			"tagline": "Dirige SPAs em React/Ember que rejeitam eventos sintéticos, enviando eventos reais de ponteiro do SO em coordenadas de tela computadas.",
-			"description": "Lê o catálogo autoritativo de perfis do Local State do Chrome e casa perfis com janelas abertas via e-mails embutidos nos títulos das abas. IDs de janela/aba estáveis entre aberturas. Combinado com cliclick + pbcopy, dirige single-page apps que rejeitam eventos programáticos.",
-			"problemStatement": "Os single-page apps de LinkedIn, Calendly e Upwork bloqueiam cliques programáticos via `event.isTrusted === true`. Extensões de navegador não conseguem contornar; Playwright via remote-debugging-port funciona mas atrapalha a sessão do usuário.",
-			"solutionSummary": "Automação nativa do macOS: cliclick em coordenadas de tela computadas (bounds da janela + rect do viewport) envia eventos reais de ponteiro do SO com isTrusted=true. Detecção de perfil do Chrome via JSON do Local State. AppleScript orquestra o foco de janela + aba. Combinado com pbcopy + Cmd+V para input em contenteditable do React."
+			"tagline": "Conduz SPAs em React/Ember que rejeitam eventos sintéticos, enviando eventos reais de ponteiro do SO em coordenadas de tela calculadas.",
+			"description": "Lê o catálogo autoritativo de perfis do Local State do Chrome e associa perfis a janelas abertas via e-mails embutidos nos títulos das abas. IDs de janela/aba estáveis entre aberturas. Combinado com cliclick + pbcopy, conduz single-page apps que rejeitam eventos programáticos.",
+			"problemStatement": "Os single-page apps de LinkedIn, Calendly e Upwork bloqueiam cliques programáticos via `event.isTrusted === true`. Extensões de navegador não conseguem contornar; Playwright via remote-debugging-port funciona, mas atrapalha a sessão do usuário.",
+			"solutionSummary": "Automação nativa do macOS: cliclick em coordenadas de tela calculadas (bounds da janela + rect do viewport) envia eventos reais de ponteiro do SO com isTrusted=true. Detecção de perfil do Chrome via JSON do Local State. AppleScript orquestra o foco de janela + aba. Combinado com pbcopy + Cmd+V para input em contenteditable do React."
 		},
 		"linkedin-chrome-copilot": {
-			"tagline": "Materializa e salva slots de perfil por locale (PT/EN/ES) atrás de botões Salvar gated por isTrusted, com confirmação em duas fases em qualquer envio.",
-			"description": "Formulários de edição de perfil por locale (PT/EN/ES) gated atrás de URLs separadas com botões Salvar isTrusted=true. O plugin enumera posições, materializa drafts e salva cada slot de locale via execCommand('insertText') + um clique em cadeia de eventos no botão Salvar — o Chrome fica em segundo plano, sessão do navegador intacta.",
-			"problemStatement": "O editor de perfil 2026 do LinkedIn armazena 3 slots de locale por posição (PT/EN/ES) atrás de URLs separadas. O botão Salvar discrimina eventos isTrusted=true, quebrando dispatches sintéticos; o typeahead Algolia na seção de skills ignora input sintético.",
-			"solutionSummary": "Um plugin em Bash 3.2 irmão do claude-mac-chrome. Lê posições via scrape do DOM em visão de dono, dirige saves por locale em /edit/forms/<id>/?language=<lang>&country=<cc> via injeção de JS por AppleScript. Fallback de cliclick para caminhos gated em eventos reais de ponteiro do SO. Log de auditoria por ação; confirmação em duas fases em qualquer equivalente de Enviar."
+			"tagline": "Materializa e salva slots de perfil por locale (PT/EN/ES) atrás de botões Salvar protegidos por isTrusted, com confirmação em duas etapas em qualquer envio.",
+			"description": "Formulários de edição de perfil por locale (PT/EN/ES) protegidos atrás de URLs separadas com botões Salvar isTrusted=true. O plugin enumera as posições, materializa os drafts e salva cada slot de locale via execCommand('insertText') + um clique em cadeia de eventos no botão Salvar — o Chrome fica em segundo plano, sessão do navegador intacta.",
+			"problemStatement": "O editor de perfil 2026 do LinkedIn guarda 3 slots de locale por posição (PT/EN/ES) atrás de URLs separadas. O botão Salvar distingue eventos isTrusted=true, quebrando dispatches sintéticos; o typeahead Algolia na seção de skills ignora input sintético.",
+			"solutionSummary": "Um plugin em Bash 3.2 irmão do claude-mac-chrome. Lê as posições via scrape do DOM na visão de dono e conduz os saves por locale em /edit/forms/<id>/?language=<lang>&country=<cc> via injeção de JS por AppleScript. Fallback de cliclick para caminhos protegidos por eventos reais de ponteiro do SO. Log de auditoria por ação; confirmação em duas etapas em qualquer equivalente de Enviar."
 		},
 		"kokoro-speakd": {
-			"tagline": "Carrega o modelo de TTS uma vez e serve a síntese sobre um socket unix — resposta quente abaixo de 200ms em vez de um cold load de 3-5s por chamada.",
+			"tagline": "Carrega o modelo de TTS uma vez e serve a síntese por um socket unix — resposta quente abaixo de 200ms em vez de um cold load de 3-5s por chamada.",
 			"description": "Carrega o modelo Kokoro 82M uma vez no start do daemon e expõe um socket unix para requisições repetidas de síntese. Integração nativa com launchd no macOS + systemd no Linux. Publicado no PyPI com atestações PEP 740.",
-			"problemStatement": "O load de modelo por requisição adiciona 3-5s de latência a cada chamada de TTS. O feedback de voz em nível de sessão do Claude Code precisa de resposta abaixo de um segundo.",
-			"solutionSummary": "Arquitetura de daemon: o modelo fica em memória, as requisições chegam via socket unix, com aceleração opcional por GPU via ONNX Runtime. Distribuído via PyPI Trusted Publishing com atestações de build-provenance PEP 740."
+			"problemStatement": "O load do modelo a cada requisição adiciona 3-5s de latência a toda chamada de TTS. O feedback de voz por sessão do Claude Code precisa de resposta abaixo de um segundo.",
+			"solutionSummary": "Arquitetura de daemon: o modelo fica em memória, as requisições chegam por socket unix, com aceleração opcional por GPU via ONNX Runtime. Distribuído via PyPI Trusted Publishing com atestações de build-provenance PEP 740."
 		},
 		"claude-classroom-submit": {
-			"tagline": "Pula inteiramente o iframe cross-origin do Drive Picker — sobe via rclone, anexa e entrega via a REST API do Classroom.",
+			"tagline": "Pula por completo o iframe cross-origin do Drive Picker — sobe via rclone, anexa e entrega via a REST API do Classroom.",
 			"description": "Sobe um arquivo para o Drive via rclone, encontra a atividade alvo por query, anexa o arquivo do Drive via studentSubmissions.modifyAttachments e finaliza com studentSubmissions.turnIn — tudo via REST API.",
 			"problemStatement": "A automação de navegador esbarra no sandbox do iframe do Drive Picker; a seleção programática de arquivo é bloqueada pela política cross-origin. O envio manual leva ~2 minutos por atividade.",
-			"solutionSummary": "Pular o navegador por inteiro. O rclone sobe para o Drive, a REST API do Classroom anexa + entrega. Fluxo OAuth 2.0 com refresh-token armazenado em ~/.config/claude-classroom-submit/tokens.json."
+			"solutionSummary": "Pular o navegador por completo. O rclone sobe para o Drive, a REST API do Classroom anexa + entrega. Fluxo OAuth 2.0 com refresh-token guardado em ~/.config/claude-classroom-submit/tokens.json."
 		},
 		"fand": {
-			"tagline": "Acelera as fans em curvas dirigidas por temperatura antes de o throttling térmico começar, com reload de config sem downtime via SIGHUP — Rust + launchd.",
+			"tagline": "Acelera as fans em curvas guiadas por temperatura antes de o throttling térmico começar, com reload de config sem downtime via SIGHUP — Rust + launchd.",
 			"description": "Lê sensores do SMC via chamadas de sistema diretas, aplica curvas de fan configuradas pelo usuário e suporta overrides por máquina. Hot-reload no SIGHUP. Rust 1.84 com dependências fixadas exatas para builds reprodutíveis.",
-			"problemStatement": "Os padrões de fan do Apple Silicon são conservadores demais sob carga sustentada de CPU + GPU (Claude Code + Docker + navegador + ffmpeg). As fans não aceleram até o throttling térmico já ter começado.",
+			"problemStatement": "Os padrões de fan do Apple Silicon são conservadores demais sob carga sustentada de CPU + GPU (Claude Code + Docker + navegador + ffmpeg). As fans só aceleram quando o throttling térmico já começou.",
 			"solutionSummary": "Um daemon em userspace faz polling do SMC, aplica curvas agressivas antes do throttle e recarrega a config sem reiniciar. Distribuído como binário universal2 via brew + GitHub Releases."
 		},
 		"pedro-portfolio-recipes": {
-			"tagline": "Padrões curtos e copiáveis das stacks que eu entrego — cada um é problema, snippet funcional, tradeoff, anti-padrão.",
-			"description": "Oito receitas de código capability-first — skills de plugin de Claude Code, automação multi-perfil de Chrome, RAG híbrido pgvector + BM25, verificação de atestação Sigstore, overlays de flake NixOS, módulos Terraform paralelos Azure/GCP, secrets com sops-nix e hooks de pré-commit poliglotas com lefthook. Cada receita é um diretório: problema, snippet funcional, tradeoff, anti-padrão.",
-			"problemStatement": "Revisores e colaboradores precisam de evidência rápida de que uma alegação de stack é sustentada por código de verdade — não por copy de marketing, e não por apps completos. Writeups longos são a resolução errada para 'me mostre como você ligaria a busca híbrida'.",
-			"solutionSummary": "Um repo público de receitas curtas e autocontidas em recipes/<topic>/README.md. Sem build step, sem framework compartilhado. Cada receita se sustenta sozinha em 200–500 palavras: problema, snippet, tradeoff, anti-padrão, referência. MIT, com uma baseline de SonarQube + Dependabot + lefthook."
+			"tagline": "Padrões curtos e prontos para copiar das stacks que eu entrego — cada um é problema, snippet funcional, tradeoff e anti-padrão.",
+			"description": "Oito receitas de código capability-first — skills de plugin de Claude Code, automação multi-perfil de Chrome, RAG híbrido com pgvector + BM25, verificação de atestação Sigstore, overlays de flake NixOS, módulos Terraform paralelos em Azure/GCP, secrets com sops-nix e hooks de pré-commit poliglotas com lefthook. Cada receita é um diretório: problema, snippet funcional, tradeoff, anti-padrão.",
+			"problemStatement": "Revisores e colaboradores precisam de evidência rápida de que uma alegação de stack é sustentada por código de verdade — não por copy de marketing e nem por apps completos. Writeups longos são a resolução errada para \"me mostre como você ligaria a busca híbrida\".",
+			"solutionSummary": "Um repositório público de receitas curtas e autocontidas em recipes/<topic>/README.md. Sem build step, sem framework compartilhado. Cada receita se sustenta sozinha em 200–500 palavras: problema, snippet, tradeoff, anti-padrão, referência. MIT, com uma baseline de SonarQube + Dependabot + lefthook."
 		}
 	},
 	"ProjectDetail": {
@@ -411,7 +411,7 @@
 	"ProjectShowcase": {
 		"selectedWorkStamp": "trabalhos selecionados",
 		"selectedWorkHeading": "Trabalhos selecionados",
-		"selectedWorkLead": "A restrição que tornou difícil, a decisão tomada e o resultado medido — não só o resultado final.",
+		"selectedWorkLead": "A restrição que tornou o problema difícil, a decisão tomada e o resultado medido — não só o resultado final.",
 		"openSourceStamp": "open-source & demos",
 		"openSourceHeading": "Open-source & demos"
 	}
