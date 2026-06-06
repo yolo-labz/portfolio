@@ -31,7 +31,7 @@ interface ClaimEvidence {
 const claimEvidenceMap: ClaimEvidence[] = [
 	{
 		evidenceType: "public-repo",
-		url: "https://github.com/yolo-labz/wa",
+		url: "https://github.com/yolo-labz/claude-classroom-submit",
 		status: "backed",
 	},
 	{
