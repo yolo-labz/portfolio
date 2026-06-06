@@ -1,6 +1,10 @@
 # Automation Hub — Self-Hosted Workflow Orchestrator
 
-Capability demo: a YAML-defined workflow engine that wires cron schedules and HTTP webhooks into a fan-out RPC layer over a fleet of single-purpose daemons (Chrome driver, WhatsApp daemon, TTS daemon, thermal monitor). Workflows declare `on:` triggers (cron / webhook / file-watch) and `steps:` that dispatch to daemon Unix sockets, with retries, structured logs, and a Postgres-backed run ledger.
+> **Status: DESIGN / RFC — not yet implemented.** This document describes the
+> intended architecture and API. There is no shipped code in this directory yet;
+> the snippets below (workflow DSL, fitness-function test) are proposed, not running.
+
+Planned capability: a YAML-defined workflow engine that wires cron schedules and HTTP webhooks into a fan-out RPC layer over a fleet of single-purpose daemons (Chrome driver, WhatsApp daemon, TTS daemon, thermal monitor). Workflows declare `on:` triggers (cron / webhook / file-watch) and `steps:` that dispatch to daemon Unix sockets, with retries, structured logs, and a Postgres-backed run ledger.
 
 [Live Demo](https://automation-hub.home301server.com.br) (soon) · [Portfolio](https://portfolio.home301server.com.br)
 
@@ -78,10 +82,10 @@ retry:
   backoff: exponential
 ```
 
-## Fitness function (executable enforcement)
+## Fitness function (proposed — not yet implemented)
 
 ```python
-# tests/test_dispatch_latency.py — fails CI if p95 dispatch regresses
+# tests/test_dispatch_latency.py — would fail CI if p95 dispatch regresses
 def test_dispatch_p95_under_envelope(loaded_socket_pool):
     metrics = run_n(1000, dispatch_noop)
     assert metrics.p95_ms < 5, f"latency regression: {metrics.p95_ms}ms"
