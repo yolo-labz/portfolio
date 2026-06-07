@@ -26,28 +26,28 @@
 		"ctaSecondary": "Lee los informes de arquitectura",
 		"stats": [
 			{
+				"value": 6,
+				"suffix": "",
+				"label": "repositorios públicos",
+				"detail": "SLSA L2 · firmados con Sigstore · verificás con un solo comando"
+			},
+			{
+				"value": 3,
+				"suffix": "",
+				"label": "apps de demo en vivo",
+				"detail": "extracción con IA · dashboard de mercado · pipeline de vacantes — código abierto"
+			},
+			{
+				"value": 152,
+				"suffix": "",
+				"label": "módulos NixOS",
+				"detail": "flota declarativa multi-host · 153 PRs fusionados"
+			},
+			{
 				"value": 0,
 				"suffix": "",
-				"label": "campos numéricos inventados",
-				"detail": "18 meses · agente regulado de declaración de impuestos en producción"
-			},
-			{
-				"value": 100,
-				"suffix": "K+",
-				"label": "usuarios activos por día",
-				"detail": "RAG multilingüe · +40% de precisión en la base de conocimiento"
-			},
-			{
-				"value": 10,
-				"suffix": "K+/día",
-				"label": "transacciones procesadas",
-				"detail": "backend de retail orientado a eventos · outbox + idempotencia"
-			},
-			{
-				"value": 60,
-				"suffix": "%",
-				"label": "menos revisión manual",
-				"detail": "RAG de dominio legal · LATAM tier-1 · citas validadas"
+				"label": "cifras inventadas, por construcción",
+				"detail": "diseño de agente acotado a la auditoría — cada número cita y revalida su fuente"
 			}
 		]
 	},
@@ -199,8 +199,8 @@
 				"period": "jul 2025 — presente",
 				"current": true,
 				"deliverables": [
-					"Diseñé RAG con grado de cumplimiento sobre Azure OpenAI — origen verificable de las decisiones, registro del rastro de auditoría y pruebas de regresión sobre evaluaciones congeladas para cargas reguladas",
-					"Entregué un asistente educativo multilingüe que atiende a 100K+ usuarios activos por día — +40% de precisión en la base de conocimiento tras el despliegue",
+					"Contribuí a un RAG con grado de cumplimiento sobre Azure OpenAI — origen verificable de las decisiones, registro del rastro de auditoría y pruebas de regresión sobre evaluaciones congeladas para cargas reguladas",
+					"Construí el backend y la capa de datos de un asistente educativo multilingüe — bilingüe PT/EN, más de 699K registros de matrícula",
 					"Implementé Terraform multi-cloud (Azure + GCP) que redujo el aprovisionamiento de entornos a menos de 10 minutos",
 					"Reduje el gasto cloud un 30% mediante el ajuste de capacidad de Lambda y la planificación de capacidad reservada"
 				]
@@ -224,7 +224,7 @@
 				"current": false,
 				"deliverables": [
 					"Entregué 12+ sistemas en producción en e-commerce, fintech y logística",
-					"Construí un BFF + Broker + Dispatcher orientado a eventos que procesa 10K+ transacciones/día con el patrón outbox y claves de idempotencia",
+					"Colaboré en un backend de retail orientado a eventos BFF + Broker + Dispatcher — patrón outbox y claves de idempotencia",
 					"Implementé CI matricial en GitHub Actions con gitleaks + OSV-Scanner para la higiene de la cadena de suministro",
 					"Definí los estándares de arquitectura y de control de releases adoptados por varios equipos"
 				]
@@ -243,7 +243,7 @@
 		"eyebrow": "Perfil",
 		"category": "Arquitecto de IA con grado de cumplimiento para cargas reguladas en LATAM y a nivel global",
 		"diagnostic": "La mayoría de los stacks de IA regulada reprueban la auditoría en los mismos tres puntos: trazabilidad del prompt, origen de lo recuperado y prueba del resultado. La solución está en la arquitectura. Tres planos — datos, control y cumplimiento — con el plano de cumplimiento corriendo como sidecar: un registro de auditoría encadenado por hash y anclado a un log de transparencia público.",
-		"summary": "Cuatro sistemas sostienen la prueba. Un RAG multilingüe con 100K+ usuarios activos por día y +40% de precisión en la base de conocimiento. Un backend de retail orientado a eventos que procesa 10K+ transacciones/día. Un RAG de dominio legal LATAM tier-1, con −60% de documentación manual. Un agente de cumplimiento para la declaración de impuestos brasileña (IRPF): 0 campos numéricos inventados en 18 meses, ≤40 turnos por declaración. Y luego el código abierto — seis plugins de Claude Code en github.com/yolo-labz, firmados con SLSA L2 + Sigstore y con SBOMs en doble formato.",
+		"summary": "La prueba se divide en dos. El código abierto es totalmente auditable: seis plugins de Claude Code firmados con Sigstore en github.com/yolo-labz y tres apps de demo en vivo con su código abierto. El trabajo con clientes está anonimizado y se construyó en equipo, bajo NDA — contribuí a un agente regulado para la declaración de impuestos brasileña (IRPF) (extracción de campos y validación de salida estructurada), al backend y la capa de datos de un chatbot educativo multilingüe, a un backend de retail orientado a eventos y a una prueba de concepto de RAG de dominio legal. Cada uno se construyó con los patrones de rastro de auditoría primero que defiende este sitio. Las cifras concretas que puedo mostrarte son las que están en los repos.",
 		"claimEvidenceHeading": "Afirmación → Evidencia",
 		"claimEvidenceIntro": "Cada afirmación principal se respalda con un artefacto verificable. Los repositorios públicos enlazan directo al código fuente. Las filas marcadas como \"informe pendiente\" son informes de arquitectura anonimizados; el nombre del cliente nunca se publica, solo la arquitectura, y solo después de que el informe pase la revisión.",
 		"tableHeaderClaim": "Afirmación",
@@ -262,11 +262,11 @@
 			"Daemon de TTS (Python, ONNX, PyPI)",
 			"Daemon térmico para Apple Silicon (Rust)",
 			"Flota NixOS multi-host (152 módulos, 153 PRs)",
-			"RAG con grado de cumplimiento para banca LATAM tier-1",
-			"Backend de retail orientado a eventos (BFF + Broker + Dispatcher)",
-			"AWS Bedrock + Lambda para RAG de dominio legal",
-			"Chatbot educativo multilingüe — enrutamiento por intención + escalado",
-			"Agente LLM de cumplimiento fiscal AI-IRPF"
+			"RAG con grado de cumplimiento para banca regulada (colaborador)",
+			"Backend de retail orientado a eventos (ingeniero de backend)",
+			"RAG de dominio legal — prueba de concepto (colaborador)",
+			"Chatbot educativo multilingüe — backend + capa de datos (consultor)",
+			"Agente de declaración de impuestos IRPF — extracción + validación (en equipo)"
 		]
 	},
 	"Thesis": {
@@ -279,46 +279,46 @@
 		"p2": "Las auditorías fallan en tres puntos, y siempre son los mismos tres. <strong>Trazabilidad del prompt:</strong> ¿qué prompt exacto, qué versión de plantilla y qué contexto de sistema produjeron esta salida? <strong>Origen de lo recuperado:</strong> ¿qué documentos se recuperaron, en qué versiones y por qué esos y no otros? <strong>Prueba del resultado:</strong> ¿puedes demostrar que la respuesta se derivó de la evidencia recuperada y no de la memoria interna del modelo? Un stack que no responde las tres bajo examen no está \"casi en cumplimiento\". Está sin documentar.",
 		"p3": "Un modelo mejor no cierra ninguno de esos puntos. Una ventana de contexto más grande vuelve la trazabilidad más difícil, no más fácil, porque más de la entrada queda implícita. Un agente con más autonomía complica el rastreo del origen, porque el camino de la pregunta a la respuesta deja de poder inspeccionarse. Las capacidades que el campo busca optimizar — más contexto, más autonomía, más fluidez — van en contra directa de la auditabilidad. Eso significa que el diseño del rastro de auditoría no se puede agregar después a un sistema optimizado para lo contrario. Tiene que ser una restricción desde el primer diagrama.",
 		"p4": "La estructura que sobrevive a una auditoría es una <strong>topología de tres planos</strong>. Un plano de datos lleva el flujo principal — ingerir, recuperar, inferir. Un plano de control mantiene la orquestación, el estado del agente y la configuración como objetos versionados de primer nivel. Un plano de cumplimiento corre en paralelo, como sidecar. Un registro de solo escritura toma datos de los otros dos planos y guarda eventos firmados y encadenados por hash; nunca se interpone en la ruta de datos. El plano de cumplimiento es el único cuya salida lee el auditor. Diseñarlo al final equivale a diseñar el sistema para que se mienta a sí mismo sobre lo que ocurrió.",
-		"p5": "En concreto: un agente de cumplimiento fiscal que prepara declaraciones reguladas corre como un bucle de herramientas tipadas con un tope fijo de turnos, no como una cadena abierta — porque un agente sin límites no tiene techo de auditoría. La recuperación se acota a cada período de declaración y el router rechaza los resultados de otros períodos, porque un origen que puede recuperar de cualquier parte no se puede reconstruir. Cada número emitido está obligado a citar su fuente y se vuelve a validar contra el fragmento que lo respalda antes de quedar en firme, porque exigir la prueba del resultado al momento de escribir sale más barato que demostrarla a posteriori. El resultado, a lo largo de dieciocho meses en producción: <strong>cero campos numéricos inventados</strong>. No porque el modelo sea incapaz de inventar — sino porque la arquitectura nunca confía en que no lo haga.",
+		"p5": "En concreto: un agente de cumplimiento fiscal que prepara declaraciones reguladas corre como un bucle de herramientas tipadas con un tope fijo de turnos, no como una cadena abierta — porque un agente sin límites no tiene techo de auditoría. La recuperación se acota a cada período de declaración y el router rechaza los resultados de otros períodos, porque un origen que puede recuperar de cualquier parte no se puede reconstruir. Cada número emitido está obligado a citar su fuente y se vuelve a validar contra el fragmento que lo respalda antes de quedar en firme, porque exigir la prueba del resultado al momento de escribir sale más barato que demostrarla a posteriori. Construido así, el agente <strong>no tiene forma de emitir una cifra sin fuente</strong> — lo que sostiene todo es la arquitectura, no la buena voluntad del modelo. Esa es la línea entre 'casi exacto' y auditable.",
 		"p6": "La disciplina se transfiere. LGPD, BCB 4.893 y la obligación de registro del Art. 12 del EU AI Act plantean todas la misma pregunta con palabras distintas: muéstrame cómo se tomó esta decisión y demuestra que el registro no se modificó después. Los sistemas que responden sin problemas son aquellos donde alguien dibujó el plano de cumplimiento antes de escribir el primer prompt.",
 		"writeupsLink": "Informes de arquitectura anonimizados →"
 	},
 	"Projects": {
 		"compliance-tax-agent": {
 			"tagline": "Un agente LLM de herramientas tipadas para declaraciones fiscales reguladas. Un solo número inventado es una falla de cumplimiento, así que cada paso se valida por esquema y cada cifra indica su fuente.",
-			"description": "Un agente LLM que prepara y valida declaraciones del impuesto a la renta brasileño (IRPF). El bucle está acotado a ≤40 turnos por declaración. Cada paso es una llamada a herramienta validada por esquema. La recuperación se acota al año de la declaración. Cada número emitido indica el fragmento que lo respalda y se vuelve a validar contra ese fragmento antes de quedar en la declaración. El registro de decisiones está encadenado por hash y anclado a un log de transparencia, de modo que cualquier declaración se puede reproducir años después.",
+			"description": "Un agente que prepara declaraciones del impuesto a la renta brasileño (IRPF), construido por un equipo de seis ingenieros. El bucle está acotado a ≤40 turnos por declaración; cada paso es una llamada a herramienta validada por esquema; la recuperación se acota al año de la declaración. Cada número emitido indica el fragmento que lo respalda y se vuelve a validar contra ese fragmento antes de quedar en la declaración. Mi parte fue la extracción de campos y la validación de salida estructurada de secciones individuales de la declaración. El registro de decisiones es de solo anexado, así que una declaración se puede reproducir.",
 			"problemStatement": "Un agente regulado de declaración de impuestos no puede inventar ni un solo campo numérico. Cada salida tiene que poder reproducirse durante una ventana de auditoría de cinco años bajo LGPD, on-premise y sin salida de datos. Un RAG genérico falla aquí por partida doble: no puede demostrar de dónde salió un número ni acotar cuánto tiempo 'piensa'.",
 			"solutionSummary": "El bucle se limita a ≤40 turnos por declaración. El router rechaza cualquier resultado de recuperación de otro año. La cita obligatoria, sumada a la validación del fragmento a posteriori, hace que nunca se confíe a ciegas en la aritmética del modelo. Una capa determinista de reglas de anomalía detecta los valores fuera de política antes de que se registren, y un registro de auditoría de solo anexado se ancla a un log de transparencia. El reintento por campo, en lugar de volver a correr toda la declaración, evita llamadas redundantes al modelo. Descartados: un único prompt de gran contexto (sin trazabilidad) y un bucle de agente abierto (sin techo de auditoría).",
 			"constraint": "LGPD más una obligación de reproducir la auditoría a cinco años, on-premise y con cero salida de datos. Un solo campo numérico inventado es una falla regulatoria.",
 			"decision": "Acotar el agente a ≤40 turnos de herramientas tipadas por declaración. Limitar la recuperación al año de la declaración y rechazar los resultados de otros años en el router. Obligar a cada número a citar su fuente y luego volver a validarlo contra el fragmento que lo respalda antes de registrarlo. Se descartó un único prompt de gran contexto (sin trazabilidad) y un bucle sin límites (sin techo de auditoría).",
-			"outcome": "Cero campos numéricos inventados en 18 meses en producción. Una capa determinista de reglas de anomalía controla cada valor, y el reintento por campo evita volver a correr toda la declaración. Cada campo se puede rastrear hasta el fragmento de origen que lo produjo."
+			"outcome": "Por construcción el agente no tiene forma de emitir un número sin fuente — cada cifra se revalida contra el fragmento que la respalda antes de quedar en firme, y una capa determinista de reglas de anomalía controla los valores fuera de política. La garantía de reproducción es una propiedad del diseño, no una afirmación de tiempo en producción."
 		},
 		"event-driven-retail": {
 			"tagline": "Un backend de comercio multicanal donde cada cambio de estado es idempotente y auditable. Go + TypeScript sobre Kafka, patrón outbox, efectos seguros ante reintentos.",
-			"description": "Un backend orientado a eventos que despacha 10K+ transacciones/día en varios canales de comercio. Un BFF expone los canales. Un broker reparte los eventos de dominio hacia los dispatchers. El outbox transaccional publica cada evento una sola vez por transacción confirmada, y las claves de idempotencia hacen que cada efecto posterior sea seguro de reintentar. Productores y consumidores quedan desacoplados, así que un partner lento nunca bloquea un checkout.",
+			"description": "Un backend de comercio de retail orientado a eventos sobre varias superficies de venta. Un BFF expone los canales; un broker reparte los eventos de dominio hacia los dispatchers; el outbox transaccional publica cada evento una sola vez por transacción confirmada, y las claves de idempotencia hacen que cada efecto posterior sea seguro de reintentar. Trabajé en el backend — integraciones de pagos, notificaciones push y marketplace — dentro de esta arquitectura.",
 			"problemStatement": "En el comercio multicanal el mismo pedido puede llegar dos veces, el webhook de un partner puede dispararse tres veces y una falla de red puede perder un evento en pleno tránsito. Aun así, el registro tiene que quedar exacto y auditable bajo carga.",
 			"solutionSummary": "BFF + Broker + Dispatcher. El broker desacopla a los productores de los consumidores. El outbox transaccional publica cada evento una sola vez por escritura confirmada, y las claves de idempotencia eliminan duplicados en cada límite de efecto. Kafka transporta el log de eventos; los servicios en Go y TypeScript lo consumen. Los reintentos son seguros por construcción, así que la inestabilidad de un partner se degrada con elegancia en lugar de corromper el estado.",
 			"constraint": "La ruta heredada no escalaba el checkout bajo carga y carecía de una ruta de auditoría rastreable por el regulador. El cambio no podía detener las ventas. El mismo pedido puede llegar dos veces y el webhook de un partner puede dispararse de forma repetida, y aun así el registro debe quedar exacto bajo carga.",
 			"decision": "Separar las capacidades de dominio en un BFF + Broker + Dispatcher. Desacoplar a los productores de los consumidores, publicar mediante un outbox transaccional (una sola vez por escritura confirmada) y hacer idempotente cada efecto posterior para que los reintentos sean seguros por construcción. Se descartó una reescritura total de golpe (el negocio no puede dejar de vender), las llamadas síncronas punto a punto (falla en cascada) y la entrega at-least-once sin eliminación de duplicados (efectos dobles).",
-			"outcome": "10K+ transacciones/día en varios canales de comercio, migradas sin detener las ventas. Los efectos idempotentes y seguros ante reintentos hacen que la inestabilidad de un partner se degrade con elegancia en lugar de corromper el registro, y cada cambio de estado se rastrea a través del log de eventos."
+			"outcome": "Los efectos idempotentes y seguros ante reintentos hacen que un partner inestable se degrade con elegancia en lugar de corromper el registro, y cada cambio de estado se rastrea a través del log de eventos. Mis integraciones entraron en producción sin afectar la ruta de checkout."
 		},
 		"legal-domain-rag": {
 			"tagline": "Recuperación por jurisdicción con un validador de citas determinista. Cada respuesta se fundamenta en una fuente real. AWS Bedrock + Lambda + pgvector.",
-			"description": "Un pipeline RAG de legal-tech sobre un corpus multijurisdiccional. Cada jurisdicción tiene su propio índice de pgvector, así que la recuperación nunca se mezcla entre regímenes legales. Un validador de citas determinista verifica que cada pasaje citado exista y respalde la afirmación antes de devolver la respuesta. Serverless sobre AWS Bedrock + Lambda, así que el costo sigue al uso y no a la capacidad ociosa.",
+			"description": "Una prueba de concepto de RAG de legal-tech (2024) sobre un corpus multijurisdiccional, a la que contribuí. Cada jurisdicción tiene su propio índice de pgvector, así que la recuperación nunca se mezcla entre regímenes legales. Un validador de citas determinista verifica que cada pasaje citado exista y respalde la afirmación antes de devolver la respuesta. Serverless sobre AWS Bedrock + Lambda, así que el costo sigue al uso y no a la capacidad ociosa.",
 			"problemStatement": "En el trabajo legal, una cita inventada o mal atribuida es mala praxis. Una respuesta fundamentada en la jurisdicción equivocada es peor que ninguna respuesta. Hacerlo a mano no escala.",
 			"solutionSummary": "Los índices de pgvector por jurisdicción mantienen la recuperación dentro del régimen legal correcto. Un validador de citas determinista verifica que cada fragmento citado exista y respalde la afirmación antes de devolver la generación. Nunca se confía en que el modelo cite de memoria. AWS Bedrock se encarga de la inferencia; Lambda lo mantiene serverless y con costo acotado.",
 			"constraint": "Una cita inventada es mala praxis. Una respuesta entre jurisdicciones es peor que ninguna. La documentación manual no escala.",
 			"decision": "Aislar la recuperación por jurisdicción para que una consulta no pueda recuperar del régimen equivocado. Condicionar la generación a un validador de citas determinista que confirme que cada fragmento citado exista y respalde la afirmación. Se descartó un único índice compartido (mezcla entre regímenes) y confiar en las citas generadas por el modelo (riesgo de invención).",
-			"outcome": "−60% de esfuerzo de documentación manual sobre un corpus multijurisdiccional. Cada cita se valida de forma determinista contra la fuente, nunca se genera de memoria."
+			"outcome": "Una prueba de concepto funcional donde cada cita se valida de forma determinista contra la fuente, nunca se genera de memoria, y el aislamiento por jurisdicción mantiene las respuestas dentro del régimen legal correcto."
 		},
 		"multilingual-rag": {
-			"tagline": "Recuperación fundamentada con pruebas de regresión sobre evaluaciones congeladas para una base de usuarios multilingüe. La precisión se mide antes de cada despliegue. AWS Bedrock + pgvector.",
-			"description": "Un asistente con recuperación aumentada que atiende a 100K+ usuarios activos por día en una población multilingüe. La recuperación fundamentada mantiene las respuestas atadas a la base de conocimiento. Un conjunto de evaluación congelado controla cada despliegue: la precisión se mide sobre preguntas reservadas antes de publicar un cambio, de modo que la base de conocimiento mejora de forma constante en lugar de retroceder en silencio. AWS Bedrock + pgvector por debajo.",
-			"problemStatement": "Un asistente multilingüe con 100K usuarios activos por día no puede retroceder en silencio. Un cambio de prompt o de modelo que ayuda a un idioma puede degradar otro sin que se note, y nadie se entera hasta que lo hacen los usuarios.",
-			"solutionSummary": "La recuperación fundamentada ancla las respuestas a la base de conocimiento, no a la memoria del modelo. Una suite de regresión sobre evaluaciones congeladas mide la precisión sobre un conjunto de preguntas reservadas antes de cada despliegue. Un cambio que mejora a un grupo no puede degradar a otro en silencio. AWS Bedrock para la inferencia, pgvector para la recuperación.",
-			"constraint": "Con 100K usuarios activos por día en varios idiomas, un cambio que ayuda a un grupo puede degradar a otro en silencio. Te enteras por los usuarios.",
+			"tagline": "Un chatbot educativo bilingüe (PT/EN) para el que construí el backend y la capa de datos, como consultor externo. Recuperación fundamentada con pruebas de regresión sobre evaluaciones congeladas — la precisión se mide sobre preguntas reservadas antes de cada despliegue. Azure OpenAI + LangChain + pgvector.",
+			"description": "Un chatbot educativo con recuperación aumentada sobre una base de conocimiento de más de 699K registros de matrícula, bilingüe PT/EN, para el que construí el backend y la capa de datos como consultor externo. La recuperación fundamentada mantiene las respuestas atadas a la base de conocimiento. Un conjunto de evaluación congelado controla cada despliegue: la precisión se mide sobre preguntas reservadas antes de publicar un cambio, de modo que la base de conocimiento mejora en lugar de retroceder en silencio. Azure OpenAI + LangChain + pgvector por debajo.",
+			"problemStatement": "Un asistente educativo multilingüe no puede retroceder en silencio. Un cambio de prompt o de modelo que ayuda a un idioma puede degradar otro sin que se note, y nadie se entera hasta que lo hacen los usuarios.",
+			"solutionSummary": "La recuperación fundamentada ancla las respuestas a la base de conocimiento, no a la memoria del modelo. Una suite de regresión sobre evaluaciones congeladas mide la precisión sobre un conjunto de preguntas reservadas antes de cualquier despliegue. Un cambio que mejora a un grupo no puede degradar a otro en silencio. Azure OpenAI para la inferencia, pgvector para la recuperación.",
+			"constraint": "A lo largo de muchos idiomas, un cambio que ayuda a un grupo puede degradar a otro en silencio. Te enteras por los usuarios.",
 			"decision": "Fundamentar cada respuesta en la base de conocimiento y condicionar los despliegues a un conjunto de evaluación congelado, de modo que la precisión se mida sobre preguntas reservadas antes de publicar. Se descartó la iteración de prompts sin control (regresiones silenciosas) y la generación sin fundamento (invención a escala).",
-			"outcome": "+40% de precisión en la base de conocimiento con 100K+ usuarios activos por día. Un control con evaluación congelada bloquea las regresiones silenciosas antes de que lleguen a los usuarios."
+			"outcome": "Un control con evaluación congelada bloquea las regresiones silenciosas antes de que lleguen a los usuarios — la precisión se mide sobre preguntas reservadas en cada despliegue, nunca se da por supuesta."
 		},
 		"ai-document-processor": {
 			"tagline": "Un pipeline de ingesta independiente del formato donde cada campo extraído se rastrea hasta su fragmento de origen. PDF/DOCX/imagen → OCR → clasificar → extraer → JSONB consultable.",
