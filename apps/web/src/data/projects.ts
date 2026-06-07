@@ -52,10 +52,10 @@ export const projects: Project[] = [
 			{ name: "LGPD · 5-year replay", category: "service" },
 		],
 		metrics: [
-			{ label: "Hallucinated numerical fields", value: "0 / 18 months in production" },
+			{ label: "My role", value: "extraction + validation, on a 6-engineer team" },
 			{ label: "Agent ceiling", value: "≤40 typed-tool turns / filing" },
 			{ label: "Output attestation", value: "every number re-validated against its source span" },
-			{ label: "Audit", value: "LGPD · 5-year decision replay" },
+			{ label: "Audit", value: "LGPD · append-only decision ledger" },
 		],
 		links: {},
 		featured: true,
@@ -63,7 +63,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "event-driven-retail",
-		title: "Event-driven retail backend — clearing 10K+ transactions/day",
+		title: "Event-driven retail commerce backend",
 		techStack: [
 			{ name: "Go", category: "language" },
 			{ name: "TypeScript", category: "language" },
@@ -72,10 +72,10 @@ export const projects: Project[] = [
 			{ name: "Outbox · idempotency", category: "framework" },
 		],
 		metrics: [
-			{ label: "Throughput", value: "10K+ transactions/day" },
+			{ label: "My role", value: "backend engineer · payment + marketplace integrations" },
 			{ label: "Architecture", value: "BFF + Broker + Dispatcher · event-driven" },
 			{ label: "Delivery", value: "transactional outbox + idempotency keys" },
-			{ label: "Consumers", value: "Go + TypeScript off a shared event log" },
+			{ label: "Stack", value: "Go · TypeScript" },
 		],
 		links: {},
 		featured: true,
@@ -83,7 +83,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "legal-domain-rag",
-		title: "Legal-domain RAG — −60% manual documentation, citations that hold",
+		title: "Legal-domain RAG — per-jurisdiction retrieval, citations that hold",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "AWS Bedrock", category: "service" },
@@ -92,7 +92,7 @@ export const projects: Project[] = [
 			{ name: "Citation validator", category: "framework" },
 		],
 		metrics: [
-			{ label: "Manual documentation", value: "−60% effort" },
+			{ label: "Stage", value: "proof-of-concept (2024)" },
 			{ label: "Retrieval", value: "per-jurisdiction indexes — no cross-regime bleed" },
 			{ label: "Citations", value: "deterministically validated, never from memory" },
 			{ label: "Cost", value: "serverless, usage-tracked" },
@@ -103,19 +103,19 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "multilingual-rag",
-		title: "Multilingual RAG at 100K+ DAU — +40% knowledge-base precision",
+		title: "Multilingual education chatbot — grounded retrieval, PT/EN",
 		techStack: [
 			{ name: "Python", category: "language" },
-			{ name: "AWS Bedrock", category: "service" },
+			{ name: "Azure OpenAI", category: "service" },
+			{ name: "LangChain", category: "framework" },
 			{ name: "pgvector", category: "database" },
 			{ name: "Frozen-eval harness", category: "framework" },
-			{ name: "RAG", category: "service" },
 		],
 		metrics: [
-			{ label: "Scale", value: "100K+ daily active users" },
-			{ label: "Knowledge-base precision", value: "+40% after rollout" },
+			{ label: "My role", value: "backend + data layer (consultant)" },
+			{ label: "Scale", value: "699K+ enrollment records" },
 			{ label: "Release gate", value: "frozen-eval — no silent regression" },
-			{ label: "Retrieval", value: "grounded, multilingual" },
+			{ label: "Retrieval", value: "grounded, bilingual PT/EN" },
 		],
 		links: {},
 		featured: true,

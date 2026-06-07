@@ -26,28 +26,28 @@
 		"ctaSecondary": "Read the architecture writeups",
 		"stats": [
 			{
+				"value": 6,
+				"suffix": "",
+				"label": "public repos",
+				"detail": "SLSA L2 · Sigstore-signed · verify with one command"
+			},
+			{
+				"value": 3,
+				"suffix": "",
+				"label": "live demo apps",
+				"detail": "AI extraction · market dashboard · job pipeline — open source"
+			},
+			{
+				"value": 152,
+				"suffix": "",
+				"label": "NixOS modules",
+				"detail": "multi-host declarative fleet · 153 merged PRs"
+			},
+			{
 				"value": 0,
 				"suffix": "",
-				"label": "hallucinated numerical fields",
-				"detail": "18 months · regulated tax-filing agent in production"
-			},
-			{
-				"value": 100,
-				"suffix": "K+",
-				"label": "daily active users",
-				"detail": "multilingual RAG · +40% knowledge-base precision"
-			},
-			{
-				"value": 10,
-				"suffix": "K+/day",
-				"label": "transactions cleared",
-				"detail": "event-driven retail backend · outbox + idempotency"
-			},
-			{
-				"value": 60,
-				"suffix": "%",
-				"label": "less manual review",
-				"detail": "tier-1 LATAM legal-domain RAG · validated citations"
+				"label": "hallucinated figures by construction",
+				"detail": "audit-bounded agent design — every number cites + re-validates its source"
 			}
 		]
 	},
@@ -199,8 +199,8 @@
 				"period": "Jul 2025 — Present",
 				"current": true,
 				"deliverables": [
-					"Architected compliance-grade RAG on Azure OpenAI — decision provenance, audit-trail logging, and frozen-eval regression checks for regulated workloads",
-					"Shipped a multilingual education assistant serving 100K+ daily active users — +40% knowledge-base precision after rollout",
+					"Contributed to a compliance-grade RAG on Azure OpenAI — decision provenance, audit-trail logging, and frozen-eval regression checks for regulated workloads",
+					"Built the backend and data layer of a multilingual education assistant — bilingual PT/EN, over 699K enrollment records",
 					"Stood up multi-cloud Terraform (Azure + GCP) cutting environment provisioning below 10 minutes",
 					"Cut cloud spend 30% via Lambda right-sizing and reserved-capacity planning"
 				]
@@ -224,7 +224,7 @@
 				"current": false,
 				"deliverables": [
 					"Delivered 12+ production systems across e-commerce, fintech, and logistics",
-					"Built an event-driven BFF + Broker + Dispatcher clearing 10K+ transactions/day with the outbox pattern and idempotency keys",
+					"Worked on an event-driven BFF + Broker + Dispatcher retail commerce backend — outbox pattern and idempotency keys",
 					"Introduced GitHub Actions matrix CI with gitleaks + OSV-Scanner for supply-chain hygiene",
 					"Set the architecture and release-gate standards adopted across multiple squads"
 				]
@@ -243,7 +243,7 @@
 		"eyebrow": "About",
 		"category": "Compliance-Grade AI Architect for Regulated LATAM & Global Workloads",
 		"diagnostic": "Most regulated AI stacks fail audit at the same three seams: prompt provenance, retrieval lineage, output attestation. The fix lives in the architecture. Three planes — data, control, compliance — with the compliance plane running as a sidecar: a hash-chained audit ledger anchored to a public transparency log.",
-		"summary": "Four systems carry the proof. A multilingual RAG at 100K+ DAU, +40% knowledge-base precision. An event-driven retail backend clearing 10K+ transactions/day. A tier-1 LATAM legal-domain RAG, −60% manual documentation. A Brazilian IRPF tax-compliance agent: 0 hallucinated numerical fields across 18 months, ≤40 turns per filing. Then the open source — six Claude Code plugins on github.com/yolo-labz, SLSA L2 + Sigstore signed, dual-format SBOMs.",
+		"summary": "The proof splits two ways. The open source is fully auditable: six Sigstore-signed Claude Code plugins on github.com/yolo-labz and three live demo apps with their source open. The client work is anonymized and team-built, under NDA — I contributed to a regulated IRPF tax-filing agent (field extraction and structured-output validation), the backend and data layer of a multilingual education chatbot, an event-driven retail commerce backend, and a legal-domain RAG proof-of-concept. Each was built to the audit-trail-first patterns this site argues for. The hard numbers I can show you are the ones in the repos.",
 		"claimEvidenceHeading": "Claim → Evidence",
 		"claimEvidenceIntro": "Every headline claim maps to a verifiable artifact. Public repositories link straight to the source. Rows marked \"writeup pending\" are anonymized architecture writeups; the client name never ships, only the architecture, and only after the writeup clears review.",
 		"tableHeaderClaim": "Claim",
@@ -262,11 +262,11 @@
 			"TTS daemon (Python, ONNX, PyPI)",
 			"Apple Silicon thermal daemon (Rust)",
 			"Multi-host NixOS fleet (152 modules, 153 PRs)",
-			"Compliance-grade RAG for tier-1 LATAM banking",
-			"Event-driven retail backend (BFF + Broker + Dispatcher)",
-			"AWS Bedrock + Lambda for legal-domain RAG",
-			"Multilingual education chatbot — intent routing + escalation",
-			"AI-IRPF tax-compliance LLM agent"
+			"Regulated banking compliance RAG (contributor)",
+			"Event-driven retail commerce backend (backend engineer)",
+			"Legal-domain RAG — proof-of-concept (contributor)",
+			"Multilingual education chatbot — backend + data layer (consultant)",
+			"IRPF tax-filing agent — extraction + validation (team)"
 		]
 	},
 	"Thesis": {
@@ -279,46 +279,46 @@
 		"p2": "Audits fail at three seams, and they are always the same three. <strong>Prompt provenance:</strong> which exact prompt, template version, and system context produced this output? <strong>Retrieval lineage:</strong> which documents were retrieved, at which versions, and why those and not others? <strong>Output attestation:</strong> can you prove the answer was derived from the retrieved evidence rather than the model's parametric memory? A stack that can't answer all three under examination is not \"mostly compliant\". It is undocumented.",
 		"p3": "A better model closes none of those seams. A larger context window makes provenance harder, not easier, because more of the input becomes implicit. An agent with more autonomy makes lineage harder, because the path from question to answer stops being inspectable. The capabilities the field optimizes for — bigger context, more autonomy, more fluency — trade directly against auditability. Which means audit-trail design can't be retrofitted onto a system optimized for the opposite. It has to be a constraint from the first diagram.",
 		"p4": "The shape that survives an audit is a <strong>three-plane topology</strong>. A data plane carries the primary flow — ingest, retrieve, infer. A control plane holds orchestration, agent state, and configuration as first-class, versioned objects. A compliance plane runs alongside as a sidecar. An append-only ledger taps the other two planes and records signed, hash-chained events; it never sits inline in the data path. The compliance plane is the only one whose output the auditor reads. Designing it last means designing the system to lie to itself about what happened.",
-		"p5": "Concretely: a tax-compliance agent that prepares regulated filings runs as a typed-tool loop bounded at a fixed turn ceiling, not an open-ended chain — because an unbounded agent has no audit ceiling. Retrieval is scoped per filing period and the router rejects cross-period hits, because lineage that can pull from anywhere can't be reconstructed. Every emitted number is forced to cite and is re-validated against its source span before it lands, because output attestation is cheaper to enforce at write time than to prove after the fact. The result over eighteen months in production: <strong>zero hallucinated numerical fields</strong>. Not because the model is incapable of hallucinating — because the architecture never trusts it to.",
+		"p5": "Concretely: a tax-compliance agent that prepares regulated filings runs as a typed-tool loop bounded at a fixed turn ceiling, not an open-ended chain — because an unbounded agent has no audit ceiling. Retrieval is scoped per filing period and the router rejects cross-period hits, because lineage that can pull from anywhere can't be reconstructed. Every emitted number is forced to cite and is re-validated against its source span before it lands, because output attestation is cheaper to enforce at write time than to prove after the fact. Built this way, the agent has <strong>no path to emit an unsourced figure</strong> — the architecture, not the model's goodwill, is what holds. That is the line between 'mostly accurate' and auditable.",
 		"p6": "The discipline transfers. LGPD, BCB 4.893, and the EU AI Act Art. 12 logging mandate all ask the same question in different words: show me how this decision was made, and prove the record wasn't edited after. The systems that answer cleanly are the ones where someone drew the compliance plane before they wrote the first prompt.",
 		"writeupsLink": "Anonymized architecture writeups →"
 	},
 	"Projects": {
 		"compliance-tax-agent": {
 			"tagline": "A typed-tool LLM agent for regulated tax filings. One hallucinated number is a compliance failure, so every step is schema-validated and every figure cites its source.",
-			"description": "An LLM agent that prepares and validates Brazilian income-tax (IRPF) filings. The loop is bounded at ≤40 turns per filing. Each step is a schema-validated tool call. Retrieval is scoped to the filing year. Every emitted number cites its source span and is re-validated against that span before it lands in the return. The decision log is hash-chained and anchored to a transparency log, so any filing replays years later.",
+			"description": "A Brazilian income-tax (IRPF) filing agent built by a six-engineer team. The loop is bounded at ≤40 turns per filing; each step is a schema-validated tool call; retrieval is scoped to the filing year. Every emitted number cites its source span and is re-validated against that span before it lands in the return. My part was the field-extraction and structured-output validation for individual filing sections. The decision log is append-only, so a filing can be replayed.",
 			"problemStatement": "A regulated tax-filing agent cannot hallucinate one numerical field. Every output has to replay for a five-year audit window under LGPD, on-premise, with no data egress. General-purpose RAG fails this twice: it can't prove where a number came from, and it can't bound how long it 'thinks'.",
 			"solutionSummary": "The loop caps at ≤40 turns per filing. The router rejects any cross-year retrieval hit. Forced citation plus post-hoc span validation means the model's arithmetic is never trusted blind. A deterministic anomaly-rule layer catches out-of-policy values before they land, and an append-only audit ledger anchors to a transparency log. Per-field retry, rather than re-running the whole filing, avoids redundant LLM calls. Rejected: a single large-context prompt (no provenance) and an open-ended agent loop (no audit ceiling).",
 			"constraint": "LGPD plus a five-year audit-replay mandate, on-premise, zero data egress. One hallucinated numerical field is a regulatory failure.",
 			"decision": "Bound the agent at ≤40 typed-tool turns per filing. Scope retrieval per filing year and reject cross-year hits at the router. Force every number to cite, then re-validate it against its source span before it lands. Rejected a single large-context prompt (no provenance) and an unbounded loop (no audit ceiling).",
-			"outcome": "Zero hallucinated numerical fields across 18 months in production. A deterministic anomaly-rule layer gates every value, and per-field retry avoids re-running the whole filing. Every field replays to the source span that produced it."
+			"outcome": "By construction the agent has no path to emit an unsourced number — every figure re-validates against its source span before it lands, and a deterministic anomaly-rule layer gates out-of-policy values. The replay guarantee is a property of the design, not a production-tenure claim."
 		},
 		"event-driven-retail": {
 			"tagline": "A multi-channel commerce backend where every state change is idempotent and auditable. Go + TypeScript on Kafka, outbox pattern, retry-safe effects.",
-			"description": "An event-driven backend clearing 10K+ transactions/day across multiple commerce surfaces. A BFF fronts the channels. A broker fans domain events out to dispatchers. The transactional outbox publishes each event once per committed transaction, and idempotency keys make every downstream effect safe to retry. Producers and consumers stay decoupled, so a slow partner never blocks a checkout.",
+			"description": "An event-driven retail commerce backend across multiple sales surfaces. A BFF fronts the channels; a broker fans domain events out to dispatchers; the transactional outbox publishes each event once per committed transaction, and idempotency keys make every downstream effect safe to retry. I worked on the backend — payment, push-notification and marketplace integrations — inside this architecture.",
 			"problemStatement": "In multi-channel commerce the same order can arrive twice, a partner webhook can fire three times, a network blip can drop an event mid-flight. The ledger still has to stay exactly right and auditable under load.",
 			"solutionSummary": "BFF + Broker + Dispatcher. The broker decouples producers from consumers. The transactional outbox publishes each event once per committed write, and idempotency keys dedupe at every effect boundary. Kafka carries the event log; Go and TypeScript services consume it. Retries are safe by construction, so partner flakiness degrades gracefully instead of corrupting state.",
 			"constraint": "The legacy path couldn't scale checkout under load and lacked a regulator-traceable audit trail. The cutover couldn't stop the business selling. The same order can arrive twice and a partner webhook can fire repeatedly, yet the ledger must stay exactly right under load.",
 			"decision": "Carve domain capabilities into a BFF + Broker + Dispatcher. Decouple producers from consumers, publish via a transactional outbox (once per committed write), make every downstream effect idempotent so retries are safe by construction. Rejected a big-bang rewrite (the business can't stop selling), synchronous point-to-point calls (cascading failure), and at-least-once delivery without dedupe (double effects).",
-			"outcome": "10K+ transactions/day across multiple commerce surfaces, cut over without halting sales. Retry-safe, idempotent effects mean partner flakiness degrades gracefully instead of corrupting the ledger, and every state change traces through the event log."
+			"outcome": "Retry-safe, idempotent effects mean a flaky partner degrades gracefully instead of corrupting the ledger, and every state change traces through the event log. My integrations shipped in without regressing the checkout path."
 		},
 		"legal-domain-rag": {
 			"tagline": "Per-jurisdiction retrieval with a deterministic citation validator. Every answer grounds in a real source. AWS Bedrock + Lambda + pgvector.",
-			"description": "A legal-tech RAG pipeline over a multi-jurisdiction corpus. Each jurisdiction gets its own pgvector index, so retrieval never bleeds across legal regimes. A deterministic citation validator checks that every cited passage exists and supports the claim before the answer returns. Serverless on AWS Bedrock + Lambda, so cost tracks usage instead of idle capacity.",
+			"description": "A legal-tech RAG proof-of-concept (2024) over a multi-jurisdiction corpus, which I contributed to. Each jurisdiction gets its own pgvector index, so retrieval never bleeds across legal regimes. A deterministic citation validator checks that every cited passage exists and supports the claim before the answer returns. Serverless on AWS Bedrock + Lambda, so cost tracks usage instead of idle capacity.",
 			"problemStatement": "In legal work a fabricated or mis-attributed citation is malpractice. An answer grounded in the wrong jurisdiction is worse than no answer. Doing it by hand doesn't scale.",
 			"solutionSummary": "Per-jurisdiction pgvector indexes keep retrieval inside the correct legal regime. A deterministic citation validator verifies every cited span exists and supports the statement before generation returns. The model is never trusted to cite from memory. AWS Bedrock handles inference; Lambda keeps it serverless and cost-bounded.",
 			"constraint": "A fabricated citation is malpractice. A cross-jurisdiction answer is worse than none. Manual documentation doesn't scale.",
 			"decision": "Isolate retrieval per jurisdiction so a query can't pull from the wrong regime. Gate generation behind a deterministic citation validator that confirms every cited span exists and supports the claim. Rejected a single shared index (cross-regime bleed) and trusting model-generated citations (hallucination risk).",
-			"outcome": "−60% manual documentation effort across a multi-jurisdiction corpus. Every citation is deterministically validated against the source, never generated from memory."
+			"outcome": "A working proof-of-concept where every citation is deterministically validated against the source, never generated from memory, and per-jurisdiction isolation keeps answers inside the correct legal regime."
 		},
 		"multilingual-rag": {
-			"tagline": "Grounded retrieval with frozen-eval regression checks for a multilingual user base. Precision is measured before every rollout. AWS Bedrock + pgvector.",
-			"description": "A retrieval-augmented assistant serving 100K+ daily active users across a multilingual population. Grounded retrieval keeps answers tied to the knowledge base. A frozen evaluation set gates every rollout: precision is measured on held-out questions before a change ships, so the knowledge base improves monotonically instead of regressing silently. AWS Bedrock + pgvector under the hood.",
-			"problemStatement": "A 100K-DAU multilingual assistant can't regress silently. A prompt or model change that helps one language can quietly degrade another, and nobody notices until the users do.",
-			"solutionSummary": "Grounded retrieval anchors answers to the knowledge base, not the model's memory. A frozen-eval regression suite measures precision on a held-out question set before any rollout. A change that improves one cohort can't silently degrade another. AWS Bedrock for inference, pgvector for retrieval.",
-			"constraint": "At 100K DAU across many languages, a change that helps one cohort can silently degrade another. You find out from the users.",
+			"tagline": "A bilingual (PT/EN) education chatbot I built the backend and data layer for, as an external consultant. Grounded retrieval with frozen-eval regression checks — precision measured on held-out questions before every rollout. Azure OpenAI + LangChain + pgvector.",
+			"description": "A retrieval-augmented education chatbot over a knowledge base of 699K+ enrollment records, bilingual PT/EN, which I built the backend and data layer for as an external consultant. Grounded retrieval keeps answers tied to the knowledge base. A frozen evaluation set gates every rollout: precision is measured on held-out questions before a change ships, so the knowledge base improves instead of regressing silently. Azure OpenAI + LangChain + pgvector under the hood.",
+			"problemStatement": "A multilingual education assistant can't regress silently. A prompt or model change that helps one language can quietly degrade another, and nobody notices until the users do.",
+			"solutionSummary": "Grounded retrieval anchors answers to the knowledge base, not the model's memory. A frozen-eval regression suite measures precision on a held-out question set before any rollout. A change that improves one cohort can't silently degrade another. Azure OpenAI for inference, pgvector for retrieval.",
+			"constraint": "Across many languages, a change that helps one cohort can silently degrade another. You find out from the users.",
 			"decision": "Ground every answer in the knowledge base and gate rollouts behind a frozen evaluation set, so precision is measured on held-out questions before shipping. Rejected ungated prompt iteration (silent regressions) and ungrounded generation (hallucination at scale).",
-			"outcome": "+40% knowledge-base precision at 100K+ daily active users. A frozen-eval gate blocks silent regressions before they reach users."
+			"outcome": "A frozen-eval gate blocks silent regressions before they reach users — precision is measured on held-out questions every rollout, never assumed."
 		},
 		"ai-document-processor": {
 			"tagline": "A format-agnostic ingestion pipeline where every extracted field traces back to its source span. PDF/DOCX/image → OCR → classify → extract → queryable JSONB.",
