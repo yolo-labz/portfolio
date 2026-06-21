@@ -1,0 +1,118 @@
+# Lighthouse + a11y budget gate — the CI enforcement of the constitution's
+# "Lighthouse targets: 95+ on Performance, Accessibility, Best Practices, SEO"
+# (Principle IV). Until now nothing enforced it: visual-regression compares
+# pixels, not budgets. Lighthouse's accessibility category runs axe-core, so
+# this also covers the axe/a11y requirement.
+#
+# Builds the @portfolio/web standalone bundle exactly as Dockerfile.dokku and
+# playwright.config.ts do (next build + copy public/static), serves it on :3000,
+# waits on the real /api/health endpoint, then runs @lhci/cli against the three
+# top locale routes. Thresholds live in lighthouserc.json. Chrome is preinstalled
+# on the ubuntu-latest runner image; lhci's chrome-launcher discovers it.
+#
+# SHA-pinned actions per yolo-labz release-engineering policy. Workflow-level
+# deny-all `permissions: {}` + per-job `contents: read`. No untrusted
+# github.event.* fields are interpolated into run: blocks.
+name: lighthouse
+
+on:
+  pull_request:
+    paths:
+      - "apps/**"
+      - "packages/**"
+      - "lighthouserc.json"
+      - ".github/workflows/lighthouse.yml"
+      - "package.json"
+      - "pnpm-lock.yaml"
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  lighthouse:
+    name: lighthouse + a11y budgets
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6.0.8
+        with:
+          version: 10.28.2
+          run_install: false
+
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Build standalone server
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+          NEXT_PUBLIC_SITE_URL: "http://localhost:3000"
+        run: |
+          pnpm --filter @portfolio/web build
+          cp -R apps/web/public apps/web/.next/standalone/apps/web/public
+          cp -R apps/web/.next/static apps/web/.next/standalone/apps/web/.next/static
+
+      - name: Serve + run Lighthouse CI
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+          NEXT_PUBLIC_SITE_URL: "http://localhost:3000"
+        run: |
+          set -uo pipefail
+          PORT=3000 HOSTNAME=127.0.0.1 node apps/web/.next/standalone/apps/web/server.js &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ok=0
+          for _ in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3000/api/health >/dev/null 2>&1; then ok=1; break; fi
+            sleep 2
+          done
+          if [ "$ok" -ne 1 ]; then
+            echo "::error::standalone server never became healthy on :3000"
+            exit 1
+          fi
+          echo "server healthy — running @lhci/cli"
+          npx -y @lhci/cli@0.15.1 autorun --config=./lighthouserc.json
+          status=$?
+          echo "lhci exit status: ${status}"
+          exit "${status}"
+
+      - name: Print category scores
+        if: always()
+        run: |
+          shopt -s nullglob
+          found=0
+          for f in .lighthouseci/lhr-*.json; do
+            found=1
+            node -e "const r=require('./$f');const c=r.categories;console.log(r.requestedUrl);for(const k of Object.keys(c)){console.log('  '+k+': '+Math.round((c[k].score||0)*100));}"
+          done
+          [ "$found" -eq 0 ] && echo "no Lighthouse reports produced (collect failed before assert)"
+          true
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lighthouse-${{ github.run_id }}
+          path: .lighthouseci/
+          retention-days: 14
+          if-no-files-found: ignore
