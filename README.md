@@ -1,16 +1,16 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/hero-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="docs/assets/hero-light.svg">
-  <img alt="portfolio: Turborepo monorepo for Next.js portfolio site + 5 mixed-stack project case studies" src="docs/assets/hero-dark.svg">
+  <img alt="portfolio: Turborepo monorepo for Next.js portfolio site + 4 mixed-stack project case studies" src="docs/assets/hero-dark.svg">
 </picture>
 
 <div align="center">
 
 # portfolio
 
-**Turborepo monorepo housing the Next.js 16 portfolio site + 5 mixed-stack project case studies.**
+**Turborepo monorepo housing the Next.js 16 portfolio site + 4 mixed-stack project case studies.**
 
-Live at [pedro.home301server.com.br](https://pedro.home301server.com.br/). One pnpm workspace, one Turbo task graph, one Dockerfile, one Dokku push. The site, the shared UI library, and five project subfolders (TypeScript + Python + Terraform) all build and lint under a single command.
+Live at [pedro.home301server.com.br](https://pedro.home301server.com.br/). One pnpm workspace, one Turbo task graph, one Dockerfile, one Dokku push. The site, the shared UI library, and four project subfolders (TypeScript + Python + Terraform) all build and lint under a single command.
 
 [![CI](https://github.com/yolo-labz/portfolio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/yolo-labz/portfolio/actions/workflows/ci.yml)
 [![Visual regression](https://github.com/yolo-labz/portfolio/actions/workflows/visual-regression.yml/badge.svg?branch=main)](https://github.com/yolo-labz/portfolio/actions/workflows/visual-regression.yml)
@@ -28,11 +28,11 @@ Live at [pedro.home301server.com.br](https://pedro.home301server.com.br/). One p
 
 ## Capability
 
-**Pattern.** Turborepo monorepo housing a Next.js 16 portfolio site, a shared `packages/ui` component library exported as raw TypeScript source (no build step), and 5 mixed-stack project case-study subfolders (TypeScript + Python + Terraform) wired into a single Turbo task graph.
+**Pattern.** Turborepo monorepo housing a Next.js 16 portfolio site, a shared `packages/ui` component library exported as raw TypeScript source (no build step), and 4 mixed-stack project case-study subfolders (TypeScript + Python + Terraform) wired into a single Turbo task graph.
 
 **Trade-off.** Monorepo tooling overhead — pnpm workspaces, Turbo remote cache, Biome 2.x as the single lint+format authority — in exchange for a shared component library, atomic deploys, and one CI workflow that lints, type-checks, builds, and visual-regresses every workspace on every push.
 
-**Use when.** Shipping a portfolio that needs to host multiple capability case-studies (AI document processor, automation hub, executive job board, real-estate price tracker, serverless data API) on a single domain, with a single deploy surface, and a single design system.
+**Use when.** Shipping a portfolio that needs to host multiple capability case-studies (AI document processor, executive job board, real-estate price tracker, serverless data API) on a single domain, with a single deploy surface, and a single design system.
 
 ```bash
 pnpm install --frozen-lockfile
@@ -58,7 +58,7 @@ Closest peers in the Next.js-portfolio-template ecosystem:
 | Capability                                            | `portfolio` (this repo) | [`create-next-app`](https://nextjs.org/docs/api-reference/create-next-app) | [Tailwind UI templates](https://tailwindui.com/templates) |
 |-------------------------------------------------------|:---:|:---:|:---:|
 | Turborepo monorepo + shared `packages/ui`             | yes | no  | no  |
-| 5 mixed-stack project subfolders (TS + Python)        | yes | no  | no  |
+| 4 mixed-stack project subfolders (TS + Python)        | yes | no  | no  |
 | Dokku continuous deploy on `main`                     | yes | manual | manual |
 | Tagged release path (SLSA L2 + dual SBOM)             | yes | no  | no  |
 | Biome 2.x (single lint + format authority)            | yes | ESLint + Prettier | ESLint + Prettier |
@@ -87,7 +87,6 @@ apps/web/                       # Next.js portfolio site (the only deployable ap
 packages/ui/                    # shared component library, raw TS source (no build step)
 projects/                       # portfolio project subfolders
 ai-document-processor/
-automation-hub/
 exec-job-board/
 realestate-price-tracker/
 serverless-data-api/

@@ -46,12 +46,11 @@ Turborepo monorepo with pnpm workspaces. Three workspace groups:
 
 - **`apps/web`** — Next.js 16 portfolio site (App Router, React 19, Tailwind CSS v4, Motion). Section components in `src/components/sections/` (hero-metrics, project-showcase, proof-band, services-ladder, skills-matrix, experience-timeline, contact-cta) are the homepage building blocks.
 - **`packages/ui`** — Shared component library (Button, Card, Badge). Raw TypeScript source exports — no build step. Next.js transpiles it via `transpilePackages` in `next.config.ts`.
-- **`projects/*`** — 5 self-contained portfolio projects, each a thin `package.json` wrapper (Turbo orchestration only) over its own language tooling. Biome ignores `*.py`; Python uses ruff per-project. Workspace globs also pull in `projects/*/site` and `projects/*/dashboard` as real Next.js workspaces.
+- **`projects/*`** — 4 self-contained portfolio projects, each a thin `package.json` wrapper (Turbo orchestration only) over its own language tooling. Biome ignores `*.py`; Python uses ruff per-project. Workspace globs also pull in `projects/*/site` and `projects/*/dashboard` as real Next.js workspaces.
   - `exec-job-board` — Python collector (httpx/pydantic) + Next.js `site` (Fuse.js search). Spec 003.
   - `realestate-price-tracker` — FastAPI/SQLAlchemy `api` + Next.js `dashboard` (Recharts/React-Leaflet) + Postgres, via `docker compose`. Spec 004.
   - `serverless-data-api` — Terraform `infra` + Python Lambda `lambda_src` + `openapi.yaml`, DynamoDB. Spec 005.
   - `ai-document-processor` — `api` + `dashboard` via `docker compose`. Spec 006.
-  - `automation-hub` — README-only stub (no code yet).
 
 ### Key Architectural Decisions
 

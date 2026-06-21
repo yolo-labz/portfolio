@@ -103,7 +103,11 @@ Lower priority — build after the first 3 are on the Upwork profile.
 - [ ] **3A.7** README with architecture diagram
 - [ ] **3A.8** Screenshots of upload flow + extracted data for Upwork
 
-### 3B — Workflow Automation Hub (`projects/automation-hub`)
+### 3B — Workflow Automation Hub (`projects/automation-hub`) — ❌ DROPPED 21/06/2026
+
+> Descoped from the portfolio (was a no-code stub). The directory + workspace
+> member were removed and it no longer counts toward the project total. Tasks
+> below are kept as planning history only.
 
 - [ ] **3B.1** Docker Compose: n8n + PostgreSQL + admin dashboard
 - [ ] **3B.2** 3-5 n8n workflow templates (importable JSON)
@@ -167,5 +171,5 @@ Phase 0 (site fixes)
 | **Site Live** | Portfolio deployed with all Phase 0 items, Lighthouse 95+ | End of Week 1 |
 | **First 3 Projects** | exec-job-board, realestate-tracker, serverless-api built with READMEs + screenshots | End of Week 3 |
 | **Upwork Updated** | 3+ portfolio pieces uploaded, title fixed, catalog resubmitted | End of Week 3 |
-| **Full Portfolio** | All 5 projects built, deployed where applicable | End of Week 5 |
+| **Full Portfolio** | All 4 projects built, deployed where applicable (automation-hub dropped) | End of Week 5 |
 | **Polished** | Contact form, tests, case studies, analytics | Ongoing |
