@@ -8,9 +8,9 @@ Node >= 22, pnpm 10.28.2 (enforced via `packageManager` field).
 
 **Local environment reality (read before running anything):**
 
-- This working copy is **NOT a git repo** (`.git` absent, `git rev-parse` fails) — the 31/05/2026 relaunch session wrote all the source changes but never `git init`'d, committed, or pushed. So the entire compliance-architect relaunch is **uncommitted, local-only, and NOT deployed**: `portfolio.home301server.com.br` still serves the OLD site. The GitHub repo `yolo-labz/portfolio` **does exist** and deploy is push-triggered (`deploy-dokku.yml`), so shipping = init → reconcile with `origin/main` (do NOT force-push over existing remote history) → commit → push. Local `git config` is `Pedro H S Balbino <30302237+phsb5321@users.noreply.github.com>`. **Never add a `Co-Authored-By: Pedro` trailer** (Pedro forbids self-co-authorship).
-- Bare `pnpm` is **not on PATH**. Invoke through corepack: `corepack pnpm <cmd>` (resolves to 10.28.2). Node is v22.
-- If `corepack pnpm build`/`typecheck` fails on missing deps, deps aren't installed — hand-write type-correct code and let Pedro build/deploy.
+- This is a normal git repo on `main`, **live in production**: `deploy-dokku.yml` deploys the `portfolio` app to `portfolio.home301server.com.br` on every push to `main`, so a merged PR ships. Work through feature branches + worktrees (`git worktree add ../portfolio-NNN-slug -b NNN-slug origin/main`) — never edit `main` directly, never force-push over remote history. Local `git config` is `Pedro H S Balbino <30302237+phsb5321@users.noreply.github.com>`. **Never add a `Co-Authored-By: Pedro` trailer** (Pedro forbids self-co-authorship).
+- Bare `pnpm` may not be on PATH. If so, invoke through corepack: `corepack pnpm <cmd>` (resolves to 10.28.2). Node is v22.
+- If `pnpm install` hasn't been run, deps aren't present locally — hand-write type-correct code and let CI build/deploy verify it.
 
 ## Build & Dev Commands
 
