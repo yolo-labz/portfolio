@@ -29,3 +29,6 @@ Thumbs.db
 test-results/
 playwright-report/
 playwright/.cache/
+
+# Claude Code (per-machine local settings)
+.claude/settings.local.json*
