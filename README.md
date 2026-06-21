@@ -72,12 +72,12 @@ For sites that need none of this — a single `apps/web` with no shared library,
 
 ## Stack
 
-- Node.js >=22, pnpm 10.28.2, TypeScript 6.0.3
-- Next.js 16.2.4 (App Router, React 19.2.4, Tailwind CSS 4.2.4)
-- Turborepo 2.9.6 task graph + remote caching
+- Node.js >=22, pnpm 10.28.2, TypeScript 6.0
+- Next.js 16.2 (App Router, React 19.2, Tailwind CSS 4.3)
+- Turborepo 2.9 task graph + remote caching
 - Python 3.12 in `projects/` subprojects (pyenv-pinned via `.python-version`)
-- Biome 2.4.12 (lint + format)
-- Playwright 1.59.1 visual-regression CI
+- Biome 2.5 (lint + format)
+- Playwright 1.61 visual-regression CI
 - Dokku continuous deploy on push to `main` (Dockerfile.dokku)
 
 ## Layout
