@@ -1,0 +1,28 @@
+{
+  "//": "Lighthouse CI budgets — enforces the constitution's 95+ targets (Visual Polish Over Feature Count). The accessibility category runs axe-core audits, so this gate covers the axe/a11y requirement. A11y / best-practices / SEO are deterministic (DOM + headers, not timing) so they gate as hard errors at 0.95. Performance is lab-timing-sensitive on shared CI runners (TBT/LCP vary with runner CPU load) so it gates as a warn at 0.95 to surface regressions without flaking the merge — promote to error once the observed CI floor is stable. The server is started by the workflow (standalone build) before lhci runs; no startServerCommand here.",
+  "ci": {
+    "collect": {
+      "url": [
+        "http://localhost:3000/en",
+        "http://localhost:3000/en/about",
+        "http://localhost:3000/en/thesis"
+      ],
+      "numberOfRuns": 3,
+      "settings": {
+        "preset": "desktop"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:accessibility": ["error", { "minScore": 0.95 }],
+        "categories:best-practices": ["error", { "minScore": 0.95 }],
+        "categories:seo": ["error", { "minScore": 0.95 }],
+        "categories:performance": ["warn", { "minScore": 0.95 }]
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci"
+    }
+  }
+}
