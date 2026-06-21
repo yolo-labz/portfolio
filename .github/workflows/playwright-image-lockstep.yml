@@ -1,0 +1,84 @@
+# Playwright image lockstep guard — fails CI if the pinned Playwright Docker
+# image tag (mcr.microsoft.com/playwright:vX.Y.Z-noble) in any workflow or in
+# playwright.config.ts drifts from the `@playwright/test` version in
+# package.json. The visual-regression baselines are byte-stable ONLY when the
+# runtime image and the test library share an EXACT version — a silent mismatch
+# (PR #71 bumped the library 1.60→1.61 but not the image; #74 had to re-pin and
+# repair the suite) re-renders every snapshot and reds the whole run. This guard
+# turns that drift into a loud, fast, deterministic failure instead of a
+# mysterious pixel-diff cascade. Dependabot's `docker` ecosystem can't help
+# here: it scans Dockerfiles, not a workflow `container.image:` field.
+#
+# SHA-pinned actions per yolo-labz release-engineering policy. Workflow-level
+# deny-all `permissions: {}` + per-job `contents: read`. No untrusted
+# github.event.* fields are interpolated into run: blocks.
+name: playwright-image-lockstep
+
+on:
+  pull_request:
+    paths:
+      - "package.json"
+      - "playwright.config.ts"
+      - ".github/workflows/visual-regression.yml"
+      - ".github/workflows/refresh-baselines.yml"
+      - ".github/workflows/playwright-image-lockstep.yml"
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  lockstep:
+    name: playwright image == @playwright/test
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+
+      - name: Assert image pins match @playwright/test
+        run: |
+          set -euo pipefail
+          lib="$(jq -r '.devDependencies["@playwright/test"] // .dependencies["@playwright/test"] // empty' package.json | tr -d '^~>=< ')"
+          if [ -z "$lib" ]; then
+            echo "::error::@playwright/test not found in package.json"
+            exit 1
+          fi
+          expected="v${lib}-noble"
+          echo "Expected image: mcr.microsoft.com/playwright:${expected}  (@playwright/test=${lib})"
+          fail=0
+          for f in \
+            .github/workflows/visual-regression.yml \
+            .github/workflows/refresh-baselines.yml \
+            playwright.config.ts; do
+            tags="$(grep -oE 'mcr\.microsoft\.com/playwright:[A-Za-z0-9._-]+' "$f" | sed 's#.*/playwright:##' | sort -u || true)"
+            if [ -z "$tags" ]; then
+              echo "::warning file=${f}::no Playwright image reference found (guard cannot assert this file)"
+              continue
+            fi
+            while IFS= read -r tag; do
+              if [ "$tag" != "$expected" ]; then
+                echo "::error file=${f}::Playwright image '${tag}' != expected '${expected}' — bump it in lockstep with @playwright/test=${lib} in package.json"
+                fail=1
+              else
+                echo "ok: ${f} -> ${tag}"
+              fi
+            done <<< "$tags"
+          done
+          if [ "$fail" -ne 0 ]; then
+            echo "::error::Playwright Docker image is out of lockstep with @playwright/test. Bump BOTH together (package.json + every workflow image pin)."
+            exit 1
+          fi
+          echo "All Playwright image pins are in lockstep with @playwright/test=${lib}."
