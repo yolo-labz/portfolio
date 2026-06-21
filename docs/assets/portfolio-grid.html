@@ -13,7 +13,6 @@
       --ctp-text:    #cdd6f4;
       --ctp-subtext0:#a6adc8;
       --ctp-overlay0:#6c7086;
-      --ctp-mauve:   #cba6f7;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
@@ -52,9 +51,36 @@
   <div class="grid">
     <div class="pane home"    role="img" aria-label="Home view — hero, metrics, project cards"></div>
     <div class="divider" aria-hidden="true"></div>
-    <div class="pane project" role="img" aria-label="Project detail — wa WhatsApp daemon case study"></div>
+    <div class="pane project" role="img" aria-label="Project detail — compliance-grade tax-filing agent (Brazilian IRPF) case study"></div>
     <div class="divider" aria-hidden="true"></div>
     <div class="pane about"   role="img" aria-label="About — capability claims with evidence links and code-quality matrix"></div>
   </div>
 </body>
 </html>
+
+<!--
+Regeneration recipe — reproduces ./screenshots/*.png + ../portfolio-grid.png
+from the live build. The screenshots are intermediates (gitignored); only the
+composited portfolio-grid.png is committed.
+
+  SITE=https://pedro.home301server.com.br
+  SS=docs/assets/screenshots
+  CHROME=$(command -v google-chrome-stable || command -v chromium)
+  mkdir -p "$SS"
+
+  # 1. Capture the three live routes as tall, content-rendered screenshots.
+  #    --force-prefers-reduced-motion makes the site's useReducedMotion render
+  #    content statically — Motion entrance animations otherwise leave it at
+  #    opacity:0 when a headless shot fires. --virtual-time-budget lets JS settle.
+  for r in "en:home" "en/projects/compliance-tax-agent:projects" "en/about:about"; do
+    "$CHROME" --headless=new --hide-scrollbars --force-prefers-reduced-motion \
+      --virtual-time-budget=9000 --window-size=430,2800 \
+      --screenshot="$SS/${r##*:}-tall.png" "$SITE/${r%%:*}"
+  done
+
+  # 2. Composite this file into the 1200x900 grid.
+  "$CHROME" --headless=new --hide-scrollbars --virtual-time-budget=5000 \
+    --window-size=1200,900 --screenshot=docs/assets/portfolio-grid.png \
+    "file://$PWD/docs/assets/portfolio-grid.html"
+-->
+
