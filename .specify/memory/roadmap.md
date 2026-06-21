@@ -1,9 +1,17 @@
 # Portfolio Roadmap
 
-**Goal:** Go from scaffolded monorepo to a deployed portfolio with 3-5 live projects
-that can be added to the Upwork profile, replacing the single "Admission Project".
+> **Historical planning doc (2026-03-31), partially superseded.** Written for the
+> pre-relaunch Upwork-marketplace strategy. Positioning is now locked to
+> **Compliance-Grade AI Architect for regulated LATAM & global workloads** (high-ROI
+> PJ contracts) — see `.specify/memory/constitution.md`. The build phases (0–3, 5)
+> still describe real work; the Upwork-marketplace actions in Phase 4 are obsolete.
 
-**Last updated:** 2026-03-31
+**Goal:** Go from scaffolded monorepo to a deployed portfolio whose project case
+studies carry the compliance-architecture thesis — the sales surface for high-ROI
+PJ contracts.
+
+**Last updated:** 2026-06-21 (positioning swept from Upwork-marketplace to the
+locked compliance-architect category; deploy target corrected to Dokku)
 
 ---
 
@@ -29,10 +37,10 @@ The portfolio site is built but not deployable. These are blockers.
 
 ## Phase 1 — Deploy Portfolio Site
 
-- [ ] **1.1** Deploy `apps/web` to Vercel (connect yolo-labz/portfolio repo)
-- [ ] **1.2** Set custom domain (if available) or use vercel.app subdomain
+- [ ] **1.1** Deploy `apps/web` to Dokku on push to `main` (`deploy-dokku.yml`)
+- [ ] **1.2** Set custom domain (`portfolio.home301server.com.br`)
 - [ ] **1.3** Verify production build, check all routes, test mobile
-- [ ] **1.4** Add Vercel Analytics (or Plausible/Umami for privacy-first)
+- [ ] **1.4** Add privacy-first analytics (Plausible/Umami)
 
 **Depends on:** Phase 0
 **Estimated effort:** 30 min
@@ -41,22 +49,22 @@ The portfolio site is built but not deployable. These are blockers.
 
 ## Phase 2 — Build Priority Projects (3 of 5)
 
-These three projects have the highest Upwork ROI. Each needs: working code, a
+These three projects have the highest portfolio ROI. Each needs: working code, a
 README with architecture diagram, and either a live demo or compelling
 screenshots.
 
 ### 2A — Executive Job Board (`projects/exec-job-board`)
 
-**Priority: HIGHEST** — directly proves the $300 in-progress Upwork contract.
+**Priority: HIGHEST** — directly proves the executive-data extraction capability.
 
 - [ ] **2A.1** Python data collection scripts (public job board APIs)
 - [ ] **2A.2** Data normalization + deduplication logic
 - [ ] **2A.3** Next.js static site with search, filters, responsive cards
 - [ ] **2A.4** GitHub Actions workflow: nightly collect → build → deploy
 - [ ] **2A.5** RSS feed output
-- [ ] **2A.6** Deploy to Vercel (live demo URL)
+- [ ] **2A.6** Deploy to Dokku (live demo URL, via `collect-jobs.yml`)
 - [ ] **2A.7** README with architecture diagram
-- [ ] **2A.8** Screenshot for Upwork portfolio
+- [ ] **2A.8** Screenshot for the portfolio site
 
 ### 2B — Real Estate Price Tracker (`projects/realestate-price-tracker`)
 
@@ -69,7 +77,7 @@ screenshots.
 - [ ] **2B.5** Docker Compose for local dev (app + db + optional n8n)
 - [ ] **2B.6** CSV/JSON export endpoints
 - [ ] **2B.7** README with architecture diagram
-- [ ] **2B.8** Screenshots of dashboard for Upwork portfolio
+- [ ] **2B.8** Screenshots of dashboard for the portfolio site
 - [ ] **2B.9** Optional: deploy dashboard to Railway/Render with sample data
 
 ### 2C — Serverless Data API (`projects/serverless-data-api`)
@@ -82,7 +90,7 @@ screenshots.
 - [ ] **2C.4** Swagger/OpenAPI spec auto-generated
 - [ ] **2C.5** GitHub Actions CI/CD: validate → plan → apply
 - [ ] **2C.6** README with architecture diagram + `terraform plan` output sample
-- [ ] **2C.7** Screenshot of API docs + CloudWatch dashboard for Upwork
+- [ ] **2C.7** Screenshot of API docs + CloudWatch dashboard for the portfolio site
 
 **Estimated effort for Phase 2:** 3-5 sessions (~15-25 hours total)
 
@@ -90,7 +98,7 @@ screenshots.
 
 ## Phase 3 — Build Remaining Projects (2 of 5)
 
-Lower priority — build after the first 3 are on the Upwork profile.
+Lower priority — build after the first 3 are on the portfolio site.
 
 ### 3A — AI Document Processor (`projects/ai-document-processor`)
 
@@ -101,7 +109,7 @@ Lower priority — build after the first 3 are on the Upwork profile.
 - [ ] **3A.5** Simple web UI for upload + results viewing
 - [ ] **3A.6** Docker Compose for local dev
 - [ ] **3A.7** README with architecture diagram
-- [ ] **3A.8** Screenshots of upload flow + extracted data for Upwork
+- [ ] **3A.8** Screenshots of upload flow + extracted data for the portfolio site
 
 ### 3B — Workflow Automation Hub (`projects/automation-hub`) — ❌ DROPPED 21/06/2026
 
@@ -114,28 +122,30 @@ Lower priority — build after the first 3 are on the Upwork profile.
 - [ ] **3B.3** Next.js admin panel: workflow run history, error rates, stats
 - [ ] **3B.4** One-command deployment script
 - [ ] **3B.5** README with architecture diagram + workflow screenshots
-- [ ] **3B.6** Screenshots for Upwork portfolio
+- [ ] **3B.6** Screenshots for the portfolio site
 
 **Estimated effort for Phase 3:** 2-3 sessions (~10-15 hours total)
 
 ---
 
-## Phase 4 — Upwork Profile Updates
+## Phase 4 — Upwork Profile Updates — ❌ SUPERSEDED 21/06/2026
 
-These are actions on the Upwork platform itself.
+> The Upwork-marketplace go-to-market was replaced by the compliance-architect
+> relaunch — high-ROI PJ contracts sold through the portfolio site + LinkedIn, not
+> an Upwork catalog. These platform actions are obsolete; kept as history only.
 
 - [ ] **4.1** Upload 3-5 portfolio pieces (screenshots + descriptions + links)
 - [ ] **4.2** Fix project catalog: replace gallery image (remove "Custom Web Scraper" text)
 - [ ] **4.3** Update profile title: "Web Scraping & Automation Engineer" →
       "Data Extraction & Automation Engineer" (or similar)
-- [ ] **4.4** Fix Loomi employment end date (shows "Present", should show Oct 2024)
+- [ ] **4.4** Fix a prior employer's end date (shows "Present", should show Oct 2024)
 - [ ] **4.5** Decide on Machine Learning specialized profile (publish or ignore before
       May 28, 2026 cutoff when specialized profiles are retired)
 - [ ] **4.6** Request testimonials from completed job clients
 - [ ] **4.7** Update profile bio to reference portfolio site URL
 
 **Depends on:** Phase 2 (need at least 3 projects done)
-**Estimated effort:** 1 session (~1-2 hours, manual Upwork UI work)
+**Estimated effort:** n/a — superseded by the compliance-architect relaunch
 
 ---
 
@@ -159,7 +169,7 @@ After the portfolio is live and projects are uploaded.
 Phase 0 (site fixes)
     └──▶ Phase 1 (deploy site)
               └──▶ Phase 2 (build 3 projects) ─────┐
-                        └──▶ Phase 4 (Upwork uploads) │
+                        └──▶ Phase 4 (superseded)     │
               └──▶ Phase 3 (build 2 more projects) ──┘
                                                        └──▶ Phase 5 (polish)
 ```
@@ -170,6 +180,6 @@ Phase 0 (site fixes)
 |-----------|-------------------|--------|
 | **Site Live** | Portfolio deployed with all Phase 0 items, Lighthouse 95+ | End of Week 1 |
 | **First 3 Projects** | exec-job-board, realestate-tracker, serverless-api built with READMEs + screenshots | End of Week 3 |
-| **Upwork Updated** | 3+ portfolio pieces uploaded, title fixed, catalog resubmitted | End of Week 3 |
+| **Positioning Live** | Portfolio site is the sales surface; LinkedIn aligned to the compliance-architect category | End of Week 3 |
 | **Full Portfolio** | All 4 projects built, deployed where applicable (automation-hub dropped) | End of Week 5 |
 | **Polished** | Contact form, tests, case studies, analytics | Ongoing |
