@@ -128,8 +128,6 @@ importers:
         specifier: latest
         version: 6.0.3
 
-  projects/automation-hub: {}
-
   projects/exec-job-board: {}
 
   projects/exec-job-board/site:
