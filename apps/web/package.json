@@ -21,7 +21,7 @@
 	},
 	"devDependencies": {
 		"@tailwindcss/postcss": "latest",
-		"@types/node": "25.9.3",
+		"@types/node": "26.1.0",
 		"@types/react": "latest",
 		"@types/react-dom": "latest",
 		"tailwindcss": "latest",
