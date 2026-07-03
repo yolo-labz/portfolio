@@ -65,4 +65,5 @@ jobs:
         with:
           git_remote_url: "ssh://dokku@192.168.1.184:22/exec-job-board"
           ssh_private_key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
+          branch: "main"
           git_push_flags: "--force"

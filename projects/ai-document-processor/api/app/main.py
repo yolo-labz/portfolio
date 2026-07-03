@@ -21,6 +21,18 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+import sentry_sdk
+from sentry_sdk.integrations.fastapi import FastApiIntegration
+from sentry_sdk.integrations.starlette import StarletteIntegration
+
+# No-op without SENTRY_DSN (local/dev). DSN comes from the dokku config.
+sentry_sdk.init(
+    dsn=os.environ.get("SENTRY_DSN"),
+    integrations=[StarletteIntegration(), FastApiIntegration()],
+    traces_sample_rate=0.0,
+    environment=os.environ.get("APP_ENV", "production"),
+)
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
