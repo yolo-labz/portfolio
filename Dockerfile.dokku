@@ -8,7 +8,6 @@ COPY apps/web/package.json ./apps/web/package.json
 COPY packages/ui/package.json ./packages/ui/package.json
 COPY projects/realestate-price-tracker/package.json ./projects/realestate-price-tracker/package.json
 COPY projects/ai-document-processor/package.json ./projects/ai-document-processor/package.json
-COPY projects/automation-hub/package.json ./projects/automation-hub/package.json
 COPY projects/exec-job-board/package.json ./projects/exec-job-board/package.json
 COPY projects/serverless-data-api/package.json ./projects/serverless-data-api/package.json
 
