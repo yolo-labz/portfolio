@@ -23,6 +23,6 @@
 		"@playwright/test": "1.61.0",
 		"@types/node": "26.1.0",
 		"turbo": "latest",
-		"typescript": "latest"
+		"typescript": "6.0.3"
 	}
 }
