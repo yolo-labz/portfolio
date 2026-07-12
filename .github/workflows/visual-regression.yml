@@ -3,7 +3,7 @@
 # Next.js variant of phsb5321/blog PR #28.
 #
 # Job runs inside the official Playwright Docker image
-# (mcr.microsoft.com/playwright:v1.61.0-noble) so font/freetype/harfbuzz
+# (mcr.microsoft.com/playwright:v1.61.1-noble) so font/freetype/harfbuzz
 # versions are byte-stable across local seed runs and CI. Without the
 # container, every Ubuntu minor-version bump would invalidate every snapshot.
 #
@@ -42,7 +42,7 @@ jobs:
     # in lockstep with `@playwright/test` in package.json — image and library
     # MUST share the same version.
     container:
-      image: mcr.microsoft.com/playwright:v1.61.0-noble
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
       # --user 1000:1000 matches self-hosted runner's `notroot` host uid/gid.
       # Without it, the container runs as root and bind-mount writes leave
       # root-owned files in the runner workspace, breaking actions/checkout
