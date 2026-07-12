@@ -3,7 +3,7 @@
 // (phsb5321/blog) for the same Playwright `toHaveScreenshot` pattern.
 //
 // Both the seed step and CI run inside the pinned Playwright Docker image
-// (mcr.microsoft.com/playwright:v1.61.0-noble) so font/freetype/harfbuzz
+// (mcr.microsoft.com/playwright:v1.61.1-noble) so font/freetype/harfbuzz
 // versions are byte-stable across both. Baselines live next to the spec file
 // (tests/visual/portfolio.spec.ts-snapshots/) and are committed in-repo.
 // macOS-side runs are advisory only — pixel diffs vs the Linux baselines
