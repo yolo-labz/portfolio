@@ -8,8 +8,9 @@
 	"scripts": {
 		"dev": "turbo dev",
 		"build": "turbo build",
-		"lint": "biome check .",
+		"lint": "biome check . && node scripts/voice-lint.mjs",
 		"lint:fix": "biome check --write .",
+		"lint:voice": "node scripts/voice-lint.mjs",
 		"format": "biome format --write .",
 		"typecheck": "turbo typecheck",
 		"clean": "turbo clean && rm -rf node_modules",

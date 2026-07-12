@@ -19,9 +19,9 @@
 	},
 	"Hero": {
 		"eyebrow": "Compliance-grade AI architecture · RAG · agents · MCP",
-		"headingLead": "Most AI stacks fail audit at the same three seams —",
+		"headingLead": "AI stacks fail their first audit at three seams:",
 		"headingSeams": "prompt provenance, retrieval lineage, output attestation.",
-		"body": "I architect RAG and agent systems for regulated workloads — banking, tax, legal — where the audit trail is the deliverable. Every figure cites its source. Every decision reconstructs six months later. The cost ceiling holds at peak. Built to LGPD, BCB 4.893, and the EU AI Act’s Article 12 logging mandate.",
+		"body": "I build RAG and agent systems for regulated work: banking, tax, legal. The audit trail is the deliverable there. A number without a source span is a compliance failure, so the architecture never trusts the model to remember where it read something. Built to LGPD, BCB 4.893, and the EU AI Act Art. 12 logging mandate.",
 		"ctaPrimary": "Send a brief",
 		"ctaSecondary": "Read the architecture writeups",
 		"stats": [
@@ -29,25 +29,25 @@
 				"value": 6,
 				"suffix": "",
 				"label": "public repos",
-				"detail": "SLSA L2 · Sigstore-signed · verify with one command"
+				"detail": "SLSA L2 · Sigstore-signed · one command to verify"
 			},
 			{
 				"value": 3,
 				"suffix": "",
 				"label": "live demo apps",
-				"detail": "AI extraction · market dashboard · job pipeline — open source"
+				"detail": "AI extraction · market dashboard · job pipeline, source open"
 			},
 			{
 				"value": 152,
 				"suffix": "",
 				"label": "NixOS modules",
-				"detail": "multi-host declarative fleet · 153 merged PRs"
+				"detail": "one flake, multi-host fleet · 153 merged PRs"
 			},
 			{
 				"value": 0,
 				"suffix": "",
 				"label": "hallucinated figures by construction",
-				"detail": "audit-bounded agent design — every number cites + re-validates its source"
+				"detail": "forced citation + span re-validation: no path to an unsourced number"
 			}
 		]
 	},
@@ -55,14 +55,14 @@
 		"figLabel": "claim → evidence",
 		"heading": "Every claim here is auditable",
 		"bodyBefore": "Six public repositories under",
-		"bodyAfter": ", each SLSA L2, Sigstore-signed, and gated on live SonarQube quality checks. Read the source, not a screenshot. Client work links to anonymized writeups, never names.",
+		"bodyAfter": ", each one SLSA L2, Sigstore-signed, gated on live SonarQube checks. Read the source, not a screenshot. Client work stays anonymized: writeups, never names.",
 		"aboutLink": "See the full claim → evidence map →"
 	},
 	"Services": {
 		"figLabel": "how an engagement scales",
 		"heading": "Start with a verdict. Scale when the proof holds.",
-		"intro": "Each offer ships a defined deliverable, scoped and fixed at signature. Most clients open with a diagnostic, then expand into a build once the architecture proves out against their own data.",
-		"outcomeLabel": "Outcome —",
+		"intro": "Each offer ships a defined deliverable, scoped and fixed at signature. The usual path: a diagnostic first, then a build once the architecture proves out on your own data.",
+		"outcomeLabel": "Outcome:",
 		"footer": "Every engagement opens with a short discovery call and a written diagnostic. Scope is fixed at signature.",
 		"footerCta": "Send a brief →",
 		"rungs": [
@@ -72,7 +72,7 @@
 				"offers": [
 					{
 						"name": "Regulated-AI Architecture Review",
-						"scope": "A fixed-week diagnostic of your existing LLM stack — three-plane topology memo, severity-ranked findings, annotated reference repo.",
+						"scope": "A fixed-week diagnostic of your existing LLM stack: three-plane topology memo, severity-ranked findings, an annotated reference repo.",
 						"outcome": "A go/no-go verdict and a scoped remediation map before you commit engineering quarters."
 					},
 					{
@@ -88,13 +88,13 @@
 				"offers": [
 					{
 						"name": "RAG Audit-Chain Readiness Sprint",
-						"scope": "A production retrieval pipeline — pgvector + hybrid retrieval + rerank, forced-citation answers, recall measured on your own holdout set, a decision-trace ledger keyed to (prompt, docs, model, output).",
-						"outcome": "Provably-grounded answers, accuracy measured against your data, and behaviour auditable from day one."
+						"scope": "A production retrieval pipeline: pgvector + hybrid retrieval + rerank, forced-citation answers, recall measured on your own holdout set, a decision-trace ledger keyed to (prompt, docs, model, output).",
+						"outcome": "Grounded answers, accuracy measured on your own holdout, behaviour auditable from day one."
 					},
 					{
 						"name": "Event-Driven Backend Build & Rescue",
-						"scope": "An authenticated, production-shape backend — typed schema, audit ledger, outbox + idempotency, fitness-function tests, CI gate, observability. Serverless variant ships at $0 idle.",
-						"outcome": "A backend that survives load, costs nothing idle, and provisions and tears down reproducibly — owned in your repo."
+						"scope": "An authenticated, production-shape backend: typed schema, audit ledger, outbox + idempotency, fitness-function tests, CI gate, observability. Serverless variant ships at $0 idle.",
+						"outcome": "A backend that survives load and costs nothing idle. Provisions and tears down reproducibly, in your repo."
 					}
 				]
 			},
@@ -104,7 +104,7 @@
 				"offers": [
 					{
 						"name": "Embedded AI-Platform Custody",
-						"scope": "Fractional architecture custody — weekly fitness-function review, monthly audit-chain integrity probe, compliance-plane ownership, participation in the AI hiring loop.",
+						"scope": "Fractional architecture custody: weekly fitness-function review, monthly audit-chain integrity probe, compliance-plane ownership, participation in the AI hiring loop.",
 						"outcome": "An audit-grade AI capability your whole org reuses, with the audit chain kept green between releases."
 					}
 				]
@@ -117,7 +117,7 @@
 		"domains": [
 			{
 				"domain": "Regulated AI & compliance",
-				"description": "RAG with retrieval lineage, hash-chained audit ledgers, and decision provenance — mapped to LGPD, BCB 4.893, and the EU AI Act Art. 12 logging mandate.",
+				"description": "RAG with retrieval lineage, append-only audit ledgers, decision provenance. Mapped to LGPD, BCB 4.893, and the EU AI Act Art. 12 logging mandate.",
 				"technologies": [
 					"LGPD",
 					"BCB 4.893",
@@ -130,7 +130,7 @@
 			},
 			{
 				"domain": "AI agents & RAG",
-				"description": "Production RAG pipelines, typed-tool agent loops with bounded turns, and Model Context Protocol integrations — grounded retrieval with frozen-eval regression checks.",
+				"description": "Production RAG pipelines, typed-tool agent loops with bounded turns, MCP integrations. Grounded retrieval, gated by frozen-eval regression checks.",
 				"technologies": [
 					"Claude Code",
 					"Anthropic SDK",
@@ -144,7 +144,7 @@
 			},
 			{
 				"domain": "Backend",
-				"description": "Polyglot services that hold under load: Go daemons, TypeScript APIs, Python pipelines, Rust binaries — event-driven with outbox + idempotency.",
+				"description": "Go daemons, TypeScript APIs, Python pipelines, Rust binaries. Event-driven where it matters: outbox + idempotency.",
 				"technologies": [
 					"Go",
 					"TypeScript",
@@ -158,7 +158,7 @@
 			},
 			{
 				"domain": "Cloud",
-				"description": "Multi-cloud deployments on AWS, Azure, and GCP — serverless and container workloads sized to a cost ceiling, not left to drift.",
+				"description": "AWS, Azure, and GCP: serverless and container workloads sized to a cost ceiling that holds.",
 				"technologies": [
 					"AWS Lambda",
 					"AWS Bedrock",
@@ -171,12 +171,12 @@
 			},
 			{
 				"domain": "Infra-as-Code",
-				"description": "Declarative infrastructure across cloud and bare-metal fleets — reproducible, with a teardown story that leaves zero orphans.",
+				"description": "Declarative infrastructure across cloud and bare-metal fleets. Reproducible, with a teardown that leaves zero orphans.",
 				"technologies": ["Terraform", "Helm", "Kubernetes", "NixOS", "Docker", "Docker Compose"]
 			},
 			{
 				"domain": "Release engineering",
-				"description": "Supply-chain hardening as a first-class deliverable: reproducible builds, signed provenance, dual-format SBOMs.",
+				"description": "Supply-chain hardening shipped as its own deliverable: reproducible builds, signed provenance, dual-format SBOMs.",
 				"technologies": [
 					"GitHub Actions",
 					"Sigstore",
@@ -199,9 +199,9 @@
 				"period": "Jul 2025 — Present",
 				"current": true,
 				"deliverables": [
-					"Contributed to a compliance-grade RAG on Azure OpenAI — decision provenance, audit-trail logging, and frozen-eval regression checks for regulated workloads",
-					"Built the backend and data layer of a multilingual education assistant — bilingual PT/EN, over 699K enrollment records",
-					"Stood up multi-cloud Terraform (Azure + GCP) cutting environment provisioning below 10 minutes",
+					"Contributed to a compliance-grade RAG on Azure OpenAI: decision provenance, audit-trail logging, frozen-eval regression checks for regulated workloads",
+					"Built the backend and data layer of a multilingual education assistant: bilingual PT/EN, over 699K enrollment records",
+					"Stood up multi-cloud Terraform (Azure + GCP). Environment provisioning dropped below 10 minutes",
 					"Cut cloud spend 30% via Lambda right-sizing and reserved-capacity planning"
 				]
 			},
@@ -213,7 +213,7 @@
 				"deliverables": [
 					"Designed serverless ETL on AWS Lambda + Step Functions for tier-1 telecom billing data",
 					"Published Terraform modules provisioning multi-region infrastructure in under 10 minutes",
-					"Rolled out a CloudWatch observability stack — dashboards, alarms, automated incident response",
+					"Rolled out a CloudWatch observability stack: dashboards, alarms, automated incident response",
 					"Hardened the release pipeline with Sigstore + SLSA provenance for a regulated supply chain"
 				]
 			},
@@ -224,7 +224,7 @@
 				"current": false,
 				"deliverables": [
 					"Delivered 12+ production systems across e-commerce, fintech, and logistics",
-					"Worked on an event-driven BFF + Broker + Dispatcher retail commerce backend — outbox pattern and idempotency keys",
+					"Worked on an event-driven BFF + Broker + Dispatcher retail commerce backend: outbox pattern, idempotency keys",
 					"Introduced GitHub Actions matrix CI with gitleaks + OSV-Scanner for supply-chain hygiene",
 					"Set the architecture and release-gate standards adopted across multiple squads"
 				]
@@ -233,19 +233,19 @@
 	},
 	"Contact": {
 		"heading": "Contact",
-		"body": "I build for the engineer who gets paged at 02:00 BRT and needs the audit chain to still hold. The cost ceiling stays put at peak. The writeup still reconstructs six months later. Send a brief on architecture, RAG, compliance, or supply-chain. I'll tell you straight whether it's a fit.",
+		"body": "I build for the engineer who gets paged at 02:00 BRT and needs the audit chain to hold. Send a brief: architecture, RAG, compliance, supply-chain. If it's not a fit I'll say so.",
 		"ctaPrimary": "Send a brief",
 		"ctaSecondary": "GitHub"
 	},
 	"About": {
 		"metaTitle": "About — Pedro Balbino",
-		"metaDescription": "Compliance-Grade AI Architect for regulated LATAM & global workloads. Production RAG, agent systems, and MCP integrations with audit trails and decision provenance — every claim mapped to verifiable evidence.",
+		"metaDescription": "Compliance-Grade AI Architect for regulated LATAM & global workloads. Production RAG, agent systems, and MCP integrations with audit trails and decision provenance. Every claim maps to verifiable evidence.",
 		"eyebrow": "About",
 		"category": "Compliance-Grade AI Architect for Regulated LATAM & Global Workloads",
-		"diagnostic": "Most regulated AI stacks fail audit at the same three seams: prompt provenance, retrieval lineage, output attestation. The fix lives in the architecture. Three planes — data, control, compliance — with the compliance plane running as a sidecar: a hash-chained audit ledger anchored to a public transparency log.",
-		"summary": "The proof splits two ways. The open source is fully auditable: six Sigstore-signed Claude Code plugins on github.com/yolo-labz and three live demo apps with their source open. The client work is anonymized and team-built, under NDA — I contributed to a regulated IRPF tax-filing agent (field extraction and structured-output validation), the backend and data layer of a multilingual education chatbot, an event-driven retail commerce backend, and a legal-domain RAG proof-of-concept. Each was built to the audit-trail-first patterns this site argues for. The hard numbers I can show you are the ones in the repos.",
+		"diagnostic": "Regulated AI stacks fail their first audit at three seams: prompt provenance, retrieval lineage, output attestation. The fix is architectural. A data plane, a control plane, and a compliance plane running as a sidecar: an append-only ledger that records what happened, signed, outside the request path.",
+		"summary": "The proof splits two ways. Open source first, because it's checkable: six Sigstore-signed Claude Code plugins on github.com/yolo-labz, plus three live demo apps with their source open. The client work is team-built, anonymized, under NDA. There I contributed to a regulated IRPF tax-filing agent (field extraction, structured-output validation), built the backend and data layer of a multilingual education chatbot, worked on an event-driven retail commerce backend, and contributed to a legal-domain RAG proof-of-concept. The hard numbers I can show you are the ones in the repos.",
 		"claimEvidenceHeading": "Claim → Evidence",
-		"claimEvidenceIntro": "Every headline claim maps to a verifiable artifact. Public repositories link straight to the source. Rows marked \"writeup pending\" are anonymized architecture writeups; the client name never ships, only the architecture, and only after the writeup clears review.",
+		"claimEvidenceIntro": "Each claim maps to an artifact. Public repos link straight to source. Rows marked \"writeup pending\" are anonymized client writeups: the architecture ships, the client name never does.",
 		"tableHeaderClaim": "Claim",
 		"tableHeaderEvidence": "Evidence",
 		"tableHeaderStatus": "Status",
@@ -253,7 +253,7 @@
 		"statusBacked": "backed",
 		"statusPending": "writeup pending",
 		"codeQualityHeading": "Code quality",
-		"codeQualityIntro": "Every plugin runs Sonar quality + security gates per release; the dashboard is public. Badges link straight to the live scan — no screenshots, no caching.",
+		"codeQualityIntro": "Every plugin runs Sonar quality + security gates per release. The dashboard is public, and each badge links to the live scan: no screenshots, no caching.",
 		"claims": [
 			"Claude Code plugins shipped",
 			"Chrome/macOS workflow tooling",
@@ -271,54 +271,54 @@
 	},
 	"Thesis": {
 		"metaTitle": "Regulated AI fails its first audit at the retrieval layer — Pedro Balbino",
-		"metaDescription": "A working argument for designing the audit trail before the prompt: prompt provenance, retrieval lineage, and output attestation are the primary architectural constraint for regulated AI — not the model.",
+		"metaDescription": "A working argument for designing the audit trail before the prompt: provenance, lineage, and attestation are the primary architectural constraint for regulated AI. The model isn't.",
 		"figLabel": "position · regulated AI architecture",
-		"title": "Regulated AI fails its first audit at the retrieval layer — not the model.",
+		"title": "Regulated AI fails its first audit at the retrieval layer, not the model.",
 		"subtitle": "A working argument for designing the audit trail before the prompt.",
-		"p1": "Most regulated-AI projects budget their risk in the wrong place. The model gets the scrutiny — which vendor, which eval, which guardrail — while the part that actually fails the audit ships as an afterthought: how a given output can be reconstructed, six months later, from the inputs that produced it. In regulated workloads that reconstruction is not a nice-to-have. <strong>It is the deliverable.</strong>",
-		"p2": "Audits fail at three seams, and they are always the same three. <strong>Prompt provenance:</strong> which exact prompt, template version, and system context produced this output? <strong>Retrieval lineage:</strong> which documents were retrieved, at which versions, and why those and not others? <strong>Output attestation:</strong> can you prove the answer was derived from the retrieved evidence rather than the model's parametric memory? A stack that can't answer all three under examination is not \"mostly compliant\". It is undocumented.",
-		"p3": "A better model closes none of those seams. A larger context window makes provenance harder, not easier, because more of the input becomes implicit. An agent with more autonomy makes lineage harder, because the path from question to answer stops being inspectable. The capabilities the field optimizes for — bigger context, more autonomy, more fluency — trade directly against auditability. Which means audit-trail design can't be retrofitted onto a system optimized for the opposite. It has to be a constraint from the first diagram.",
-		"p4": "The shape that survives an audit is a <strong>three-plane topology</strong>. A data plane carries the primary flow — ingest, retrieve, infer. A control plane holds orchestration, agent state, and configuration as first-class, versioned objects. A compliance plane runs alongside as a sidecar. An append-only ledger taps the other two planes and records signed, hash-chained events; it never sits inline in the data path. The compliance plane is the only one whose output the auditor reads. Designing it last means designing the system to lie to itself about what happened.",
-		"p5": "Concretely: a tax-compliance agent that prepares regulated filings runs as a typed-tool loop bounded at a fixed turn ceiling, not an open-ended chain — because an unbounded agent has no audit ceiling. Retrieval is scoped per filing period and the router rejects cross-period hits, because lineage that can pull from anywhere can't be reconstructed. Every emitted number is forced to cite and is re-validated against its source span before it lands, because output attestation is cheaper to enforce at write time than to prove after the fact. Built this way, the agent has <strong>no path to emit an unsourced figure</strong> — the architecture, not the model's goodwill, is what holds. That is the line between 'mostly accurate' and auditable.",
+		"p1": "Regulated-AI projects budget risk in the wrong place. The model gets the scrutiny: which vendor, which eval, which guardrail. The part that actually fails the audit ships as an afterthought, and it is this: can a given output be reconstructed, six months later, from the inputs that produced it. In a regulated workload that reconstruction is not a nice-to-have. <strong>It is the deliverable.</strong>",
+		"p2": "Audits fail at three seams, and they are always the same three. <strong>Prompt provenance:</strong> which exact prompt, template version, and system context produced this output? <strong>Retrieval lineage:</strong> which documents were retrieved, at which versions, and why those and not others? <strong>Output attestation:</strong> can you prove the answer came from the retrieved evidence instead of the model's parametric memory? A stack that can't answer all three under examination is undocumented, whatever the vendor deck says.",
+		"p3": "A better model closes none of those seams. A larger context window makes provenance harder: more of the input becomes implicit. More agent autonomy makes lineage harder: the path from question to answer stops being inspectable. Everything the field optimizes for trades against auditability, so audit-trail design can't be retrofitted onto a system optimized for the opposite. It has to be a constraint from the first diagram.",
+		"p4": "The shape that survives an audit is a <strong>three-plane topology</strong>. A data plane carries the primary flow: ingest, retrieve, infer. A control plane holds orchestration, agent state, and configuration as versioned objects. A compliance plane runs alongside as a sidecar: an append-only ledger that taps the other two and records signed, hash-chained events. It never sits inline in the data path. The auditor reads the compliance plane and nothing else. Designing it last means designing the system to lie to itself about what happened.",
+		"p5": "Concretely: a tax-filing agent runs as a typed-tool loop with a fixed turn ceiling, because an unbounded agent has no audit ceiling. Retrieval is scoped per filing period and the router rejects cross-period hits. Every emitted number is forced to cite, then re-validated against its source span before it lands in the return: attestation enforced at write time is cheap, attestation proven after the fact is archaeology. Built this way the agent has <strong>no path to emit an unsourced figure</strong>. The model never gets trusted with arithmetic, and it never needs to be.",
 		"p6": "The discipline transfers. LGPD, BCB 4.893, and the EU AI Act Art. 12 logging mandate all ask the same question in different words: show me how this decision was made, and prove the record wasn't edited after. The systems that answer cleanly are the ones where someone drew the compliance plane before they wrote the first prompt.",
 		"writeupsLink": "Anonymized architecture writeups →"
 	},
 	"Projects": {
 		"compliance-tax-agent": {
-			"tagline": "A typed-tool LLM agent for regulated tax filings. One hallucinated number is a compliance failure, so every step is schema-validated and every figure cites its source.",
-			"description": "A Brazilian income-tax (IRPF) filing agent built by a six-engineer team. The loop is bounded at ≤40 turns per filing; each step is a schema-validated tool call; retrieval is scoped to the filing year. Every emitted number cites its source span and is re-validated against that span before it lands in the return. My part was the field-extraction and structured-output validation for individual filing sections. The decision log is append-only, so a filing can be replayed.",
-			"problemStatement": "A regulated tax-filing agent cannot hallucinate one numerical field. Every output has to replay for a five-year audit window under LGPD, on-premise, with no data egress. General-purpose RAG fails this twice: it can't prove where a number came from, and it can't bound how long it 'thinks'.",
-			"solutionSummary": "The loop caps at ≤40 turns per filing. The router rejects any cross-year retrieval hit. Forced citation plus post-hoc span validation means the model's arithmetic is never trusted blind. A deterministic anomaly-rule layer catches out-of-policy values before they land, and an append-only audit ledger anchors to a transparency log. Per-field retry, rather than re-running the whole filing, avoids redundant LLM calls. Rejected: a single large-context prompt (no provenance) and an open-ended agent loop (no audit ceiling).",
+			"tagline": "A typed-tool LLM agent for Brazilian tax filings. One hallucinated number is a compliance failure. So: schema-validated steps, forced citation, a hard turn ceiling.",
+			"description": "A Brazilian income-tax (IRPF) filing agent built by a six-engineer team. The loop is bounded at ≤40 turns per filing; each step is a schema-validated tool call; retrieval is scoped to the filing year. Every emitted number cites its source span and gets re-validated against that span before it lands in the return. My part: field extraction and structured-output validation for the individual filing sections. The decision log is append-only, so any filing can be replayed.",
+			"problemStatement": "A regulated tax-filing agent cannot hallucinate one numerical field. Every output has to replay for a five-year audit window under LGPD, on-premise, no data egress. General-purpose RAG fails this twice: it can't prove where a number came from, and it can't bound how long the agent thinks.",
+			"solutionSummary": "The loop caps at ≤40 turns per filing. The router rejects any cross-year retrieval hit. Forced citation plus post-hoc span validation: the model's arithmetic is never trusted blind. A deterministic anomaly-rule layer catches out-of-policy values before they land, and the audit ledger is append-only, anchored to a transparency log. Per-field retry avoids re-running the whole filing. Rejected: one big-context prompt (no provenance) and an open-ended loop (no audit ceiling).",
 			"constraint": "LGPD plus a five-year audit-replay mandate, on-premise, zero data egress. One hallucinated numerical field is a regulatory failure.",
-			"decision": "Bound the agent at ≤40 typed-tool turns per filing. Scope retrieval per filing year and reject cross-year hits at the router. Force every number to cite, then re-validate it against its source span before it lands. Rejected a single large-context prompt (no provenance) and an unbounded loop (no audit ceiling).",
-			"outcome": "By construction the agent has no path to emit an unsourced number — every figure re-validates against its source span before it lands, and a deterministic anomaly-rule layer gates out-of-policy values. The replay guarantee is a property of the design, not a production-tenure claim."
+			"decision": "Bound the agent at ≤40 typed-tool turns per filing. Scope retrieval to the filing year, reject cross-year hits at the router. Force every number to cite, then re-validate it against its source span before it lands. Rejected: a single large-context prompt (no provenance), an unbounded loop (no audit ceiling).",
+			"outcome": "By construction the agent has no path to emit an unsourced number. Every figure re-validates against its source span; a deterministic rule layer gates out-of-policy values. This is a design property. It holds on day one and it holds the same at year five."
 		},
 		"event-driven-retail": {
 			"tagline": "A multi-channel commerce backend where every state change is idempotent and auditable. Go + TypeScript on Kafka, outbox pattern, retry-safe effects.",
-			"description": "An event-driven retail commerce backend across multiple sales surfaces. A BFF fronts the channels; a broker fans domain events out to dispatchers; the transactional outbox publishes each event once per committed transaction, and idempotency keys make every downstream effect safe to retry. I worked on the backend — payment, push-notification and marketplace integrations — inside this architecture.",
-			"problemStatement": "In multi-channel commerce the same order can arrive twice, a partner webhook can fire three times, a network blip can drop an event mid-flight. The ledger still has to stay exactly right and auditable under load.",
-			"solutionSummary": "BFF + Broker + Dispatcher. The broker decouples producers from consumers. The transactional outbox publishes each event once per committed write, and idempotency keys dedupe at every effect boundary. Kafka carries the event log; Go and TypeScript services consume it. Retries are safe by construction, so partner flakiness degrades gracefully instead of corrupting state.",
-			"constraint": "The legacy path couldn't scale checkout under load and lacked a regulator-traceable audit trail. The cutover couldn't stop the business selling. The same order can arrive twice and a partner webhook can fire repeatedly, yet the ledger must stay exactly right under load.",
-			"decision": "Carve domain capabilities into a BFF + Broker + Dispatcher. Decouple producers from consumers, publish via a transactional outbox (once per committed write), make every downstream effect idempotent so retries are safe by construction. Rejected a big-bang rewrite (the business can't stop selling), synchronous point-to-point calls (cascading failure), and at-least-once delivery without dedupe (double effects).",
-			"outcome": "Retry-safe, idempotent effects mean a flaky partner degrades gracefully instead of corrupting the ledger, and every state change traces through the event log. My integrations shipped in without regressing the checkout path."
+			"description": "An event-driven retail commerce backend across multiple sales surfaces. A BFF fronts the channels, a broker fans domain events out to dispatchers, and the transactional outbox publishes each event once per committed transaction. Idempotency keys make every downstream effect safe to retry. My part: payment, push-notification, and marketplace integrations inside this architecture.",
+			"problemStatement": "In multi-channel commerce the same order can arrive twice and a partner webhook can fire three times. The ledger still has to stay exactly right under load.",
+			"solutionSummary": "BFF + Broker + Dispatcher. The broker decouples producers from consumers. The transactional outbox publishes each event once per committed write, and idempotency keys dedupe at every effect boundary. Kafka carries the event log; Go and TypeScript services consume it. Retries are safe by construction, so a flaky partner degrades gracefully instead of corrupting state.",
+			"constraint": "The legacy path couldn't scale checkout under load and had no regulator-traceable audit trail. The cutover couldn't stop the business selling. The same order can arrive twice and a webhook can fire repeatedly; the ledger must stay exactly right anyway.",
+			"decision": "Carve domain capabilities into a BFF + Broker + Dispatcher. Publish via a transactional outbox, once per committed write. Make every downstream effect idempotent so retries are safe by construction. Rejected: a big-bang rewrite (the business can't stop selling), synchronous point-to-point calls (cascading failure), at-least-once delivery without dedupe (double effects).",
+			"outcome": "Retry-safe, idempotent effects: a flaky partner degrades gracefully instead of corrupting the ledger, and every state change traces through the event log. My integrations shipped without regressing the checkout path."
 		},
 		"legal-domain-rag": {
 			"tagline": "Per-jurisdiction retrieval with a deterministic citation validator. Every answer grounds in a real source. AWS Bedrock + Lambda + pgvector.",
-			"description": "A legal-tech RAG proof-of-concept (2024) over a multi-jurisdiction corpus, which I contributed to. Each jurisdiction gets its own pgvector index, so retrieval never bleeds across legal regimes. A deterministic citation validator checks that every cited passage exists and supports the claim before the answer returns. Serverless on AWS Bedrock + Lambda, so cost tracks usage instead of idle capacity.",
+			"description": "A legal-tech RAG proof-of-concept (2024) I contributed to, over a multi-jurisdiction corpus. Each jurisdiction gets its own pgvector index, so retrieval never bleeds across legal regimes. A deterministic citation validator checks that every cited passage exists and supports the claim before the answer returns. Serverless on AWS Bedrock + Lambda: cost tracks usage, not idle capacity.",
 			"problemStatement": "In legal work a fabricated or mis-attributed citation is malpractice. An answer grounded in the wrong jurisdiction is worse than no answer. Doing it by hand doesn't scale.",
-			"solutionSummary": "Per-jurisdiction pgvector indexes keep retrieval inside the correct legal regime. A deterministic citation validator verifies every cited span exists and supports the statement before generation returns. The model is never trusted to cite from memory. AWS Bedrock handles inference; Lambda keeps it serverless and cost-bounded.",
+			"solutionSummary": "Per-jurisdiction pgvector indexes keep retrieval inside the correct legal regime. A deterministic validator confirms every cited span exists and supports the statement before generation returns; the model is never trusted to cite from memory. AWS Bedrock handles inference, Lambda keeps it serverless and cost-bounded.",
 			"constraint": "A fabricated citation is malpractice. A cross-jurisdiction answer is worse than none. Manual documentation doesn't scale.",
-			"decision": "Isolate retrieval per jurisdiction so a query can't pull from the wrong regime. Gate generation behind a deterministic citation validator that confirms every cited span exists and supports the claim. Rejected a single shared index (cross-regime bleed) and trusting model-generated citations (hallucination risk).",
-			"outcome": "A working proof-of-concept where every citation is deterministically validated against the source, never generated from memory, and per-jurisdiction isolation keeps answers inside the correct legal regime."
+			"decision": "Isolate retrieval per jurisdiction so a query can't pull from the wrong regime. Gate generation behind a deterministic citation validator that confirms every cited span exists and supports the claim. Rejected: a single shared index (cross-regime bleed), trusting model-generated citations (hallucination risk).",
+			"outcome": "A working proof-of-concept. Every citation is validated against the source, never generated from memory, and per-jurisdiction isolation keeps answers inside the correct regime."
 		},
 		"multilingual-rag": {
-			"tagline": "A bilingual (PT/EN) education chatbot I built the backend and data layer for, as an external consultant. Grounded retrieval with frozen-eval regression checks — precision measured on held-out questions before every rollout. Azure OpenAI + LangChain + pgvector.",
-			"description": "A retrieval-augmented education chatbot over a knowledge base of 699K+ enrollment records, bilingual PT/EN, which I built the backend and data layer for as an external consultant. Grounded retrieval keeps answers tied to the knowledge base. A frozen evaluation set gates every rollout: precision is measured on held-out questions before a change ships, so the knowledge base improves instead of regressing silently. Azure OpenAI + LangChain + pgvector under the hood.",
+			"tagline": "A bilingual (PT/EN) education chatbot. I built the backend and data layer as an external consultant: grounded retrieval, frozen-eval regression checks, precision measured on held-out questions before every rollout. Azure OpenAI + LangChain + pgvector.",
+			"description": "A retrieval-augmented education chatbot over 699K+ enrollment records, bilingual PT/EN. I built the backend and data layer as an external consultant. Grounded retrieval keeps answers tied to the knowledge base, and a frozen evaluation set gates every rollout: precision gets measured on held-out questions before a change ships, so the knowledge base improves instead of regressing silently. Azure OpenAI + LangChain + pgvector under the hood.",
 			"problemStatement": "A multilingual education assistant can't regress silently. A prompt or model change that helps one language can quietly degrade another, and nobody notices until the users do.",
-			"solutionSummary": "Grounded retrieval anchors answers to the knowledge base, not the model's memory. A frozen-eval regression suite measures precision on a held-out question set before any rollout. A change that improves one cohort can't silently degrade another. Azure OpenAI for inference, pgvector for retrieval.",
+			"solutionSummary": "Grounded retrieval anchors answers to the knowledge base, not the model's memory. A frozen-eval suite measures precision on a held-out question set before any rollout, so a change that improves one cohort can't silently degrade another. Azure OpenAI for inference, pgvector for retrieval.",
 			"constraint": "Across many languages, a change that helps one cohort can silently degrade another. You find out from the users.",
-			"decision": "Ground every answer in the knowledge base and gate rollouts behind a frozen evaluation set, so precision is measured on held-out questions before shipping. Rejected ungated prompt iteration (silent regressions) and ungrounded generation (hallucination at scale).",
-			"outcome": "A frozen-eval gate blocks silent regressions before they reach users — precision is measured on held-out questions every rollout, never assumed."
+			"decision": "Ground every answer in the knowledge base and gate rollouts behind a frozen evaluation set: precision measured on held-out questions before shipping. Rejected: ungated prompt iteration (silent regressions), ungrounded generation (hallucination at scale).",
+			"outcome": "The frozen-eval gate blocks silent regressions before they reach users. Precision is measured every rollout, never assumed."
 		},
 		"ai-document-processor": {
 			"tagline": "A format-agnostic ingestion pipeline where every extracted field traces back to its source span. PDF/DOCX/image → OCR → classify → extract → queryable JSONB.",
@@ -333,30 +333,30 @@
 			"tagline": "A persistent agent channel that treats the inbound message body as an untrusted audit perimeter. Go, hexagonal, Sigstore-signed.",
 			"description": "A persistent WhatsApp session wrapped in a daemon (`wad`) with a thin CLI client (`wa`) that issues commands over a JSON-RPC unix socket. SQLite ratchet store, allowlist + rate limiter + warmup ramp before the first send. Inbound messages are wrapped in <channel> tags so a downstream agent cannot trust a message body to mutate the allowlist or trigger sends. Apache-2.0, GoReleaser to GitHub Releases + homebrew-tap + flake.nix.",
 			"problemStatement": "Give an autonomous agent a real WhatsApp channel and every inbound message body becomes an injection surface. A crafted message must never mutate the allowlist or trigger a send. A partner-API library leaking across the codebase makes the trust boundary impossible to audit.",
-			"solutionSummary": "Hexagonal layering enforced by golangci-lint, so domain and app code physically cannot import the WhatsApp library — it is quarantined to adapters. Inbound messages arrive wrapped in <channel> tags, so the agent can't trust a body to mutate state. Default-deny allowlist + per-second/minute/day rate limits + a 25/50/100% warmup ramp before the first send. SQLite ratchet store on modernc.org/sqlite — CGO_ENABLED=0, no CGO build chain.",
-			"constraint": "An autonomous agent with a real WhatsApp channel makes every inbound message body an injection surface — and a partner-API library leaking across the codebase makes the trust boundary impossible to audit.",
+			"solutionSummary": "Hexagonal layering enforced by golangci-lint: domain and app code physically cannot import the WhatsApp library, it stays quarantined in adapters. Inbound messages arrive wrapped in <channel> tags, so the agent can't trust a body to mutate state. Default-deny allowlist, per-second/minute/day rate limits, a 25/50/100% warmup ramp before the first send. SQLite ratchet store on modernc.org/sqlite: CGO_ENABLED=0, no CGO build chain.",
+			"constraint": "An autonomous agent with a real WhatsApp channel makes every inbound message body an injection surface. A partner-API library leaking across the codebase makes the trust boundary impossible to audit.",
 			"decision": "Quarantine the WhatsApp library to adapters and let golangci-lint fail the build if domain/app code imports it; wrap inbound bodies in <channel> tags so they can't be trusted to mutate state; default-deny the allowlist and ramp sends 25/50/100% on a fresh session.",
 			"outcome": "A daemon whose trust boundary is auditable: the library is contained, the message body can't escalate privilege, and every release is Sigstore-signed at SLSA L2."
 		},
 		"serverless-data-api": {
 			"tagline": "Production-grade serverless CRUD in Terraform: IAM least-privilege, API-key usage plans, PITR, and a teardown that leaves zero orphans.",
-			"description": "A production-ready serverless CRUD API provisioned entirely via Terraform. API Gateway with API-key auth and 1000-req/day rate limiting fronts a Python 3.12 Lambda on arm64 with AWS Powertools, backed by a single-table DynamoDB design with PITR. A CloudWatch dashboard with 8 widgets covers invocations, latency, errors, and capacity. `terraform apply` brings it up; `terraform destroy` removes every resource — no orphans.",
+			"description": "A production-ready serverless CRUD API provisioned entirely via Terraform. API Gateway with API-key auth and 1000-req/day rate limiting fronts a Python 3.12 Lambda on arm64 with AWS Powertools, backed by a single-table DynamoDB design with PITR. A CloudWatch dashboard with 8 widgets covers invocations, latency, errors, and capacity. `terraform apply` brings it up; `terraform destroy` removes every resource. No orphans.",
 			"problemStatement": "Serverless tutorials skip the boring layers: IAM least-privilege, API-key + usage-plan auth, structured logging, a teardown story. The result is a demo that can't reach production without a rewrite.",
 			"solutionSummary": "Five composable Terraform modules (dynamodb, iam, lambda, api_gateway, monitoring) wire 15 resources end to end. The Lambda execution role is least-privilege scoped to the table's ARN. The API Gateway usage plan caps at 1000 req/day with burst 10. GitHub Actions runs fmt + validate + plan on every PR. Idle cost is $0 (or $3/month with the CloudWatch dashboard kept on).",
-			"constraint": "A serverless API that can be cloned straight into production — IAM least-privilege, auth, observability, and a clean teardown — not a demo that needs a rewrite first.",
+			"constraint": "A serverless API that can be cloned straight into production: IAM least-privilege, auth, observability, a clean teardown. Not a demo that needs a rewrite first.",
 			"decision": "Scope the Lambda role to the table ARN (never a wildcard), gate the API behind an API-key usage plan, cap at 1000 req/day, and make `terraform destroy` leave zero orphans. Provision every layer as a reusable module so the pattern is copyable.",
-			"outcome": "15 resources across 5 modules, least-privilege IAM, PITR, and a teardown that removes everything — at $0/month idle."
+			"outcome": "15 resources across 5 modules, least-privilege IAM, PITR, and a teardown that removes everything. Idle cost: $0/month."
 		},
 		"exec-job-board": {
-			"tagline": "Four divergent public APIs normalized behind one Pydantic schema, deduped by content hash, and served as a zero-backend static site — refreshed daily by cron.",
+			"tagline": "Four divergent public APIs normalized behind one Pydantic schema, deduped by content hash, served as a zero-backend static site. Refreshed daily by cron.",
 			"description": "An automated daily pipeline collects executive-tier listings from 4 public data APIs (JSearch, Adzuna, The Muse, USAJobs), normalizes them into a unified Pydantic schema, deduplicates via SHA-256 content hashing, and emits a single `jobs.json` consumed by a Next.js static site at build time. Fuse.js client-side fuzzy search + 4-dimension filtering, sub-200ms response, zero runtime backend cost.",
-			"problemStatement": "Aggregating data across 4 third-party APIs with divergent response schemas, rate limits, and auth models — without a backend that has to be kept warm — is the canonical 'glue code nobody wants to maintain' problem.",
-			"solutionSummary": "One adapter per source isolates response-shape drift. Pydantic v2 enforces the unified schema at the seam. SHA-256 over (title, employer, location, posted_date) handles dedupe. A GitHub Actions cron runs the collector daily, commits the JSON, and redeploys the static site. The site falls back to a curated 30-row seed when the API output is missing — the demo never breaks."
+			"problemStatement": "Four third-party APIs, four response schemas, four rate-limit and auth models. This is the canonical glue code nobody wants to maintain, made harder by wanting zero warm backend.",
+			"solutionSummary": "One adapter per source isolates response-shape drift. Pydantic v2 enforces the unified schema at the seam. SHA-256 over (title, employer, location, posted_date) handles dedupe. A GitHub Actions cron runs the collector daily, commits the JSON, and redeploys the static site. The site falls back to a curated 30-row seed when the API output is missing: the demo never breaks."
 		},
 		"realestate-price-tracker": {
 			"tagline": "Three layers most demo stacks fake one of: filtered + paginated REST, indexed aggregate queries, and a map/charts frontend that stays responsive under every filter combination.",
 			"description": "A full-stack dashboard tracking real-estate market data. FastAPI serves REST endpoints with filterable pagination, aggregate stats, and CSV/JSON export. A Next.js dashboard renders interactive Recharts line/bar charts and a React-Leaflet map with color-coded markers. PostgreSQL 16 with indexed queries, 800 synthetic listings across 6 neighborhoods, stitched together via Docker Compose.",
-			"problemStatement": "A market dashboard needs three layers wired correctly: filtered + paginated REST, indexed aggregate queries, and an interactive frontend with map + charts that stays responsive under filter combinations — and most demo stacks pick one and fake the rest.",
+			"problemStatement": "A market dashboard needs three layers wired correctly: filtered + paginated REST, indexed aggregate queries, and an interactive frontend with map + charts that stays responsive under filter combinations. Most demo stacks pick one layer and fake the rest.",
 			"solutionSummary": "SQLAlchemy async + asyncpg for non-blocking PostgreSQL access. Indexed columns on (neighborhood, price, posted_date) keep aggregates under a few ms. A seed script generates Gaussian-distributed prices around per-neighborhood medians. A single `docker compose up` brings PostgreSQL + API + dashboard online; CSV/JSON export endpoints respect the same filters as the live UI."
 		},
 		"claude-mac-chrome": {
@@ -367,32 +367,32 @@
 		},
 		"linkedin-chrome-copilot": {
 			"tagline": "Materializes and saves per-locale (PT/EN/ES) profile slots behind isTrusted-gated Save buttons, with a two-phase confirm on any send.",
-			"description": "Per-locale profile-edit forms (PT/EN/ES) gated behind separate URLs with isTrusted=true Save buttons. The plugin enumerates positions, materializes drafts, and saves each locale slot via execCommand('insertText') + a Save-button event-chain click — Chrome stays in the background, browser session intact.",
+			"description": "Per-locale profile-edit forms (PT/EN/ES) gated behind separate URLs with isTrusted=true Save buttons. The plugin enumerates positions, materializes drafts, and saves each locale slot via execCommand('insertText') + a Save-button event-chain click: Chrome stays in the background, browser session intact.",
 			"problemStatement": "LinkedIn's 2026 profile editor stores 3 locale slots per position (PT/EN/ES) behind separate URLs. The Save button discriminates isTrusted=true events, breaking synthetic dispatches; the Algolia typeahead in the skills section ignores synthetic input.",
 			"solutionSummary": "A Bash 3.2 plugin sibling to claude-mac-chrome. Reads positions via owner-view DOM scrape, drives per-locale /edit/forms/<id>/?language=<lang>&country=<cc> saves via AppleScript JS-injection. cliclick fallback for paths gated on real OS pointer events. Audit log per action; two-phase confirm on any Send equivalent."
 		},
 		"kokoro-speakd": {
-			"tagline": "Loads the TTS model once and serves synthesis over a unix socket — sub-200ms warm response instead of a 3-5s per-call cold load.",
+			"tagline": "Loads the TTS model once and serves synthesis over a unix socket: sub-200ms warm response, instead of a 3-5s cold load per call.",
 			"description": "Loads the Kokoro 82M model once at daemon start and exposes a unix socket for repeat synthesis requests. Native macOS launchd + Linux systemd integration. PyPI-published with PEP 740 attestations.",
 			"problemStatement": "Per-request model load adds 3-5s latency to every TTS call. Claude Code session-level voice feedback needs sub-second response.",
 			"solutionSummary": "Daemon architecture: the model is held in memory, requests arrive via unix socket, with optional GPU acceleration via ONNX Runtime. Distributed via PyPI Trusted Publishing with PEP 740 build-provenance attestations."
 		},
 		"claude-classroom-submit": {
-			"tagline": "Skips the cross-origin Drive Picker iframe entirely — uploads via rclone, attaches and turns in via the Classroom REST API.",
-			"description": "Uploads a file to Drive via rclone, finds the target assignment by query, attaches the Drive file via studentSubmissions.modifyAttachments, and finalizes with studentSubmissions.turnIn — all via REST API.",
+			"tagline": "Skips the cross-origin Drive Picker iframe entirely: uploads via rclone, attaches and turns in via the Classroom REST API.",
+			"description": "Uploads a file to Drive via rclone, finds the target assignment by query, attaches the Drive file via studentSubmissions.modifyAttachments, and finalizes with studentSubmissions.turnIn. All via REST API.",
 			"problemStatement": "Browser automation hits the Drive Picker iframe sandbox; programmatic file selection is blocked by cross-origin policy. Manual submit takes ~2 minutes per assignment.",
 			"solutionSummary": "Skip the browser entirely. rclone uploads to Drive, the Classroom REST API attaches + turns in. OAuth 2.0 refresh-token flow stored at ~/.config/claude-classroom-submit/tokens.json."
 		},
 		"fand": {
-			"tagline": "Ramps fans on temperature-driven curves before thermal throttling starts, with zero-downtime SIGHUP config reload — Rust + launchd.",
+			"tagline": "Ramps fans on temperature-driven curves before thermal throttling starts, with zero-downtime SIGHUP config reload. Rust + launchd.",
 			"description": "Reads SMC sensors via direct system calls, applies user-configured fan curves, and supports per-machine overrides. Hot-reload on SIGHUP. Rust 1.84 with exact-pin dependencies for reproducible builds.",
 			"problemStatement": "Apple Silicon fan defaults are too conservative under sustained CPU + GPU load (Claude Code + Docker + browser + ffmpeg). Fans don't ramp up until thermal throttling has already started.",
 			"solutionSummary": "A userspace daemon polls the SMC, applies aggressive curves before throttle, and reloads config without restart. Distributed as a universal2 binary via brew + GitHub Releases."
 		},
 		"pedro-portfolio-recipes": {
-			"tagline": "Short, copy-pasteable patterns from the stacks I ship — each one is problem, working snippet, tradeoff, anti-pattern.",
-			"description": "Eight capability-first code recipes — Claude Code plugin skills, Chrome multi-profile automation, pgvector + BM25 hybrid RAG, Sigstore attestation verification, NixOS flake overlays, parallel Azure/GCP Terraform modules, sops-nix secrets, and polyglot lefthook pre-commit hooks. Each recipe is one directory: problem, working snippet, tradeoff, anti-pattern.",
-			"problemStatement": "Reviewers and collaborators need fast evidence that a stack claim is backed by actual code — not marketing copy, and not full apps. Long-form writeups are the wrong resolution for 'show me how you'd wire hybrid search'.",
+			"tagline": "Short, copy-pasteable patterns from the stacks I ship: each one is problem, working snippet, tradeoff, anti-pattern.",
+			"description": "Eight capability-first code recipes: Claude Code plugin skills, Chrome multi-profile automation, pgvector + BM25 hybrid RAG, Sigstore attestation verification, NixOS flake overlays, parallel Azure/GCP Terraform modules, sops-nix secrets, and polyglot lefthook pre-commit hooks. Each recipe is one directory: problem, working snippet, tradeoff, anti-pattern.",
+			"problemStatement": "Reviewers and collaborators need fast evidence that a stack claim is backed by actual code. Marketing copy doesn't do that, and full apps are the wrong resolution for 'show me how you'd wire hybrid search'.",
 			"solutionSummary": "A public repo of short, self-contained recipes under recipes/<topic>/README.md. No build step, no shared framework. Each recipe stands alone at 200–500 words: problem, snippet, tradeoff, anti-pattern, reference. MIT, with a SonarQube + Dependabot + lefthook baseline."
 		}
 	},
@@ -411,7 +411,7 @@
 	"ProjectShowcase": {
 		"selectedWorkStamp": "selected work",
 		"selectedWorkHeading": "Selected work",
-		"selectedWorkLead": "The constraint that made it hard, the decision taken, and the measured outcome — not just the result.",
+		"selectedWorkLead": "Constraint, decision, measured outcome. The result alone teaches nothing.",
 		"openSourceStamp": "open-source & demos",
 		"openSourceHeading": "Open-source & demos"
 	}
