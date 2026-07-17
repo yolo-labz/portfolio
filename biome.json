@@ -13,7 +13,7 @@
 	},
 	"linter": {
 		"enabled": true,
-		"domains": { "next": "none", "react": "none" },
+		"domains": { "next": "recommended", "react": "recommended" },
 		"rules": {
 			"preset": "recommended",
 			"complexity": {
@@ -51,5 +51,19 @@
 			"!**/.venv",
 			"!**/*.css"
 		]
-	}
+	},
+	"overrides": [
+		{
+			"includes": ["apps/web/src/app/*/layout.tsx", "apps/web/src/app/*/projects/*/page.tsx"],
+			"linter": { "rules": { "security": { "noDangerouslySetInnerHtml": "off" } } }
+		},
+		{
+			"includes": ["apps/web/src/app/*/about/page.tsx"],
+			"linter": { "rules": { "performance": { "noImgElement": "off" } } }
+		},
+		{
+			"includes": ["projects/ai-document-processor/dashboard/src/components/field-table.tsx"],
+			"linter": { "rules": { "suspicious": { "noArrayIndexKey": "off" } } }
+		}
+	]
 }
