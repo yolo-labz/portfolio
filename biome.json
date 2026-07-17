@@ -13,6 +13,7 @@
 	},
 	"linter": {
 		"enabled": true,
+		"domains": { "next": "none", "react": "none" },
 		"rules": {
 			"recommended": true,
 			"complexity": {

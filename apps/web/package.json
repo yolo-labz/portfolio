@@ -12,20 +12,20 @@
 	"dependencies": {
 		"@portfolio/ui": "workspace:*",
 		"@sentry/nextjs": "^10.66.0",
-		"clsx": "latest",
-		"motion": "latest",
-		"next": "latest",
-		"next-intl": "latest",
-		"react": "latest",
-		"react-dom": "latest",
-		"tailwind-merge": "latest"
+		"clsx": "2.1.1",
+		"motion": "12.42.2",
+		"next": "16.2.10",
+		"next-intl": "4.13.2",
+		"react": "19.2.7",
+		"react-dom": "19.2.7",
+		"tailwind-merge": "3.6.0"
 	},
 	"devDependencies": {
-		"@tailwindcss/postcss": "latest",
+		"@tailwindcss/postcss": "4.3.3",
 		"@types/node": "26.1.1",
-		"@types/react": "latest",
-		"@types/react-dom": "latest",
-		"tailwindcss": "latest",
+		"@types/react": "19.2.17",
+		"@types/react-dom": "19.2.3",
+		"tailwindcss": "4.3.3",
 		"typescript": "6.0.3"
 	}
 }

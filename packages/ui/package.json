@@ -14,16 +14,16 @@
 		"lint": "biome check src/"
 	},
 	"dependencies": {
-		"clsx": "latest",
-		"tailwind-merge": "latest"
+		"clsx": "2.1.1",
+		"tailwind-merge": "3.6.0"
 	},
 	"peerDependencies": {
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
 	},
 	"devDependencies": {
-		"@types/react": "latest",
-		"@types/react-dom": "latest",
+		"@types/react": "19.2.17",
+		"@types/react-dom": "19.2.3",
 		"typescript": "6.0.3"
 	}
 }
