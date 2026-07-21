@@ -184,7 +184,9 @@ export const projects: Project[] = [
 			{ label: "Provisioned", value: "15 resources · 5 reusable modules" },
 			{ label: "Idle cost", value: "$0/month (no dashboard)" },
 		],
-		links: {},
+		links: {
+			source: "https://github.com/yolo-labz/portfolio/tree/main/projects/serverless-data-api",
+		},
 		featured: false,
 		hasArc: true,
 	},
