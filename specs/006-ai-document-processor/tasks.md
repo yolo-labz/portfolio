@@ -118,7 +118,7 @@
 
 - [ ] T033 Create `Dockerfile.dokku` — combined build: dashboard static export + FastAPI serving both (same pattern as realestate-tracker). Include Tesseract + Poppler in the image.
 - [ ] T034 Create `app.json` — Dokku health checks on /health
-- [ ] T035 Provision Dokku: create `ai-docs` app, create PostgreSQL service, link, set domain `ai-docs.home301server.com.br`, set env vars (ANTHROPIC_API_KEY, POSTGRES_*), SSL cert, ports
+- [x] T035 Provision Dokku: create `ai-docs` app, create PostgreSQL service, link, set domain `ai-docs.home301server.com.br`, set env vars (ANTHROPIC_API_KEY, POSTGRES_*), SSL cert, ports
 - [ ] T036 Deploy to Dokku and verify with sample document upload
 
 **Checkpoint**: Live at `ai-docs.home301server.com.br`.
@@ -128,8 +128,8 @@
 ## Phase 8: Polish & Cross-Cutting
 
 - [ ] T037 Verify all 4 user stories on deployed site
-- [ ] T038 Update `apps/web/src/data/projects.ts` — add live demo URL for ai-document-processor
-- [ ] T039 Commit all changes, push, create PR, merge, clean up branch
+- [x] T038 Update `apps/web/src/data/projects.ts` — add live demo URL for ai-document-processor
+- [x] T039 Commit all changes, push, create PR, merge, clean up branch
 
 ---
 

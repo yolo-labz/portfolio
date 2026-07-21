@@ -151,7 +151,7 @@
 - [x] T031 Create `.github/workflows/collect-jobs.yml` at the **monorepo root** — daily cron (06:00 UTC) + workflow_dispatch. Jobs: (1) collect: ubuntu-latest, setup Python 3.12, pip install requirements, run collector, check for changes, commit + push if changed. (2) deploy: self-hosted runner, triggered if collect succeeds, `dokku/github-action@master` pushing to `ssh://dokku@192.168.1.184:22/exec-job-board`. Secrets: all 6 API keys + DOKKU_SSH_PRIVATE_KEY.
 - [x] T032 Provision Dokku app: SSH to Dokku host, create `exec-job-board` app, set domain `exec-job-board.home301server.com.br`, set dockerfile-path `Dockerfile.dokku`, set env vars, add HTTPS (self-signed cert for Cloudflare tunnel), configure ports http:80:3000 + https:443:3000
 - [x] T033 Add API key secrets to `yolo-labz/portfolio` repo on GitHub (JSEARCH_API_KEY, ADZUNA_APP_ID, ADZUNA_API_KEY, THEMUSE_API_KEY, USAJOBS_API_KEY, USAJOBS_EMAIL)
-- [ ] T034 Initial deploy: `git push dokku main` to verify the site runs on Dokku with seed data
+- [x] T034 Initial deploy: `git push dokku main` to verify the site runs on Dokku with seed data
 
 **Checkpoint**: Site live at `exec-job-board.home301server.com.br`. Pipeline runs daily.
 
@@ -162,11 +162,11 @@
 **Purpose**: Final integration, build verification, portfolio update
 
 - [ ] T035 Run `python -m collector.main` end-to-end with real API keys, verify `data/jobs.json` has 50+ entries from 2+ sources
-- [ ] T036 Run `cd site && pnpm build` — verify static build succeeds
+- [x] T036 Run `cd site && pnpm build` — verify static build succeeds
 - [ ] T037 Verify search, all 4 filters, load-more pagination, empty state, and RSS feed on the deployed site
 - [ ] T038 Verify keyboard navigation of filter controls (Tab, Enter, Escape)
-- [ ] T039 Update `apps/web/src/data/projects.ts` — add live demo URL (`https://exec-job-board.home301server.com.br`) and source link for exec-job-board project card on the portfolio site
-- [ ] T040 Commit all changes to `003-exec-job-board` branch, push, create PR, merge, clean up branch
+- [x] T039 Update `apps/web/src/data/projects.ts` — add live demo URL (`https://exec-job-board.home301server.com.br`) and source link for exec-job-board project card on the portfolio site
+- [x] T040 Commit all changes to `003-exec-job-board` branch, push, create PR, merge, clean up branch
 
 ---
 

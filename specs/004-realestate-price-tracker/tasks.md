@@ -158,9 +158,9 @@
 
 - [ ] T031 Create `Dockerfile.dokku` — single multi-stage build: build API + dashboard, run both (or API serving dashboard static + API). Consider: nginx in front, or Next.js calling API internally.
 - [ ] T032 Create `app.json` — Dokku health checks on `/health`
-- [ ] T033 Provision Dokku: create `realestate-tracker` app, create PostgreSQL service (`dokku postgres:create realestate-db`), link to app, set domain `realestate-tracker.home301server.com.br`, SSL cert, env vars
+- [x] T033 Provision Dokku: create `realestate-tracker` app, create PostgreSQL service (`dokku postgres:create realestate-db`), link to app, set domain `realestate-tracker.home301server.com.br`, SSL cert, env vars
 - [ ] T034 Seed production database: run seed script against Dokku PostgreSQL
-- [ ] T035 Initial deploy and verify dashboard loads with data
+- [x] T035 Initial deploy and verify dashboard loads with data
 
 **Checkpoint**: Live at `realestate-tracker.home301server.com.br`.
 
@@ -170,8 +170,8 @@
 
 - [ ] T036 Verify all 5 user stories work on deployed site
 - [ ] T037 Verify Docker Compose works from clean clone
-- [ ] T038 Update `apps/web/src/data/projects.ts` — add live demo URL for realestate-price-tracker
-- [ ] T039 Commit all changes, push, create PR, merge, clean up branch
+- [x] T038 Update `apps/web/src/data/projects.ts` — add live demo URL for realestate-price-tracker
+- [x] T039 Commit all changes, push, create PR, merge, clean up branch
 
 ---
 
