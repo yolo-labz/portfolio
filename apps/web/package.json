@@ -15,7 +15,7 @@
 		"clsx": "2.1.1",
 		"motion": "12.42.2",
 		"next": "16.2.10",
-		"next-intl": "4.13.2",
+		"next-intl": "4.13.4",
 		"react": "19.2.8",
 		"react-dom": "19.2.8",
 		"tailwind-merge": "3.6.0"
