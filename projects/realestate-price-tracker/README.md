@@ -1,8 +1,8 @@
 # Real Estate Price Tracker Dashboard
 
-Full-stack dashboard tracking real estate market data for Austin, TX. FastAPI backend with PostgreSQL, Next.js frontend with interactive charts and map, orchestrated via Docker Compose.
+Full-stack example using synthetic property listings for Austin, TX. FastAPI backend with PostgreSQL, Next.js frontend with interactive charts and map, orchestrated via Docker Compose.
 
-[Live Demo](https://realestate-tracker.home301server.com.br) · [Portfolio](https://portfolio.home301server.com.br)
+**Hosted demo retired on 13/09/2026.** Source and local Docker Compose instructions remain available below; this project is no longer listed on the portfolio.
 
 ## What This Demonstrates
 
