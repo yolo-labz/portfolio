@@ -3,7 +3,7 @@
 // page carries an O(N) baseline cost and we want the diff signal to stay
 // loud.
 //
-// Project pages: top 5 featured cards from apps/web/src/data/projects.ts
+// Project pages: selected retained public cards from apps/web/src/data/projects.ts
 // (`featured: true`). Adding a route?
 //   1) append below
 //   2) regenerate baselines via `pnpm test:visual:update` inside the pinned
@@ -16,16 +16,12 @@ import { expect, test } from "@playwright/test";
 const PAGES: ReadonlyArray<{ name: string; path: string }> = [
 	{ name: "home", path: "/en" },
 	{ name: "about", path: "/en/about" },
-	// Top 5 featured projects (apps/web/src/data/projects.ts: featured === true).
+	// Selected retained project routes.
 	{ name: "project-wa", path: "/en/projects/wa" },
 	{ name: "project-claude-mac-chrome", path: "/en/projects/claude-mac-chrome" },
 	{
 		name: "project-linkedin-chrome-copilot",
 		path: "/en/projects/linkedin-chrome-copilot",
-	},
-	{
-		name: "project-ai-document-processor",
-		path: "/en/projects/ai-document-processor",
 	},
 	{ name: "project-exec-job-board", path: "/en/projects/exec-job-board" },
 	// Locale coverage: translated home + about for pt-BR and es.

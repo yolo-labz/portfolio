@@ -2,7 +2,7 @@
 
 Upload PDFs, images, or DOCX files. The system extracts text (OCR for scanned documents), classifies the document type using AI, and pulls out structured fields — vendor names, amounts, dates, parties — automatically.
 
-[Live Demo](https://ai-docs.home301server.com.br) · [Portfolio](https://portfolio.home301server.com.br)
+**Hosted demo retired on 13/09/2026.** The source and local Docker Compose setup remain available below.
 
 ## What This Demonstrates
 
