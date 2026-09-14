@@ -98,39 +98,6 @@ importers:
         specifier: 6.0.3
         version: 6.0.3
 
-  projects/ai-document-processor: {}
-
-  projects/ai-document-processor/dashboard:
-    dependencies:
-      next:
-        specifier: 16.2.10
-        version: 16.2.10(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(@playwright/test@1.61.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      react:
-        specifier: 19.2.8
-        version: 19.2.8
-      react-dom:
-        specifier: 19.2.8
-        version: 19.2.8(react@19.2.8)
-    devDependencies:
-      '@tailwindcss/postcss':
-        specifier: 4.3.3
-        version: 4.3.3
-      '@types/node':
-        specifier: 26.1.2
-        version: 26.1.2
-      '@types/react':
-        specifier: 19.2.17
-        version: 19.2.17
-      '@types/react-dom':
-        specifier: 19.2.3
-        version: 19.2.3(@types/react@19.2.17)
-      tailwindcss:
-        specifier: 4.3.3
-        version: 4.3.3
-      typescript:
-        specifier: 6.0.3
-        version: 6.0.3
-
   projects/exec-job-board: {}
 
   projects/exec-job-board/site:

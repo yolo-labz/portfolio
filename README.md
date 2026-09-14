@@ -86,7 +86,6 @@ For sites that need none of this — a single `apps/web` with no shared library,
 apps/web/                       # Next.js portfolio site (the only deployable app)
 packages/ui/                    # shared component library, raw TS source (no build step)
 projects/                       # portfolio project subfolders
-ai-document-processor/
 exec-job-board/
 serverless-data-api/
 scripts/                        # setup-dokku.sh + marketing-apply-repo-metadata.sh

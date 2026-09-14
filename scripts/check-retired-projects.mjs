@@ -26,9 +26,9 @@ for (const hero of ["hero-dark.svg", "hero-light.svg"]) {
 	assert(!read(`docs/assets/${hero}`).includes("realestate"));
 }
 
-assert(existsSync(`${root}/projects/ai-document-processor/docker-compose.yml`));
-assert(read("projects/ai-document-processor/README.md").includes("docker compose up"));
-assert(!read("projects/ai-document-processor/README.md").includes("ai-docs.home301server.com.br"));
+assert(!existsSync(`${root}/projects/ai-document-processor`));
+assert(!read("Dockerfile.dokku").includes("projects/ai-document-processor"));
+assert(!read("pnpm-lock.yaml").includes("projects/ai-document-processor"));
 
 for (const locale of ["en", "pt", "es"]) {
 	const messages = JSON.parse(read(`apps/web/messages/${locale}.json`));
