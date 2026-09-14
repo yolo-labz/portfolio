@@ -30,11 +30,14 @@ docker run --rm --ipc=host \
   -e HOME=/tmp \
   -e CI=true \
   --entrypoint bash \
-  mcr.microsoft.com/playwright:v1.59.1-noble \
+  -e COREPACK_HOME=/tmp/corepack \
+  mcr.microsoft.com/playwright:v1.61.1-noble \
   -c '
     set -e
-    # Activate corepack-pinned pnpm without writing to /root.
-    corepack enable
+    # Install Corepack shims in a writable path for the non-root container user.
+    mkdir -p /tmp/bin
+    corepack enable --install-directory /tmp/bin
+    export PATH="/tmp/bin:$PATH"
     corepack prepare pnpm@10.28.2 --activate
     pnpm install --frozen-lockfile
     pnpm exec playwright test --update-snapshots

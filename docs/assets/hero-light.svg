@@ -8,7 +8,7 @@
   </g>
   <g font-family="ui-monospace,'JetBrains Mono','Fira Code',Menlo,monospace" fill="#6c6f85">
     <text x="76" y="214" font-size="20">turborepo monorepo · next.js 16</text>
-    <text x="76" y="242" font-size="20">5 mixed-stack case studies</text>
+    <text x="76" y="242" font-size="20">3 mixed-stack projects</text>
   </g>
   <g font-family="ui-monospace,'JetBrains Mono','Fira Code',Menlo,monospace" fill="#8c8fa1">
     <text x="76" y="296" font-size="14">pnpm install --frozen-lockfile &amp;&amp; pnpm dev</text>
@@ -26,7 +26,7 @@
       <text x="162" y="22">packages/ui</text>
       <text x="14" y="134">projects/ai-docs</text>
       <text x="222" y="134">jobs</text>
-      <text x="222" y="222">realestate</text>
+      <text x="222" y="222">infra</text>
       <text x="370" y="134">api</text>
     </g>
     <g font-family="ui-monospace,'JetBrains Mono','Fira Code',Menlo,monospace" fill="#bcc0cc" font-size="9">
@@ -34,7 +34,7 @@
       <text x="162" y="42">raw ts · polymorphic</text>
       <text x="14" y="152">python · claude</text>
       <text x="222" y="152">python · cron</text>
-      <text x="222" y="240">python</text>
+      <text x="222" y="240">terraform</text>
       <text x="370" y="152">terraform · lambda</text>
     </g>
   </g>
