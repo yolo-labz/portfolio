@@ -33,11 +33,9 @@ const ARCHIVE_ROOTS = ["./.specify", "./specs"];
 // like dist/build/report are deliberately NOT exempt: a publication directory
 // can carry that name, and skipping it by name hid a retired reference once.
 const SKIP_DIRS = new Set([".git", "node_modules", ".next", ".turbo", ".cache", ".playwright"]);
-// Binary carriers: a regex cannot read them, and scanning their bytes only
-// produces noise. Everything else is read, whatever its extension.
-const BINARY_FILE =
-	/\.(png|jpe?g|gif|webp|avif|ico|icns|pdf|woff2?|ttf|otf|eot|zip|tar|t?gz|bz2|xz|7z|rar|mp[34]|mov|webm|wav|ogg|opus|flac|db|sqlite3?|wasm|so|dylib|dll|exe|bin|jar|class|pyc|lockb|core)$/i;
-const MAX_TEXT_BYTES = 8 * 1024 * 1024;
+// Every file is read, whatever its extension: a plain-text reference parked in
+// a .png is still a leak, and read cost is bounded by the repo, not the format.
+const MAX_TEXT_BYTES = 32 * 1024 * 1024;
 const oversized = [];
 
 // 1. Published data: no retired slug, no retired or unpublished demo host, and
@@ -92,17 +90,14 @@ const walk = (dir) =>
 			}
 			return walk(path);
 		}
-		// `.git` is a directory in a clone and a text file in a worktree, whose
-		// content points at a path like .../portfolio-135-retire-realestate.
-		if (path === SELF || entry.name === ".git") {
+		// Exemptions are deliberately tiny: the worktree's own `.git` pointer file
+		// and this guard. A `.git` file inside a publication directory is checked.
+		if (path === SELF || path === "./.git") {
 			return [];
 		}
-		// Name check before every content filter: a binary, empty or oversized
-		// file named after a retired project is still a publication leak.
+		// Name check before every content filter: an empty or oversized file named
+		// after a retired project is still a publication leak.
 		assert(!RETIRED.test(path), `${path} is named after a retired project`);
-		if (BINARY_FILE.test(entry.name)) {
-			return [];
-		}
 		const { size } = statSync(abs(path));
 		if (size === 0) {
 			return [];
