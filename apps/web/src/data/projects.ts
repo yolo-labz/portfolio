@@ -122,28 +122,6 @@ export const projects: Project[] = [
 		hasArc: true,
 	},
 	{
-		slug: "ai-document-processor",
-		title: "ai-document-processor — auditable document extraction pipeline",
-		techStack: [
-			{ name: "Python", category: "language" },
-			{ name: "FastAPI", category: "framework" },
-			{ name: "Claude Haiku · Sonnet", category: "service" },
-			{ name: "Tesseract · PyMuPDF", category: "service" },
-			{ name: "PostgreSQL 16", category: "database" },
-			{ name: "Next.js 16", category: "framework" },
-			{ name: "Docker Compose", category: "infrastructure" },
-		],
-		metrics: [
-			{ label: "Cost per document", value: "~$0.006" },
-			{ label: "Provenance", value: "every field traced to a source span" },
-			{ label: "Formats", value: "PDF · scanned PDF · JPEG · PNG · DOCX" },
-			{ label: "Storage", value: "JSONB + full-text TSVECTOR" },
-		],
-		links: { demo: "https://ai-docs.home301server.com.br" },
-		featured: true,
-		hasArc: true,
-	},
-	{
 		slug: "wa",
 		title: "wa — WhatsApp daemon with an auditable trust boundary",
 		techStack: [
@@ -209,27 +187,6 @@ export const projects: Project[] = [
 			{ label: "Runtime cost", value: "$0 (SSG)" },
 		],
 		links: { demo: "https://exec-job-board.home301server.com.br" },
-		featured: false,
-	},
-	{
-		slug: "realestate-price-tracker",
-		title: "realestate-price-tracker — full-stack market dashboard",
-		techStack: [
-			{ name: "Python", category: "language" },
-			{ name: "FastAPI", category: "framework" },
-			{ name: "SQLAlchemy async · asyncpg", category: "framework" },
-			{ name: "PostgreSQL 16", category: "database" },
-			{ name: "Next.js 16", category: "framework" },
-			{ name: "Recharts · React-Leaflet", category: "service" },
-			{ name: "Docker Compose", category: "infrastructure" },
-		],
-		metrics: [
-			{ label: "Dataset", value: "800 listings · 6 neighborhoods" },
-			{ label: "Endpoints", value: "list · geo · stats · CSV · JSON" },
-			{ label: "Aggregates", value: "indexed, sub-millisecond" },
-			{ label: "License", value: "MIT" },
-		],
-		links: { demo: "https://realestate-tracker.home301server.com.br" },
 		featured: false,
 	},
 	{

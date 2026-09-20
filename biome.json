@@ -60,10 +60,6 @@
 		{
 			"includes": ["apps/web/src/app/*/about/page.tsx"],
 			"linter": { "rules": { "performance": { "noImgElement": "off" } } }
-		},
-		{
-			"includes": ["projects/ai-document-processor/dashboard/src/components/field-table.tsx"],
-			"linter": { "rules": { "suspicious": { "noArrayIndexKey": "off" } } }
 		}
 	]
 }

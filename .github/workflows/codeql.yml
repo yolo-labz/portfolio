@@ -2,8 +2,9 @@ name: CodeQL
 
 # Static security analysis (advanced setup). Public repo → CodeQL is $0.
 # Next.js monorepo: Server Actions + API route taint (js/ts) + python
-# sub-apps (ai-document-processor). Matrix = javascript-typescript + python
-# (CSS/HCL/Shell not CodeQL-supported). build-mode none (interpreted).
+# sub-apps (exec-job-board collector, serverless-data-api lambda). Matrix =
+# javascript-typescript + python (CSS/HCL/Shell not CodeQL-supported).
+# build-mode none (interpreted).
 
 on:
   push:

@@ -3,12 +3,12 @@
 	"private": true,
 	"packageManager": "pnpm@10.28.2",
 	"engines": {
-		"node": ">=22.0.0"
+		"node": ">=22.6.0"
 	},
 	"scripts": {
 		"dev": "turbo dev",
 		"build": "turbo build",
-		"lint": "biome check . && node scripts/voice-lint.mjs",
+		"lint": "biome check . && node scripts/voice-lint.mjs && node --experimental-strip-types scripts/check-retired-projects.mjs",
 		"lint:fix": "biome check --write .",
 		"lint:voice": "node scripts/voice-lint.mjs",
 		"format": "biome format --write .",

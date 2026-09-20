@@ -32,10 +32,10 @@
 				"detail": "SLSA L2 · assinados com Sigstore · verifique com um comando"
 			},
 			{
-				"value": 3,
+				"value": 1,
 				"suffix": "",
-				"label": "apps de demonstração ao vivo",
-				"detail": "extração com IA · dashboard de mercado · pipeline de vagas, código aberto"
+				"label": "app de demonstração ao vivo",
+				"detail": "pipeline de vagas, código aberto"
 			},
 			{
 				"value": 152,
@@ -243,7 +243,7 @@
 		"eyebrow": "Sobre",
 		"category": "Arquiteto de IA com Rigor de Compliance para Cargas Reguladas na LATAM e no Mundo",
 		"diagnostic": "Stacks de IA regulada reprovam na auditoria em três pontos, sempre os mesmos: proveniência do prompt, linhagem da recuperação, comprovação do resultado. A correção está na arquitetura. Três planos, dados, controle, compliance, com o plano de compliance rodando como sidecar: um ledger de auditoria encadeado por hash, ancorado fora do caminho da requisição.",
-		"summary": "A prova tem duas frentes. Open source primeiro, porque é verificável: seis plugins de Claude Code assinados com Sigstore em github.com/yolo-labz, mais três apps de demonstração ao vivo com o código aberto. O trabalho com clientes é construído em equipe, anonimizado, sob NDA. Nele, contribuí para um agente de declaração fiscal regulada de IRPF (extração de campos, validação de saída estruturada), construí o backend e a camada de dados de um chatbot educacional multilíngue, atuei num backend de varejo orientado a eventos e contribuí para uma prova de conceito de RAG jurídico. Os números concretos que posso mostrar são os que estão nos repositórios.",
+		"summary": "A prova tem duas frentes. Open source primeiro, porque é verificável: seis plugins de Claude Code assinados com Sigstore em github.com/yolo-labz, mais um app de demonstração ao vivo com o código aberto. O trabalho com clientes é construído em equipe, anonimizado, sob NDA. Nele, contribuí para um agente de declaração fiscal regulada de IRPF (extração de campos, validação de saída estruturada), construí o backend e a camada de dados de um chatbot educacional multilíngue, atuei num backend de varejo orientado a eventos e contribuí para uma prova de conceito de RAG jurídico. Os números concretos que posso mostrar são os que estão nos repositórios.",
 		"claimEvidenceHeading": "Alegação → Evidência",
 		"claimEvidenceIntro": "Cada alegação corresponde a um artefato verificável. Repositórios públicos apontam direto para o código. As linhas marcadas como \"writeup pendente\" são writeups de arquitetura anonimizados: a arquitetura sai, o nome do cliente nunca.",
 		"tableHeaderClaim": "Alegação",
@@ -320,15 +320,6 @@
 			"decision": "Fundamentar toda resposta na base de conhecimento e bloquear rollouts atrás de um conjunto de avaliação congelada, de modo que a precisão seja medida em perguntas de holdout antes de subir. Descartados: iteração de prompt sem gate (regressões silenciosas), geração sem fundamentação (alucinação em escala).",
 			"outcome": "O gate de eval congelada bloqueia regressões silenciosas antes que cheguem aos usuários. Precisão medida a cada rollout, nunca presumida."
 		},
-		"ai-document-processor": {
-			"tagline": "Um pipeline de ingestão agnóstico a formato onde cada campo extraído rastreia de volta ao seu trecho de origem. PDF/DOCX/imagem → OCR → classifica → extrai → JSONB consultável.",
-			"description": "Suba PDFs, imagens ou arquivos DOCX. O pipeline extrai o texto com fallback de OCR para entradas escaneadas. Um modelo barato classifica o tipo de documento com um score de confiança. Um modelo focado puxa campos estruturados (fornecedor, valor, datas, itens de linha) para um JSON limpo. Resultados caem no PostgreSQL com busca full-text via JSONB + TSVECTOR. Dashboard em Next.js, orquestração via Docker Compose, um comando para subir a stack. Sem API key, roda só a extração de texto: o caminho de demonstração é gratuito.",
-			"problemStatement": "Um pipeline de documentos regulados tem de ser agnóstico a formato (PDF de texto, PDF escaneado, JPEG, DOCX), ciente do tipo (nota fiscal vs. contrato vs. recibo) e consultável a jusante. Também tem de rodar self-hosted, o que descarta escrever um parser por formato na mão ou comprar um SaaS fechado.",
-			"solutionSummary": "Pipeline de IA em dois níveis: um modelo barato classifica, um modelo focado extrai por tipo. Cada campo extraído rastreia até o seu trecho de origem. PyMuPDF + Tesseract cuidam do texto e do fallback de OCR. PostgreSQL JSONB guarda os campos extraídos ao lado do TSVECTOR para busca em texto livre. ~US$ 0,006 por documento.",
-			"constraint": "Self-hostável, agnóstico a formato e ciente do tipo. A extração tem de ser consultável a jusante e auditável campo a campo.",
-			"decision": "Dividir o trabalho: classificador barato primeiro, extrator focado depois, indexado ao tipo de documento. Um caminho de texto gratuito sem API key faz o sistema degradar em vez de falhar. Guardar JSONB + TSVECTOR para que as consultas a jusante batam numa só tabela.",
-			"outcome": "Pipeline ao vivo e self-hostável a ~US$ 0,006/documento. Cada campo extraído rastreia até o seu trecho de origem e pode ser buscado em texto completo."
-		},
 		"wa": {
 			"tagline": "Um canal de agente persistente que trata o corpo da mensagem de entrada como um perímetro de auditoria não confiável. Go, hexagonal, assinado com Sigstore.",
 			"description": "Uma sessão de WhatsApp persistente embrulhada num daemon (`wad`), com um cliente CLI enxuto (`wa`) que emite comandos por um socket unix JSON-RPC. Ratchet store em SQLite, allowlist + rate limiter + rampa de warmup antes do primeiro envio. As mensagens de entrada chegam embrulhadas em tags <channel> para que um agente downstream não possa confiar no corpo de uma mensagem para alterar a allowlist ou disparar envios. Apache-2.0, GoReleaser para GitHub Releases + homebrew-tap + flake.nix.",
@@ -352,12 +343,6 @@
 			"description": "Um pipeline diário automatizado coleta vagas de nível executivo de 4 APIs públicas de dados (JSearch, Adzuna, The Muse, USAJobs), normaliza tudo num schema Pydantic unificado, deduplica via hashing de conteúdo SHA-256 e emite um único `jobs.json` consumido por um site estático em Next.js no build. Busca fuzzy no cliente com Fuse.js + filtragem em 4 dimensões, resposta abaixo de 200ms, custo zero de backend em runtime.",
 			"problemStatement": "Quatro APIs de terceiros, quatro schemas de resposta, quatro modelos de rate limit e auth. É o código de cola clássico que ninguém quer manter, mais difícil ainda sem backend quente.",
 			"solutionSummary": "Um adapter por fonte isola a variação no formato da resposta. O Pydantic v2 impõe o schema unificado no ponto de junção. SHA-256 sobre (title, employer, location, posted_date) cuida da deduplicação. Um cron no GitHub Actions roda o coletor todo dia, commita o JSON e refaz o deploy do site estático. O site cai para um seed curado de 30 linhas quando o output da API está ausente: a demonstração nunca quebra."
-		},
-		"realestate-price-tracker": {
-			"tagline": "Três camadas que a maioria das stacks de demo só finge entregar: REST filtrado + paginado, queries agregadas indexadas e um frontend de mapa/gráficos que se mantém responsivo sob qualquer combinação de filtros.",
-			"description": "Um dashboard full-stack acompanhando dados do mercado imobiliário. FastAPI serve endpoints REST com paginação filtrável, estatísticas agregadas e exportação CSV/JSON. Um dashboard em Next.js renderiza gráficos interativos de linha/barra em Recharts e um mapa React-Leaflet com marcadores coloridos por categoria. PostgreSQL 16 com queries indexadas, 800 listagens sintéticas em 6 bairros, costurados via Docker Compose.",
-			"problemStatement": "Um dashboard de mercado precisa de três camadas ligadas corretamente: REST filtrado + paginado, queries agregadas indexadas e um frontend interativo com mapa + gráficos que se mantém responsivo sob combinações de filtros. A maioria das stacks de demo escolhe uma e finge o resto.",
-			"solutionSummary": "SQLAlchemy async + asyncpg para acesso não-bloqueante ao PostgreSQL. Colunas indexadas em (neighborhood, price, posted_date) mantêm os agregados em poucos ms. Um script de seed gera preços com distribuição gaussiana em torno das medianas por bairro. Um único `docker compose up` coloca PostgreSQL + API + dashboard no ar; os endpoints de exportação CSV/JSON respeitam os mesmos filtros da UI ao vivo."
 		},
 		"claude-mac-chrome": {
 			"tagline": "Conduz SPAs em React/Ember que rejeitam eventos sintéticos, enviando eventos reais de ponteiro do SO em coordenadas de tela calculadas.",
