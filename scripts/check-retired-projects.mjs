@@ -13,7 +13,7 @@
 // text produced at runtime, and content in other repositories. Those stay a
 // review/human concern; the guard is the cheap tripwire underneath them.
 import assert from "node:assert/strict";
-import { readdirSync, readFileSync } from "node:fs";
+import { readdirSync, readFileSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { projects } from "../apps/web/src/data/projects.ts";
 
@@ -29,19 +29,10 @@ const SELF = "./scripts/check-retired-projects.mjs";
 // Archive roots are matched by full path, never by basename: a publication
 // directory called "specs" or "build" must still be scanned.
 const ARCHIVE_ROOTS = ["./.specify", "./specs"];
-// Dependencies, caches and build output — unambiguous by basename at any depth.
-const SKIP_DIRS = new Set([
-	"node_modules",
-	".git",
-	".next",
-	".turbo",
-	".cache",
-	".playwright",
-	"coverage",
-	"dist",
-	"playwright-report",
-	"test-results",
-]);
+// Dependencies and caches — unambiguous by basename at any depth. Output dirs
+// like dist/build/report are deliberately NOT exempt: a publication directory
+// can carry that name, and skipping it by name hid a retired reference once.
+const SKIP_DIRS = new Set([".git", "node_modules", ".next", ".turbo", ".cache", ".playwright"]);
 // Binary carriers: a regex cannot read them, and scanning their bytes only
 // produces noise. Everything else is read, whatever its extension.
 const BINARY_FILE =
@@ -103,16 +94,20 @@ const walk = (dir) =>
 		}
 		// `.git` is a directory in a clone and a text file in a worktree, whose
 		// content points at a path like .../portfolio-135-retire-realestate.
-		if (path === SELF || entry.name === ".git" || BINARY_FILE.test(entry.name)) {
+		if (path === SELF || entry.name === ".git") {
 			return [];
 		}
-		// Name check before any content filter: an empty or oversized file named
-		// after a retired project is still a publication leak.
+		// Name check before every content filter: a binary, empty or oversized
+		// file named after a retired project is still a publication leak.
 		assert(!RETIRED.test(path), `${path} is named after a retired project`);
-		if (entry.size === 0) {
+		if (BINARY_FILE.test(entry.name)) {
 			return [];
 		}
-		if (entry.size > MAX_TEXT_BYTES) {
+		const { size } = statSync(abs(path));
+		if (size === 0) {
+			return [];
+		}
+		if (size > MAX_TEXT_BYTES) {
 			oversized.push(path);
 			return [];
 		}
