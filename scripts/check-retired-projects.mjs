@@ -1,6 +1,6 @@
 // Run: node --experimental-strip-types scripts/check-retired-projects.mjs
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { projects } from "../apps/web/src/data/projects.ts";
 
@@ -20,10 +20,17 @@ assert(!existsSync(`${root}/projects/realestate-price-tracker`));
 assert(existsSync(`${root}/specs/004-realestate-price-tracker/spec.md`));
 assert(!read("Dockerfile.dokku").includes("projects/realestate-price-tracker"));
 assert(!read("pnpm-lock.yaml").includes("projects/realestate-price-tracker"));
-assert(!read("README.md").includes("projects/realestate-price-tracker"));
-assert(!read("CLAUDE.md").includes("projects/realestate-price-tracker"));
+// Publication + config surfaces must stop naming a retired project. These were
+// the drift points left behind when the implementation was deleted last: a
+// dangling Biome override, a stale CI comment and README count claims.
+const RETIRED = /ai-document-processor|ai-docs|realestate/i;
+for (const path of ["README.md", "CLAUDE.md", "biome.json"]) {
+	assert(!RETIRED.test(read(path)), `${path} still names a retired project`);
+}
+// One retained subfolder per project claim, so README counts cannot drift.
+assert.equal(readdirSync(`${root}/projects`).length, 2);
 for (const hero of ["hero-dark.svg", "hero-light.svg"]) {
-	assert(!read(`docs/assets/${hero}`).includes("realestate"));
+	assert(!RETIRED.test(read(`docs/assets/${hero}`)), `${hero} still names a retired project`);
 }
 
 assert(!existsSync(`${root}/projects/ai-document-processor`));
