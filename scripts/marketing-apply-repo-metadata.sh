@@ -16,7 +16,7 @@ set -euo pipefail
 
 REPO="${REPO:-yolo-labz/portfolio}"
 
-DESCRIPTION="Turborepo monorepo: Next.js 16 portfolio site + 5 mixed-stack project case-studies. Dokku-deployed."
+DESCRIPTION="Turborepo monorepo: Next.js 16 portfolio site + 2 mixed-stack project case-studies. Dokku-deployed."
 
 # 8 topics, GitHub topic-discovery surface. Order does not matter; GitHub stores
 # them lowercase + sorted on retrieval.

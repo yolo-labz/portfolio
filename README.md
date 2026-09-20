@@ -10,7 +10,7 @@
 
 **Turborepo monorepo housing the Next.js 16 portfolio site + 2 mixed-stack project case studies.**
 
-Live at [pedro.home301server.com.br](https://pedro.home301server.com.br/). One pnpm workspace, one Turbo task graph, one Dockerfile, one Dokku push. The site, the shared UI library, and two project subfolders (TypeScript + Python + Terraform) all build and lint under a single command.
+Live at [pedro.home301server.com.br](https://pedro.home301server.com.br/). One pnpm workspace, one Turbo task graph, one Dockerfile, one Dokku push. The site, the shared UI library, and two project subfolders (TypeScript + Python + Terraform) resolve through that single graph; each subfolder keeps its own toolchain for Python and Terraform.
 
 [![CI](https://github.com/yolo-labz/portfolio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/yolo-labz/portfolio/actions/workflows/ci.yml)
 [![Visual regression](https://github.com/yolo-labz/portfolio/actions/workflows/visual-regression.yml/badge.svg?branch=main)](https://github.com/yolo-labz/portfolio/actions/workflows/visual-regression.yml)
