@@ -30,7 +30,7 @@ Live at [pedro.home301server.com.br](https://pedro.home301server.com.br/). One p
 
 **Pattern.** Turborepo monorepo housing a Next.js 16 portfolio site, a shared `packages/ui` component library exported as raw TypeScript source (no build step), and 2 mixed-stack project case-study subfolders (TypeScript + Python + Terraform) wired into a single Turbo task graph.
 
-**Trade-off.** Monorepo tooling overhead — pnpm workspaces, Turbo remote cache, Biome 2.x as the single lint+format authority — in exchange for a shared component library, atomic deploys, and one CI workflow that runs the workspace task graph (lint, type-check, build) plus the site's visual regression on every push.
+**Trade-off.** Monorepo tooling overhead — pnpm workspaces, Turbo remote cache, Biome 2.x as the single lint+format authority — in exchange for a shared component library, atomic deploys, and CI that runs the workspace task graph (lint, type-check, build) plus a separate workflow for the site's visual regression, on every push.
 
 **Use when.** Shipping a portfolio that needs to host multiple capability case-studies (executive job board, serverless data API) in one monorepo, with a single site deploy surface and design system.
 
