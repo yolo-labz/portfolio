@@ -68,6 +68,9 @@ screenshots.
 
 ### 2B — Real Estate Price Tracker (`projects/realestate-price-tracker`)
 
+> **Retired** — publication and source surfaces removed, spec kept as history
+> under `specs/004-realestate-price-tracker/`.
+
 **Priority: HIGH** — showcases data extraction + full-stack + dashboards.
 
 - [ ] **2B.1** Python extraction pipeline (Playwright for dynamic content)
@@ -101,6 +104,9 @@ screenshots.
 Lower priority — build after the first 3 are on the portfolio site.
 
 ### 3A — AI Document Processor (`projects/ai-document-processor`)
+
+> **Retired** — publication and source surfaces removed, spec kept as history
+> under `specs/006-ai-document-processor/`.
 
 - [ ] **3A.1** FastAPI upload service (PDF, images, DOCX)
 - [ ] **3A.2** OCR pipeline (Tesseract for images, PyMuPDF for PDFs)
