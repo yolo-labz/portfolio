@@ -1,0 +1,37 @@
+
+Running 12 tests using 2 workers
+
+/work/tests/visual/portfolio.spec.ts-snapshots/about-chromium-desktop.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/about-chromium-desktop.png is re-generated, writing actual.
+  ✓   1 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › about renders without visual regression (3.7s)
+  ✓   2 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression (6.0s)
+/work/tests/visual/portfolio.spec.ts-snapshots/home-pt-chromium-desktop.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/home-pt-chromium-desktop.png is re-generated, writing actual.
+  ✓   3 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression (6.2s)
+/work/tests/visual/portfolio.spec.ts-snapshots/about-pt-chromium-desktop.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/about-pt-chromium-desktop.png is re-generated, writing actual.
+  ✓   4 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › about-pt renders without visual regression (4.0s)
+/work/tests/visual/portfolio.spec.ts-snapshots/about-es-chromium-desktop.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/about-es-chromium-desktop.png is re-generated, writing actual.
+  ✓   6 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › about-es renders without visual regression (3.9s)
+  ✓   5 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression (6.0s)
+/work/tests/visual/portfolio.spec.ts-snapshots/home-mobile.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/home-mobile.png is re-generated, writing actual.
+  ✓   7 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression (4.6s)
+/work/tests/visual/portfolio.spec.ts-snapshots/about-mobile.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/about-mobile.png is re-generated, writing actual.
+  ✓   8 [mobile] › tests/visual/portfolio.spec.ts:55:6 › about renders without visual regression (3.2s)
+/work/tests/visual/portfolio.spec.ts-snapshots/about-pt-mobile.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/about-pt-mobile.png is re-generated, writing actual.
+  ✓  10 [mobile] › tests/visual/portfolio.spec.ts:55:6 › about-pt renders without visual regression (3.2s)
+/work/tests/visual/portfolio.spec.ts-snapshots/home-pt-mobile.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/home-pt-mobile.png is re-generated, writing actual.
+  ✓   9 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression (4.8s)
+/work/tests/visual/portfolio.spec.ts-snapshots/about-es-mobile.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/about-es-mobile.png is re-generated, writing actual.
+  ✓  12 [mobile] › tests/visual/portfolio.spec.ts:55:6 › about-es renders without visual regression (3.1s)
+/work/tests/visual/portfolio.spec.ts-snapshots/home-es-mobile.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/home-es-mobile.png is re-generated, writing actual.
+  ✓  11 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression (5.1s)
+
+  12 passed (30.7s)
