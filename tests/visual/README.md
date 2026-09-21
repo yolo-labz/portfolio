@@ -30,7 +30,7 @@ docker run --rm --ipc=host \
   -e HOME=/tmp \
   -e CI=true \
   --entrypoint bash \
-  mcr.microsoft.com/playwright:v1.59.1-noble \
+  mcr.microsoft.com/playwright:v1.62.1-noble \
   -c '
     set -e
     # Activate corepack-pinned pnpm without writing to /root.
@@ -60,6 +60,27 @@ pnpm test:visual           # macOS — diffs vs CI baselines are normal
 ```
 
 CI is the source of truth.
+
+## Local production capture in a feature worktree
+
+After `pnpm build`, serve the standalone bundle on localhost:3000 (copy `public/`
+and `.next/static/` as in `playwright.config.ts`). With that server running:
+
+```bash
+docker run --rm --network=host --ipc=host \
+  --user "$(id -u):$(id -g)" -e HOME=/tmp \
+  -v "$PWD:/work" \
+  -v "$(git rev-parse --path-format=absolute --git-common-dir):$(git rev-parse --path-format=absolute --git-common-dir):ro" \
+  -w /work mcr.microsoft.com/playwright:v1.62.1-noble \
+  node scripts/capture-portfolio.mjs
+```
+
+The read-only Git mount resolves the feature worktree's `.git` pointer for capture
+provenance; no browser profile or account is mounted. The script rejects non-local
+origins and blocks third-party requests. Output: `docs/assets/portfolio-grid.png`
+and `portfolio-grid.json`. This is a still image, not proof of a live deployment.
+For intentional copy changes use `--update-snapshots=all` with a scoped `--grep`:
+otherwise text changes below the pixel tolerance can leave an obsolete baseline.
 
 ## How CI gates merges
 
