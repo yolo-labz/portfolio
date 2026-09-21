@@ -1,0 +1,51 @@
+
+> @portfolio/root@ typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm
+> turbo typecheck
+
+• turbo 2.10.5
+
+   • Packages in scope: @portfolio/ai-document-processor, @portfolio/ai-document-processor-dashboard, @portfolio/exec-job-board, @portfolio/exec-job-board-site, @portfolio/serverless-data-api, @portfolio/ui, @portfolio/web
+   • Running typecheck in 7 packages
+   • Remote caching disabled, using shared worktree cache
+
+@portfolio/serverless-data-api:typecheck: cache hit, replaying logs 290a86daa13900ae
+@portfolio/serverless-data-api:typecheck: 
+@portfolio/serverless-data-api:typecheck: > @portfolio/serverless-data-api@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/projects/serverless-data-api
+@portfolio/serverless-data-api:typecheck: > echo 'Typecheck not applicable for Terraform'
+@portfolio/serverless-data-api:typecheck: 
+@portfolio/serverless-data-api:typecheck: Typecheck not applicable for Terraform
+@portfolio/exec-job-board-site:typecheck: cache miss, executing 07428922efb3d76c
+@portfolio/ai-document-processor:typecheck: cache hit, replaying logs 1f8776d11365542d
+@portfolio/ai-document-processor:typecheck: 
+@portfolio/ai-document-processor:typecheck: > @portfolio/ai-document-processor@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/projects/ai-document-processor
+@portfolio/ai-document-processor:typecheck: > echo 'Typecheck handled per-service'
+@portfolio/ai-document-processor:typecheck: 
+@portfolio/ai-document-processor:typecheck: Typecheck handled per-service
+@portfolio/exec-job-board:typecheck: cache hit, replaying logs 2bc403afddcd9c6c
+@portfolio/exec-job-board:typecheck: 
+@portfolio/exec-job-board:typecheck: > @portfolio/exec-job-board@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/projects/exec-job-board
+@portfolio/exec-job-board:typecheck: > cd site && pnpm typecheck
+@portfolio/exec-job-board:typecheck: 
+@portfolio/exec-job-board:typecheck: 
+@portfolio/exec-job-board:typecheck: > @portfolio/exec-job-board-site@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/projects/exec-job-board/site
+@portfolio/exec-job-board:typecheck: > tsc --noEmit
+@portfolio/exec-job-board:typecheck: 
+@portfolio/ui:typecheck: cache hit, replaying logs cf8e7a797e85bc7c
+@portfolio/ui:typecheck: 
+@portfolio/ui:typecheck: > @portfolio/ui@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/packages/ui
+@portfolio/ui:typecheck: > tsc --noEmit
+@portfolio/ui:typecheck: 
+@portfolio/web:typecheck: cache miss, executing d1ab548b538ff771
+@portfolio/exec-job-board-site:typecheck: 
+@portfolio/exec-job-board-site:typecheck: > @portfolio/exec-job-board-site@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/projects/exec-job-board/site
+@portfolio/exec-job-board-site:typecheck: > tsc --noEmit
+@portfolio/exec-job-board-site:typecheck: 
+@portfolio/web:typecheck: 
+@portfolio/web:typecheck: > @portfolio/web@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/apps/web
+@portfolio/web:typecheck: > tsc --noEmit
+@portfolio/web:typecheck: 
+
+ Tasks:    6 successful, 6 total
+Cached:    4 cached, 6 total
+  Time:    5.357s 
+

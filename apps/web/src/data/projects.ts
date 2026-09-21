@@ -212,27 +212,6 @@ export const projects: Project[] = [
 		featured: false,
 	},
 	{
-		slug: "realestate-price-tracker",
-		title: "realestate-price-tracker — full-stack market dashboard",
-		techStack: [
-			{ name: "Python", category: "language" },
-			{ name: "FastAPI", category: "framework" },
-			{ name: "SQLAlchemy async · asyncpg", category: "framework" },
-			{ name: "PostgreSQL 16", category: "database" },
-			{ name: "Next.js 16", category: "framework" },
-			{ name: "Recharts · React-Leaflet", category: "service" },
-			{ name: "Docker Compose", category: "infrastructure" },
-		],
-		metrics: [
-			{ label: "Dataset", value: "800 listings · 6 neighborhoods" },
-			{ label: "Endpoints", value: "list · geo · stats · CSV · JSON" },
-			{ label: "Aggregates", value: "indexed, sub-millisecond" },
-			{ label: "License", value: "MIT" },
-		],
-		links: { demo: "https://realestate-tracker.home301server.com.br" },
-		featured: false,
-	},
-	{
 		slug: "claude-mac-chrome",
 		title: "claude-mac-chrome — Chrome automation for Claude Code on macOS",
 		techStack: [

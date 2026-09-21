@@ -32,10 +32,10 @@
 				"detail": "SLSA L2 · assinados com Sigstore · verifique com um comando"
 			},
 			{
-				"value": 3,
+				"value": 2,
 				"suffix": "",
-				"label": "apps de demonstração ao vivo",
-				"detail": "extração com IA · dashboard de mercado · pipeline de vagas, código aberto"
+				"label": "projetos de demonstração com código aberto",
+				"detail": "extração com IA · pipeline de vagas, código aberto"
 			},
 			{
 				"value": 152,
@@ -243,7 +243,7 @@
 		"eyebrow": "Sobre",
 		"category": "Arquiteto de IA com Rigor de Compliance para Cargas Reguladas na LATAM e no Mundo",
 		"diagnostic": "Stacks de IA regulada reprovam na auditoria em três pontos, sempre os mesmos: proveniência do prompt, linhagem da recuperação, comprovação do resultado. A correção está na arquitetura. Três planos, dados, controle, compliance, com o plano de compliance rodando como sidecar: um ledger de auditoria encadeado por hash, ancorado fora do caminho da requisição.",
-		"summary": "A prova tem duas frentes. Open source primeiro, porque é verificável: seis plugins de Claude Code assinados com Sigstore em github.com/yolo-labz, mais três apps de demonstração ao vivo com o código aberto. O trabalho com clientes é construído em equipe, anonimizado, sob NDA. Nele, contribuí para um agente de declaração fiscal regulada de IRPF (extração de campos, validação de saída estruturada), construí o backend e a camada de dados de um chatbot educacional multilíngue, atuei num backend de varejo orientado a eventos e contribuí para uma prova de conceito de RAG jurídico. Os números concretos que posso mostrar são os que estão nos repositórios.",
+		"summary": "A prova tem duas frentes. Open source primeiro, porque é verificável: seis plugins de Claude Code assinados com Sigstore em github.com/yolo-labz, mais projetos de demonstração de extração com IA e pipeline de vagas com o código aberto. O trabalho com clientes é construído em equipe, anonimizado, sob NDA. Nele, contribuí para um agente de declaração fiscal regulada de IRPF (extração de campos, validação de saída estruturada), construí o backend e a camada de dados de um chatbot educacional multilíngue, atuei num backend de varejo orientado a eventos e contribuí para uma prova de conceito de RAG jurídico. Os números concretos que posso mostrar são os que estão nos repositórios.",
 		"claimEvidenceHeading": "Alegação → Evidência",
 		"claimEvidenceIntro": "Cada alegação corresponde a um artefato verificável. Repositórios públicos apontam direto para o código. As linhas marcadas como \"writeup pendente\" são writeups de arquitetura anonimizados: a arquitetura sai, o nome do cliente nunca.",
 		"tableHeaderClaim": "Alegação",
@@ -352,12 +352,6 @@
 			"description": "Um pipeline diário automatizado coleta vagas de nível executivo de 4 APIs públicas de dados (JSearch, Adzuna, The Muse, USAJobs), normaliza tudo num schema Pydantic unificado, deduplica via hashing de conteúdo SHA-256 e emite um único `jobs.json` consumido por um site estático em Next.js no build. Busca fuzzy no cliente com Fuse.js + filtragem em 4 dimensões, resposta abaixo de 200ms, custo zero de backend em runtime.",
 			"problemStatement": "Quatro APIs de terceiros, quatro schemas de resposta, quatro modelos de rate limit e auth. É o código de cola clássico que ninguém quer manter, mais difícil ainda sem backend quente.",
 			"solutionSummary": "Um adapter por fonte isola a variação no formato da resposta. O Pydantic v2 impõe o schema unificado no ponto de junção. SHA-256 sobre (title, employer, location, posted_date) cuida da deduplicação. Um cron no GitHub Actions roda o coletor todo dia, commita o JSON e refaz o deploy do site estático. O site cai para um seed curado de 30 linhas quando o output da API está ausente: a demonstração nunca quebra."
-		},
-		"realestate-price-tracker": {
-			"tagline": "Três camadas que a maioria das stacks de demo só finge entregar: REST filtrado + paginado, queries agregadas indexadas e um frontend de mapa/gráficos que se mantém responsivo sob qualquer combinação de filtros.",
-			"description": "Um dashboard full-stack acompanhando dados do mercado imobiliário. FastAPI serve endpoints REST com paginação filtrável, estatísticas agregadas e exportação CSV/JSON. Um dashboard em Next.js renderiza gráficos interativos de linha/barra em Recharts e um mapa React-Leaflet com marcadores coloridos por categoria. PostgreSQL 16 com queries indexadas, 800 listagens sintéticas em 6 bairros, costurados via Docker Compose.",
-			"problemStatement": "Um dashboard de mercado precisa de três camadas ligadas corretamente: REST filtrado + paginado, queries agregadas indexadas e um frontend interativo com mapa + gráficos que se mantém responsivo sob combinações de filtros. A maioria das stacks de demo escolhe uma e finge o resto.",
-			"solutionSummary": "SQLAlchemy async + asyncpg para acesso não-bloqueante ao PostgreSQL. Colunas indexadas em (neighborhood, price, posted_date) mantêm os agregados em poucos ms. Um script de seed gera preços com distribuição gaussiana em torno das medianas por bairro. Um único `docker compose up` coloca PostgreSQL + API + dashboard no ar; os endpoints de exportação CSV/JSON respeitam os mesmos filtros da UI ao vivo."
 		},
 		"claude-mac-chrome": {
 			"tagline": "Conduz SPAs em React/Ember que rejeitam eventos sintéticos, enviando eventos reais de ponteiro do SO em coordenadas de tela calculadas.",

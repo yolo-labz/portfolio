@@ -1,0 +1,4 @@
+{"draft":true,"head":"99483ea782f5fc3c84213d8db6f21829d5e742e6","mergeable_state":"dirty","number":135,"ref":"135-retire-realestate","state":"open","updated_at":"2026-09-20T06:10:53Z"}
+{"draft":false,"head":"7bf01de186c4c78fbefb299351f2ea8401a18481","mergeable_state":"blocked","number":136,"ref":"dependabot/npm_and_yarn/projects/realestate-price-tracker/dashboard/next-16.3.3","state":"open","updated_at":"2026-09-20T11:56:08Z"}
+{"draft":false,"head":"3c944fd78ecf0f815460dd776560ce6a9cdbe365","mergeable_state":"clean","number":122,"ref":"dependabot/npm_and_yarn/motion-12.43.0","state":"open","updated_at":"2026-09-20T11:55:19Z"}
+{"draft":false,"head":"49bd84465272e513711eb4a16721c8bef3fe0e8e","mergeable_state":"clean","number":137,"ref":"dependabot/github_actions/actions-6871db5fdd","state":"open","updated_at":"2026-09-21T09:22:53Z"}

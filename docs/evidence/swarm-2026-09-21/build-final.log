@@ -1,0 +1,173 @@
+
+> @portfolio/root@ build /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm
+> turbo build
+
+• turbo 2.10.5
+
+   • Packages in scope: @portfolio/ai-document-processor, @portfolio/ai-document-processor-dashboard, @portfolio/exec-job-board, @portfolio/exec-job-board-site, @portfolio/serverless-data-api, @portfolio/ui, @portfolio/web
+   • Running build in 7 packages
+   • Remote caching disabled, using shared worktree cache
+
+@portfolio/exec-job-board-site:build: cache miss, executing 5bd393088acd7ff6
+@portfolio/exec-job-board:build: cache hit, replaying logs 1e8b114da8ccb2bb
+@portfolio/serverless-data-api:build: cache hit, replaying logs 726accd521babf83
+@portfolio/ai-document-processor:build: cache hit, replaying logs 7840e37737e40dbe
+@portfolio/serverless-data-api:build: 
+@portfolio/serverless-data-api:build: > @portfolio/serverless-data-api@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/projects/serverless-data-api
+@portfolio/serverless-data-api:build: > echo 'Deploy via: cd infra && terraform apply'
+@portfolio/serverless-data-api:build: 
+@portfolio/serverless-data-api:build: Deploy via: cd infra && terraform apply
+@portfolio/exec-job-board:build: 
+@portfolio/exec-job-board:build: > @portfolio/exec-job-board@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/projects/exec-job-board
+@portfolio/exec-job-board:build: > echo 'Build handled by site workspace'
+@portfolio/exec-job-board:build: 
+@portfolio/exec-job-board:build: Build handled by site workspace
+@portfolio/ai-document-processor:build: 
+@portfolio/ai-document-processor:build: > @portfolio/ai-document-processor@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/projects/ai-document-processor
+@portfolio/ai-document-processor:build: > echo 'Build handled per-service'
+@portfolio/ai-document-processor:build: 
+@portfolio/ai-document-processor:build: Build handled per-service
+@portfolio/web:build: cache miss, executing 3596cef7d511ade5
+@portfolio/ai-document-processor-dashboard:build: cache hit, replaying logs b94f7b253731b9ca
+@portfolio/ai-document-processor-dashboard:build: 
+@portfolio/ai-document-processor-dashboard:build: > @portfolio/ai-document-processor-dashboard@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/projects/ai-document-processor/dashboard
+@portfolio/ai-document-processor-dashboard:build: > next build
+@portfolio/ai-document-processor-dashboard:build: 
+@portfolio/ai-document-processor-dashboard:build: ▲ Next.js 16.2.10 (Turbopack)
+@portfolio/ai-document-processor-dashboard:build: 
+@portfolio/ai-document-processor-dashboard:build:   Creating an optimized production build ...
+@portfolio/ai-document-processor-dashboard:build: ✓ Compiled successfully in 8.8s
+@portfolio/ai-document-processor-dashboard:build:   Running TypeScript ...
+@portfolio/ai-document-processor-dashboard:build:   Finished TypeScript in 11.9s ...
+@portfolio/ai-document-processor-dashboard:build:   Collecting page data using 5 workers ...
+@portfolio/ai-document-processor-dashboard:build:   Generating static pages using 5 workers (0/3) ...
+@portfolio/ai-document-processor-dashboard:build: ✓ Generating static pages using 5 workers (3/3) in 1000ms
+@portfolio/ai-document-processor-dashboard:build:   Finalizing page optimization ...
+@portfolio/ai-document-processor-dashboard:build: 
+@portfolio/ai-document-processor-dashboard:build: Route (app)
+@portfolio/ai-document-processor-dashboard:build: ┌ ○ /
+@portfolio/ai-document-processor-dashboard:build: ├ ○ /_not-found
+@portfolio/ai-document-processor-dashboard:build: └ ƒ /documents/[id]
+@portfolio/ai-document-processor-dashboard:build: 
+@portfolio/ai-document-processor-dashboard:build: 
+@portfolio/ai-document-processor-dashboard:build: ○  (Static)   prerendered as static content
+@portfolio/ai-document-processor-dashboard:build: ƒ  (Dynamic)  server-rendered on demand
+@portfolio/ai-document-processor-dashboard:build: 
+@portfolio/exec-job-board-site:build: 
+@portfolio/exec-job-board-site:build: > @portfolio/exec-job-board-site@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/projects/exec-job-board/site
+@portfolio/exec-job-board-site:build: > next build
+@portfolio/exec-job-board-site:build: 
+@portfolio/web:build: 
+@portfolio/web:build: > @portfolio/web@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/apps/web
+@portfolio/web:build: > next build
+@portfolio/web:build: 
+@portfolio/exec-job-board-site:build: [@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead. (Not supported with Turbopack.)
+@portfolio/web:build: [@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead. (Not supported with Turbopack.)
+@portfolio/exec-job-board-site:build: ▲ Next.js 16.2.10 (Turbopack)
+@portfolio/exec-job-board-site:build: - Experiments (use with caution):
+@portfolio/exec-job-board-site:build:   · clientTraceMetadata
+@portfolio/exec-job-board-site:build: 
+@portfolio/exec-job-board-site:build:   Creating an optimized production build ...
+@portfolio/web:build: ▲ Next.js 16.2.10 (Turbopack)
+@portfolio/web:build: - Experiments (use with caution):
+@portfolio/web:build:   · clientTraceMetadata
+@portfolio/web:build:   · optimizePackageImports
+@portfolio/web:build: 
+@portfolio/web:build:   Creating an optimized production build ...
+@portfolio/exec-job-board-site:build: [@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead. (Not supported with Turbopack.)
+@portfolio/web:build: [@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead. (Not supported with Turbopack.)
+@portfolio/exec-job-board-site:build: Turbopack build encountered 1 warnings:
+@portfolio/exec-job-board-site:build: ./projects/exec-job-board/site/next.config.ts
+@portfolio/exec-job-board-site:build: Encountered unexpected file in NFT list
+@portfolio/exec-job-board-site:build: A file was traced that indicates that the whole project was traced unintentionally. Somewhere in the import trace below, there are:
+@portfolio/exec-job-board-site:build: - filesystem operations (like path.join, path.resolve or fs.readFile), or
+@portfolio/exec-job-board-site:build: - very dynamic requires (like require('./' + foo)).
+@portfolio/exec-job-board-site:build: To resolve this, you can
+@portfolio/exec-job-board-site:build: - remove them if possible, or
+@portfolio/exec-job-board-site:build: - only use them in development, or
+@portfolio/exec-job-board-site:build: - make sure they are statically scoped to some subfolder: path.join(process.cwd(), 'data', bar), or
+@portfolio/exec-job-board-site:build: - add ignore comments: path.join(/*turbopackIgnore: true*/ process.cwd(), bar)
+@portfolio/exec-job-board-site:build: 
+@portfolio/exec-job-board-site:build: Import trace:
+@portfolio/exec-job-board-site:build:   App Route:
+@portfolio/exec-job-board-site:build:     ./projects/exec-job-board/site/next.config.ts
+@portfolio/exec-job-board-site:build:     ./projects/exec-job-board/site/src/app/feed.xml/route.ts
+@portfolio/exec-job-board-site:build: 
+@portfolio/exec-job-board-site:build: 
+@portfolio/exec-job-board-site:build: ✓ Compiled successfully in 14.8s
+@portfolio/exec-job-board-site:build:   Running next.config.js provided runAfterProductionCompile ...
+@portfolio/exec-job-board-site:build: ✓ Completed runAfterProductionCompile in 774ms
+@portfolio/exec-job-board-site:build:   Running TypeScript ...
+@portfolio/web:build: ✓ Compiled successfully in 15.7s
+@portfolio/web:build:   Running next.config.js provided runAfterProductionCompile ...
+@portfolio/web:build: ✓ Completed runAfterProductionCompile in 716ms
+@portfolio/web:build:   Running TypeScript ...
+@portfolio/exec-job-board-site:build:   Finished TypeScript in 14.2s ...
+@portfolio/exec-job-board-site:build:   Collecting page data using 6 workers ...
+@portfolio/exec-job-board-site:build:   Generating static pages using 6 workers (0/5) ...
+@portfolio/exec-job-board-site:build:   Generating static pages using 6 workers (1/5) 
+@portfolio/exec-job-board-site:build:   Generating static pages using 6 workers (2/5) 
+@portfolio/exec-job-board-site:build:   Generating static pages using 6 workers (3/5) 
+@portfolio/exec-job-board-site:build: ✓ Generating static pages using 6 workers (5/5) in 1443ms
+@portfolio/exec-job-board-site:build:   Finalizing page optimization ...
+@portfolio/exec-job-board-site:build: 
+@portfolio/exec-job-board-site:build: Route (app)
+@portfolio/exec-job-board-site:build: ┌ ○ /
+@portfolio/exec-job-board-site:build: ├ ○ /_not-found
+@portfolio/exec-job-board-site:build: ├ ƒ /api/health
+@portfolio/exec-job-board-site:build: └ ƒ /feed.xml
+@portfolio/exec-job-board-site:build: 
+@portfolio/exec-job-board-site:build: 
+@portfolio/exec-job-board-site:build: ○  (Static)   prerendered as static content
+@portfolio/exec-job-board-site:build: ƒ  (Dynamic)  server-rendered on demand
+@portfolio/exec-job-board-site:build: 
+@portfolio/web:build:   Finished TypeScript in 21.0s ...
+@portfolio/web:build:   Collecting page data using 17 workers ...
+@portfolio/web:build:   Generating static pages using 17 workers (0/60) ...
+@portfolio/web:build:   Generating static pages using 17 workers (15/60) 
+@portfolio/web:build:   Generating static pages using 17 workers (30/60) 
+@portfolio/web:build:   Generating static pages using 17 workers (45/60) 
+@portfolio/web:build: ✓ Generating static pages using 17 workers (60/60) in 3.4s
+@portfolio/web:build:   Finalizing page optimization ...
+@portfolio/web:build: 
+@portfolio/web:build: Route (app)
+@portfolio/web:build: ┌ ○ /_not-found
+@portfolio/web:build: ├ ● /[locale]
+@portfolio/web:build: │ ├ /en
+@portfolio/web:build: │ ├ /pt
+@portfolio/web:build: │ └ /es
+@portfolio/web:build: ├ ƒ /[locale]/[...rest]
+@portfolio/web:build: ├ ● /[locale]/about
+@portfolio/web:build: │ ├ /en/about
+@portfolio/web:build: │ ├ /pt/about
+@portfolio/web:build: │ └ /es/about
+@portfolio/web:build: ├ ● /[locale]/projects/[slug]
+@portfolio/web:build: │ ├ /en/projects/compliance-tax-agent
+@portfolio/web:build: │ ├ /en/projects/event-driven-retail
+@portfolio/web:build: │ ├ /en/projects/legal-domain-rag
+@portfolio/web:build: │ └ [+39 more paths]
+@portfolio/web:build: ├ ● /-/projects/-/opengraph-image
+@portfolio/web:build: ├ ● /[locale]/thesis
+@portfolio/web:build: │ ├ /en/thesis
+@portfolio/web:build: │ ├ /pt/thesis
+@portfolio/web:build: │ └ /es/thesis
+@portfolio/web:build: ├ ƒ /api/health
+@portfolio/web:build: ├ ○ /apple-icon
+@portfolio/web:build: ├ ○ /icon
+@portfolio/web:build: ├ ○ /manifest.webmanifest
+@portfolio/web:build: ├ ○ /opengraph-image
+@portfolio/web:build: ├ ○ /robots.txt
+@portfolio/web:build: └ ○ /sitemap.xml
+@portfolio/web:build: 
+@portfolio/web:build: 
+@portfolio/web:build: ƒ Proxy (Middleware)
+@portfolio/web:build: 
+@portfolio/web:build: ○  (Static)   prerendered as static content
+@portfolio/web:build: ●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+@portfolio/web:build: ƒ  (Dynamic)  server-rendered on demand
+@portfolio/web:build: 
+
+ Tasks:    6 successful, 6 total
+Cached:    4 cached, 6 total
+  Time:    57.408s 
+

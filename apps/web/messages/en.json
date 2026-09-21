@@ -32,10 +32,10 @@
 				"detail": "SLSA L2 · Sigstore-signed · one command to verify"
 			},
 			{
-				"value": 3,
+				"value": 2,
 				"suffix": "",
-				"label": "live demo apps",
-				"detail": "AI extraction · market dashboard · job pipeline, source open"
+				"label": "source-available demo projects",
+				"detail": "AI extraction · job pipeline, source open"
 			},
 			{
 				"value": 152,
@@ -243,7 +243,7 @@
 		"eyebrow": "About",
 		"category": "Compliance-Grade AI Architect for Regulated LATAM & Global Workloads",
 		"diagnostic": "Regulated AI stacks fail their first audit at three seams: prompt provenance, retrieval lineage, output attestation. The fix is architectural. A data plane, a control plane, and a compliance plane running as a sidecar: an append-only ledger that records what happened, signed, outside the request path.",
-		"summary": "The proof splits two ways. Open source first, because it's checkable: six Sigstore-signed Claude Code plugins on github.com/yolo-labz, plus three live demo apps with their source open. The client work is team-built, anonymized, under NDA. There I contributed to a regulated IRPF tax-filing agent (field extraction, structured-output validation), built the backend and data layer of a multilingual education chatbot, worked on an event-driven retail commerce backend, and contributed to a legal-domain RAG proof-of-concept. The hard numbers I can show you are the ones in the repos.",
+		"summary": "The proof splits two ways. Open source first, because it's checkable: six Sigstore-signed Claude Code plugins on github.com/yolo-labz, plus AI extraction and job-pipeline demo projects with their source open. The client work is team-built, anonymized, under NDA. There I contributed to a regulated IRPF tax-filing agent (field extraction, structured-output validation), built the backend and data layer of a multilingual education chatbot, worked on an event-driven retail commerce backend, and contributed to a legal-domain RAG proof-of-concept. The hard numbers I can show you are the ones in the repos.",
 		"claimEvidenceHeading": "Claim → Evidence",
 		"claimEvidenceIntro": "Each claim maps to an artifact. Public repos link straight to source. Rows marked \"writeup pending\" are anonymized client writeups: the architecture ships, the client name never does.",
 		"tableHeaderClaim": "Claim",
@@ -352,12 +352,6 @@
 			"description": "An automated daily pipeline collects executive-tier listings from 4 public data APIs (JSearch, Adzuna, The Muse, USAJobs), normalizes them into a unified Pydantic schema, deduplicates via SHA-256 content hashing, and emits a single `jobs.json` consumed by a Next.js static site at build time. Fuse.js client-side fuzzy search + 4-dimension filtering, sub-200ms response, zero runtime backend cost.",
 			"problemStatement": "Four third-party APIs, four response schemas, four rate-limit and auth models. This is the canonical glue code nobody wants to maintain, made harder by wanting zero warm backend.",
 			"solutionSummary": "One adapter per source isolates response-shape drift. Pydantic v2 enforces the unified schema at the seam. SHA-256 over (title, employer, location, posted_date) handles dedupe. A GitHub Actions cron runs the collector daily, commits the JSON, and redeploys the static site. The site falls back to a curated 30-row seed when the API output is missing: the demo never breaks."
-		},
-		"realestate-price-tracker": {
-			"tagline": "Three layers most demo stacks fake one of: filtered + paginated REST, indexed aggregate queries, and a map/charts frontend that stays responsive under every filter combination.",
-			"description": "A full-stack dashboard tracking real-estate market data. FastAPI serves REST endpoints with filterable pagination, aggregate stats, and CSV/JSON export. A Next.js dashboard renders interactive Recharts line/bar charts and a React-Leaflet map with color-coded markers. PostgreSQL 16 with indexed queries, 800 synthetic listings across 6 neighborhoods, stitched together via Docker Compose.",
-			"problemStatement": "A market dashboard needs three layers wired correctly: filtered + paginated REST, indexed aggregate queries, and an interactive frontend with map + charts that stays responsive under filter combinations. Most demo stacks pick one layer and fake the rest.",
-			"solutionSummary": "SQLAlchemy async + asyncpg for non-blocking PostgreSQL access. Indexed columns on (neighborhood, price, posted_date) keep aggregates under a few ms. A seed script generates Gaussian-distributed prices around per-neighborhood medians. A single `docker compose up` brings PostgreSQL + API + dashboard online; CSV/JSON export endpoints respect the same filters as the live UI."
 		},
 		"claude-mac-chrome": {
 			"tagline": "Drives React/Ember SPAs that reject synthetic events, by sending real OS pointer events at computed screen coordinates.",
