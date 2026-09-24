@@ -11,7 +11,7 @@
 	},
 	"dependencies": {
 		"@portfolio/ui": "workspace:*",
-		"@sentry/nextjs": "^10.66.0",
+		"@sentry/nextjs": "^10.75.0",
 		"clsx": "2.1.1",
 		"motion": "12.42.2",
 		"next": "16.2.10",
