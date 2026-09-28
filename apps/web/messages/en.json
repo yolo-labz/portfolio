@@ -413,6 +413,14 @@
 		"selectedWorkHeading": "Selected work",
 		"selectedWorkLead": "Constraint, decision, measured outcome. The result alone teaches nothing.",
 		"openSourceStamp": "open-source & demos",
-		"openSourceHeading": "Open-source & demos"
+		"openSourceHeading": "Open-source tools, by yolo-labz",
+		"openSourceLead": "Messaging, infrastructure, speech and system tools. Four starting points, with source code and implementation notes.",
+		"browseRepositories": "All repositories",
+		"selectedRepositories": "Selected yolo-labz projects",
+		"projectNotes": "Project notes",
+		"projectNotesLabel": "Project notes: {project}",
+		"sourceCode": "Source",
+		"sourceCodeLabel": "Source code: {project}",
+		"moreProjects": "More projects & demos ({count})"
 	}
 }

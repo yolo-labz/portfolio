@@ -79,16 +79,18 @@ for (const { name, path } of PAGES) {
 			await document.fonts.ready;
 		});
 
-		// Final settle: a full-document scroll cycle pushes the layout into
-		// its final state for any content-visibility / IntersectionObserver
-		// driven expansion (motion components, animated counters) that
-		// survives the eager-load pass.
+		// Visit every section so IntersectionObserver-driven content is really
+		// rendered. The old 300ms smooth-scroll cycle could capture mid-scroll;
+		// jumping straight to the bottom would instead leave middle sections blank.
 		await page.evaluate(async () => {
-			window.scrollTo(0, document.body.scrollHeight);
-			await new Promise((resolve) => setTimeout(resolve, 300));
-			window.scrollTo(0, 0);
-			await new Promise((resolve) => setTimeout(resolve, 300));
+			for (const section of document.querySelectorAll("main section")) {
+				section.scrollIntoView({ behavior: "instant", block: "start" });
+				await new Promise((resolve) => setTimeout(resolve, 100));
+			}
+			window.scrollTo({ top: 0, behavior: "instant" });
+			await new Promise((resolve) => setTimeout(resolve, 1000));
 		});
+		await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 
 		await expect(page).toHaveScreenshot(`${name}.png`, {
 			fullPage: true,
