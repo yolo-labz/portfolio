@@ -1,0 +1,132 @@
+
+Running 6 tests using 1 worker
+
+  ✘  1 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression (18.0s)
+  ✘  2 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression (16.3s)
+  ✘  3 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression (17.3s)
+/work/tests/visual/portfolio.spec.ts-snapshots/home-mobile.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/home-mobile.png is re-generated, writing actual.
+  ✓  4 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression (8.8s)
+  ✓  5 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression (9.9s)
+/work/tests/visual/portfolio.spec.ts-snapshots/home-es-mobile.png is re-generated, writing actual.
+/work/tests/visual/portfolio.spec.ts-snapshots/home-es-mobile.png is re-generated, writing actual.
+  ✓  6 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression (9.3s)
+
+
+  1) [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 0
+    Received: 3
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       96 | 					),
+       97 | 				)
+    >  98 | 				.toBe(0);
+          | 				 ^
+       99 | 		}
+      100 | 		await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+      101 | 		await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+        at /work/tests/visual/portfolio.spec.ts:98:6
+
+    Error Context: test-results/artifacts/portfolio-home-renders-without-visual-regression-chromium-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/artifacts/portfolio-home-renders-without-visual-regression-chromium-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/artifacts/portfolio-home-renders-without-visual-regression-chromium-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression 
+
+    Error: expect(page).toHaveScreenshot(expected) failed
+
+    Timeout: 5000ms
+      Failed to re-generate expected.
+      Timeout 5000ms exceeded.
+
+      Snapshot: home-pt.png
+
+    Call log:
+      - Expect "toHaveScreenshot(home-pt.png)" with timeout 5000ms
+        - generating new stable screenshot expectation
+      - taking page screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - Timeout 5000ms exceeded.
+
+
+      101 | 		await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+      102 |
+    > 103 | 		await expect(page).toHaveScreenshot(`${name}.png`, {
+          | 		                   ^
+      104 | 			fullPage: true,
+      105 | 		});
+      106 | 	});
+        at /work/tests/visual/portfolio.spec.ts:103:22
+
+    Error Context: test-results/artifacts/portfolio-home-pt-renders-without-visual-regression-chromium-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/artifacts/portfolio-home-pt-renders-without-visual-regression-chromium-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/artifacts/portfolio-home-pt-renders-without-visual-regression-chromium-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression 
+
+    Error: expect(page).toHaveScreenshot(expected) failed
+
+    Timeout: 5000ms
+      Failed to re-generate expected.
+      Timeout 5000ms exceeded.
+
+      Snapshot: home-es.png
+
+    Call log:
+      - Expect "toHaveScreenshot(home-es.png)" with timeout 5000ms
+        - generating new stable screenshot expectation
+      - taking page screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - waiting 100ms before taking screenshot
+      - taking page screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - Timeout 5000ms exceeded.
+
+
+      101 | 		await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+      102 |
+    > 103 | 		await expect(page).toHaveScreenshot(`${name}.png`, {
+          | 		                   ^
+      104 | 			fullPage: true,
+      105 | 		});
+      106 | 	});
+        at /work/tests/visual/portfolio.spec.ts:103:22
+
+    Error Context: test-results/artifacts/portfolio-home-es-renders-without-visual-regression-chromium-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/artifacts/portfolio-home-es-renders-without-visual-regression-chromium-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/artifacts/portfolio-home-es-renders-without-visual-regression-chromium-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression 
+    [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression 
+    [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression 
+  3 passed (1.5m)
