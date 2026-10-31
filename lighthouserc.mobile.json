@@ -1,0 +1,58 @@
+{
+	"//": "Mobile pass (Lighthouse default: Moto G Power emulation, simulated slow 4G, 4x CPU) over the same four templates. The best-of-best addendum gates LCP < 1.8 s and CLS <= 0.02 here. Both are timing-sensitive on shared runners, so LCP reports as a warning and the printed numbers are the measurement of record; CLS is deterministic enough to stay an error. Category floors match the desktop config.",
+	"ci": {
+		"collect": {
+			"url": [
+				"http://localhost:3000/en",
+				"http://localhost:3000/en/about",
+				"http://localhost:3000/en/thesis",
+				"http://localhost:3000/en/projects/compliance-tax-agent"
+			],
+			"numberOfRuns": 3
+		},
+		"assert": {
+			"assertions": {
+				"categories:accessibility": [
+					"error",
+					{
+						"minScore": 1
+					}
+				],
+				"categories:best-practices": [
+					"error",
+					{
+						"minScore": 1
+					}
+				],
+				"categories:seo": [
+					"error",
+					{
+						"minScore": 1
+					}
+				],
+				"categories:performance": [
+					"warn",
+					{
+						"minScore": 1
+					}
+				],
+				"largest-contentful-paint": [
+					"warn",
+					{
+						"maxNumericValue": 1800
+					}
+				],
+				"cumulative-layout-shift": [
+					"error",
+					{
+						"maxNumericValue": 0.02
+					}
+				]
+			}
+		},
+		"upload": {
+			"target": "filesystem",
+			"outputDir": ".lighthouseci"
+		}
+	}
+}

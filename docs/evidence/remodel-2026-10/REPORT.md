@@ -68,11 +68,11 @@ gone); the home page gains about 54 KB of WebP for the render.
 
 | Gate | Result |
 |---|---|
-| Lighthouse 100/100/100/100 | CI (`lighthouse.yml`) now asserts a11y, BP and SEO at 1.0 as errors, CLS ≤ 0.02 as an error and Performance at 1.0 as a warning on the four redesigned templates. Local numbers above were taken on a host at load 60-157, so the CI run on the PR is the measurement of record. |
+| Lighthouse 100/100/100/100 | **Met in CI** on PR #167 (`lighthouse + a11y budgets`, run 41249349772, desktop preset, 3 runs × 4 templates): the median of every template is 100/100/100/100. One /en run scored 99 on Performance and the other eleven scored 100. A11y, BP and SEO gate at 1.0 as errors, and CLS ≤ 0.02 as an error. The local table above was taken at host load 60-157 and is only a relative comparison. |
 | axe 0 | `axe.mjs`, axe-core 4.14.0, all WCAG 2.0-2.2 A/AA rules + best-practice, 8 routes × desktop and mobile: **0 violations** (`AXE_TOTAL=0`). Fixed on the way: pt/es shelf links whose accessible name did not contain the visible label. |
 | Impeccable detector | `detect --json apps/web/src` → **0 findings** |
 | CLS | 0.000 on every route and form factor in the Lighthouse pairs above |
-| Mobile LCP < 1.8 s | Not met locally (≈ 2.6 s under 4× CPU throttle on the loaded host); see CI. |
+| Mobile LCP < 1.8 s | **Unverified.** CI runs the desktop preset only, and the local mobile runs (≈ 2.6 s, with origin/main at 2.3-2.8 s) were taken on a host at load ≈ 100, so they cannot prove or disprove it. This PR adds a mobile pass (`lighthouserc.mobile.json`, LCP ≤ 1800 ms reported as a warning, CLS ≤ 0.02 as an error), so the CI log is the measurement of record. |
 
 Adjacent debt found, not fixed here: `/<locale>/<unknown>` returns status 404 but the
 HTML is Next's `__next_error__` shell, and the localized 404 renders only after
