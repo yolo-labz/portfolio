@@ -31,9 +31,12 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 	return (
 		<article className="px-6 pt-32 pb-16">
 			<div className="mx-auto max-w-4xl">
+				{/* LCP element on project routes is the <h1>, so the entrance only
+				    animates the y offset: starting at opacity 0 hides the title until
+				    hydration, which cost ~4s of LCP render delay on mobile. */}
 				<motion.div
-					initial={reduced ? {} : { opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
+					initial={reduced ? {} : { y: 20 }}
+					animate={{ y: 0 }}
 					transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
 				>
 					<Link

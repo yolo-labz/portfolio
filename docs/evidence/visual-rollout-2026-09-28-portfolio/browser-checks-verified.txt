@@ -1,0 +1,64 @@
+
+Running 8 tests using 1 worker
+
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-en-chromium-desktop.png is re-generated, writing actual.
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-en-chromium-desktop.png is re-generated, writing actual.
+  ✓  1 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase en: selection, navigation, keyboard and contrast (7.7s)
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-pt-chromium-desktop.png is re-generated, writing actual.
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-pt-chromium-desktop.png is re-generated, writing actual.
+  ✓  2 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase pt: selection, navigation, keyboard and contrast (7.5s)
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-es-chromium-desktop.png is re-generated, writing actual.
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-es-chromium-desktop.png is re-generated, writing actual.
+  ✓  3 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase es: selection, navigation, keyboard and contrast (6.5s)
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-320-expanded-chromium-desktop.png is re-generated, writing actual.
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-320-expanded-chromium-desktop.png is re-generated, writing actual.
+  ✓  4 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:111:5 › organization showcase reflows at 320px without clipping (3.7s)
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-en-mobile.png is re-generated, writing actual.
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-en-mobile.png is re-generated, writing actual.
+  ✓  5 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase en: selection, navigation, keyboard and contrast (7.6s)
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-pt-mobile.png is re-generated, writing actual.
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-pt-mobile.png is re-generated, writing actual.
+  ✓  6 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase pt: selection, navigation, keyboard and contrast (6.7s)
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-es-mobile.png is re-generated, writing actual.
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-es-mobile.png is re-generated, writing actual.
+  ✓  7 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase es: selection, navigation, keyboard and contrast (6.0s)
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-320-expanded-mobile.png is re-generated, writing actual.
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-320-expanded-mobile.png is re-generated, writing actual.
+  ✓  8 [mobile] › tests/visual/organization-showcase.spec.ts:111:5 › organization showcase reflows at 320px without clipping (3.3s)
+
+  8 passed (54.2s)
+
+Running 30 tests using 1 worker
+
+  ✓   1 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase en: selection, navigation, keyboard and contrast (5.9s)
+  ✓   2 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase pt: selection, navigation, keyboard and contrast (6.6s)
+  ✓   3 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase es: selection, navigation, keyboard and contrast (6.6s)
+  ✓   4 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:111:5 › organization showcase reflows at 320px without clipping (3.3s)
+  ✓   5 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression (7.1s)
+  ✓   6 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › about renders without visual regression (4.8s)
+  ✓   7 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › project-wa renders without visual regression (4.5s)
+  ✓   8 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › project-claude-mac-chrome renders without visual regression (4.5s)
+  ✓   9 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › project-linkedin-chrome-copilot renders without visual regression (4.6s)
+  ✓  10 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › project-ai-document-processor renders without visual regression (4.7s)
+  ✓  11 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › project-exec-job-board renders without visual regression (4.2s)
+  ✓  12 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression (7.4s)
+  ✓  13 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › about-pt renders without visual regression (5.1s)
+  ✓  14 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression (7.7s)
+  ✓  15 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › about-es renders without visual regression (6.5s)
+  ✓  16 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase en: selection, navigation, keyboard and contrast (6.2s)
+  ✓  17 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase pt: selection, navigation, keyboard and contrast (4.5s)
+  ✓  18 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase es: selection, navigation, keyboard and contrast (6.2s)
+  ✓  19 [mobile] › tests/visual/organization-showcase.spec.ts:111:5 › organization showcase reflows at 320px without clipping (3.0s)
+  ✓  20 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression (6.1s)
+  ✓  21 [mobile] › tests/visual/portfolio.spec.ts:55:6 › about renders without visual regression (3.4s)
+  ✓  22 [mobile] › tests/visual/portfolio.spec.ts:55:6 › project-wa renders without visual regression (3.1s)
+  ✓  23 [mobile] › tests/visual/portfolio.spec.ts:55:6 › project-claude-mac-chrome renders without visual regression (2.9s)
+  ✓  24 [mobile] › tests/visual/portfolio.spec.ts:55:6 › project-linkedin-chrome-copilot renders without visual regression (3.5s)
+  ✓  25 [mobile] › tests/visual/portfolio.spec.ts:55:6 › project-ai-document-processor renders without visual regression (4.5s)
+  ✓  26 [mobile] › tests/visual/portfolio.spec.ts:55:6 › project-exec-job-board renders without visual regression (3.0s)
+  ✓  27 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression (9.3s)
+  ✓  28 [mobile] › tests/visual/portfolio.spec.ts:55:6 › about-pt renders without visual regression (5.1s)
+  ✓  29 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression (6.1s)
+  ✓  30 [mobile] › tests/visual/portfolio.spec.ts:55:6 › about-es renders without visual regression (4.1s)
+
+  30 passed (2.7m)

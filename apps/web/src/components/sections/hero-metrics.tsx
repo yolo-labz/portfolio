@@ -24,9 +24,12 @@ export function HeroMetrics() {
 	return (
 		<section ref={ref} aria-labelledby="hero-heading" className="px-6 pt-32 pb-20">
 			<div className="mx-auto w-full max-w-6xl">
+				{/* LCP element on this route is the hero paragraph, so the entrance only
+				    animates the y offset: an opacity-0 start hides the text until hydration
+				    + 0.6s of animation, which pushed mobile LCP render delay to ~3.9s. */}
 				<motion.div
-					initial={reduced ? {} : { opacity: 0, y: 20 }}
-					animate={isInView ? { opacity: 1, y: 0 } : {}}
+					initial={reduced ? {} : { y: 20 }}
+					animate={isInView ? { y: 0 } : {}}
 					transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 				>
 					<p className="mb-5 font-mono text-sm tracking-tight text-accent">{t("eyebrow")}</p>

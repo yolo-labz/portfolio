@@ -1,0 +1,61 @@
+{
+	"status": "PASS",
+	"runs": 12,
+	"cases": [
+		{
+			"baseline": "tests/visual/portfolio.spec.ts-snapshots/home-chromium-desktop.png",
+			"capture_sha256": [
+				"483ace06b1924c6f2d66af035054b7a12865649f83c3ad6006c7c7972a5165d4",
+				"483ace06b1924c6f2d66af035054b7a12865649f83c3ad6006c7c7972a5165d4"
+			],
+			"baseline_sha256": "483ace06b1924c6f2d66af035054b7a12865649f83c3ad6006c7c7972a5165d4",
+			"byte_identical": true
+		},
+		{
+			"baseline": "tests/visual/portfolio.spec.ts-snapshots/home-es-chromium-desktop.png",
+			"capture_sha256": [
+				"d9d1ddffb35be72ce32dacc50cd5a0918f1047279b9b1ad6bcadfda5aa29344a",
+				"d9d1ddffb35be72ce32dacc50cd5a0918f1047279b9b1ad6bcadfda5aa29344a"
+			],
+			"baseline_sha256": "d9d1ddffb35be72ce32dacc50cd5a0918f1047279b9b1ad6bcadfda5aa29344a",
+			"byte_identical": true
+		},
+		{
+			"baseline": "tests/visual/portfolio.spec.ts-snapshots/home-es-mobile.png",
+			"capture_sha256": [
+				"44bafc79164f24b5ea89cdbc5f3d2940ce1956bc600da74a0113985e15ab6c90",
+				"44bafc79164f24b5ea89cdbc5f3d2940ce1956bc600da74a0113985e15ab6c90"
+			],
+			"baseline_sha256": "44bafc79164f24b5ea89cdbc5f3d2940ce1956bc600da74a0113985e15ab6c90",
+			"byte_identical": true
+		},
+		{
+			"baseline": "tests/visual/portfolio.spec.ts-snapshots/home-mobile.png",
+			"capture_sha256": [
+				"e73e8c2d38f309ad5c48aad1f49742160ece01f457e8018a9ae6e274e27640ea",
+				"e73e8c2d38f309ad5c48aad1f49742160ece01f457e8018a9ae6e274e27640ea"
+			],
+			"baseline_sha256": "e73e8c2d38f309ad5c48aad1f49742160ece01f457e8018a9ae6e274e27640ea",
+			"byte_identical": true
+		},
+		{
+			"baseline": "tests/visual/portfolio.spec.ts-snapshots/home-pt-chromium-desktop.png",
+			"capture_sha256": [
+				"852b7b6982493de5219cc48e39b0653418c2d93097db46e4b04b4b9e9ac7eaf2",
+				"852b7b6982493de5219cc48e39b0653418c2d93097db46e4b04b4b9e9ac7eaf2"
+			],
+			"baseline_sha256": "852b7b6982493de5219cc48e39b0653418c2d93097db46e4b04b4b9e9ac7eaf2",
+			"byte_identical": true
+		},
+		{
+			"baseline": "tests/visual/portfolio.spec.ts-snapshots/home-pt-mobile.png",
+			"capture_sha256": [
+				"5323920b5f81ae8a58eec746f65b12c842f4e4042594ccfd715b658cf75f7fe5",
+				"5323920b5f81ae8a58eec746f65b12c842f4e4042594ccfd715b658cf75f7fe5"
+			],
+			"baseline_sha256": "5323920b5f81ae8a58eec746f65b12c842f4e4042594ccfd715b658cf75f7fe5",
+			"byte_identical": true
+		}
+	],
+	"oracle": "Two independent captures per locale/viewport, byte-identical to each other and the baseline; no retries"
+}

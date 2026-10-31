@@ -30,7 +30,7 @@ docker run --rm --ipc=host \
   -e HOME=/tmp \
   -e CI=true \
   --entrypoint bash \
-  mcr.microsoft.com/playwright:v1.59.1-noble \
+  mcr.microsoft.com/playwright:v1.62.1-noble \
   -c '
     set -e
     # Activate corepack-pinned pnpm without writing to /root.
@@ -46,6 +46,36 @@ git add tests/visual/portfolio.spec.ts-snapshots/
 `fullPage: true` snapshots are committed in-repo. The `-noble` image pin is
 load-bearing — bump it in lockstep with `@playwright/test` in `package.json`
 and bump the same tag in `.github/workflows/visual-regression.yml`.
+
+## Organization showcase acceptance
+
+`organization-showcase.spec.ts` checks the four selected source-backed projects,
+all remaining catalogue links, localized destinations, keyboard disclosure/focus,
+44px card-link targets, computed text contrast (at least 4.5:1) and 320px reflow.
+Its section screenshots are in `organization-showcase.spec.ts-snapshots/`; these
+are actual local renders, not generated art. The fixed site header is hidden only
+while capturing the tall section so it cannot overlay a card; full-page snapshots
+still include it. The full-page settle uses instant scrolling to avoid capturing
+halfway through the site's smooth scroll. It polls actual motion opacity after
+visiting every section and asserts a return to `scrollY === 0`; homepage tests
+attach their actual settled PNGs even on success. No shared browser identity is used.
+
+To prove repeatability in the pinned image, collect two independent homepage runs:
+
+```bash
+pnpm exec playwright test portfolio.spec.ts --grep 'home.*renders' \
+  --repeat-each=2 --workers=1 --reporter=json > report.json
+python3 scripts/verify-home-proof.py report.json
+```
+
+The standard-library verifier fails unless all twelve tests pass without retries
+or skips, every capture exists, and both runs of each locale/viewport are
+byte-identical to each other and the checked-in baseline. It accepts `.json.gz`
+receipts too. This is deliberately stricter than the unchanged 2% CI tolerance.
+
+Run only this slice with `pnpm exec playwright test organization-showcase.spec.ts`.
+When intentionally changing the shelf, refresh these scoped snapshots and the six
+homepage snapshots, not unrelated page baselines or screenshot tolerances.
 
 ## Run locally without Docker (advisory only)
 

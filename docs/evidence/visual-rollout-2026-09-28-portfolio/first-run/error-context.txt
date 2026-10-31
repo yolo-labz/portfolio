@@ -1,0 +1,617 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: portfolio.spec.ts >> home-pt renders without visual regression
+- Location: tests/visual/portfolio.spec.ts:55:6
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+Timeout: 5000ms
+  Timeout 5000ms exceeded.
+
+  Snapshot: home-pt.png
+
+Call log:
+  - Expect "toHaveScreenshot(home-pt.png)" with timeout 5000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 205247 pixels (ratio 0.04 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - Timeout 5000ms exceeded.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - navigation "Main navigation" [ref=e4]:
+      - link "pedro.balbino" [ref=e5] [cursor=pointer]:
+        - /url: /pt
+      - button "Open menu" [ref=e6]
+  - main [ref=e11]:
+    - main [ref=e12]:
+      - region [ref=e13]:
+        - generic [ref=e14]:
+          - generic [ref=e15]:
+            - paragraph [ref=e16]: Arquitetura de IA com rigor de compliance · RAG · agentes · MCP
+            - 'heading "Stacks de IA reprovam na primeira auditoria em três pontos: proveniência do prompt, linhagem da recuperação, comprovação do resultado." [level=1] [ref=e17]'
+            - paragraph [ref=e18]: "Projeto e construo sistemas de RAG e de agentes para cargas reguladas: bancário, fiscal, jurídico. A trilha de auditoria é a entrega. Um número sem rastreio de fonte é uma falha de compliance; a arquitetura nunca confia no modelo para lembrar de onde leu. Aderente à LGPD, à BCB 4.893 e à exigência de registro do Art. 12 do EU AI Act."
+          - generic [ref=e19]:
+            - generic [ref=e20]:
+              - generic [ref=e21]: "6"
+              - generic [ref=e22]: repositórios públicos
+              - generic [ref=e23]: SLSA L2 · assinados com Sigstore · verifique com um comando
+            - generic [ref=e24]:
+              - generic [ref=e25]: "3"
+              - generic [ref=e26]: apps de demonstração ao vivo
+              - generic [ref=e27]: extração com IA · dashboard de mercado · pipeline de vagas, código aberto
+            - generic [ref=e28]:
+              - generic [ref=e29]: "152"
+              - generic [ref=e30]: módulos NixOS
+              - generic [ref=e31]: frota declarativa multi-host · 153 PRs mergeados
+            - generic [ref=e32]:
+              - generic [ref=e33]: "0"
+              - generic [ref=e34]: cifras alucinadas por construção
+              - generic [ref=e35]: "citação obrigatória + revalidação do trecho: sem caminho para um número sem fonte"
+          - generic [ref=e36]:
+            - link "Enviar um briefing" [ref=e37] [cursor=pointer]:
+              - /url: mailto:pedrobalbino@proton.me
+            - link "Ler os writeups de arquitetura" [ref=e38] [cursor=pointer]:
+              - /url: https://blog.home301server.com.br
+      - region [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - generic [ref=e42]: fig. 01 — trabalhos selecionados
+            - heading "Trabalhos selecionados" [level=2] [ref=e43]
+            - paragraph [ref=e44]: A restrição, a decisão e o resultado medido. Só o resultado final não ensina nada.
+          - generic [ref=e45]:
+            - 'link "Compliance-grade tax-filing agent — Brazilian IRPF Um agente LLM de ferramentas tipadas para declarações fiscais reguladas. Um número alucinado é uma falha de compliance: cada passo validado por schema, cada cifra rastreada até a fonte. Python Typed-tool agent loop Forced citation + span validation Append-only audit ledger LGPD · 5-year replay My role extraction + validation, on a 6-engineer team Agent ceiling ≤40 typed-tool turns / filing Output attestation every number re-validated against its source span Audit LGPD · append-only decision ledger" [ref=e47] [cursor=pointer]':
+              - /url: /pt/projects/compliance-tax-agent
+              - generic [ref=e48]:
+                - heading "Compliance-grade tax-filing agent — Brazilian IRPF" [level=3] [ref=e49]
+                - paragraph [ref=e50]: "Um agente LLM de ferramentas tipadas para declarações fiscais reguladas. Um número alucinado é uma falha de compliance: cada passo validado por schema, cada cifra rastreada até a fonte."
+                - generic [ref=e51]:
+                  - generic [ref=e52]: Python
+                  - generic [ref=e53]: Typed-tool agent loop
+                  - generic [ref=e54]: Forced citation + span validation
+                  - generic [ref=e55]: Append-only audit ledger
+                  - generic [ref=e56]: LGPD · 5-year replay
+                - generic [ref=e57]:
+                  - generic [ref=e58]:
+                    - term [ref=e59]: My role
+                    - definition [ref=e60]: extraction + validation, on a 6-engineer team
+                  - generic [ref=e61]:
+                    - term [ref=e62]: Agent ceiling
+                    - definition [ref=e63]: ≤40 typed-tool turns / filing
+                  - generic [ref=e64]:
+                    - term [ref=e65]: Output attestation
+                    - definition [ref=e66]: every number re-validated against its source span
+                  - generic [ref=e67]:
+                    - term [ref=e68]: Audit
+                    - definition [ref=e69]: LGPD · append-only decision ledger
+            - link "Event-driven retail commerce backend Um backend de comércio multicanal onde cada mudança de estado é idempotente e auditável. Go + TypeScript sobre Kafka, padrão outbox, efeitos seguros para reprocessar. Go TypeScript Kafka PostgreSQL Outbox · idempotency My role backend engineer · payment + marketplace integrations Architecture BFF + Broker + Dispatcher · event-driven Delivery transactional outbox + idempotency keys Stack Go · TypeScript" [ref=e71] [cursor=pointer]:
+              - /url: /pt/projects/event-driven-retail
+              - generic [ref=e72]:
+                - heading "Event-driven retail commerce backend" [level=3] [ref=e73]
+                - paragraph [ref=e74]: Um backend de comércio multicanal onde cada mudança de estado é idempotente e auditável. Go + TypeScript sobre Kafka, padrão outbox, efeitos seguros para reprocessar.
+                - generic [ref=e75]:
+                  - generic [ref=e76]: Go
+                  - generic [ref=e77]: TypeScript
+                  - generic [ref=e78]: Kafka
+                  - generic [ref=e79]: PostgreSQL
+                  - generic [ref=e80]: Outbox · idempotency
+                - generic [ref=e81]:
+                  - generic [ref=e82]:
+                    - term [ref=e83]: My role
+                    - definition [ref=e84]: backend engineer · payment + marketplace integrations
+                  - generic [ref=e85]:
+                    - term [ref=e86]: Architecture
+                    - definition [ref=e87]: BFF + Broker + Dispatcher · event-driven
+                  - generic [ref=e88]:
+                    - term [ref=e89]: Delivery
+                    - definition [ref=e90]: transactional outbox + idempotency keys
+                  - generic [ref=e91]:
+                    - term [ref=e92]: Stack
+                    - definition [ref=e93]: Go · TypeScript
+            - link "Legal-domain RAG — per-jurisdiction retrieval, citations that hold Recuperação por jurisdição com validador determinístico de citações. Toda resposta fundamentada em fonte real. AWS Bedrock + Lambda + pgvector. Python AWS Bedrock AWS Lambda pgvector · per-jurisdiction Citation validator Stage proof-of-concept (2024) Retrieval per-jurisdiction indexes — no cross-regime bleed Citations deterministically validated, never from memory Cost serverless, usage-tracked" [ref=e95] [cursor=pointer]:
+              - /url: /pt/projects/legal-domain-rag
+              - generic [ref=e96]:
+                - heading "Legal-domain RAG — per-jurisdiction retrieval, citations that hold" [level=3] [ref=e97]
+                - paragraph [ref=e98]: Recuperação por jurisdição com validador determinístico de citações. Toda resposta fundamentada em fonte real. AWS Bedrock + Lambda + pgvector.
+                - generic [ref=e99]:
+                  - generic [ref=e100]: Python
+                  - generic [ref=e101]: AWS Bedrock
+                  - generic [ref=e102]: AWS Lambda
+                  - generic [ref=e103]: pgvector · per-jurisdiction
+                  - generic [ref=e104]: Citation validator
+                - generic [ref=e105]:
+                  - generic [ref=e106]:
+                    - term [ref=e107]: Stage
+                    - definition [ref=e108]: proof-of-concept (2024)
+                  - generic [ref=e109]:
+                    - term [ref=e110]: Retrieval
+                    - definition [ref=e111]: per-jurisdiction indexes — no cross-regime bleed
+                  - generic [ref=e112]:
+                    - term [ref=e113]: Citations
+                    - definition [ref=e114]: deterministically validated, never from memory
+                  - generic [ref=e115]:
+                    - term [ref=e116]: Cost
+                    - definition [ref=e117]: serverless, usage-tracked
+            - 'link "Multilingual education chatbot — grounded retrieval, PT/EN Um chatbot educacional bilíngue (PT/EN). Construí o backend e a camada de dados como consultor externo: recuperação fundamentada, verificações de regressão sobre eval congelada, precisão medida em holdout antes de cada rollout. Azure OpenAI + LangChain + pgvector. Python Azure OpenAI LangChain pgvector Frozen-eval harness My role backend + data layer (consultant) Scale 699K+ enrollment records Release gate frozen-eval — no silent regression Retrieval grounded, bilingual PT/EN" [ref=e119] [cursor=pointer]':
+              - /url: /pt/projects/multilingual-rag
+              - generic [ref=e120]:
+                - heading "Multilingual education chatbot — grounded retrieval, PT/EN" [level=3] [ref=e121]
+                - paragraph [ref=e122]: "Um chatbot educacional bilíngue (PT/EN). Construí o backend e a camada de dados como consultor externo: recuperação fundamentada, verificações de regressão sobre eval congelada, precisão medida em holdout antes de cada rollout. Azure OpenAI + LangChain + pgvector."
+                - generic [ref=e123]:
+                  - generic [ref=e124]: Python
+                  - generic [ref=e125]: Azure OpenAI
+                  - generic [ref=e126]: LangChain
+                  - generic [ref=e127]: pgvector
+                  - generic [ref=e128]: Frozen-eval harness
+                - generic [ref=e129]:
+                  - generic [ref=e130]:
+                    - term [ref=e131]: My role
+                    - definition [ref=e132]: backend + data layer (consultant)
+                  - generic [ref=e133]:
+                    - term [ref=e134]: Scale
+                    - definition [ref=e135]: 699K+ enrollment records
+                  - generic [ref=e136]:
+                    - term [ref=e137]: Release gate
+                    - definition [ref=e138]: frozen-eval — no silent regression
+                  - generic [ref=e139]:
+                    - term [ref=e140]: Retrieval
+                    - definition [ref=e141]: grounded, bilingual PT/EN
+            - link "ai-document-processor — auditable document extraction pipeline Um pipeline de ingestão agnóstico a formato onde cada campo extraído rastreia de volta ao seu trecho de origem. PDF/DOCX/imagem → OCR → classifica → extrai → JSONB consultável. Python FastAPI Claude Haiku · Sonnet Tesseract · PyMuPDF PostgreSQL 16 +2 Cost per document ~$0.006 Provenance every field traced to a source span Formats PDF · scanned PDF · JPEG · PNG · DOCX Storage JSONB + full-text TSVECTOR" [ref=e143] [cursor=pointer]:
+              - /url: /pt/projects/ai-document-processor
+              - generic [ref=e144]:
+                - heading "ai-document-processor — auditable document extraction pipeline" [level=3] [ref=e145]
+                - paragraph [ref=e146]: Um pipeline de ingestão agnóstico a formato onde cada campo extraído rastreia de volta ao seu trecho de origem. PDF/DOCX/imagem → OCR → classifica → extrai → JSONB consultável.
+                - generic [ref=e147]:
+                  - generic [ref=e148]: Python
+                  - generic [ref=e149]: FastAPI
+                  - generic [ref=e150]: Claude Haiku · Sonnet
+                  - generic [ref=e151]: Tesseract · PyMuPDF
+                  - generic [ref=e152]: PostgreSQL 16
+                  - generic [ref=e153]: "+2"
+                - generic [ref=e154]:
+                  - generic [ref=e155]:
+                    - term [ref=e156]: Cost per document
+                    - definition [ref=e157]: ~$0.006
+                  - generic [ref=e158]:
+                    - term [ref=e159]: Provenance
+                    - definition [ref=e160]: every field traced to a source span
+                  - generic [ref=e161]:
+                    - term [ref=e162]: Formats
+                    - definition [ref=e163]: PDF · scanned PDF · JPEG · PNG · DOCX
+                  - generic [ref=e164]:
+                    - term [ref=e165]: Storage
+                    - definition [ref=e166]: JSONB + full-text TSVECTOR
+          - region [ref=e167]:
+            - generic [ref=e168]:
+              - generic [ref=e169]:
+                - generic [ref=e170]: fig. 02 — yolo-labz
+                - heading "Ferramentas open-source da yolo-labz" [level=3] [ref=e171]
+                - paragraph [ref=e172]: Mensageria, infraestrutura, voz e ferramentas de sistema. Quatro pontos de partida, com código-fonte e notas de implementação.
+              - link "Todos os repositórios" [ref=e173] [cursor=pointer]:
+                - /url: https://github.com/yolo-labz
+                - text: Todos os repositórios
+                - generic [ref=e174]: ↗
+            - list "Projetos selecionados da yolo-labz" [ref=e175]:
+              - listitem [ref=e176]:
+                - generic [ref=e177]:
+                  - generic [ref=e178]:
+                    - heading "wa" [level=4] [ref=e179]
+                    - generic [ref=e180]: "01"
+                  - paragraph [ref=e181]: Um canal de agente persistente que trata o corpo da mensagem de entrada como um perímetro de auditoria não confiável. Go, hexagonal, assinado com Sigstore.
+                  - generic [ref=e182]:
+                    - generic [ref=e183]: Go
+                    - generic [ref=e184]: whatsmeow
+                    - generic [ref=e185]: modernc.org/sqlite
+                  - generic [ref=e186]:
+                    - 'link "Notas do projeto: wa" [ref=e187] [cursor=pointer]':
+                      - /url: /pt/projects/wa
+                      - text: Ver projeto
+                      - generic [ref=e188]: →
+                    - 'link "Código-fonte: wa" [ref=e189] [cursor=pointer]':
+                      - /url: https://github.com/yolo-labz/wa
+                      - text: Código
+                      - generic [ref=e190]: ↗
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - generic [ref=e193]:
+                    - heading "serverless-data-api" [level=4] [ref=e194]
+                    - generic [ref=e195]: "02"
+                  - paragraph [ref=e196]: "CRUD serverless em nível de produção no Terraform: IAM com privilégio mínimo, planos de uso por API-key, PITR e um teardown que não deixa nenhum órfão."
+                  - generic [ref=e197]:
+                    - generic [ref=e198]: Terraform
+                    - generic [ref=e199]: Python
+                    - generic [ref=e200]: AWS Lambda · arm64
+                  - generic [ref=e201]:
+                    - 'link "Notas do projeto: serverless-data-api" [ref=e202] [cursor=pointer]':
+                      - /url: /pt/projects/serverless-data-api
+                      - text: Ver projeto
+                      - generic [ref=e203]: →
+                    - 'link "Código-fonte: serverless-data-api" [ref=e204] [cursor=pointer]':
+                      - /url: https://github.com/yolo-labz/portfolio/tree/main/projects/serverless-data-api
+                      - text: Código
+                      - generic [ref=e205]: ↗
+              - listitem [ref=e206]:
+                - generic [ref=e207]:
+                  - generic [ref=e208]:
+                    - heading "kokoro-speakd" [level=4] [ref=e209]
+                    - generic [ref=e210]: "03"
+                  - paragraph [ref=e211]: "Carrega o modelo de TTS uma vez e serve a síntese por socket unix: resposta quente abaixo de 200ms, em vez de cold load de 3-5s por chamada."
+                  - generic [ref=e212]:
+                    - generic [ref=e213]: Python
+                    - generic [ref=e214]: ONNX Runtime
+                    - generic [ref=e215]: Kokoro 82M
+                  - generic [ref=e216]:
+                    - 'link "Notas do projeto: kokoro-speakd" [ref=e217] [cursor=pointer]':
+                      - /url: /pt/projects/kokoro-speakd
+                      - text: Ver projeto
+                      - generic [ref=e218]: →
+                    - 'link "Código-fonte: kokoro-speakd" [ref=e219] [cursor=pointer]':
+                      - /url: https://github.com/yolo-labz/kokoro-speakd
+                      - text: Código
+                      - generic [ref=e220]: ↗
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - generic [ref=e223]:
+                    - heading "fand" [level=4] [ref=e224]
+                    - generic [ref=e225]: "04"
+                  - paragraph [ref=e226]: Acelera as fans em curvas guiadas por temperatura antes de o throttling térmico começar, com reload de config sem downtime via SIGHUP. Rust + launchd.
+                  - generic [ref=e227]:
+                    - generic [ref=e228]: Rust
+                    - generic [ref=e229]: SMC
+                    - generic [ref=e230]: launchd
+                  - generic [ref=e231]:
+                    - 'link "Notas do projeto: fand" [ref=e232] [cursor=pointer]':
+                      - /url: /pt/projects/fand
+                      - text: Ver projeto
+                      - generic [ref=e233]: →
+                    - 'link "Código-fonte: fand" [ref=e234] [cursor=pointer]':
+                      - /url: https://github.com/yolo-labz/fand
+                      - text: Código
+                      - generic [ref=e235]: ↗
+            - group [ref=e236]:
+              - generic "Mais projetos e demos (6)" [ref=e237] [cursor=pointer]
+      - region [ref=e238]:
+        - generic [ref=e239]:
+          - generic [ref=e240]:
+            - generic [ref=e241]: fig. 05 — como um contrato evolui
+            - heading "Comece por um veredito. Escale quando a prova se sustentar." [level=2] [ref=e242]
+            - paragraph [ref=e243]: "Cada oferta entrega uma entrega definida, com escopo fechado na assinatura. O caminho mais comum: um diagnóstico primeiro, depois a construção quando a arquitetura se prova contra os dados reais do cliente."
+          - generic [ref=e244]:
+            - generic [ref=e245]:
+              - generic [ref=e246]:
+                - generic [ref=e247]: Pattern
+                - generic [ref=e248]: prove
+              - generic [ref=e249]:
+                - generic [ref=e250]:
+                  - heading "Revisão de Arquitetura de IA Regulada" [level=3] [ref=e251]
+                  - paragraph [ref=e252]: "Diagnóstico de prazo fechado da sua stack de LLM atual: memorando da topologia de três planos, achados ranqueados por severidade e repositório de referência anotado."
+                  - paragraph [ref=e253]:
+                    - generic [ref=e254]: "Resultado:"
+                    - text: Um veredito de seguir ou parar e um mapa de remediação com escopo definido, antes de comprometer trimestres de engenharia.
+                - generic [ref=e255]:
+                  - heading "Auditoria de Segurança da Fronteira de Ferramentas MCP" [level=3] [ref=e256]
+                  - paragraph [ref=e257]: Modelagem de ameaças STRIDE de cada ferramenta exposta, revisão da fronteira de entrada entre LLM e operador, matriz de permissões com negação por padrão e hardening de releases assinados (Sigstore + SLSA L2 + SBOM duplo).
+                  - paragraph [ref=e258]:
+                    - generic [ref=e259]: "Resultado:"
+                    - text: Um relatório ranqueado por severidade com correções concretas e um pipeline onde cada binário se verifica com um único comando.
+            - generic [ref=e260]:
+              - generic [ref=e261]:
+                - generic [ref=e262]: Pipeline
+                - generic [ref=e263]: coloque de pé
+              - generic [ref=e264]:
+                - generic [ref=e265]:
+                  - heading "Sprint de Prontidão da Cadeia de Auditoria de RAG" [level=3] [ref=e266]
+                  - paragraph [ref=e267]: "Um pipeline de recuperação em produção: pgvector + recuperação híbrida + rerank, respostas com citação obrigatória, recall medido no seu próprio conjunto de holdout e um ledger de rastro de decisão indexado por (prompt, docs, model, output)."
+                  - paragraph [ref=e268]:
+                    - generic [ref=e269]: "Resultado:"
+                    - text: Respostas comprovadamente fundamentadas, acurácia medida contra os seus dados e comportamento auditável desde o primeiro dia.
+                - generic [ref=e270]:
+                  - heading "Construção e Resgate de Backend Orientado a Eventos" [level=3] [ref=e271]
+                  - paragraph [ref=e272]: "Um backend autenticado, em formato de produção: schema tipado, ledger de auditoria, outbox + idempotência, testes de fitness-function, gate de CI e observabilidade. A variante serverless roda com custo zero quando ociosa."
+                  - paragraph [ref=e273]:
+                    - generic [ref=e274]: "Resultado:"
+                    - text: Um backend que aguenta carga, não custa nada ocioso. Sobe e é destruído de forma reprodutível, no seu repositório.
+            - generic [ref=e275]:
+              - generic [ref=e276]:
+                - generic [ref=e277]: Platform
+                - generic [ref=e278]: mantenha a custódia
+              - generic [ref=e280]:
+                - heading "Custódia Embarcada de Plataforma de IA" [level=3] [ref=e281]
+                - paragraph [ref=e282]: "Custódia de arquitetura em regime fracionado: revisão semanal de fitness-functions, sondagem mensal da integridade da cadeia de auditoria, posse do plano de compliance e participação no processo de contratação de IA."
+                - paragraph [ref=e283]:
+                  - generic [ref=e284]: "Resultado:"
+                  - text: Uma capacidade de IA com nível de auditoria que toda a empresa reaproveita, com a cadeia de auditoria mantida verde entre releases.
+          - paragraph [ref=e285]:
+            - text: Todo contrato começa por uma conversa de discovery curta e um diagnóstico por escrito. Escopo fechado na assinatura.
+            - link "Enviar um briefing →" [ref=e286] [cursor=pointer]:
+              - /url: mailto:pedrobalbino@proton.me
+      - region [ref=e287]:
+        - generic [ref=e288]:
+          - generic [ref=e289]:
+            - heading "Competências Técnicas" [level=2] [ref=e290]
+            - paragraph [ref=e291]: Agrupadas pelo problema que cada stack resolve. Ache rápido a que combina com o seu.
+          - generic [ref=e292]:
+            - generic [ref=e293]:
+              - heading "IA regulada & compliance" [level=3] [ref=e294]
+              - paragraph [ref=e295]: RAG com linhagem de recuperação, ledgers de auditoria append-only e proveniência de decisão. Mapeado à LGPD, à BCB 4.893 e à exigência de registro do Art. 12 do EU AI Act.
+              - generic [ref=e296]:
+                - generic [ref=e297]: LGPD
+                - generic [ref=e298]: BCB 4.893
+                - generic [ref=e299]: EU AI Act Art. 12
+                - generic [ref=e300]: Desenho de trilha de auditoria
+                - generic [ref=e301]: Proveniência de decisão
+                - generic [ref=e302]: Avaliação de RAG
+                - generic [ref=e303]: Controles de PII
+            - generic [ref=e304]:
+              - heading "Agentes de IA & RAG" [level=3] [ref=e305]
+              - paragraph [ref=e306]: Pipelines de RAG em produção, loops de agente com ferramentas tipadas e teto de turnos, integrações MCP. Recuperação fundamentada, controlada por checks de regressão sobre eval congelada.
+              - generic [ref=e307]:
+                - generic [ref=e308]: Claude Code
+                - generic [ref=e309]: Anthropic SDK
+                - generic [ref=e310]: Azure OpenAI
+                - generic [ref=e311]: AWS Bedrock
+                - generic [ref=e312]: RAG
+                - generic [ref=e313]: MCP
+                - generic [ref=e314]: pgvector
+                - generic [ref=e315]: LangGraph
+            - generic [ref=e316]:
+              - heading "Backend" [level=3] [ref=e317]
+              - paragraph [ref=e318]: "Daemons em Go, APIs em TypeScript, pipelines em Python, binários em Rust. Orientado a eventos onde importa: outbox + idempotência."
+              - generic [ref=e319]:
+                - generic [ref=e320]: Go
+                - generic [ref=e321]: TypeScript
+                - generic [ref=e322]: Node.js
+                - generic [ref=e323]: Python
+                - generic [ref=e324]: FastAPI
+                - generic [ref=e325]: Rust
+                - generic [ref=e326]: PostgreSQL
+                - generic [ref=e327]: Kafka
+            - generic [ref=e328]:
+              - heading "Cloud" [level=3] [ref=e329]
+              - paragraph [ref=e330]: "AWS, Azure e GCP: cargas serverless e em contêiner dimensionadas a um teto de custo que se sustenta."
+              - generic [ref=e331]:
+                - generic [ref=e332]: AWS Lambda
+                - generic [ref=e333]: AWS Bedrock
+                - generic [ref=e334]: Azure App Service
+                - generic [ref=e335]: Azure AKS
+                - generic [ref=e336]: Azure OpenAI
+                - generic [ref=e337]: GCP Cloud Run
+                - generic [ref=e338]: GCP Cloud SQL
+            - generic [ref=e339]:
+              - heading "Infra-as-Code" [level=3] [ref=e340]
+              - paragraph [ref=e341]: Infraestrutura declarativa em frotas na nuvem e em bare-metal. Reprodutível, com um teardown que não deixa nenhum órfão.
+              - generic [ref=e342]:
+                - generic [ref=e343]: Terraform
+                - generic [ref=e344]: Helm
+                - generic [ref=e345]: Kubernetes
+                - generic [ref=e346]: NixOS
+                - generic [ref=e347]: Docker
+                - generic [ref=e348]: Docker Compose
+            - generic [ref=e349]:
+              - heading "Release engineering" [level=3] [ref=e350]
+              - paragraph [ref=e351]: "Hardening da cadeia de suprimentos como entrega de primeira classe: builds reprodutíveis, proveniência assinada e SBOMs em formato duplo."
+              - generic [ref=e352]:
+                - generic [ref=e353]: GitHub Actions
+                - generic [ref=e354]: Sigstore
+                - generic [ref=e355]: SLSA L2
+                - generic [ref=e356]: gitleaks
+                - generic [ref=e357]: OSV-Scanner
+                - generic [ref=e358]: Dependabot
+                - generic [ref=e359]: Syft
+      - region [ref=e360]:
+        - generic [ref=e361]:
+          - generic [ref=e362]:
+            - heading "Experiência" [level=2] [ref=e363]
+            - paragraph [ref=e364]: Sistemas entregues e os resultados que eles moveram.
+          - generic [ref=e365]:
+            - generic [ref=e368]:
+              - generic [ref=e369]:
+                - heading "Arquiteto de IA com Rigor de Compliance / Arquiteto de Cloud" [level=3] [ref=e370]
+                - generic [ref=e371]: jul 2025 — presente
+              - paragraph [ref=e372]: Grupo de serviços de TI tier-1 · LATAM
+              - list [ref=e373]:
+                - listitem [ref=e374]: "Contribuí para um RAG com rigor de compliance no Azure OpenAI: proveniência de decisão, registro de trilha de auditoria e verificações de regressão sobre eval congelada para cargas reguladas"
+                - listitem [ref=e375]: "Construí o backend e a camada de dados de um assistente educacional multilíngue: bilíngue PT/EN, mais de 699K registros de matrícula"
+                - listitem [ref=e376]: Coloquei de pé Terraform multi-cloud (Azure + GCP); o provisionamento de ambientes caiu para menos de 10 minutos
+                - listitem [ref=e377]: Reduzi 30% do gasto em nuvem via right-sizing de Lambda e planejamento de capacidade reservada
+            - generic [ref=e380]:
+              - generic [ref=e381]:
+                - heading "Engenheiro de Software de Sistemas" [level=3] [ref=e382]
+                - generic [ref=e383]: out 2024 — set 2025
+              - paragraph [ref=e384]: Operadora de telecom · LATAM
+              - list [ref=e385]:
+                - listitem [ref=e386]: Projetei ETL serverless em AWS Lambda + Step Functions para dados de billing de telecom tier-1
+                - listitem [ref=e387]: Publiquei módulos Terraform que provisionam infraestrutura multi-região em menos de 10 minutos
+                - listitem [ref=e388]: "Implantei uma stack de observabilidade no CloudWatch: dashboards, alarmes e resposta automatizada a incidentes"
+                - listitem [ref=e389]: Endureci o pipeline de release com proveniência Sigstore + SLSA para uma cadeia de suprimentos regulada
+            - generic [ref=e392]:
+              - generic [ref=e393]:
+                - heading "Engenheiro de Software Sênior" [level=3] [ref=e394]
+                - generic [ref=e395]: jul 2021 — out 2024
+              - paragraph [ref=e396]: Estúdio de engenharia de produto · e-commerce / fintech / logística
+              - list [ref=e397]:
+                - listitem [ref=e398]: Entreguei mais de 12 sistemas em produção em e-commerce, fintech e logística
+                - listitem [ref=e399]: "Atuei num backend de varejo orientado a eventos com BFF + Broker + Dispatcher: padrão outbox e chaves de idempotência"
+                - listitem [ref=e400]: Introduzi CI em matriz no GitHub Actions com gitleaks + OSV-Scanner para higiene da cadeia de suprimentos
+                - listitem [ref=e401]: Defini os padrões de arquitetura e de gate de release adotados por vários squads
+      - region [ref=e402]:
+        - generic [ref=e403]:
+          - generic [ref=e404]: fig. 06 — alegação → evidência
+          - heading "Toda alegação aqui é auditável" [level=2] [ref=e405]
+          - paragraph [ref=e406]: "Seis repositórios públicos em yolo-labz, cada um com SLSA L2, assinatura Sigstore e bloqueio em checks do SonarQube ao vivo. Leia o código, não um screenshot. O trabalho com clientes permanece anonimizado: writeups de arquitetura, nunca nomes."
+          - list [ref=e407]:
+            - listitem [ref=e408]:
+              - link "wa Go" [ref=e409] [cursor=pointer]:
+                - /url: https://github.com/yolo-labz/wa
+                - generic [ref=e410]: wa
+                - generic [ref=e411]: Go
+            - listitem [ref=e412]:
+              - link "claude-mac-chrome Bash" [ref=e413] [cursor=pointer]:
+                - /url: https://github.com/yolo-labz/claude-mac-chrome
+                - generic [ref=e414]: claude-mac-chrome
+                - generic [ref=e415]: Bash
+            - listitem [ref=e416]:
+              - link "linkedin-chrome-copilot Bash" [ref=e417] [cursor=pointer]:
+                - /url: https://github.com/yolo-labz/linkedin-chrome-copilot
+                - generic [ref=e418]: linkedin-chrome-copilot
+                - generic [ref=e419]: Bash
+            - listitem [ref=e420]:
+              - link "kokoro-speakd Python" [ref=e421] [cursor=pointer]:
+                - /url: https://github.com/yolo-labz/kokoro-speakd
+                - generic [ref=e422]: kokoro-speakd
+                - generic [ref=e423]: Python
+            - listitem [ref=e424]:
+              - link "claude-classroom-submit Python" [ref=e425] [cursor=pointer]:
+                - /url: https://github.com/yolo-labz/claude-classroom-submit
+                - generic [ref=e426]: claude-classroom-submit
+                - generic [ref=e427]: Python
+            - listitem [ref=e428]:
+              - link "fand Rust" [ref=e429] [cursor=pointer]:
+                - /url: https://github.com/yolo-labz/fand
+                - generic [ref=e430]: fand
+                - generic [ref=e431]: Rust
+          - link "Veja o mapa completo de alegação → evidência →" [ref=e433] [cursor=pointer]:
+            - /url: /pt/about
+      - region [ref=e434]:
+        - generic [ref=e435]:
+          - heading "Contato" [level=2] [ref=e436]
+          - paragraph [ref=e437]: Construo para o engenheiro que é acionado às 02:00 BRT e precisa que a cadeia de auditoria ainda se sustente. Mande um briefing sobre arquitetura, RAG, compliance ou cadeia de suprimentos. Te digo na lata se faz sentido.
+          - generic [ref=e438]:
+            - link "Enviar um briefing" [ref=e439] [cursor=pointer]:
+              - /url: mailto:pedrobalbino@proton.me
+            - link "GitHub" [ref=e440] [cursor=pointer]:
+              - /url: https://github.com/phsb5321
+  - contentinfo [ref=e441]:
+    - generic [ref=e442]:
+      - generic [ref=e443]: pedro.balbino
+      - generic [ref=e444]:
+        - link "GitHub" [ref=e445] [cursor=pointer]:
+          - /url: https://github.com/phsb5321
+        - link "LinkedIn" [ref=e446] [cursor=pointer]:
+          - /url: https://linkedin.com/in/balbinopedro
+  - alert [ref=e447]
+```
+
+# Test source
+
+```ts
+  1  | // Visual-regression spec — exercises the most-trafficked routes of
+  2  | // portfolio.home301server.com.br. The list is intentionally narrow: every
+  3  | // page carries an O(N) baseline cost and we want the diff signal to stay
+  4  | // loud.
+  5  | //
+  6  | // Project pages: top 5 featured cards from apps/web/src/data/projects.ts
+  7  | // (`featured: true`). Adding a route?
+  8  | //   1) append below
+  9  | //   2) regenerate baselines via `pnpm test:visual:update` inside the pinned
+  10 | //      playwright Docker image (see tests/visual/README.md)
+  11 | //   3) hand-check the new PNGs in the PR.
+  12 |
+  13 | import { expect, test } from "@playwright/test";
+  14 |
+  15 | // Paths are explicit-locale (localePrefix: "always" → "/" redirects to "/en").
+  16 | const PAGES: ReadonlyArray<{ name: string; path: string }> = [
+  17 | 	{ name: "home", path: "/en" },
+  18 | 	{ name: "about", path: "/en/about" },
+  19 | 	// Top 5 featured projects (apps/web/src/data/projects.ts: featured === true).
+  20 | 	{ name: "project-wa", path: "/en/projects/wa" },
+  21 | 	{ name: "project-claude-mac-chrome", path: "/en/projects/claude-mac-chrome" },
+  22 | 	{
+  23 | 		name: "project-linkedin-chrome-copilot",
+  24 | 		path: "/en/projects/linkedin-chrome-copilot",
+  25 | 	},
+  26 | 	{
+  27 | 		name: "project-ai-document-processor",
+  28 | 		path: "/en/projects/ai-document-processor",
+  29 | 	},
+  30 | 	{ name: "project-exec-job-board", path: "/en/projects/exec-job-board" },
+  31 | 	// Locale coverage: translated home + about for pt-BR and es.
+  32 | 	{ name: "home-pt", path: "/pt" },
+  33 | 	{ name: "about-pt", path: "/pt/about" },
+  34 | 	{ name: "home-es", path: "/es" },
+  35 | 	{ name: "about-es", path: "/es/about" },
+  36 | ];
+  37 |
+  38 | // Block all third-party requests (font CDNs, analytics, etc). External
+  39 | // dependencies introduce non-determinism: a slow fonts.googleapis.com
+  40 | // response changes which fallback font is laid out, which shifts page
+  41 | // height, which invalidates the baseline. Local fallback fonts in the
+  42 | // playwright image (Noto + DejaVu) are byte-stable.
+  43 | test.beforeEach(async ({ page }) => {
+  44 | 	await page.route("**/*", (route) => {
+  45 | 		const url = new URL(route.request().url());
+  46 | 		if (url.hostname === "localhost") {
+  47 | 			route.continue();
+  48 | 		} else {
+  49 | 			route.abort();
+  50 | 		}
+  51 | 	});
+  52 | });
+  53 |
+  54 | for (const { name, path } of PAGES) {
+  55 | 	test(`${name} renders without visual regression`, async ({ page }) => {
+  56 | 		await page.goto(path);
+  57 | 		await page.waitForLoadState("networkidle");
+  58 |
+  59 | 		// Pre-render: force ALL lazy-loaded images to load and ALL fonts to
+  60 | 		// resolve before the screenshot pair. Without this, Playwright's
+  61 | 		// "two consecutive stable screenshots" check fails on long pages
+  62 | 		// (>5000px) because content height drifts as images decode in.
+  63 | 		await page.evaluate(async () => {
+  64 | 			document.querySelectorAll("img").forEach((img) => {
+  65 | 				img.loading = "eager";
+  66 | 				img.decoding = "sync";
+  67 | 			});
+  68 | 			await Promise.all(
+  69 | 				Array.from(document.images)
+  70 | 					.filter((img) => !img.complete)
+  71 | 					.map(
+  72 | 						(img) =>
+  73 | 							new Promise<void>((resolve) => {
+  74 | 								img.addEventListener("load", () => resolve(), { once: true });
+  75 | 								img.addEventListener("error", () => resolve(), { once: true });
+  76 | 							}),
+  77 | 					),
+  78 | 			);
+  79 | 			await document.fonts.ready;
+  80 | 		});
+  81 |
+  82 | 		// Final settle: a full-document scroll cycle pushes the layout into
+  83 | 		// its final state for any content-visibility / IntersectionObserver
+  84 | 		// driven expansion (motion components, animated counters) that
+  85 | 		// survives the eager-load pass.
+  86 | 		await page.evaluate(async () => {
+  87 | 			window.scrollTo(0, document.body.scrollHeight);
+  88 | 			await new Promise((resolve) => setTimeout(resolve, 300));
+  89 | 			window.scrollTo(0, 0);
+  90 | 			await new Promise((resolve) => setTimeout(resolve, 300));
+  91 | 		});
+  92 |
+> 93 | 		await expect(page).toHaveScreenshot(`${name}.png`, {
+     |                      ^ Error: expect(page).toHaveScreenshot(expected) failed
+  94 | 			fullPage: true,
+  95 | 		});
+  96 | 	});
+  97 | }
+  98 |
+```
