@@ -155,8 +155,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 						{t("category")}
 					</h1>
 					<div className="space-y-5 lg:col-span-5 lg:pt-2">
-						<p className="max-w-[65ch] text-step-1 leading-relaxed text-text">{t("diagnostic")}</p>
-						<p className="max-w-[65ch] text-base leading-relaxed text-text-muted">{t("summary")}</p>
+						<p className="max-w-[50ch] text-step-1 leading-relaxed text-text">{t("diagnostic")}</p>
+						<p className="max-w-[50ch] text-base leading-relaxed text-text-muted">{t("summary")}</p>
 					</div>
 				</header>
 
@@ -166,7 +166,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 							<h2 className="text-step-3 font-semibold tracking-[-0.02em]">
 								{t("claimEvidenceHeading")}
 							</h2>
-							<p className="mt-2 max-w-2xl text-sm text-text-muted">{t("claimEvidenceIntro")}</p>
+							<p className="mt-2 max-w-[50ch] text-sm text-text-muted">{t("claimEvidenceIntro")}</p>
 						</div>
 					</div>
 
@@ -226,7 +226,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 						<h2 className="text-step-3 font-semibold tracking-[-0.02em]">
 							{t("codeQualityHeading")}
 						</h2>
-						<p className="mt-2 max-w-2xl text-sm text-text-muted">{t("codeQualityIntro")}</p>
+						<p className="mt-2 max-w-[50ch] text-sm text-text-muted">{t("codeQualityIntro")}</p>
 					</div>
 
 					<div className="border-y border-border">
@@ -257,7 +257,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 												target="_blank"
 												rel="noopener noreferrer"
 												aria-label={`${repo.label} ${m.alt}`}
-												className="inline-flex"
+												className="inline-flex min-h-6 items-center"
 											>
 												<img
 													src={sonarBadgeUrl(repo.slug, m.key)}

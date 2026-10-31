@@ -67,7 +67,24 @@ body {
 html {
 	caret-color: var(--color-accent);
 	scrollbar-color: var(--color-border) var(--color-crust);
+}
+
+/* Tabular figures only where numbers line up (tables, dates). Inter's tnum also
+   swaps punctuation to tabular widths, which opened gaps around hyphens in prose. */
+table,
+time {
 	font-variant-numeric: tabular-nums;
+}
+
+/* Running text: no one-word last lines, and one measure everywhere. Inter's ch
+   (the "0" advance) is wider than its average glyph, so 50ch sets ~70 characters. */
+p {
+	text-wrap: pretty;
+}
+main p,
+main dd,
+main .list-disc > li {
+	max-inline-size: 50ch;
 }
 
 /* The one authored entrance: the work index types itself in, row by row. Rows

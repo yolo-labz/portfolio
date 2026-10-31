@@ -45,7 +45,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 					<h1 className="text-step-5 leading-[1.1] font-semibold tracking-[-0.025em] text-balance">
 						{project.title}
 					</h1>
-					<p className="mt-5 max-w-[65ch] text-step-1 leading-relaxed text-text-muted">
+					<p className="mt-5 max-w-[50ch] text-step-1 leading-relaxed text-text-muted">
 						{t(`${slug}.tagline`)}
 					</p>
 				</header>
@@ -114,7 +114,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 											className="grid gap-x-8 gap-y-2 border-b border-border py-6 sm:grid-cols-[8rem_1fr]"
 										>
 											<dt className={`text-sm font-medium ${arcTone[key]}`}>{ui(key)}</dt>
-											<dd className="max-w-[65ch] leading-relaxed text-text">
+											<dd className="max-w-[50ch] leading-relaxed text-text">
 												{t(`${slug}.${key}`)}
 											</dd>
 										</div>
@@ -123,7 +123,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 							</section>
 						)}
 
-						<section aria-labelledby="problem" className="max-w-[65ch]">
+						<section aria-labelledby="problem" className="max-w-[50ch]">
 							<h2 id="problem" className="text-step-2 font-semibold tracking-[-0.01em]">
 								{ui("problemHeading")}
 							</h2>
@@ -132,14 +132,14 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 							</p>
 						</section>
 
-						<section aria-labelledby="solution" className="max-w-[65ch]">
+						<section aria-labelledby="solution" className="max-w-[50ch]">
 							<h2 id="solution" className="text-step-2 font-semibold tracking-[-0.01em]">
 								{ui("solutionHeading")}
 							</h2>
 							<p className="mt-4 leading-relaxed text-text-muted">{t(`${slug}.solutionSummary`)}</p>
 						</section>
 
-						<section aria-labelledby="overview" className="max-w-[65ch]">
+						<section aria-labelledby="overview" className="max-w-[50ch]">
 							<h2 id="overview" className="text-step-2 font-semibold tracking-[-0.01em]">
 								{ui("overviewHeading")}
 							</h2>

@@ -21,7 +21,7 @@ export function ContactCTA() {
 					>
 						{t("ctaPrimary")}
 					</h2>
-					<p className="mt-6 max-w-[60ch] text-step-1 leading-relaxed text-text-muted">
+					<p className="mt-6 max-w-[50ch] text-step-1 leading-relaxed text-text-muted">
 						{t("body")}
 					</p>
 				</div>

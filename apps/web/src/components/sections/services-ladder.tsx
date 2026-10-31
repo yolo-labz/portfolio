@@ -35,7 +35,7 @@ export function ServicesLadder() {
 					>
 						{t("heading")}
 					</h2>
-					<p className="max-w-[65ch] text-base leading-relaxed text-text-muted lg:col-span-7">
+					<p className="max-w-[50ch] text-base leading-relaxed text-text-muted lg:col-span-7">
 						{t("intro")}
 					</p>
 				</div>

@@ -62,6 +62,15 @@ What C1 takes from the losers without blending them: nothing structural. C2's ca
 mono display is noted for the wordmark-adjacent header only (already mono). C1's known
 weakness, taglines clipped to one line at desktop widths, is recorded for the critique pass.
 
+### The mascot question (raised by the Design Tooling critique)
+
+Does a green gremlin argue against a compliance-grade thesis? The seat's answer is no,
+on balance. The render is the yolo-labz identity, which owns the repositories in the
+index, so it signs the work rather than decorating it. It sits on a plate equal to the
+ground, takes no colour from the action palette, and never carries text. The thesis
+sentence and ten auditable rows carry the persuasion. If a buyer test says otherwise,
+the plate column drops out at no cost to the index; no other layout depends on it.
+
 ## Reference bar (Experience / Persuade)
 
 Recalled from prior knowledge and not re-visited in this session (the server browser

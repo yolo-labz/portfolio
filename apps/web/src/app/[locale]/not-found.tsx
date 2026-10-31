@@ -18,7 +18,7 @@ export default function NotFound() {
 				>
 					{t("title")}
 				</h1>
-				<p className="mt-5 max-w-[60ch] text-step-1 leading-relaxed text-text-muted">{t("body")}</p>
+				<p className="mt-5 max-w-[50ch] text-step-1 leading-relaxed text-text-muted">{t("body")}</p>
 				<Link
 					href="/"
 					className="mt-6 inline-flex min-h-11 items-center gap-2 font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent"

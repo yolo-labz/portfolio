@@ -110,14 +110,17 @@ Under `prefers-contrast: more`, muted text takes the body colour and rules take 
 
 ## Typography
 
-Inter for text, JetBrains Mono for data: repository names, stacks, the e-mail address,
+Inter is a deliberate brand choice, locked in `CLAUDE.md` and the vault identity, not a
+default; the detector's `overused-font` rule is waived in `apps/web/.impeccable/config.json`
+for that reason. The distinct voice is the split: Inter for text, JetBrains Mono for data: repository names, stacks, the e-mail address,
 periods. Inter loads with its `opsz` axis and `font-optical-sizing: auto`, so headings
 get the display cut. Sizes come from one fluid modular scale, `text-step-1` … `-6`:
 ratio 1.125 at 360 px growing to 1.2 at 1280 px, each a `clamp()`. Use: step-4 index
 thesis and section headings, step-5 page titles, step-6 the contact close, step-2
 in-page headings, step-1 ledes. Display headings are semibold (600) with tight tracking
-(-0.02 to -0.03em) and `text-wrap: balance`; body is 16 px at 1.625 with a 65ch measure.
-Labels are 12 px medium. Numbers are tabular site-wide.
+(-0.02 to -0.03em) and `text-wrap: balance`; body is 16 px at 1.625 with a 50ch measure (Inter's ch is wide, so ≈ 70 characters per line, enforced globally for `main p`).
+Labels are 12 px medium. Tabular figures apply to tables and dates only: Inter's `tnum` also widens punctuation,
+which opened gaps around hyphens in prose. Paragraphs use `text-wrap: pretty`.
 
 ## Elevation
 
@@ -130,7 +133,7 @@ Flat. No shadows, no glows, no gradients, no blur behind the header (it is opaqu
   arrow. Hover or keyboard focus turns the name and arrow emerald and draws a 1 px
   emerald rule left-to-right under the row (300 ms, ease-out). Rows are links ≥ 44 px.
 - **Decision record**: definition list with three rows, *Constraint* (peach),
-  *Decision* (blue), *Outcome* (emerald); text at 65ch.
+  *Decision* (blue), *Outcome* (emerald); text at 50ch.
 - **Case-study template** (`components/project/project-detail.tsx`): back link, title +
   tagline, then a 4/8 split: a sticky facts column (kind, metrics, stack in mono, source
   links) and the body (decision record first, then problem, solution, overview), then a

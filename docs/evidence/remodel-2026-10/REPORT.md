@@ -74,7 +74,28 @@ gone); the home page gains about 54 KB of WebP for the render.
 | CLS | 0.000 on every route and form factor in the Lighthouse pairs above |
 | Mobile LCP < 1.8 s | **Unverified.** CI runs the desktop preset only, and the local mobile runs (≈ 2.6 s, with origin/main at 2.3-2.8 s) were taken on a host at load ≈ 100, so they cannot prove or disprove it. This PR adds a mobile pass (`lighthouserc.mobile.json`, LCP ≤ 1800 ms reported as a warning, CLS ≤ 0.02 as an error), so the CI log is the measurement of record. |
 
-Adjacent debt found, not fixed here: `/<locale>/<unknown>` returns status 404 but the
+## Independent critique (Design Tooling seat wT:pC, advisory)
+
+[PR #167 comment](https://github.com/yolo-labz/portfolio/pull/167#issuecomment-6550216157):
+0 slop, Nielsen 23/32 against a live baseline of 20/32 (the seat's own score was 26/32).
+The responses:
+
+| Finding | Response |
+|---|---|
+| `max-w-[65ch]` measured 86-88 characters | One global measure: `main p, main dd, .list-disc > li` at 50ch, with the same value in the classes. Re-measured at 1280 on /en, the case study, /about and /thesis: no prose block exceeds 75 characters (`main p` max 72). |
+| Case-study column overflow | The facts column was already `lg:sticky lg:top-24`. Verified: after a 1200px scroll it holds at y = 96. The static first-viewport rule flags the long right column by design; the decision record is the first thing in it. |
+| Hyphen gaps | Confirmed and caused by this PR: global `tabular-nums` made Inter swap punctuation to tabular widths. Now scoped to `table, time`; the mobile render shows normal hyphens. |
+| `overused-font` (Inter) | Waived as `ignoreValues` in `apps/web/.impeccable/config.json`, with the reason recorded in DESIGN.md (brand-locked). |
+| Stragglers | `p { text-wrap: pretty }`. |
+| Target size under 24px | Locale buttons and Sonar badge links now have `min-h-6` (and `min-w-6`). |
+| Mascot vs. thesis | Answered in `directions.md`. |
+
+Adjacent debt found, not fixed here: /about "Code quality" shows SonarQube badges that
+render "Project has not been found" for several yolo-labz projects (badge keys or
+public visibility on the Sonar server). This predates the PR; it needs a server-side fix
+or the row hidden, and is logged in the Brain Storm save-state.
+
+ `/<locale>/<unknown>` returns status 404 but the
 HTML is Next's `__next_error__` shell, and the localized 404 renders only after
 hydration. It is the same on `origin/main` (checked against the main build), so it is
 not a regression of this change.
