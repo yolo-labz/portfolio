@@ -1,0 +1,26 @@
+── code-slop gate ─────────────────────────────
+aislop : score 48 · 0 error(s) · 12 warning(s)
+baseline: 8 unchanged dependency error(s) reported as warning(s)
+jscpd  : 3.539064413421504% duplication · 21 clone(s) · 289 line(s)
+ratchet: 0 relevant · 0 inherited · 0 regression(s)
+findings:
+  WARNING  package.json:0  security/vulnerable-dependency — postcss (high) — Upgrade to version 8.5.23 or later (4 advisories) — baseline on HEAD
+  WARNING  package.json:0  security/vulnerable-dependency — sharp (high) — Upgrade to version 0.35.5 or later (3 advisories) — baseline on HEAD
+  WARNING  package.json:0  security/vulnerable-dependency — next (critical) — Upgrade to version 16.4.1 or later (20 advisories) — baseline on HEAD
+  WARNING  package.json:0  security/vulnerable-dependency — brace-expansion (high) — Upgrade to version 5.0.12 or later (5 advisories) — baseline on HEAD
+  WARNING  package.json:0  security/vulnerable-dependency — nanoid (high) — Upgrade to version 3.3.18 or later (2 advisories) — baseline on HEAD
+  WARNING  package.json:0  security/vulnerable-dependency — browserslist (high) — Upgrade to version 4.28.7 or later (2 advisories) — baseline on HEAD
+  WARNING  package.json:0  security/vulnerable-dependency — baseline-browser-mapping (moderate) — Upgrade to version 2.11.0 or later
+  WARNING  package.json:0  security/vulnerable-dependency — source-map-js (high) — Upgrade to version 1.2.2 or later — baseline on HEAD
+  WARNING  package.json:0  security/vulnerable-dependency — @sentry/nextjs (critical) — Upgrade to version 10.75.2 or later — baseline on HEAD
+  WARNING  package.json:0  security/vulnerable-dependency — fast-uri (moderate) — Upgrade to version 3.1.9 or later (4 advisories)
+  WARNING  package.json:0  security/vulnerable-dependency — minimatch (moderate) — Upgrade to version 11.0.1 or later
+  WARNING  package.json:0  security/vulnerable-dependency — glob (moderate) — Upgrade to version 14.0.2 or later
+───────────────────────────────────────────────
+✓ PASS — no code-slop over threshold.
+── alignment gate ─────────────────────────────
+scanned: 4 changed code file(s) · 0 error(s) · 0 warning(s)
+───────────────────────────────────────────────
+✓ PASS — no completion-theater or scope violations over threshold.
+
+GATE_EXIT code-slop=0 alignment=0
