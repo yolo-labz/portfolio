@@ -8,7 +8,14 @@ import { Link } from "@/i18n/navigation";
 
 // Four capability entry points, not a popularity or uptime ranking. Keep the
 // catalogue as the source of truth; every other non-featured project stays below.
-const selectedSlugs = new Set(["wa", "serverless-data-api", "kokoro-speakd", "fand"]);
+// The six brand-positioning flagships are the cards above, so this shelf starts
+// after them and only offers repos whose source is public.
+const selectedSlugs = new Set([
+	"serverless-data-api",
+	"pedro-portfolio-recipes",
+	"claude-classroom-submit",
+	"linkedin-chrome-copilot",
+]);
 const selected = projects.filter((project) => !project.featured && selectedSlugs.has(project.slug));
 const remaining = projects.filter(
 	(project) => !project.featured && !selectedSlugs.has(project.slug),
@@ -51,9 +58,7 @@ export function OrganizationShowcase() {
 								</span>
 							</div>
 							<p className="mt-3 flex-1 text-sm leading-relaxed text-text-muted">
-								{project.slug === "kokoro-speakd"
-									? ui("speechSummary")
-									: t(`${project.slug}.tagline`)}
+								{t(`${project.slug}.tagline`)}
 							</p>
 							<div className="mt-5 flex flex-wrap gap-1.5">
 								{project.techStack.slice(0, 3).map((tech) => (

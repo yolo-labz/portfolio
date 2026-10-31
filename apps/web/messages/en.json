@@ -426,12 +426,11 @@
 		"selectedWorkLead": "Constraint, decision, measured outcome. The result alone teaches nothing.",
 		"openSourceStamp": "open-source & demos",
 		"openSourceHeading": "Open-source tools, by yolo-labz",
-		"openSourceLead": "Messaging, infrastructure, speech and system tools. Four starting points, with source code and implementation notes.",
+		"openSourceLead": "Four starting points with source code and implementation notes, chosen for breadth rather than popularity.",
 		"browseRepositories": "All repositories",
 		"selectedRepositories": "Selected yolo-labz projects",
 		"projectNotes": "Project notes",
 		"projectNotesLabel": "Project notes: {project}",
-		"speechSummary": "Single-user Unix-socket daemon that keeps Kokoro ready between speech requests, with interruptible local playback.",
 		"sourceCode": "Source",
 		"sourceCodeLabel": "Source code: {project}",
 		"moreProjects": "More projects & demos ({count})"

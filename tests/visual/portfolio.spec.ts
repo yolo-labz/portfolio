@@ -62,6 +62,23 @@ test.beforeEach(async ({ page }) => {
 	});
 });
 
+// Card-copy guard, moved here with the card it protects: kokoro-speakd is a
+// flagship card now, and the brand-positioning corpus marks its old latency
+// tokens as needs-measurement. The card must state the boundary instead.
+test("flagship cards state the audited one-liner, not a latency token", async ({ page }) => {
+	await page.goto("/en");
+	await page.waitForLoadState("networkidle");
+	// The card wrapper is the heading's parent: title, tagline, badges, metrics
+	// and the repo anchor all live inside it.
+	const card = page
+		.locator("#projects")
+		.getByRole("heading", { name: /kokoro-speakd/ })
+		.locator("..");
+	const copy = await card.innerText();
+	expect(copy).toContain("Keep Kokoro ready between speech requests");
+	expect(copy).not.toMatch(/200\s?ms|3[-\u2013]5\s?s/);
+});
+
 for (const { name, path } of PAGES) {
 	test(`${name} renders without visual regression`, async ({ page }) => {
 		await page.goto(path);
