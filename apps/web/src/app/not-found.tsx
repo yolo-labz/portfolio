@@ -27,15 +27,6 @@ export default function GlobalNotFound() {
 						textAlign: "center",
 					}}
 				>
-					<p
-						style={{
-							fontFamily: "ui-monospace, monospace",
-							color: "#fab387",
-							fontSize: "0.875rem",
-						}}
-					>
-						404
-					</p>
 					<h1
 						style={{ fontSize: "1.875rem", fontWeight: 600, letterSpacing: "-0.025em", margin: 0 }}
 					>

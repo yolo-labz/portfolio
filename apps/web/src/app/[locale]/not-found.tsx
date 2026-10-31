@@ -12,10 +12,9 @@ export default function NotFound() {
 	return (
 		<section aria-labelledby="not-found-heading" className="px-6 pt-24 pb-20 sm:pt-28">
 			<div className="mx-auto max-w-3xl">
-				<p className="font-mono text-sm text-warn">{t("label")}</p>
 				<h1
 					id="not-found-heading"
-					className="mt-3 text-step-5 leading-[1.1] font-semibold tracking-[-0.025em] text-balance"
+					className="text-step-5 leading-[1.1] font-semibold tracking-[-0.025em] text-balance"
 				>
 					{t("title")}
 				</h1>

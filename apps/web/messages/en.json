@@ -405,14 +405,12 @@
 		"moreProjects": "More projects & demos ({count})"
 	},
 	"NotFound": {
-		"label": "404",
 		"title": "Nothing is filed at this address",
 		"body": "The link may be old or mistyped. Every piece of work on the site is listed below.",
 		"home": "Back to the index",
 		"workHeading": "All work"
 	},
 	"ErrorPage": {
-		"label": "Error",
 		"title": "This page failed to render",
 		"body": "The error has been logged. Try once more, or go back to the index.",
 		"retry": "Try again",

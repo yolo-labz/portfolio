@@ -405,14 +405,12 @@
 		"moreProjects": "Mais projetos e demos ({count})"
 	},
 	"NotFound": {
-		"label": "404",
 		"title": "Nada arquivado neste endereço",
 		"body": "O link pode estar antigo ou com erro de digitação. Todo o trabalho do site está listado abaixo.",
 		"home": "Voltar ao índice",
 		"workHeading": "Todo o trabalho"
 	},
 	"ErrorPage": {
-		"label": "Erro",
 		"title": "Esta página não conseguiu renderizar",
 		"body": "O erro foi registrado. Tente mais uma vez ou volte ao índice.",
 		"retry": "Tentar de novo",
