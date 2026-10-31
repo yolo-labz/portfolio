@@ -90,19 +90,36 @@ for (const { name, path } of PAGES) {
 			await document.fonts.ready;
 		});
 
-		// Final settle: a full-document scroll cycle pushes the layout into
-		// its final state for any content-visibility / IntersectionObserver
-		// driven expansion (motion components, animated counters) that
-		// survives the eager-load pass.
-		await page.evaluate(async () => {
-			window.scrollTo(0, document.body.scrollHeight);
-			await new Promise((resolve) => setTimeout(resolve, 300));
-			window.scrollTo(0, 0);
-			await new Promise((resolve) => setTimeout(resolve, 300));
-		});
+		// Visit each section and wait for its actual content, not an arbitrary
+		// delay: a fast scroll can outrun hydration and leave motion cards blank.
+		// Instant scroll also avoids the old mid-smooth-scroll screenshot race.
+		for (const section of await page.locator("main section").all()) {
+			await section.evaluate((element) =>
+				element.scrollIntoView({ behavior: "instant", block: "start" }),
+			);
+			await expect
+				.poll(() =>
+					section.evaluate(
+						(element) =>
+							Array.from(element.querySelectorAll<HTMLElement>("[style]")).filter(
+								(child) => child.style.opacity && Number(getComputedStyle(child).opacity) < 1,
+							).length,
+					),
+				)
+				.toBe(0);
+		}
+		await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+		await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 
 		await expect(page).toHaveScreenshot(`${name}.png`, {
 			fullPage: true,
 		});
+		// Retain actual pixels for hydration/stability evidence, including passing runs.
+		if (name.startsWith("home")) {
+			await test.info().attach(`${name}-settled`, {
+				body: await page.screenshot({ fullPage: true, animations: "disabled", scale: "css" }),
+				contentType: "image/png",
+			});
+		}
 	});
 }

@@ -1,0 +1,60 @@
+
+> @portfolio/web@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/apps/web
+> next build
+
+[@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead. (Not supported with Turbopack.)
+▲ Next.js 16.2.10 (Turbopack)
+- Experiments (use with caution):
+  · clientTraceMetadata
+  · optimizePackageImports
+
+  Creating an optimized production build ...
+[@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead. (Not supported with Turbopack.)
+✓ Compiled successfully in 7.6s
+  Running next.config.js provided runAfterProductionCompile ...
+✓ Completed runAfterProductionCompile in 639ms
+  Running TypeScript ...
+  Finished TypeScript in 8.7s ...
+  Collecting page data using 17 workers ...
+  Generating static pages using 17 workers (0/63) ...
+  Generating static pages using 17 workers (15/63)
+  Generating static pages using 17 workers (31/63)
+  Generating static pages using 17 workers (47/63)
+✓ Generating static pages using 17 workers (63/63) in 1618ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ● /[locale]
+│ ├ /en
+│ ├ /pt
+│ └ /es
+├ ƒ /[locale]/[...rest]
+├ ● /[locale]/about
+│ ├ /en/about
+│ ├ /pt/about
+│ └ /es/about
+├ ● /[locale]/projects/[slug]
+│ ├ /en/projects/compliance-tax-agent
+│ ├ /en/projects/event-driven-retail
+│ ├ /en/projects/legal-domain-rag
+│ └ [+42 more paths]
+├ ● /-/projects/-/opengraph-image
+├ ● /[locale]/thesis
+│ ├ /en/thesis
+│ ├ /pt/thesis
+│ └ /es/thesis
+├ ƒ /api/health
+├ ○ /apple-icon
+├ ○ /icon
+├ ○ /manifest.webmanifest
+├ ○ /opengraph-image
+├ ○ /robots.txt
+└ ○ /sitemap.xml
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand

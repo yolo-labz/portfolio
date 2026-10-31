@@ -1,0 +1,19 @@
+Scope: all 10 workspace projects
+Lockfile is up to date, resolution step is skipped
+Packages: +306
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Progress: resolved 0, reused 73, downloaded 0, added 0
+Progress: resolved 0, reused 303, downloaded 0, added 113
+Progress: resolved 0, reused 305, downloaded 0, added 303
+Progress: resolved 0, reused 305, downloaded 0, added 306, done
+
+╭ Warning ─────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│   Ignored build scripts: @parcel/watcher@2.6.0, @sentry/cli@2.58.6,          │
+│   @swc/core@1.16.2, sharp@0.34.5.                                            │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+│   to run scripts.                                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Done in 5.3s using pnpm v10.28.2

@@ -425,6 +425,15 @@
 		"selectedWorkHeading": "Trabalhos selecionados",
 		"selectedWorkLead": "A restrição, a decisão e o resultado medido. Só o resultado final não ensina nada.",
 		"openSourceStamp": "open-source & demos",
-		"openSourceHeading": "Open-source & demos"
+		"openSourceHeading": "Ferramentas open-source da yolo-labz",
+		"openSourceLead": "Mensageria, infraestrutura, voz e ferramentas de sistema. Quatro pontos de partida, com código-fonte e notas de implementação.",
+		"browseRepositories": "Todos os repositórios",
+		"selectedRepositories": "Projetos selecionados da yolo-labz",
+		"projectNotes": "Ver projeto",
+		"projectNotesLabel": "Notas do projeto: {project}",
+		"speechSummary": "Daemon de socket Unix para um único usuário: mantém o Kokoro pronto entre pedidos de fala, com reprodução local interrompível.",
+		"sourceCode": "Código",
+		"sourceCodeLabel": "Código-fonte: {project}",
+		"moreProjects": "Mais projetos e demos ({count})"
 	}
 }

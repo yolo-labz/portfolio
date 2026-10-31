@@ -1,0 +1,33 @@
+
+Running 14 tests using 1 worker
+
+A snapshot doesn't exist at /work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-en-chromium-desktop.png, writing actual.
+  ✓   1 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase en: selection, navigation, keyboard and contrast (3.4s)
+A snapshot doesn't exist at /work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-pt-chromium-desktop.png, writing actual.
+  ✓   2 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase pt: selection, navigation, keyboard and contrast (3.4s)
+A snapshot doesn't exist at /work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-es-chromium-desktop.png, writing actual.
+  ✓   3 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase es: selection, navigation, keyboard and contrast (3.4s)
+A snapshot doesn't exist at /work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-320-expanded-chromium-desktop.png, writing actual.
+  ✓   4 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:115:5 › organization showcase reflows at 320px without clipping (1.4s)
+A snapshot doesn't exist at /work/tests/visual/portfolio.spec.ts-snapshots/home-chromium-desktop.png, writing actual.
+  ✓   5 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression (10.6s)
+A snapshot doesn't exist at /work/tests/visual/portfolio.spec.ts-snapshots/home-pt-chromium-desktop.png, writing actual.
+  ✓   6 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression (10.3s)
+A snapshot doesn't exist at /work/tests/visual/portfolio.spec.ts-snapshots/home-es-chromium-desktop.png, writing actual.
+  ✓   7 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression (10.2s)
+A snapshot doesn't exist at /work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-en-mobile.png, writing actual.
+  ✓   8 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase en: selection, navigation, keyboard and contrast (3.1s)
+A snapshot doesn't exist at /work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-pt-mobile.png, writing actual.
+  ✓   9 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase pt: selection, navigation, keyboard and contrast (2.8s)
+A snapshot doesn't exist at /work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-es-mobile.png, writing actual.
+  ✓  10 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase es: selection, navigation, keyboard and contrast (2.8s)
+A snapshot doesn't exist at /work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-320-expanded-mobile.png, writing actual.
+  ✓  11 [mobile] › tests/visual/organization-showcase.spec.ts:115:5 › organization showcase reflows at 320px without clipping (1.5s)
+A snapshot doesn't exist at /work/tests/visual/portfolio.spec.ts-snapshots/home-mobile.png, writing actual.
+  ✓  12 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression (8.8s)
+A snapshot doesn't exist at /work/tests/visual/portfolio.spec.ts-snapshots/home-pt-mobile.png, writing actual.
+  ✓  13 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression (9.8s)
+A snapshot doesn't exist at /work/tests/visual/portfolio.spec.ts-snapshots/home-es-mobile.png, writing actual.
+  ✓  14 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression (10.1s)
+
+  14 passed (1.4m)

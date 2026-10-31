@@ -1,0 +1,326 @@
+
+> @portfolio/root@ lint /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase
+> biome check . && node scripts/voice-lint.mjs
+
+biome.json:2:13 deserialize ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  i The configuration schema version does not match the CLI version 2.5.6
+
+    1 │ {
+  > 2 │ 	"$schema": "https://biomejs.dev/schemas/2.5.4/schema.json",
+      │ 	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    3 │ 	"vcs": {
+    4 │ 		"enabled": true,
+
+  i   Expected:                     2.5.6
+      Found:                        2.5.4
+
+
+  i Run the command biome migrate to migrate the configuration file.
+
+
+Checked 137 files in 173ms. No fixes applied.
+Found 1 info.
+soft en Thesis.p2: flat burstiness (CV 0.14 over 5 sentences)
+soft en Thesis.p3: flat burstiness (CV 0.34 over 5 sentences)
+soft en Thesis.p4: anaphora ("a …" x3)
+soft en Thesis.p4: flat burstiness (CV 0.34 over 7 sentences)
+soft en Projects.compliance-tax-agent.description: flat burstiness (CV 0.32 over 5 sentences)
+soft en Projects.compliance-tax-agent.decision: flat burstiness (CV 0.18 over 4 sentences)
+soft en Projects.compliance-tax-agent.outcome: flat burstiness (CV 0.32 over 4 sentences)
+soft en Projects.event-driven-retail.constraint: anaphora ("the …" x3)
+soft en Projects.legal-domain-rag.description: flat burstiness (CV 0.17 over 4 sentences)
+soft en Projects.ai-document-processor.description: flat burstiness (CV 0.24 over 7 sentences)
+soft en Projects.wa.description: flat burstiness (CV 0.35 over 4 sentences)
+soft en Projects.wa.solutionSummary: flat burstiness (CV 0.25 over 4 sentences)
+soft en Projects.serverless-data-api.solutionSummary: flat burstiness (CV 0.12 over 5 sentences)
+soft en Projects.realestate-price-tracker.description: flat burstiness (CV 0.28 over 4 sentences)
+soft en Projects.linkedin-chrome-copilot.solutionSummary: flat burstiness (CV 0.21 over 4 sentences)
+soft en Projects.pedro-portfolio-recipes.solutionSummary: flat burstiness (CV 0.24 over 4 sentences)
+soft pt Thesis.p2: flat burstiness (CV 0.23 over 5 sentences)
+soft pt Thesis.p4: anaphora ("um …" x3)
+soft pt Projects.compliance-tax-agent.description: flat burstiness (CV 0.25 over 5 sentences)
+soft pt Projects.compliance-tax-agent.solutionSummary: flat burstiness (CV 0.31 over 6 sentences)
+soft pt Projects.compliance-tax-agent.decision: flat burstiness (CV 0.20 over 4 sentences)
+soft pt Projects.event-driven-retail.solutionSummary: anaphora ("o …" x3)
+soft pt Projects.legal-domain-rag.description: flat burstiness (CV 0.16 over 4 sentences)
+soft pt Projects.ai-document-processor.description: flat burstiness (CV 0.25 over 7 sentences)
+soft pt Projects.wa.solutionSummary: flat burstiness (CV 0.26 over 4 sentences)
+soft pt Projects.serverless-data-api.solutionSummary: flat burstiness (CV 0.19 over 5 sentences)
+soft pt Projects.realestate-price-tracker.description: flat burstiness (CV 0.32 over 4 sentences)
+soft pt Projects.pedro-portfolio-recipes.solutionSummary: flat burstiness (CV 0.26 over 4 sentences)
+soft es Thesis.p2: flat burstiness (CV 0.20 over 5 sentences)
+soft es Thesis.p4: anaphora ("un …" x3)
+soft es Projects.compliance-tax-agent.description: flat burstiness (CV 0.28 over 5 sentences)
+soft es Projects.compliance-tax-agent.decision: flat burstiness (CV 0.19 over 4 sentences)
+soft es Projects.legal-domain-rag.description: flat burstiness (CV 0.08 over 4 sentences)
+soft es Projects.ai-document-processor.description: flat burstiness (CV 0.24 over 7 sentences)
+soft es Projects.wa.solutionSummary: flat burstiness (CV 0.21 over 4 sentences)
+soft es Projects.serverless-data-api.solutionSummary: flat burstiness (CV 0.14 over 5 sentences)
+soft es Projects.exec-job-board.solutionSummary: flat burstiness (CV 0.31 over 5 sentences)
+soft es Projects.realestate-price-tracker.description: flat burstiness (CV 0.33 over 4 sentences)
+soft es Projects.pedro-portfolio-recipes.solutionSummary: flat burstiness (CV 0.24 over 4 sentences)
+voice-lint: clean (0 hard, 39 advisory warning(s)).
+
+> @portfolio/root@ typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase
+> turbo typecheck --concurrency=1
+
+• turbo 2.10.5
+
+   • Packages in scope: @portfolio/ai-document-processor, @portfolio/ai-document-processor-dashboard, @portfolio/exec-job-board, @portfolio/exec-job-board-site, @portfolio/realestate-price-tracker, @portfolio/realestate-tracker-dashboard, @portfolio/serverless-data-api, @portfolio/ui, @portfolio/web
+   • Running typecheck in 9 packages
+   • Remote caching disabled, using shared worktree cache
+
+@portfolio/serverless-data-api:typecheck: cache miss, executing 1fc31199f2a4036a
+@portfolio/serverless-data-api:typecheck:
+@portfolio/serverless-data-api:typecheck: > @portfolio/serverless-data-api@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/serverless-data-api
+@portfolio/serverless-data-api:typecheck: > echo 'Typecheck not applicable for Terraform'
+@portfolio/serverless-data-api:typecheck:
+@portfolio/serverless-data-api:typecheck: Typecheck not applicable for Terraform
+@portfolio/exec-job-board-site:typecheck: cache miss, executing 8224f618527da0a6
+@portfolio/exec-job-board-site:typecheck:
+@portfolio/exec-job-board-site:typecheck: > @portfolio/exec-job-board-site@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/exec-job-board/site
+@portfolio/exec-job-board-site:typecheck: > tsc --noEmit
+@portfolio/exec-job-board-site:typecheck:
+@portfolio/realestate-price-tracker:typecheck: cache miss, executing a160980521d3b27c
+@portfolio/realestate-price-tracker:typecheck:
+@portfolio/realestate-price-tracker:typecheck: > @portfolio/realestate-price-tracker@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/realestate-price-tracker
+@portfolio/realestate-price-tracker:typecheck: > echo 'Typecheck handled per-service'
+@portfolio/realestate-price-tracker:typecheck:
+@portfolio/realestate-price-tracker:typecheck: Typecheck handled per-service
+@portfolio/exec-job-board:typecheck: cache miss, executing da840b9ba6e52588
+@portfolio/exec-job-board:typecheck:
+@portfolio/exec-job-board:typecheck: > @portfolio/exec-job-board@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/exec-job-board
+@portfolio/exec-job-board:typecheck: > cd site && pnpm typecheck
+@portfolio/exec-job-board:typecheck:
+@portfolio/exec-job-board:typecheck:
+@portfolio/exec-job-board:typecheck: > @portfolio/exec-job-board-site@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/exec-job-board/site
+@portfolio/exec-job-board:typecheck: > tsc --noEmit
+@portfolio/exec-job-board:typecheck:
+@portfolio/ui:typecheck: cache miss, executing 30715c84a91aacc3
+@portfolio/ui:typecheck:
+@portfolio/ui:typecheck: > @portfolio/ui@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/packages/ui
+@portfolio/ui:typecheck: > tsc --noEmit
+@portfolio/ui:typecheck:
+@portfolio/ai-document-processor:typecheck: cache miss, executing f31c63229a1b5f62
+@portfolio/ai-document-processor:typecheck:
+@portfolio/ai-document-processor:typecheck: > @portfolio/ai-document-processor@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/ai-document-processor
+@portfolio/ai-document-processor:typecheck: > echo 'Typecheck handled per-service'
+@portfolio/ai-document-processor:typecheck:
+@portfolio/ai-document-processor:typecheck: Typecheck handled per-service
+@portfolio/web:typecheck: cache miss, executing 87855a1c87adcb42
+@portfolio/web:typecheck:
+@portfolio/web:typecheck: > @portfolio/web@0.1.0 typecheck /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/apps/web
+@portfolio/web:typecheck: > tsc --noEmit
+@portfolio/web:typecheck:
+
+ Tasks:    7 successful, 7 total
+Cached:    0 cached, 7 total
+  Time:    40.18s
+
+
+> @portfolio/root@ build /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase
+> turbo build --concurrency=1
+
+• turbo 2.10.5
+
+   • Packages in scope: @portfolio/ai-document-processor, @portfolio/ai-document-processor-dashboard, @portfolio/exec-job-board, @portfolio/exec-job-board-site, @portfolio/realestate-price-tracker, @portfolio/realestate-tracker-dashboard, @portfolio/serverless-data-api, @portfolio/ui, @portfolio/web
+   • Running build in 9 packages
+   • Remote caching disabled, using shared worktree cache
+
+@portfolio/realestate-tracker-dashboard:build: cache miss, executing c8baa1b525d876c7
+@portfolio/realestate-tracker-dashboard:build:
+@portfolio/realestate-tracker-dashboard:build: > @portfolio/realestate-tracker-dashboard@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/realestate-price-tracker/dashboard
+@portfolio/realestate-tracker-dashboard:build: > next build
+@portfolio/realestate-tracker-dashboard:build:
+@portfolio/realestate-tracker-dashboard:build: ▲ Next.js 16.2.10 (Turbopack)
+@portfolio/realestate-tracker-dashboard:build:
+@portfolio/realestate-tracker-dashboard:build:   Creating an optimized production build ...
+@portfolio/realestate-tracker-dashboard:build: ✓ Compiled successfully in 5.4s
+@portfolio/realestate-tracker-dashboard:build:   Running TypeScript ...
+@portfolio/realestate-tracker-dashboard:build:   Finished TypeScript in 5.6s ...
+@portfolio/realestate-tracker-dashboard:build:   Collecting page data using 4 workers ...
+@portfolio/realestate-tracker-dashboard:build:   Generating static pages using 4 workers (0/3) ...
+@portfolio/realestate-tracker-dashboard:build: ✓ Generating static pages using 4 workers (3/3) in 696ms
+@portfolio/realestate-tracker-dashboard:build:   Finalizing page optimization ...
+@portfolio/realestate-tracker-dashboard:build:
+@portfolio/realestate-tracker-dashboard:build: Route (app)
+@portfolio/realestate-tracker-dashboard:build: ┌ ○ /
+@portfolio/realestate-tracker-dashboard:build: └ ○ /_not-found
+@portfolio/realestate-tracker-dashboard:build:
+@portfolio/realestate-tracker-dashboard:build:
+@portfolio/realestate-tracker-dashboard:build: ○  (Static)  prerendered as static content
+@portfolio/realestate-tracker-dashboard:build:
+@portfolio/serverless-data-api:build: cache miss, executing 910f0952c1d9d07a
+@portfolio/serverless-data-api:build:
+@portfolio/serverless-data-api:build: > @portfolio/serverless-data-api@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/serverless-data-api
+@portfolio/serverless-data-api:build: > echo 'Deploy via: cd infra && terraform apply'
+@portfolio/serverless-data-api:build:
+@portfolio/serverless-data-api:build: Deploy via: cd infra && terraform apply
+@portfolio/exec-job-board-site:build: cache miss, executing 42774880fdbcd365
+@portfolio/exec-job-board-site:build:
+@portfolio/exec-job-board-site:build: > @portfolio/exec-job-board-site@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/exec-job-board/site
+@portfolio/exec-job-board-site:build: > next build
+@portfolio/exec-job-board-site:build:
+@portfolio/exec-job-board-site:build: [@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead. (Not supported with Turbopack.)
+@portfolio/exec-job-board-site:build: ▲ Next.js 16.2.10 (Turbopack)
+@portfolio/exec-job-board-site:build: - Experiments (use with caution):
+@portfolio/exec-job-board-site:build:   · clientTraceMetadata
+@portfolio/exec-job-board-site:build:
+@portfolio/exec-job-board-site:build:   Creating an optimized production build ...
+@portfolio/exec-job-board-site:build: [@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead. (Not supported with Turbopack.)
+@portfolio/exec-job-board-site:build: Turbopack build encountered 1 warnings:
+@portfolio/exec-job-board-site:build: ./projects/exec-job-board/site/next.config.ts
+@portfolio/exec-job-board-site:build: Encountered unexpected file in NFT list
+@portfolio/exec-job-board-site:build: A file was traced that indicates that the whole project was traced unintentionally. Somewhere in the import trace below, there are:
+@portfolio/exec-job-board-site:build: - filesystem operations (like path.join, path.resolve or fs.readFile), or
+@portfolio/exec-job-board-site:build: - very dynamic requires (like require('./' + foo)).
+@portfolio/exec-job-board-site:build: To resolve this, you can
+@portfolio/exec-job-board-site:build: - remove them if possible, or
+@portfolio/exec-job-board-site:build: - only use them in development, or
+@portfolio/exec-job-board-site:build: - make sure they are statically scoped to some subfolder: path.join(process.cwd(), 'data', bar), or
+@portfolio/exec-job-board-site:build: - add ignore comments: path.join(/*turbopackIgnore: true*/ process.cwd(), bar)
+@portfolio/exec-job-board-site:build:
+@portfolio/exec-job-board-site:build: Import trace:
+@portfolio/exec-job-board-site:build:   App Route:
+@portfolio/exec-job-board-site:build:     ./projects/exec-job-board/site/next.config.ts
+@portfolio/exec-job-board-site:build:     ./projects/exec-job-board/site/src/app/feed.xml/route.ts
+@portfolio/exec-job-board-site:build:
+@portfolio/exec-job-board-site:build:
+@portfolio/exec-job-board-site:build: ✓ Compiled successfully in 6.0s
+@portfolio/exec-job-board-site:build:   Running next.config.js provided runAfterProductionCompile ...
+@portfolio/exec-job-board-site:build: ✓ Completed runAfterProductionCompile in 719ms
+@portfolio/exec-job-board-site:build:   Running TypeScript ...
+@portfolio/exec-job-board-site:build:   Finished TypeScript in 4.9s ...
+@portfolio/exec-job-board-site:build:   Collecting page data using 6 workers ...
+@portfolio/exec-job-board-site:build:   Generating static pages using 6 workers (0/5) ...
+@portfolio/exec-job-board-site:build:   Generating static pages using 6 workers (1/5)
+@portfolio/exec-job-board-site:build:   Generating static pages using 6 workers (2/5)
+@portfolio/exec-job-board-site:build:   Generating static pages using 6 workers (3/5)
+@portfolio/exec-job-board-site:build: ✓ Generating static pages using 6 workers (5/5) in 741ms
+@portfolio/exec-job-board-site:build:   Finalizing page optimization ...
+@portfolio/exec-job-board-site:build:
+@portfolio/exec-job-board-site:build: Route (app)
+@portfolio/exec-job-board-site:build: ┌ ○ /
+@portfolio/exec-job-board-site:build: ├ ○ /_not-found
+@portfolio/exec-job-board-site:build: ├ ƒ /api/health
+@portfolio/exec-job-board-site:build: └ ƒ /feed.xml
+@portfolio/exec-job-board-site:build:
+@portfolio/exec-job-board-site:build:
+@portfolio/exec-job-board-site:build: ○  (Static)   prerendered as static content
+@portfolio/exec-job-board-site:build: ƒ  (Dynamic)  server-rendered on demand
+@portfolio/exec-job-board-site:build:
+@portfolio/ai-document-processor:build: cache miss, executing df3d4866451cf791
+@portfolio/ai-document-processor:build:
+@portfolio/ai-document-processor:build: > @portfolio/ai-document-processor@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/ai-document-processor
+@portfolio/ai-document-processor:build: > echo 'Build handled per-service'
+@portfolio/ai-document-processor:build:
+@portfolio/ai-document-processor:build: Build handled per-service
+@portfolio/realestate-price-tracker:build: cache miss, executing fdd3637a594a7d5a
+@portfolio/realestate-price-tracker:build:
+@portfolio/realestate-price-tracker:build: > @portfolio/realestate-price-tracker@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/realestate-price-tracker
+@portfolio/realestate-price-tracker:build: > echo 'Build handled via Docker'
+@portfolio/realestate-price-tracker:build:
+@portfolio/realestate-price-tracker:build: Build handled via Docker
+@portfolio/ai-document-processor-dashboard:build: cache miss, executing 94e03d2f27d9517c
+@portfolio/ai-document-processor-dashboard:build:
+@portfolio/ai-document-processor-dashboard:build: > @portfolio/ai-document-processor-dashboard@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/ai-document-processor/dashboard
+@portfolio/ai-document-processor-dashboard:build: > next build
+@portfolio/ai-document-processor-dashboard:build:
+@portfolio/ai-document-processor-dashboard:build: ▲ Next.js 16.2.10 (Turbopack)
+@portfolio/ai-document-processor-dashboard:build:
+@portfolio/ai-document-processor-dashboard:build:   Creating an optimized production build ...
+@portfolio/ai-document-processor-dashboard:build: ✓ Compiled successfully in 4.5s
+@portfolio/ai-document-processor-dashboard:build:   Running TypeScript ...
+@portfolio/ai-document-processor-dashboard:build:   Finished TypeScript in 5.3s ...
+@portfolio/ai-document-processor-dashboard:build:   Collecting page data using 5 workers ...
+@portfolio/ai-document-processor-dashboard:build:   Generating static pages using 5 workers (0/3) ...
+@portfolio/ai-document-processor-dashboard:build: ✓ Generating static pages using 5 workers (3/3) in 768ms
+@portfolio/ai-document-processor-dashboard:build:   Finalizing page optimization ...
+@portfolio/ai-document-processor-dashboard:build:
+@portfolio/ai-document-processor-dashboard:build: Route (app)
+@portfolio/ai-document-processor-dashboard:build: ┌ ○ /
+@portfolio/ai-document-processor-dashboard:build: ├ ○ /_not-found
+@portfolio/ai-document-processor-dashboard:build: └ ƒ /documents/[id]
+@portfolio/ai-document-processor-dashboard:build:
+@portfolio/ai-document-processor-dashboard:build:
+@portfolio/ai-document-processor-dashboard:build: ○  (Static)   prerendered as static content
+@portfolio/ai-document-processor-dashboard:build: ƒ  (Dynamic)  server-rendered on demand
+@portfolio/ai-document-processor-dashboard:build:
+@portfolio/exec-job-board:build: cache miss, executing bdaa716004f1cee1
+@portfolio/exec-job-board:build:
+@portfolio/exec-job-board:build: > @portfolio/exec-job-board@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/projects/exec-job-board
+@portfolio/exec-job-board:build: > echo 'Build handled by site workspace'
+@portfolio/exec-job-board:build:
+@portfolio/exec-job-board:build: Build handled by site workspace
+@portfolio/web:build: cache miss, executing 29c0d79f9c15f1d9
+@portfolio/web:build:
+@portfolio/web:build: > @portfolio/web@0.1.0 build /home/notroot/Documents/Code/yolo-labz/portfolio-20260928-org-showcase/apps/web
+@portfolio/web:build: > next build
+@portfolio/web:build:
+@portfolio/web:build: [@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead. (Not supported with Turbopack.)
+@portfolio/web:build: ▲ Next.js 16.2.10 (Turbopack)
+@portfolio/web:build: - Experiments (use with caution):
+@portfolio/web:build:   · clientTraceMetadata
+@portfolio/web:build:   · optimizePackageImports
+@portfolio/web:build:
+@portfolio/web:build:   Creating an optimized production build ...
+@portfolio/web:build: [@sentry/nextjs] DEPRECATION WARNING: disableLogger is deprecated and will be removed in a future version. Use webpack.treeshake.removeDebugLogging instead. (Not supported with Turbopack.)
+@portfolio/web:build: ✓ Compiled successfully in 15.1s
+@portfolio/web:build:   Running next.config.js provided runAfterProductionCompile ...
+@portfolio/web:build: ✓ Completed runAfterProductionCompile in 474ms
+@portfolio/web:build:   Running TypeScript ...
+@portfolio/web:build:   Finished TypeScript in 7.8s ...
+@portfolio/web:build:   Collecting page data using 17 workers ...
+@portfolio/web:build:   Generating static pages using 17 workers (0/63) ...
+@portfolio/web:build:   Generating static pages using 17 workers (15/63)
+@portfolio/web:build:   Generating static pages using 17 workers (31/63)
+@portfolio/web:build:   Generating static pages using 17 workers (47/63)
+@portfolio/web:build: ✓ Generating static pages using 17 workers (63/63) in 1669ms
+@portfolio/web:build:   Finalizing page optimization ...
+@portfolio/web:build:
+@portfolio/web:build: Route (app)
+@portfolio/web:build: ┌ ○ /_not-found
+@portfolio/web:build: ├ ● /[locale]
+@portfolio/web:build: │ ├ /en
+@portfolio/web:build: │ ├ /pt
+@portfolio/web:build: │ └ /es
+@portfolio/web:build: ├ ƒ /[locale]/[...rest]
+@portfolio/web:build: ├ ● /[locale]/about
+@portfolio/web:build: │ ├ /en/about
+@portfolio/web:build: │ ├ /pt/about
+@portfolio/web:build: │ └ /es/about
+@portfolio/web:build: ├ ● /[locale]/projects/[slug]
+@portfolio/web:build: │ ├ /en/projects/compliance-tax-agent
+@portfolio/web:build: │ ├ /en/projects/event-driven-retail
+@portfolio/web:build: │ ├ /en/projects/legal-domain-rag
+@portfolio/web:build: │ └ [+42 more paths]
+@portfolio/web:build: ├ ● /-/projects/-/opengraph-image
+@portfolio/web:build: ├ ● /[locale]/thesis
+@portfolio/web:build: │ ├ /en/thesis
+@portfolio/web:build: │ ├ /pt/thesis
+@portfolio/web:build: │ └ /es/thesis
+@portfolio/web:build: ├ ƒ /api/health
+@portfolio/web:build: ├ ○ /apple-icon
+@portfolio/web:build: ├ ○ /icon
+@portfolio/web:build: ├ ○ /manifest.webmanifest
+@portfolio/web:build: ├ ○ /opengraph-image
+@portfolio/web:build: ├ ○ /robots.txt
+@portfolio/web:build: └ ○ /sitemap.xml
+@portfolio/web:build:
+@portfolio/web:build:
+@portfolio/web:build: ƒ Proxy (Middleware)
+@portfolio/web:build:
+@portfolio/web:build: ○  (Static)   prerendered as static content
+@portfolio/web:build: ●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+@portfolio/web:build: ƒ  (Dynamic)  server-rendered on demand
+@portfolio/web:build:
+
+ Tasks:    8 successful, 8 total
+Cached:    0 cached, 8 total
+  Time:    1m28.11s
+
+ WARNING  no output files found for task @portfolio/ai-document-processor#build. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @portfolio/exec-job-board#build. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @portfolio/realestate-price-tracker#build. Please check your `outputs` key in `turbo.json`
+ WARNING  no output files found for task @portfolio/serverless-data-api#build. Please check your `outputs` key in `turbo.json`

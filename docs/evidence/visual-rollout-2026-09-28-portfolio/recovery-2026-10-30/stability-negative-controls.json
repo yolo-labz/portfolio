@@ -1,0 +1,17 @@
+[
+	{
+		"probe": "skipped",
+		"rejected": true,
+		"reason": "{'startTime': '2026-10-31T02:11:19.679Z', 'duration': 113272.463, 'expected': 12, 'skipped': 1, 'unexpected': 0, 'flaky': 0}"
+	},
+	{
+		"probe": "missing-capture",
+		"rejected": true,
+		"reason": "Missing capture: home-chromium-desktop"
+	},
+	{
+		"probe": "changed-pixels",
+		"rejected": true,
+		"reason": "Unstable pixels: home-chromium-desktop"
+	}
+]
