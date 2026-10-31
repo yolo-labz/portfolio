@@ -1,14 +1,11 @@
-"use client";
-
-import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { FigStamp } from "@/components/shared/fig-stamp";
-import { useIntersection } from "@/hooks/use-intersection";
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { ArrowRight } from "@/components/shared/icons";
+import { CONTACT_EMAIL } from "@/lib/constants";
 
 // Productized, deliverable-scoped engagements (not job titles, not billed hours).
-// Grouped by the Pattern → Pipeline → Platform trust ladder. No rates anywhere —
-// pricing stays in 1:1 proposals per the positioning canon.
+// Grouped by the Pattern → Pipeline → Platform trust ladder. No rates anywhere:
+// pricing stays in 1:1 proposals per the positioning canon. Persuade surface:
+// one ruled ladder, the rung on the left, its offers as rows on the right.
 interface Offer {
 	name: string;
 	scope: string;
@@ -23,63 +20,60 @@ interface Rung {
 export function ServicesLadder() {
 	const t = useTranslations("Services");
 	const rungs = t.raw("rungs") as Rung[];
-	const { ref, isVisible } = useIntersection(0.1);
-	const reduced = useReducedMotion();
 
 	return (
 		<section
 			id="services"
 			aria-labelledby="services-heading"
-			className="bg-bg-elevated px-6 py-24"
-			ref={ref}
+			className="border-t border-border bg-bg-elevated px-6 py-20 sm:py-28"
 		>
 			<div className="mx-auto max-w-6xl">
-				<div className="mb-12">
-					<FigStamp n="05" label={t("figLabel")} />
-					<h2 id="services-heading" className="mt-3 text-3xl font-bold tracking-tight">
+				<div className="grid gap-6 lg:grid-cols-12 lg:gap-12">
+					<h2
+						id="services-heading"
+						className="text-step-4 leading-tight font-semibold tracking-[-0.02em] text-balance lg:col-span-5"
+					>
 						{t("heading")}
 					</h2>
-					<p className="mt-2 max-w-2xl text-text-muted">{t("intro")}</p>
+					<p className="max-w-[65ch] text-base leading-relaxed text-text-muted lg:col-span-7">
+						{t("intro")}
+					</p>
 				</div>
 
-				<div className="space-y-12">
-					{rungs.map((rung, ri) => (
-						<motion.div
+				<ol className="mt-14 border-t border-border">
+					{rungs.map((rung) => (
+						<li
 							key={rung.rung}
-							initial={reduced ? {} : { opacity: 0, y: 20 }}
-							animate={isVisible ? { opacity: 1, y: 0 } : {}}
-							transition={{
-								duration: 0.5,
-								delay: reduced ? 0 : ri * 0.1,
-								ease: [0.22, 1, 0.36, 1],
-							}}
+							className="grid gap-x-12 gap-y-4 border-b border-border py-8 lg:grid-cols-12"
 						>
-							<div className="mb-4 flex items-baseline gap-3 border-l-2 border-l-accent pl-3">
-								<span className="font-mono text-sm font-semibold text-accent">{rung.rung}</span>
-								<span className="font-mono text-xs text-text-muted">{rung.tag}</span>
+							<div className="lg:col-span-3">
+								<h3 className="text-step-1 font-semibold text-accent">{rung.rung}</h3>
+								<p className="text-sm text-text-muted">{rung.tag}</p>
 							</div>
-							<div className="grid gap-6 md:grid-cols-2">
+							<ul className="grid gap-8 md:grid-cols-2 lg:col-span-9">
 								{rung.offers.map((offer) => (
-									<div key={offer.name} className="rounded-lg border border-border bg-bg-card p-6">
-										<h3 className="font-semibold">{offer.name}</h3>
+									<li key={offer.name}>
+										<h4 className="font-medium text-text">{offer.name}</h4>
 										<p className="mt-2 text-sm leading-relaxed text-text-muted">{offer.scope}</p>
 										<p className="mt-3 text-sm leading-relaxed text-text">
-											<span className="font-mono text-xs uppercase tracking-wide text-accent">
-												{t("outcomeLabel")}{" "}
-											</span>
+											<span className="font-medium text-accent">{t("outcomeLabel")}</span>{" "}
 											{offer.outcome}
 										</p>
-									</div>
+									</li>
 								))}
-							</div>
-						</motion.div>
+							</ul>
+						</li>
 					))}
-				</div>
+				</ol>
 
-				<p className="mt-12 text-sm text-text-muted">
-					{t("footer")}{" "}
-					<a href="mailto:pedrobalbino@proton.me" className="font-mono text-accent hover:underline">
+				<p className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted">
+					{t("footer")}
+					<a
+						href={`mailto:${CONTACT_EMAIL}`}
+						className="inline-flex min-h-11 items-center gap-2 font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent"
+					>
 						{t("footerCta")}
+						<ArrowRight />
 					</a>
 				</p>
 			</div>

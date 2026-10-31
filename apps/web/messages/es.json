@@ -18,53 +18,27 @@
 		"es": "Español"
 	},
 	"Hero": {
-		"eyebrow": "Arquitectura de IA con grado de cumplimiento · RAG · agentes · MCP",
 		"headingLead": "Los stacks de IA reprueban su primera auditoría en tres puntos:",
 		"headingSeams": "trazabilidad del prompt, origen de lo recuperado y prueba del resultado.",
-		"body": "Construyo sistemas RAG y de agentes para cargas reguladas: banca, fiscal y legal. El rastro de auditoría es el entregable. Un número sin fuente es una falla de cumplimiento, así que la arquitectura nunca le confía al modelo que recuerde dónde leyó algo. Construido conforme a LGPD, BCB 4.893 y la obligación de registro del Artículo 12 del EU AI Act.",
-		"ctaPrimary": "Cuéntame el caso",
-		"ctaSecondary": "Lee los informes de arquitectura",
-		"stats": [
-			{
-				"value": 6,
-				"suffix": "",
-				"label": "repositorios públicos",
-				"detail": "SLSA L2 · firmados con Sigstore · un comando para verificar"
-			},
-			{
-				"value": 2,
-				"suffix": "",
-				"label": "proyectos de demo con código abierto",
-				"detail": "extracción con IA · pipeline de vacantes, código abierto"
-			},
-			{
-				"value": 152,
-				"suffix": "",
-				"label": "módulos NixOS",
-				"detail": "un flake, flota multi-host · 153 PRs fusionados"
-			},
-			{
-				"value": 0,
-				"suffix": "",
-				"label": "cifras inventadas, por construcción",
-				"detail": "cita obligatoria + revalidación del fragmento: ningún camino a un número sin fuente"
-			}
-		]
+		"body": "Construyo sistemas RAG y de agentes para cargas reguladas: banca, fiscal y legal. El rastro de auditoría es el entregable. Un número sin fuente es una falla de cumplimiento, así que la arquitectura nunca le confía al modelo que recuerde dónde leyó algo. Construido conforme a LGPD, BCB 4.893 y la obligación de registro del Artículo 12 del EU AI Act."
 	},
-	"ProofBand": {
-		"figLabel": "afirmación → evidencia",
-		"heading": "Cada afirmación de esta página es auditable",
-		"bodyBefore": "Seis repositorios públicos en",
-		"bodyAfter": ", cada uno con SLSA L2, firmado con Sigstore y con controles de SonarQube en vivo. Lee el código fuente, no una captura. El trabajo con clientes está anonimizado: informes de arquitectura, nunca nombres.",
-		"aboutLink": "Ver el mapa completo de afirmación → evidencia →"
+	"Index": {
+		"heading": "Índice del trabajo",
+		"caseFile": "Caso de cliente",
+		"repository": "Repositorio",
+		"note": "El trabajo con clientes está anonimizado. Los repositorios son públicos en github.com/yolo-labz.",
+		"renderAlt": "El gremlin programador de yolo-labz tecleando, renderizado desde su modelo 3D reproducible"
+	},
+	"CaseFiles": {
+		"heading": "Cuatro registros de decisión de trabajo regulado",
+		"read": "Leer el registro completo"
 	},
 	"Services": {
-		"figLabel": "cómo escala un proyecto",
 		"heading": "Empieza con un veredicto. Escala cuando la prueba aguante.",
 		"intro": "Cada servicio entrega un resultado definido, acotado y fijo desde la firma. La ruta habitual: un diagnóstico primero, luego una construcción una vez que la arquitectura se valida contra tus propios datos.",
 		"outcomeLabel": "Resultado:",
 		"footer": "Cada proyecto parte de una breve llamada inicial y un diagnóstico por escrito. El alcance queda fijo desde la firma.",
-		"footerCta": "Cuéntame el caso →",
+		"footerCta": "Cuéntame el caso",
 		"rungs": [
 			{
 				"rung": "Patrón",
@@ -237,13 +211,15 @@
 		"ctaPrimary": "Cuéntame el caso",
 		"ctaSecondary": "GitHub"
 	},
+	"Footer": {
+		"claimMap": "Mapa de afirmaciones y evidencias"
+	},
 	"About": {
 		"metaTitle": "Perfil — Pedro Balbino",
 		"metaDescription": "Arquitecto de IA con grado de cumplimiento para cargas reguladas en LATAM y a nivel global. RAG en producción, sistemas de agentes e integraciones MCP con rastros de auditoría y origen verificable de las decisiones. Cada afirmación respaldada por evidencia verificable.",
-		"eyebrow": "Perfil",
 		"category": "Arquitecto de IA con grado de cumplimiento para cargas reguladas en LATAM y a nivel global",
 		"diagnostic": "Los stacks de IA regulada reprueban su primera auditoría en los mismos tres puntos: trazabilidad del prompt, origen de lo recuperado y prueba del resultado. La solución está en la arquitectura. Un plano de datos, un plano de control y un plano de cumplimiento corriendo como sidecar: un registro de solo anexado que registra lo que ocurrió, firmado, fuera de la ruta de solicitud.",
-		"summary": "La prueba se divide en dos. El código abierto es totalmente auditable: seis plugins de Claude Code firmados con Sigstore en github.com/yolo-labz y proyectos de demo de extracción con IA y pipeline de vacantes con su código abierto. El trabajo con clientes se construyó en equipo, está anonimizado y opera bajo NDA. Allí contribuí a un agente regulado para la declaración de impuestos IRPF (extracción de campos y validación de salida estructurada), construí el backend y la capa de datos de un chatbot educativo multilingüe, trabajé en un backend de retail orientado a eventos y contribuí a una prueba de concepto de RAG de dominio legal. Las cifras concretas que puedo mostrarte son las que están en los repos.",
+		"summary": "La prueba se divide en dos. El código abierto es totalmente auditable: seis herramientas de código abierto en github.com/yolo-labz y proyectos de demo de extracción con IA y pipeline de vacantes con su código abierto. El trabajo con clientes se construyó en equipo, está anonimizado y opera bajo NDA. Allí contribuí a un agente regulado para la declaración de impuestos IRPF (extracción de campos y validación de salida estructurada), construí el backend y la capa de datos de un chatbot educativo multilingüe, trabajé en un backend de retail orientado a eventos y contribuí a una prueba de concepto de RAG de dominio legal. Las cifras concretas que puedo mostrarte son las que están en los repos.",
 		"claimEvidenceHeading": "Afirmación → Evidencia",
 		"claimEvidenceIntro": "Cada afirmación se respalda con un artefacto. Los repositorios públicos enlazan directo al código fuente. Las filas marcadas como \"informe pendiente\" son informes de arquitectura anonimizados: la arquitectura se publica, el nombre del cliente nunca.",
 		"tableHeaderClaim": "Afirmación",
@@ -272,7 +248,6 @@
 	"Thesis": {
 		"metaTitle": "La IA regulada reprueba su primera auditoría en la capa de recuperación — Pedro Balbino",
 		"metaDescription": "Un argumento de trabajo para diseñar el rastro de auditoría antes que el prompt: la trazabilidad del prompt, el origen de lo recuperado y la prueba del resultado son la restricción arquitectónica principal de la IA regulada. El modelo no lo es.",
-		"figLabel": "posición · arquitectura de IA regulada",
 		"title": "La IA regulada reprueba su primera auditoría en la capa de recuperación, no en el modelo.",
 		"subtitle": "Un argumento de trabajo para diseñar el rastro de auditoría antes que el prompt.",
 		"p1": "Los proyectos de IA regulada presupuestan el riesgo en el lugar equivocado. El modelo se lleva todo el escrutinio: qué proveedor, qué evaluación, qué guardrail. La parte que de verdad reprueba la auditoría se entrega como un agregado de último momento, y es esta: si una salida dada puede reconstruirse, seis meses después, a partir de las entradas que la produjeron. En cargas reguladas esa reconstrucción no es un extra deseable. <strong>Es el entregable.</strong>",
@@ -409,24 +384,38 @@
 		"problemHeading": "El problema",
 		"solutionHeading": "La solución",
 		"overviewHeading": "Resumen",
-		"decisionRecord": "registro de decisiones",
+		"decisionRecord": "Registro de decisiones",
 		"constraint": "Restricción",
 		"decision": "Decisión",
-		"outcome": "Resultado"
+		"outcome": "Resultado",
+		"stack": "Stack",
+		"previous": "Anterior",
+		"next": "Siguiente",
+		"walkLabel": "Más trabajos"
 	},
 	"ProjectShowcase": {
-		"selectedWorkStamp": "trabajo destacado",
-		"selectedWorkHeading": "Trabajo destacado",
-		"selectedWorkLead": "Restricción, decisión, resultado medido. El resultado solo no enseña nada.",
-		"openSourceStamp": "código abierto y demos",
 		"openSourceHeading": "Herramientas de código abierto de yolo-labz",
 		"openSourceLead": "Cuatro puntos de partida con código fuente y notas de implementación, elegidos por amplitud, no por popularidad.",
 		"browseRepositories": "Todos los repositorios",
 		"selectedRepositories": "Proyectos seleccionados de yolo-labz",
 		"projectNotes": "Ver proyecto",
-		"projectNotesLabel": "Notas del proyecto: {project}",
+		"projectNotesLabel": "Ver proyecto: {project}",
 		"sourceCode": "Código",
 		"sourceCodeLabel": "Código fuente: {project}",
 		"moreProjects": "Más proyectos y demos ({count})"
+	},
+	"NotFound": {
+		"label": "404",
+		"title": "No hay nada archivado en esta dirección",
+		"body": "El enlace puede ser antiguo o tener un error. Todo el trabajo del sitio está listado abajo.",
+		"home": "Volver al índice",
+		"workHeading": "Todo el trabajo"
+	},
+	"ErrorPage": {
+		"label": "Error",
+		"title": "Esta página no se pudo mostrar",
+		"body": "El error quedó registrado. Inténtalo otra vez o vuelve al índice.",
+		"retry": "Reintentar",
+		"home": "Volver al índice"
 	}
 }

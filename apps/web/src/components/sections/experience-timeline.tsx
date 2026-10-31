@@ -1,67 +1,39 @@
-"use client";
-
-import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import type { ExperienceEntry } from "@/data/experience";
-import { useIntersection } from "@/hooks/use-intersection";
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
+// Read surface (About): a ruled record, period in the margin, deliverables as prose rows.
 export function ExperienceTimeline() {
 	const t = useTranslations("Experience");
 	const experience = t.raw("entries") as ExperienceEntry[];
-	const { ref, isVisible } = useIntersection(0.05);
-	const reduced = useReducedMotion();
 
 	return (
-		<section id="experience" aria-labelledby="experience-heading" className="py-24 px-6" ref={ref}>
-			<div className="mx-auto max-w-6xl">
-				<div className="mb-12">
-					<h2 id="experience-heading" className="text-3xl font-bold tracking-tight">
-						{t("heading")}
-					</h2>
-					<p className="mt-2 text-text-muted">{t("intro")}</p>
-				</div>
+		<section id="experience" aria-labelledby="experience-heading" className="mt-20">
+			<h2 id="experience-heading" className="text-step-3 font-semibold tracking-[-0.02em]">
+				{t("heading")}
+			</h2>
+			<p className="mt-2 text-text-muted">{t("intro")}</p>
 
-				<div className="relative space-y-8 before:absolute before:left-[11px] before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-border">
-					{experience.map((entry, i) => (
-						<motion.div
-							key={`${entry.company}-${entry.period}`}
-							initial={reduced ? {} : { opacity: 0, x: -20 }}
-							animate={isVisible ? { opacity: 1, x: 0 } : {}}
-							transition={{
-								duration: 0.5,
-								delay: reduced ? 0 : i * 0.15,
-								ease: [0.22, 1, 0.36, 1],
-							}}
-							className="relative pl-10"
-						>
-							<div
-								className={`absolute left-0 top-2 h-6 w-6 rounded-full border-2 ${
-									entry.current ? "border-accent bg-accent/20" : "border-border bg-bg-card"
-								}`}
-							/>
-
-							<div className="rounded-lg border border-border bg-bg-card p-6">
-								<div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-									<h3 className="font-semibold">{entry.role}</h3>
-									<span className="font-mono text-xs text-text-muted">{entry.period}</span>
-								</div>
-								<p className="mt-1 text-sm text-accent">{entry.company}</p>
-								<ul className="mt-4 space-y-2">
-									{entry.deliverables.map((item) => (
-										<li
-											key={item}
-											className="text-sm text-text-muted leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.6em] before:h-1 before:w-1 before:rounded-full before:bg-text-muted/50"
-										>
-											{item}
-										</li>
-									))}
-								</ul>
-							</div>
-						</motion.div>
-					))}
-				</div>
-			</div>
+			<ol className="mt-8 border-t border-border">
+				{experience.map((entry) => (
+					<li
+						key={`${entry.company}-${entry.period}`}
+						className="grid gap-x-10 gap-y-2 border-b border-border py-8 md:grid-cols-[12rem_1fr]"
+					>
+						<p className="font-mono text-xs text-text-muted tabular-nums md:pt-1">{entry.period}</p>
+						<div>
+							<h3 className="font-semibold">{entry.role}</h3>
+							<p className={`mt-1 text-sm ${entry.current ? "text-accent" : "text-text-muted"}`}>
+								{entry.company}
+							</p>
+							<ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-text-muted marker:text-overlay">
+								{entry.deliverables.map((item) => (
+									<li key={item}>{item}</li>
+								))}
+							</ul>
+						</div>
+					</li>
+				))}
+			</ol>
 		</section>
 	);
 }

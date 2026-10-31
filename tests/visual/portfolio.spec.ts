@@ -65,18 +65,45 @@ test.beforeEach(async ({ page }) => {
 // Card-copy guard, moved here with the card it protects: kokoro-speakd is a
 // flagship card now, and the brand-positioning corpus marks its old latency
 // tokens as needs-measurement. The card must state the boundary instead.
-test("flagship cards state the audited one-liner, not a latency token", async ({ page }) => {
+test("flagship rows state the audited one-liner, not a latency token", async ({ page }) => {
 	await page.goto("/en");
 	await page.waitForLoadState("networkidle");
-	// The card wrapper is the heading's parent: title, tagline, badges, metrics
-	// and the repo anchor all live inside it.
-	const card = page
-		.locator("#projects")
-		.getByRole("heading", { name: /kokoro-speakd/ })
-		.locator("..");
-	const copy = await card.innerText();
+	// The home index row carries the repo name, its audited one-liner and the kind.
+	const row = page.locator("#projects li").filter({ hasText: "kokoro-speakd" });
+	await expect(row).toHaveCount(1);
+	const copy = await row.innerText();
 	expect(copy).toContain("Keep Kokoro ready between speech requests");
 	expect(copy).not.toMatch(/200\s?ms|3[-\u2013]5\s?s/);
+});
+
+// Experience-mode contract: the work leads. All ten index rows and the gremlin
+// render sit inside the first desktop viewport, and every row is a real link.
+test("home first viewport shows the work index and the gremlin render", async ({ page }) => {
+	// The contract is the 1280x800 laptop viewport in every project.
+	await page.setViewportSize({ width: 1280, height: 800 });
+	await page.goto("/en");
+	const rows = page.locator("#projects ol > li a");
+	await expect(rows).toHaveCount(10);
+	const viewport = page.viewportSize()?.height ?? 0;
+	const last = await rows.last().boundingBox();
+	expect(last && last.y + last.height).toBeLessThanOrEqual(viewport);
+	const render = page.locator('#projects img[src*="gremlin-hero"]');
+	await expect(render).toBeVisible();
+	await expect(render).not.toHaveAttribute("alt", "");
+	for (const row of await rows.all())
+		expect((await row.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+});
+
+// Reduced motion: the index entrance is removed, not merely shortened to zero
+// visible change, so nothing on the page is mid-animation for these readers.
+test("reduced motion removes the index entrance", async ({ page }) => {
+	await page.emulateMedia({ reducedMotion: "reduce" });
+	await page.goto("/en");
+	const name = await page
+		.locator(".work-row")
+		.first()
+		.evaluate((el) => getComputedStyle(el).animationName);
+	expect(name).toBe("none");
 });
 
 for (const { name, path } of PAGES) {
@@ -140,3 +167,24 @@ for (const { name, path } of PAGES) {
 		}
 	});
 }
+
+// A real 404: localized, status 404, and every piece of work one click away.
+for (const locale of ["en", "pt", "es"]) {
+	test(`${locale} 404 lists the work index`, async ({ page }) => {
+		const response = await page.goto(`/${locale}/does-not-exist`);
+		expect(response?.status()).toBe(404);
+		await expect(page.locator("h1")).toHaveCount(1);
+		await expect(page.locator(`main a[href^="/${locale}/projects/"]`)).toHaveCount(10);
+	});
+}
+
+// prefers-contrast: more lifts muted text to the body colour.
+test("prefers-contrast more raises muted text", async ({ page }) => {
+	await page.emulateMedia({ contrast: "more" });
+	await page.goto("/en");
+	const [muted, body] = await page.evaluate(() => {
+		const probe = document.querySelector("#projects ol .text-text-muted");
+		return [probe ? getComputedStyle(probe).color : "", getComputedStyle(document.body).color];
+	});
+	expect(muted).toBe(body);
+});

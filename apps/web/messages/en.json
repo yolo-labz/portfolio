@@ -18,53 +18,27 @@
 		"es": "Español"
 	},
 	"Hero": {
-		"eyebrow": "Compliance-grade AI architecture · RAG · agents · MCP",
 		"headingLead": "AI stacks fail their first audit at three seams:",
 		"headingSeams": "prompt provenance, retrieval lineage, output attestation.",
-		"body": "I build RAG and agent systems for regulated work: banking, tax, legal. The audit trail is the deliverable there. A number without a source span is a compliance failure, so the architecture never trusts the model to remember where it read something. Built to LGPD, BCB 4.893, and the EU AI Act Art. 12 logging mandate.",
-		"ctaPrimary": "Send a brief",
-		"ctaSecondary": "Read the architecture writeups",
-		"stats": [
-			{
-				"value": 6,
-				"suffix": "",
-				"label": "public repos",
-				"detail": "SLSA L2 · Sigstore-signed · one command to verify"
-			},
-			{
-				"value": 2,
-				"suffix": "",
-				"label": "source-available demo projects",
-				"detail": "AI extraction · job pipeline, source open"
-			},
-			{
-				"value": 152,
-				"suffix": "",
-				"label": "NixOS modules",
-				"detail": "one flake, multi-host fleet · 153 merged PRs"
-			},
-			{
-				"value": 0,
-				"suffix": "",
-				"label": "hallucinated figures by construction",
-				"detail": "forced citation + span re-validation: no path to an unsourced number"
-			}
-		]
+		"body": "I build RAG and agent systems for regulated work: banking, tax, legal. The audit trail is the deliverable there. A number without a source span is a compliance failure, so the architecture never trusts the model to remember where it read something. Built to LGPD, BCB 4.893, and the EU AI Act Art. 12 logging mandate."
 	},
-	"ProofBand": {
-		"figLabel": "claim → evidence",
-		"heading": "Every claim here is auditable",
-		"bodyBefore": "Six public repositories under",
-		"bodyAfter": ", each one SLSA L2, Sigstore-signed, gated on live SonarQube checks. Read the source, not a screenshot. Client work stays anonymized: writeups, never names.",
-		"aboutLink": "See the full claim → evidence map →"
+	"Index": {
+		"heading": "Index of work",
+		"caseFile": "Case file",
+		"repository": "Repository",
+		"note": "Client work is anonymized. Repositories are public under github.com/yolo-labz.",
+		"renderAlt": "The yolo-labz programming gremlin typing at a keyboard, rendered from its reproducible 3D model"
+	},
+	"CaseFiles": {
+		"heading": "Four decision records from regulated work",
+		"read": "Read the full record"
 	},
 	"Services": {
-		"figLabel": "how an engagement scales",
 		"heading": "Start with a verdict. Scale when the proof holds.",
 		"intro": "Each offer ships a defined deliverable, scoped and fixed at signature. The usual path: a diagnostic first, then a build once the architecture proves out on your own data.",
 		"outcomeLabel": "Outcome:",
 		"footer": "Every engagement opens with a short discovery call and a written diagnostic. Scope is fixed at signature.",
-		"footerCta": "Send a brief →",
+		"footerCta": "Send a brief",
 		"rungs": [
 			{
 				"rung": "Pattern",
@@ -237,13 +211,15 @@
 		"ctaPrimary": "Send a brief",
 		"ctaSecondary": "GitHub"
 	},
+	"Footer": {
+		"claimMap": "Claim and evidence map"
+	},
 	"About": {
 		"metaTitle": "About — Pedro Balbino",
 		"metaDescription": "Compliance-Grade AI Architect for regulated LATAM & global workloads. Production RAG, agent systems, and MCP integrations with audit trails and decision provenance. Every claim maps to verifiable evidence.",
-		"eyebrow": "About",
 		"category": "Compliance-Grade AI Architect for Regulated LATAM & Global Workloads",
 		"diagnostic": "Regulated AI stacks fail their first audit at three seams: prompt provenance, retrieval lineage, output attestation. The fix is architectural. A data plane, a control plane, and a compliance plane running as a sidecar: an append-only ledger that records what happened, signed, outside the request path.",
-		"summary": "The proof splits two ways. Open source first, because it's checkable: six Sigstore-signed Claude Code plugins on github.com/yolo-labz, plus AI extraction and job-pipeline demo projects with their source open. The client work is team-built, anonymized, under NDA. There I contributed to a regulated IRPF tax-filing agent (field extraction, structured-output validation), built the backend and data layer of a multilingual education chatbot, worked on an event-driven retail commerce backend, and contributed to a legal-domain RAG proof-of-concept. The hard numbers I can show you are the ones in the repos.",
+		"summary": "The proof splits two ways. Open source first, because it's checkable: six open-source tools on github.com/yolo-labz, plus AI extraction and job-pipeline demo projects with their source open. The client work is team-built, anonymized, under NDA. There I contributed to a regulated IRPF tax-filing agent (field extraction, structured-output validation), built the backend and data layer of a multilingual education chatbot, worked on an event-driven retail commerce backend, and contributed to a legal-domain RAG proof-of-concept. The hard numbers I can show you are the ones in the repos.",
 		"claimEvidenceHeading": "Claim → Evidence",
 		"claimEvidenceIntro": "Each claim maps to an artifact. Public repos link straight to source. Rows marked \"writeup pending\" are anonymized client writeups: the architecture ships, the client name never does.",
 		"tableHeaderClaim": "Claim",
@@ -272,7 +248,6 @@
 	"Thesis": {
 		"metaTitle": "Regulated AI fails its first audit at the retrieval layer — Pedro Balbino",
 		"metaDescription": "A working argument for designing the audit trail before the prompt: provenance, lineage, and attestation are the primary architectural constraint for regulated AI. The model isn't.",
-		"figLabel": "position · regulated AI architecture",
 		"title": "Regulated AI fails its first audit at the retrieval layer, not the model.",
 		"subtitle": "A working argument for designing the audit trail before the prompt.",
 		"p1": "Regulated-AI projects budget risk in the wrong place. The model gets the scrutiny: which vendor, which eval, which guardrail. The part that actually fails the audit ships as an afterthought, and it is this: can a given output be reconstructed, six months later, from the inputs that produced it. In a regulated workload that reconstruction is not a nice-to-have. <strong>It is the deliverable.</strong>",
@@ -409,16 +384,16 @@
 		"problemHeading": "The problem",
 		"solutionHeading": "The solution",
 		"overviewHeading": "Overview",
-		"decisionRecord": "decision record",
+		"decisionRecord": "Decision record",
 		"constraint": "Constraint",
 		"decision": "Decision",
-		"outcome": "Outcome"
+		"outcome": "Outcome",
+		"stack": "Stack",
+		"previous": "Previous",
+		"next": "Next",
+		"walkLabel": "More work"
 	},
 	"ProjectShowcase": {
-		"selectedWorkStamp": "selected work",
-		"selectedWorkHeading": "Selected work",
-		"selectedWorkLead": "Constraint, decision, measured outcome. The result alone teaches nothing.",
-		"openSourceStamp": "open-source & demos",
 		"openSourceHeading": "Open-source tools, by yolo-labz",
 		"openSourceLead": "Four starting points with source code and implementation notes, chosen for breadth rather than popularity.",
 		"browseRepositories": "All repositories",
@@ -428,5 +403,19 @@
 		"sourceCode": "Source",
 		"sourceCodeLabel": "Source code: {project}",
 		"moreProjects": "More projects & demos ({count})"
+	},
+	"NotFound": {
+		"label": "404",
+		"title": "Nothing is filed at this address",
+		"body": "The link may be old or mistyped. Every piece of work on the site is listed below.",
+		"home": "Back to the index",
+		"workHeading": "All work"
+	},
+	"ErrorPage": {
+		"label": "Error",
+		"title": "This page failed to render",
+		"body": "The error has been logged. Try once more, or go back to the index.",
+		"retry": "Try again",
+		"home": "Back to the index"
 	}
 }

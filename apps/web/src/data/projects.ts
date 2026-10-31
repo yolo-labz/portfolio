@@ -362,3 +362,42 @@ export const projects: Project[] = [
 		featured: true,
 	},
 ];
+
+// The home index and the case-study prev/next walk share one order: the four
+// anonymized client case files (decision records), then the six yolo-labz
+// flagship repositories. Everything else lives on the open-source shelf.
+const caseFileSlugs = [
+	"compliance-tax-agent",
+	"event-driven-retail",
+	"legal-domain-rag",
+	"multilingual-rag",
+] as const;
+
+export type WorkKind = "caseFile" | "repository";
+
+export interface WorkEntry {
+	project: Project;
+	kind: WorkKind;
+	/** Short display name: the repo slug, or the case title before its " — " subtitle. */
+	name: string;
+}
+
+const bySlug = (slug: string) => {
+	const project = projects.find((p) => p.slug === slug);
+	if (!project) throw new Error(`work index: unknown project ${slug}`);
+	return project;
+};
+
+export const workIndex: WorkEntry[] = [
+	...caseFileSlugs.map((slug) => {
+		const project = bySlug(slug);
+		return {
+			project,
+			kind: "caseFile" as const,
+			name: project.title.split(" — ")[0] ?? project.title,
+		};
+	}),
+	...projects
+		.filter((p) => p.featured)
+		.map((project) => ({ project, kind: "repository" as const, name: project.slug })),
+];

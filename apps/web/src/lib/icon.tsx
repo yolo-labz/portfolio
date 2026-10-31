@@ -8,24 +8,23 @@ export interface LetterMarkOptions {
 	size: number;
 	fontSize: number;
 	radius: number;
-	/** Flat background: the gradient reads as noise at favicon scale. */
+	/** Kept for the call sites; every size is flat now (no gradients, per DESIGN.md). */
 	flat?: boolean;
 }
 
-const GRADIENT = "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)";
-
-export function letterMark({ size, fontSize, radius, flat = false }: LetterMarkOptions) {
+// Palette-true mark: emerald #00c77a on the base ground #1e1e2e (DESIGN.md colors).
+export function letterMark({ size, fontSize, radius }: LetterMarkOptions) {
 	return new ImageResponse(
 		<div
 			style={{
 				fontSize,
-				background: flat ? "#1a1a2e" : GRADIENT,
+				background: "#1e1e2e",
 				width: "100%",
 				height: "100%",
 				display: "flex",
 				alignItems: "center",
 				justifyContent: "center",
-				color: "#5ec4a0",
+				color: "#00c77a",
 				fontWeight: 700,
 				borderRadius: radius,
 			}}

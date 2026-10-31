@@ -83,9 +83,20 @@ for (const locale of ["en", "pt", "es"]) {
 		// Measure the actual computed foreground/background pairs, including Badge's
 		// surface background. This is a scoped WCAG text-contrast check, not an axe audit.
 		const contrasts = await section.evaluate((root) => {
+			// Computed colours come back in the token space (oklch), so resolve each
+			// through a 1px canvas to sRGB bytes before the WCAG luminance formula.
+			const ctx = document.createElement("canvas").getContext("2d", {
+				willReadFrequently: true,
+			}) as CanvasRenderingContext2D;
+			const toRgb = (color: string) => {
+				ctx.clearRect(0, 0, 1, 1);
+				ctx.fillStyle = color;
+				ctx.fillRect(0, 0, 1, 1);
+				return Array.from(ctx.getImageData(0, 0, 1, 1).data.slice(0, 3));
+			};
 			const luminance = (color: string) => {
-				const values = (color.match(/[\d.]+/g) ?? []).slice(0, 3).map((part) => {
-					const value = Number(part) / 255;
+				const values = toRgb(color).map((byte) => {
+					const value = byte / 255;
 					return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
 				});
 				return values[0] * 0.2126 + values[1] * 0.7152 + values[2] * 0.0722;

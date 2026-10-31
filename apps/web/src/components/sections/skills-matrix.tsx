@@ -1,57 +1,34 @@
-"use client";
-
-import { Badge } from "@portfolio/ui";
-import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import type { SkillDomain } from "@/data/skills";
-import { useIntersection } from "@/hooks/use-intersection";
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
+// Read surface (About): one ruled row per problem domain; the stack is data, so mono.
 export function SkillsMatrix() {
 	const t = useTranslations("Skills");
 	const skills = t.raw("domains") as SkillDomain[];
-	const { ref, isVisible } = useIntersection(0.05);
-	const reduced = useReducedMotion();
 
 	return (
-		<section
-			id="skills"
-			aria-labelledby="skills-heading"
-			className="py-24 px-6 bg-bg-elevated"
-			ref={ref}
-		>
-			<div className="mx-auto max-w-6xl">
-				<div className="mb-12">
-					<h2 id="skills-heading" className="text-3xl font-bold tracking-tight">
-						{t("heading")}
-					</h2>
-					<p className="mt-2 text-text-muted">{t("intro")}</p>
-				</div>
+		<section id="skills" aria-labelledby="skills-heading" className="mt-20">
+			<h2 id="skills-heading" className="text-step-3 font-semibold tracking-[-0.02em]">
+				{t("heading")}
+			</h2>
+			<p className="mt-2 text-text-muted">{t("intro")}</p>
 
-				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-					{skills.map((domain, i) => (
-						<motion.div
-							key={domain.domain}
-							initial={reduced ? {} : { opacity: 0, y: 20 }}
-							animate={isVisible ? { opacity: 1, y: 0 } : {}}
-							transition={{
-								duration: 0.5,
-								delay: reduced ? 0 : i * 0.08,
-								ease: [0.22, 1, 0.36, 1],
-							}}
-							className="rounded-lg border border-border bg-bg-card p-6"
-						>
-							<h3 className="font-semibold text-text">{domain.domain}</h3>
-							<p className="mt-1 text-sm text-text-muted">{domain.description}</p>
-							<div className="mt-4 flex flex-wrap gap-1.5">
-								{domain.technologies.map((tech) => (
-									<Badge key={tech}>{tech}</Badge>
-								))}
-							</div>
-						</motion.div>
-					))}
-				</div>
-			</div>
+			<dl className="mt-8 border-t border-border">
+				{skills.map((domain) => (
+					<div
+						key={domain.domain}
+						className="grid gap-x-10 gap-y-2 border-b border-border py-6 md:grid-cols-[12rem_1fr]"
+					>
+						<dt className="font-semibold text-text">{domain.domain}</dt>
+						<dd>
+							<p className="text-sm leading-relaxed text-text-muted">{domain.description}</p>
+							<p className="mt-3 font-mono text-xs leading-relaxed text-text">
+								{domain.technologies.join(" · ")}
+							</p>
+						</dd>
+					</div>
+				))}
+			</dl>
 		</section>
 	);
 }

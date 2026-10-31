@@ -50,10 +50,11 @@ for (const locale of ["en", "pt", "es"]) {
 	const messages = JSON.parse(readFileSync(`apps/web/messages/${locale}.json`, "utf8"));
 	for (const project of projects)
 		assert(messages.Projects[project.slug], `${locale}: ${project.slug}`);
-	assert.equal(messages.Hero.stats[1].value, 2, `${locale}: demo count`);
+	// The hero stat row (and its demo count) left with the 2026-10 remodel; the
+	// remaining public promise of demos is the About summary.
 	assert(
 		!/live demo apps|demonstração ao vivo|demo en vivo/i.test(
-			JSON.stringify([messages.Hero.stats[1], messages.About.summary]),
+			JSON.stringify(messages.About.summary),
 		),
 		`${locale}: unverified live-demo promise`,
 	);
