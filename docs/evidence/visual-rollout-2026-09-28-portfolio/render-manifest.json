@@ -1,104 +1,105 @@
 {
-	"recorded_at": "2026-09-28T20:27:58.812544-03:00",
+	"recorded_at": "30/10/2026 23:15 -03",
 	"kind": "local-production-browser-render",
-	"generator": "OpenAI GPT-6 Astra (layout code; no generated art)",
+	"generator": "GPT/OpenAI: original layout GPT-6 Astra; recovery GPT-6.1 Sol; no generated art imported",
 	"base": "bf3ca9b3f3fdc890387c5c84601a96f47bc14376",
 	"playwright": "1.62.1",
 	"chromium": "151.0.7922.34",
 	"image_digest": "sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e",
 	"sources": {
-		"apps/web/messages/en.json": "2203295fa270689de31b69f5b0d2510632b5d2914667bcae11eb8adf91b0f86d",
-		"apps/web/messages/es.json": "5955165c827c894ac1fd4288b4f7a05379cc7ad5e68881c3a723768b07342bce",
-		"apps/web/messages/pt.json": "5f9cd170dffbb302c2e1089fabcabaf3cf5754697a486f7411656e93a270add5",
-		"apps/web/src/components/sections/organization-showcase.tsx": "caa2139e14deb5aff229456d2c8e3efe23c2550907972686387afb74f6cdf636",
+		"apps/web/messages/en.json": "4170b3a179ad60431b3a0a3f713ae644d144dc6f0daa4dcdb5be540cee288dc9",
+		"apps/web/messages/es.json": "554a2b340e44966362116be663a47d86efdf12b46422298e10af5ac128aa8b35",
+		"apps/web/messages/pt.json": "f43c56d5a4d379931e53f56a932bccd6c8609a8067c058360bd18a315d88092f",
+		"apps/web/src/components/sections/organization-showcase.tsx": "279da29c5db60996d002cecd1d6339a2b7e4edce9be9a686b425f8c29ac72e5c",
 		"apps/web/src/components/sections/project-showcase.tsx": "bdda57e0d0b5bbf38e3c6132109948c22d1cbeabb5823a83834e60ad893d23d9",
-		"tests/visual/organization-showcase.spec.ts": "8194a57e3a35b25a69061203d47a39d6f0a448e8d9ed7fc6934846d5087bc56e",
-		"tests/visual/portfolio.spec.ts": "9eedcaf32a4abfd41394c241601c8015498d772a2c6e4ee25b6a4ecb5c47a8ce"
+		"tests/visual/organization-showcase.spec.ts": "cfe104cc91da3ba1bfbfda8c56d4fc9ff09c4c36b3c33d4c1cb3e66505e0148a",
+		"tests/visual/portfolio.spec.ts": "e3b6f8c08551d9bbd1ad4f74e354b4b2238198398a68353381e9c760edf8a3f3",
+		"scripts/verify-home-proof.py": "adaba187c0a5e457a0a6d21814d3fd4c858d064594b692a2178d32c873473470"
 	},
 	"screenshots": [
 		{
 			"path": "tests/visual/organization-showcase.spec.ts-snapshots/showcase-320-expanded-chromium-desktop.png",
 			"width": 272,
 			"height": 2911,
-			"sha256": "d480c4a0a7295c0948fb5009bd3a6e181395ceeb5ddd064ca6b7e754e6f56ba9"
+			"sha256": "fd3ce4897af93e80391e828d4c5579a36e5daaa723898d8f9260e52f54dbb232"
 		},
 		{
 			"path": "tests/visual/organization-showcase.spec.ts-snapshots/showcase-320-expanded-mobile.png",
 			"width": 272,
 			"height": 2911,
-			"sha256": "d480c4a0a7295c0948fb5009bd3a6e181395ceeb5ddd064ca6b7e754e6f56ba9"
+			"sha256": "24c50b4b437f6745194521a458a6b46ebe8c07dc7e3f6126dd76fec37df6938b"
 		},
 		{
 			"path": "tests/visual/organization-showcase.spec.ts-snapshots/showcase-en-chromium-desktop.png",
 			"width": 1152,
 			"height": 795,
-			"sha256": "05d6c6e3ee42df69937c45b9e595288b3846b34d5c5ae7cd617857f5a4dc5547"
+			"sha256": "f7de6364f8d0f5edf7ad0d78b5e5bed987359cffada762c47005f3f7beec6ad0"
 		},
 		{
 			"path": "tests/visual/organization-showcase.spec.ts-snapshots/showcase-en-mobile.png",
 			"width": 342,
-			"height": 1648,
-			"sha256": "a95ede700693c1dbeb74f0ed9d5b4be06c38dfb6dcadad89ba2617863f782553"
+			"height": 1625,
+			"sha256": "770868cc97630fcdb4932aad7e3d726dd3bb62fb03f070bc08034bfb93b3861b"
 		},
 		{
 			"path": "tests/visual/organization-showcase.spec.ts-snapshots/showcase-es-chromium-desktop.png",
 			"width": 1152,
 			"height": 840,
-			"sha256": "46d2212cf66a808355c908ef2c1e5c6a24af9193e2b9940726ffb27a57e1312f"
+			"sha256": "5a0d2c0b42558f4f36976a4870342ff21102a1d6804bbdd9f2b5fcfc81b4cd23"
 		},
 		{
 			"path": "tests/visual/organization-showcase.spec.ts-snapshots/showcase-es-mobile.png",
 			"width": 342,
 			"height": 1694,
-			"sha256": "deb3472573cbd3382453ab45130e8711a010f7b4826e5b253766400cb6c1e6e4"
+			"sha256": "51880dbdca863568afa67727dbdfde94061617394b405ef31e6ee7f41974ac68"
 		},
 		{
 			"path": "tests/visual/organization-showcase.spec.ts-snapshots/showcase-pt-chromium-desktop.png",
 			"width": 1152,
 			"height": 840,
-			"sha256": "67baa26f5ae6bc4ebce6736b6b3708eacb53c8d96029a31e9b10cd868de9a497"
+			"sha256": "c590fc9928ed6da89170c45af813cc1fafb98f4a82a667fdcba2e8196e7b159b"
 		},
 		{
 			"path": "tests/visual/organization-showcase.spec.ts-snapshots/showcase-pt-mobile.png",
 			"width": 342,
 			"height": 1648,
-			"sha256": "0d9da86ba832a19fb6cc80922048f21263da4c38dde0fc99256fa728a4a7bc43"
+			"sha256": "e92ff957d8f812e0abbd6e7cc61ced74fc01b5d4972f49d3f9cf15e8b30eb0dc"
 		},
 		{
 			"path": "tests/visual/portfolio.spec.ts-snapshots/home-chromium-desktop.png",
 			"width": 1280,
 			"height": 7795,
-			"sha256": "6378428de093b33626f3e6d95fdf66dbe4b637ba3e22acd91e34904aa9a55013"
+			"sha256": "483ace06b1924c6f2d66af035054b7a12865649f83c3ad6006c7c7972a5165d4"
 		},
 		{
 			"path": "tests/visual/portfolio.spec.ts-snapshots/home-es-chromium-desktop.png",
 			"width": 1280,
 			"height": 8170,
-			"sha256": "a6d9968aab0cb90ab050dd8ba7e343b986e0bb6b5456df65b37cc7fc86f544e1"
+			"sha256": "d9d1ddffb35be72ce32dacc50cd5a0918f1047279b9b1ad6bcadfda5aa29344a"
 		},
 		{
 			"path": "tests/visual/portfolio.spec.ts-snapshots/home-es-mobile.png",
 			"width": 390,
 			"height": 15007,
-			"sha256": "ae8f73e7c17e4e9e59d13ba7d75fe60dff26b6380ecc55fea6eeee42d220247e"
+			"sha256": "44bafc79164f24b5ea89cdbc5f3d2940ce1956bc600da74a0113985e15ab6c90"
 		},
 		{
 			"path": "tests/visual/portfolio.spec.ts-snapshots/home-mobile.png",
 			"width": 390,
-			"height": 13794,
-			"sha256": "aa779e1a64dd1c64b15a178492f98be7fce251648bc954c13050d390de7abe8a"
+			"height": 13771,
+			"sha256": "e73e8c2d38f309ad5c48aad1f49742160ece01f457e8018a9ae6e274e27640ea"
 		},
 		{
 			"path": "tests/visual/portfolio.spec.ts-snapshots/home-pt-chromium-desktop.png",
 			"width": 1280,
 			"height": 8200,
-			"sha256": "4c2ea2cd1413cf2f47547240b350850db9fdf3b69a66ec70e8a0b12a9e7d123b"
+			"sha256": "852b7b6982493de5219cc48e39b0653418c2d93097db46e4b04b4b9e9ac7eaf2"
 		},
 		{
 			"path": "tests/visual/portfolio.spec.ts-snapshots/home-pt-mobile.png",
 			"width": 390,
 			"height": 14819,
-			"sha256": "ffe1cdcffb1fe927c09e72593758b7dca872277b493888c8957e76db02a976c9"
+			"sha256": "5323920b5f81ae8a58eec746f65b12c842f4e4042594ccfd715b658cf75f7fe5"
 		}
 	]
 }

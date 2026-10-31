@@ -50,6 +50,9 @@ for (const locale of ["en", "pt", "es"]) {
 				expect(box?.height).toBeGreaterThanOrEqual(44);
 			}
 		}
+		const speech = cards.filter({ has: page.getByRole("heading", { name: "kokoro-speakd" }) });
+		await expect(speech.locator("p")).toContainText("Unix");
+		await expect(speech.locator("p")).not.toContainText(/200\s?ms|3[-–]5\s?s/);
 		await expect(section).toHaveScreenshot(`showcase-${locale}.png`);
 
 		const summary = section.locator("summary");

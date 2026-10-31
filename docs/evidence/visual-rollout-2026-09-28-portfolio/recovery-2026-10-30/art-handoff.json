@@ -1,0 +1,55 @@
+{
+	"inspected_on": "30/10/2026",
+	"source_repository": "yolo-labz/.github",
+	"source_commit": "880da44406693e3c0a1e6c93f1b9a5cbe9fbfe79",
+	"source_directory": "profile/assets/brand/exploration/2026-09-28",
+	"producer_check": "PASS: 3 confirmed images; hashes, anchor lineage, dimensions and public URL hygiene",
+	"assets": [
+		{
+			"image": "gremlin-anchor.png",
+			"sha256": "dcd882cb9d7f99316f0278d03c172a9f14135c195efe67556d451a9bd172baeb",
+			"width": 1254,
+			"height": 1254,
+			"classification": "exploration-not-approved-master",
+			"tool": "gpt-image (ChatGPT web UI)",
+			"model": {
+				"ui_label": "Instant",
+				"image_backend": null,
+				"evidence": "Private authenticated empty-composer screenshot shows Instant and Pro. Image backend model ID is not exposed by the driver; no exact backend claimed."
+			},
+			"prompt_sha256": "7af0d4dd6aa1534f8c20769a2a77153f7e8cecee1e4cd93e4f4b87a917c5c26c",
+			"reference_sha256": "1bd4ee7a158591b012f3d40a1c62e37290684c40100429ae758917df2db22036"
+		},
+		{
+			"image": "gremlin-wide-hero.png",
+			"sha256": "da70db22366e8e849b22eb3e8c3dcd0ec53274135ee0bf1ee309cb2704a0d9f4",
+			"width": 1774,
+			"height": 887,
+			"classification": "exploration-not-approved-master",
+			"tool": "gpt-image (ChatGPT web UI)",
+			"model": {
+				"ui_label": "Instant",
+				"image_backend": null,
+				"evidence": "Private authenticated empty-composer screenshot shows Instant and Pro. Image backend model ID is not exposed by the driver; no exact backend claimed."
+			},
+			"prompt_sha256": "90af1c9ffe971a69d6c2b08f62ab25c87986a41996c67850b8d5ebbe450333ac",
+			"reference_sha256": "dcd882cb9d7f99316f0278d03c172a9f14135c195efe67556d451a9bd172baeb"
+		},
+		{
+			"image": "gremlin-square-avatar.png",
+			"sha256": "ceb4f3cbf60b8254660290e60dc3e61266b3c02a6be3c71a64a8d47ac02bb554",
+			"width": 1254,
+			"height": 1254,
+			"classification": "exploration-not-approved-master",
+			"tool": "gpt-image (ChatGPT web UI)",
+			"model": {
+				"ui_label": "Instant",
+				"image_backend": null,
+				"evidence": "Private authenticated empty-composer screenshot shows Instant and Pro. Image backend model ID is not exposed by the driver; no exact backend claimed."
+			},
+			"prompt_sha256": "ad115d590aea7389608ed445fbc84f9c3ed21904e3b53e6cd728d7b7abf9860d",
+			"reference_sha256": "dcd882cb9d7f99316f0278d03c172a9f14135c195efe67556d451a9bd172baeb"
+		}
+	],
+	"consumer_decision": "Reference inspection only; no website import. Remains labelled exploration, not an approved brand master or art-license grant. No new sends."
+}

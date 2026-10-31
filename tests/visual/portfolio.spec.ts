@@ -103,5 +103,12 @@ for (const { name, path } of PAGES) {
 		await expect(page).toHaveScreenshot(`${name}.png`, {
 			fullPage: true,
 		});
+		// Retain actual pixels for hydration/stability evidence, including passing runs.
+		if (name.startsWith("home")) {
+			await test.info().attach(`${name}-settled`, {
+				body: await page.screenshot({ fullPage: true, animations: "disabled", scale: "css" }),
+				contentType: "image/png",
+			});
+		}
 	});
 }

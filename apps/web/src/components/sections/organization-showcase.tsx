@@ -51,7 +51,9 @@ export function OrganizationShowcase() {
 								</span>
 							</div>
 							<p className="mt-3 flex-1 text-sm leading-relaxed text-text-muted">
-								{t(`${project.slug}.tagline`)}
+								{project.slug === "kokoro-speakd"
+									? ui("speechSummary")
+									: t(`${project.slug}.tagline`)}
 							</p>
 							<div className="mt-5 flex flex-wrap gap-1.5">
 								{project.techStack.slice(0, 3).map((tech) => (

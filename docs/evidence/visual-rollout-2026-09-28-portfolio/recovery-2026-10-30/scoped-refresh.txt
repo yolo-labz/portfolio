@@ -1,0 +1,21 @@
+
+Running 14 tests using 1 worker
+
+  ✓   1 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase en: selection, navigation, keyboard and contrast (3.4s)
+  ✓   2 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase pt: selection, navigation, keyboard and contrast (3.1s)
+  ✓   3 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase es: selection, navigation, keyboard and contrast (3.0s)
+  ✓   4 [chromium-desktop] › tests/visual/organization-showcase.spec.ts:115:5 › organization showcase reflows at 320px without clipping (1.2s)
+  ✓   5 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression (9.3s)
+  ✓   6 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression (9.4s)
+  ✓   7 [chromium-desktop] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression (9.3s)
+/work/tests/visual/organization-showcase.spec.ts-snapshots/showcase-en-mobile.png is re-generated, writing actual.
+  ✓   8 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase en: selection, navigation, keyboard and contrast (3.5s)
+  ✓   9 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase pt: selection, navigation, keyboard and contrast (2.4s)
+  ✓  10 [mobile] › tests/visual/organization-showcase.spec.ts:17:6 › organization showcase es: selection, navigation, keyboard and contrast (2.5s)
+  ✓  11 [mobile] › tests/visual/organization-showcase.spec.ts:115:5 › organization showcase reflows at 320px without clipping (1.1s)
+/work/tests/visual/portfolio.spec.ts-snapshots/home-mobile.png is re-generated, writing actual.
+  ✓  12 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home renders without visual regression (11.7s)
+  ✓  13 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home-pt renders without visual regression (9.2s)
+  ✓  14 [mobile] › tests/visual/portfolio.spec.ts:55:6 › home-es renders without visual regression (9.7s)
+
+  14 passed (1.4m)

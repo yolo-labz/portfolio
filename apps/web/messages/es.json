@@ -419,6 +419,7 @@
 		"selectedRepositories": "Proyectos seleccionados de yolo-labz",
 		"projectNotes": "Ver proyecto",
 		"projectNotesLabel": "Notas del proyecto: {project}",
+		"speechSummary": "Daemon de socket Unix para un solo usuario: mantiene Kokoro listo entre solicitudes de voz, con reproducción local interrumpible.",
 		"sourceCode": "Código",
 		"sourceCodeLabel": "Código fuente: {project}",
 		"moreProjects": "Más proyectos y demos ({count})"

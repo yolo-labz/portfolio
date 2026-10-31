@@ -1,0 +1,91 @@
+{
+	"config": {
+		"argv": [
+			"/usr/bin/node",
+			"/work/node_modules/@playwright/test/cli.js",
+			"test",
+			"portfolio.spec.ts",
+			"--workers=1",
+			"--grep",
+			"^home",
+			"--repeat-each=2",
+			"--reporter=json"
+		],
+		"configFile": "/work/playwright.config.ts",
+		"rootDir": "/work/tests/visual",
+		"failOnFlakyTests": false,
+		"forbidOnly": false,
+		"fullyParallel": true,
+		"globalSetup": null,
+		"globalTeardown": null,
+		"globalTimeout": 0,
+		"grep": {},
+		"grepInvert": null,
+		"maxFailures": 0,
+		"metadata": {},
+		"preserveOutput": "always",
+		"projects": [
+			{
+				"outputDir": "/work/test-results/artifacts",
+				"repeatEach": 1,
+				"retries": 0,
+				"metadata": {},
+				"id": "chromium-desktop",
+				"name": "chromium-desktop",
+				"testDir": "/work/tests/visual",
+				"testIgnore": [],
+				"testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+				"timeout": 30000
+			},
+			{
+				"outputDir": "/work/test-results/artifacts",
+				"repeatEach": 1,
+				"retries": 0,
+				"metadata": {},
+				"id": "mobile",
+				"name": "mobile",
+				"testDir": "/work/tests/visual",
+				"testIgnore": [],
+				"testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+				"timeout": 30000
+			}
+		],
+		"quiet": false,
+		"reporter": [["json"]],
+		"reportSlowTests": {
+			"max": 5,
+			"threshold": 300000
+		},
+		"shard": null,
+		"tags": [],
+		"updateSnapshots": "missing",
+		"updateSourceMethod": "patch",
+		"version": "1.62.1",
+		"workers": 1,
+		"webServer": {
+			"command": "pnpm --filter @portfolio/web build && cp -R apps/web/public apps/web/.next/standalone/apps/web/public && cp -R apps/web/.next/static apps/web/.next/standalone/apps/web/.next/static && PORT=3000 HOSTNAME=127.0.0.1 node apps/web/.next/standalone/apps/web/server.js",
+			"port": 3000,
+			"timeout": 180000,
+			"reuseExistingServer": true,
+			"env": {
+				"NEXT_TELEMETRY_DISABLED": "1",
+				"NEXT_PUBLIC_SITE_URL": "http://localhost:3000"
+			}
+		}
+	},
+	"suites": [],
+	"errors": [
+		{
+			"message": "Error: No tests found.\nMake sure that arguments are regular expressions matching test files.\nYou may need to escape symbols like \"$\" or \"*\" and quote the arguments.",
+			"stack": "Error: No tests found.\nMake sure that arguments are regular expressions matching test files.\nYou may need to escape symbols like \"$\" or \"*\" and quote the arguments."
+		}
+	],
+	"stats": {
+		"startTime": "2026-10-31T02:07:19.511Z",
+		"duration": 49.35400000000004,
+		"expected": 0,
+		"skipped": 0,
+		"unexpected": 0,
+		"flaky": 0
+	}
+}
