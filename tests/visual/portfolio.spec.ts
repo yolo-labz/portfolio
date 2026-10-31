@@ -3,8 +3,11 @@
 // page carries an O(N) baseline cost and we want the diff signal to stay
 // loud.
 //
-// Project pages: top 5 featured cards from apps/web/src/data/projects.ts
-// (`featured: true`). Adding a route?
+// Project pages: the flagship cards plus the three deep-dive routes this suite
+// already carried. Flagships are the six named propositions in
+// yolo-labz/.github docs/brand-positioning.md (`featured: true` in
+// apps/web/src/data/projects.ts), so a card and its page are never out of step.
+// Adding a route?
 //   1) append below
 //   2) regenerate baselines via `pnpm test:visual:update` inside the pinned
 //      playwright Docker image (see tests/visual/README.md)
@@ -16,9 +19,17 @@ import { expect, test } from "@playwright/test";
 const PAGES: ReadonlyArray<{ name: string; path: string }> = [
 	{ name: "home", path: "/en" },
 	{ name: "about", path: "/en/about" },
-	// Top 5 featured projects (apps/web/src/data/projects.ts: featured === true).
+	// The six flagship cards (apps/web/src/data/projects.ts: featured === true).
 	{ name: "project-wa", path: "/en/projects/wa" },
 	{ name: "project-claude-mac-chrome", path: "/en/projects/claude-mac-chrome" },
+	{ name: "project-kokoro-speakd", path: "/en/projects/kokoro-speakd" },
+	{ name: "project-fand", path: "/en/projects/fand" },
+	{
+		name: "project-anthropic-throttle-proxy",
+		path: "/en/projects/anthropic-throttle-proxy",
+	},
+	{ name: "project-chrome-bridge", path: "/en/projects/chrome-bridge" },
+	// Deep-dive routes this suite already covered, kept for regression signal.
 	{
 		name: "project-linkedin-chrome-copilot",
 		path: "/en/projects/linkedin-chrome-copilot",

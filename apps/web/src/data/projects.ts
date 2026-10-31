@@ -31,10 +31,16 @@ export interface Project {
 	hasArc?: boolean;
 }
 
-// Featured projects (featured: true) carry the compliance-architecture thesis and
-// render full case-study cards. The rest render in a compact "open-source & demos"
-// shelf. Client work is anonymized; every featured metric is either locked-verified
-// (positioning corpus) or stated in the public repo it links to.
+// Featured projects (featured: true) are the org's flagship cards: one real public
+// repo each, a one-liner taken from the brand-positioning corpus
+// (yolo-labz/.github docs/brand-positioning.md, the six named flagships), and
+// metrics that restate that corpus' required qualifiers rather than implying a
+// guarantee. A card that cannot link a public repo is not a flagship card, so the
+// anonymized client case studies stay in the array as deep dives with
+// featured: false. The rest render in a compact "open-source & demos" shelf.
+// No card may carry an invented number: corpus claims marked unsupported (SLSA
+// level, notarization, latency tokens) or needs-measurement (timings, adoption)
+// are stated as boundaries, not as results.
 //
 // PROSE (tagline/description/problemStatement/solutionSummary + the optional
 // constraint/decision/outcome arc) is NOT here — it is localized in next-intl
@@ -58,7 +64,7 @@ export const projects: Project[] = [
 			{ label: "Audit", value: "LGPD · append-only decision ledger" },
 		],
 		links: {},
-		featured: true,
+		featured: false,
 		hasArc: true,
 	},
 	{
@@ -78,7 +84,7 @@ export const projects: Project[] = [
 			{ label: "Stack", value: "Go · TypeScript" },
 		],
 		links: {},
-		featured: true,
+		featured: false,
 		hasArc: true,
 	},
 	{
@@ -98,7 +104,7 @@ export const projects: Project[] = [
 			{ label: "Cost", value: "serverless, usage-tracked" },
 		],
 		links: {},
-		featured: true,
+		featured: false,
 		hasArc: true,
 	},
 	{
@@ -118,7 +124,7 @@ export const projects: Project[] = [
 			{ label: "Retrieval", value: "grounded, bilingual PT/EN" },
 		],
 		links: {},
-		featured: true,
+		featured: false,
 		hasArc: true,
 	},
 	{
@@ -139,8 +145,11 @@ export const projects: Project[] = [
 			{ label: "Formats", value: "PDF · scanned PDF · JPEG · PNG · DOCX" },
 			{ label: "Storage", value: "JSONB + full-text TSVECTOR" },
 		],
-		links: { demo: "https://ai-docs.home301server.com.br" },
-		featured: true,
+		links: {
+			demo: "https://ai-docs.home301server.com.br",
+			source: "https://github.com/yolo-labz/portfolio/tree/main/projects/ai-document-processor",
+		},
+		featured: false,
 		hasArc: true,
 	},
 	{
@@ -154,16 +163,13 @@ export const projects: Project[] = [
 			{ name: "NixOS", category: "infrastructure" },
 		],
 		metrics: [
-			{
-				label: "Trust boundary",
-				value: "<channel>-tagged inbound — body can't mutate the allowlist",
-			},
-			{ label: "Send safety", value: "default-deny · per-sec/min/day limits · 25/50/100% warmup" },
-			{ label: "Supply chain", value: "SLSA L2 + Sigstore · verify via gh attestation verify" },
+			{ label: "Scope", value: "single-user · QR-paired · unofficial Multi-Device" },
+			{ label: "Controls", value: "allowlist checked before the rate limiter" },
+			{ label: "Send safety", value: "default-deny · per-sec/min/day limits · warmup ramp" },
 			{ label: "License", value: "Apache-2.0" },
 		],
 		links: { source: "https://github.com/yolo-labz/wa" },
-		featured: false,
+		featured: true,
 		hasArc: true,
 	},
 	{
@@ -243,11 +249,13 @@ export const projects: Project[] = [
 			{ name: "macOS", category: "infrastructure" },
 		],
 		metrics: [
-			{ label: "Profile detection", value: "deterministic, via Local State" },
-			{ label: "Bypasses", value: "isTrusted gate on React/Ember SPAs" },
+			{ label: "Platform", value: "macOS · Bash 4+ · jq · Apple Events" },
+			{ label: "Addressing", value: "Local State catalog + stable window/tab IDs" },
+			{ label: "Boundary", value: "IDs last for the window/tab lifetime, not across restart" },
+			{ label: "License", value: "MIT" },
 		],
 		links: { source: "https://github.com/yolo-labz/claude-mac-chrome" },
-		featured: false,
+		featured: true,
 	},
 	{
 		slug: "linkedin-chrome-copilot",
@@ -275,12 +283,16 @@ export const projects: Project[] = [
 			{ name: "launchd / systemd", category: "infrastructure" },
 		],
 		metrics: [
-			{ label: "Model load", value: "once per daemon" },
-			{ label: "Warm latency", value: "< 200 ms" },
-			{ label: "PyPI provenance", value: "PEP 740 attestations" },
+			{ label: "Interface", value: "single-user Unix socket · line-delimited JSON" },
+			{ label: "Playback", value: "interruptible; a queued ack is not audible start" },
+			{
+				label: "Boundary",
+				value: "no latency guarantee; synthesis depends on text, hardware, load",
+			},
+			{ label: "License", value: "MIT" },
 		],
 		links: { source: "https://github.com/yolo-labz/kokoro-speakd" },
-		featured: false,
+		featured: true,
 	},
 	{
 		slug: "claude-classroom-submit",
@@ -307,11 +319,13 @@ export const projects: Project[] = [
 			{ name: "launchd", category: "infrastructure" },
 		],
 		metrics: [
-			{ label: "Reload", value: "SIGHUP, zero downtime" },
-			{ label: "Build", value: "exact-pin reproducible" },
+			{ label: "Platform", value: "macOS · Apple Silicon · SMC sensors" },
+			{ label: "Control", value: "curve output reduces to forced minimum or auto" },
+			{ label: "Boundary", value: "arbitrary RPM targets are read-only on Apple Silicon" },
+			{ label: "License", value: "MIT" },
 		],
 		links: { source: "https://github.com/yolo-labz/fand" },
-		featured: false,
+		featured: true,
 	},
 	{
 		slug: "pedro-portfolio-recipes",
@@ -329,5 +343,43 @@ export const projects: Project[] = [
 		],
 		links: { source: "https://github.com/yolo-labz/pedro-portfolio-recipes" },
 		featured: false,
+	},
+	{
+		slug: "anthropic-throttle-proxy",
+		title: "anthropic-throttle-proxy — fleet-wide pacing and request admission",
+		techStack: [
+			{ name: "Python", category: "language" },
+			{ name: "aiohttp", category: "framework" },
+			{ name: "Per-bearer queues", category: "framework" },
+			{ name: "Prometheus metrics", category: "service" },
+			{ name: "Dokku", category: "infrastructure" },
+		],
+		metrics: [
+			{ label: "Pacing", value: "fair per-bearer queues · AIMD live ceiling" },
+			{ label: "Default", value: "queue mode off · fair/reactive enable admission" },
+			{ label: "Boundary", value: "no monetary cap and no extra subscription capacity" },
+			{ label: "License", value: "MIT" },
+		],
+		links: { source: "https://github.com/yolo-labz/anthropic-throttle-proxy" },
+		featured: true,
+	},
+	{
+		slug: "chrome-bridge",
+		title: "chrome-bridge — extension plus localhost relay for Chromium automation",
+		techStack: [
+			{ name: "Python", category: "language" },
+			{ name: "Chrome MV3 extension", category: "framework" },
+			{ name: "chrome.debugger · CDP", category: "service" },
+			{ name: "Localhost relay", category: "service" },
+			{ name: "Linux · macOS", category: "infrastructure" },
+		],
+		metrics: [
+			{ label: "Interface", value: "cb CLI → relay on 127.0.0.1 → extension" },
+			{ label: "Input", value: "chrome.debugger · DevTools Protocol dispatch" },
+			{ label: "Boundary", value: "no separate event-trust or fingerprint guarantee" },
+			{ label: "License", value: "MIT" },
+		],
+		links: { source: "https://github.com/yolo-labz/chrome-bridge" },
+		featured: true,
 	},
 ];
