@@ -157,7 +157,8 @@ One authored moment: on first paint the index rows type themselves in, each row 
 from the left (`clip-path`) with a 6 px rise, staggered 45 ms, 520 ms, expo-out. Rows are
 visible by default (no opacity start), the animation is pure CSS (no client JS on the LCP
 path), and under `prefers-reduced-motion: reduce` it is not applied at all. The mobile
-drawer is the only Motion (JS) animation and runs under `MotionConfig reducedMotion="user"`.
+drawer slides in with CSS (320 ms, expo-out) and closes instantly. No JS animation library
+ships: `motion/react` was removed from the client bundle (≈ 42 KB gzip on every page).
 Cross-document view transitions (`@view-transition`) cross-fade full navigations in
 browsers that support them, 180 ms, off under reduced motion. Client-side route changes
 are not transitioned yet: React's `<ViewTransition>` is canary-only in 19.2.

@@ -87,6 +87,26 @@ main .list-disc > li {
 	max-inline-size: 50ch;
 }
 
+/* Mobile drawer entrance (components/layout/mobile-nav.tsx). */
+@media (prefers-reduced-motion: no-preference) {
+	.drawer-scrim {
+		animation: drawer-fade 200ms var(--ease-out-expo) both;
+	}
+	.drawer-panel {
+		animation: drawer-in 320ms var(--ease-out-expo) both;
+	}
+}
+@keyframes drawer-fade {
+	from {
+		opacity: 0;
+	}
+}
+@keyframes drawer-in {
+	from {
+		transform: translateX(100%);
+	}
+}
+
 /* The one authored entrance: the work index types itself in, row by row. Rows
    are visible by default (transform only, never opacity) so LCP and no-JS
    readers are unaffected; reduced motion removes it entirely. */

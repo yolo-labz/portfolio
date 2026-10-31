@@ -188,3 +188,18 @@ test("prefers-contrast more raises muted text", async ({ page }) => {
 	});
 	expect(muted).toBe(body);
 });
+
+// Mobile drawer (CSS entrance, no motion library): opens as a modal dialog with focus
+// inside, and Escape closes it and returns focus to the toggle.
+test("mobile drawer opens, traps focus and closes on Escape", async ({ page }) => {
+	await page.setViewportSize({ width: 390, height: 844 });
+	await page.goto("/en");
+	const toggle = page.locator("header button[aria-expanded]");
+	await toggle.click();
+	const drawer = page.getByRole("dialog", { name: "Navigation menu" });
+	await expect(drawer).toBeVisible();
+	await expect(drawer.locator("a").first()).toBeFocused();
+	await page.keyboard.press("Escape");
+	await expect(drawer).toHaveCount(0);
+	await expect(toggle).toBeFocused();
+});

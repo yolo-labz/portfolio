@@ -124,3 +124,6 @@ jobs:
             .lighthouseci-mobile/
           retention-days: 14
           if-no-files-found: ignore
+          # The report dirs are dot-dirs; upload-artifact skips hidden files by
+          # default, which left every past run without its reports.
+          include-hidden-files: true

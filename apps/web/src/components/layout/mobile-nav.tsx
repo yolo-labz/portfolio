@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -89,77 +88,67 @@ export function MobileNav() {
 				</div>
 			</button>
 
-			{/* "user": the drawer slides only when the OS allows motion. */}
-			<MotionConfig reducedMotion="user">
-				<AnimatePresence>
-					{open && (
-						<>
-							<motion.div
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								exit={{ opacity: 0 }}
-								transition={{ duration: 0.2 }}
-								className="fixed inset-0 z-40 bg-crust/80 md:hidden"
-								onClick={() => setOpen(false)}
-								aria-hidden="true"
-							/>
-							<motion.nav
-								ref={drawerRef}
-								initial={{ x: "100%" }}
-								animate={{ x: 0 }}
-								exit={{ x: "100%" }}
-								transition={{ type: "spring", damping: 25, stiffness: 200 }}
-								className="fixed right-0 top-0 z-50 flex h-full w-72 flex-col bg-bg-elevated p-6 shadow-2xl md:hidden"
-								role="dialog"
-								aria-modal="true"
-								aria-label="Navigation menu"
-							>
-								<ul className="mt-16 flex flex-col gap-1">
-									{navItems.map((item) => {
-										const linkClass =
-											"block min-h-11 rounded-md px-4 py-3 text-lg text-text-muted transition-colors hover:bg-surface hover:text-text";
-										if (item.external) {
-											return (
-												<li key={item.key}>
-													<a
-														href={item.href}
-														target="_blank"
-														rel="noopener noreferrer"
-														onClick={() => setOpen(false)}
-														className={linkClass}
-													>
-														{t(item.key)}
-													</a>
-												</li>
-											);
-										}
-										if (item.href.startsWith("#")) {
-											return (
-												<li key={item.key}>
-													<a
-														href={isHome ? item.href : `/${item.href}`}
-														onClick={() => setOpen(false)}
-														className={linkClass}
-													>
-														{t(item.key)}
-													</a>
-												</li>
-											);
-										}
-										return (
-											<li key={item.key}>
-												<Link href={item.href} onClick={() => setOpen(false)} className={linkClass}>
-													{t(item.key)}
-												</Link>
-											</li>
-										);
-									})}
-								</ul>
-							</motion.nav>
-						</>
-					)}
-				</AnimatePresence>
-			</MotionConfig>
+			{/* CSS entrance (globals.css .drawer-*), off under reduced motion. Closing is
+			    instant. This replaced motion/react, which shipped ~42 KB gzip to every page
+			    for this one drawer. */}
+			{open && (
+				<>
+					<div
+						className="drawer-scrim fixed inset-0 z-40 bg-crust/80 md:hidden"
+						onClick={() => setOpen(false)}
+						aria-hidden="true"
+					/>
+					<nav
+						ref={drawerRef}
+						className="drawer-panel fixed right-0 top-0 z-50 flex h-full w-72 flex-col bg-bg-elevated p-6 shadow-2xl md:hidden"
+						role="dialog"
+						aria-modal="true"
+						aria-label="Navigation menu"
+					>
+						<ul className="mt-16 flex flex-col gap-1">
+							{navItems.map((item) => {
+								const linkClass =
+									"block min-h-11 rounded-md px-4 py-3 text-lg text-text-muted transition-colors hover:bg-surface hover:text-text";
+								if (item.external) {
+									return (
+										<li key={item.key}>
+											<a
+												href={item.href}
+												target="_blank"
+												rel="noopener noreferrer"
+												onClick={() => setOpen(false)}
+												className={linkClass}
+											>
+												{t(item.key)}
+											</a>
+										</li>
+									);
+								}
+								if (item.href.startsWith("#")) {
+									return (
+										<li key={item.key}>
+											<a
+												href={isHome ? item.href : `/${item.href}`}
+												onClick={() => setOpen(false)}
+												className={linkClass}
+											>
+												{t(item.key)}
+											</a>
+										</li>
+									);
+								}
+								return (
+									<li key={item.key}>
+										<Link href={item.href} onClick={() => setOpen(false)} className={linkClass}>
+											{t(item.key)}
+										</Link>
+									</li>
+								);
+							})}
+						</ul>
+					</nav>
+				</>
+			)}
 		</>
 	);
 }
