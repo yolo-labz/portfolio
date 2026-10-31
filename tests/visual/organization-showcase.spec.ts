@@ -1,7 +1,14 @@
 import { expect, test } from "@playwright/test";
 import { projects } from "../../apps/web/src/data/projects";
 
-const selected = ["wa", "serverless-data-api", "kokoro-speakd", "fand"];
+// Catalogue order, not editorial order: the shelf renders `projects` in array
+// order, so this list has to follow apps/web/src/data/projects.ts.
+const selected = [
+	"serverless-data-api",
+	"linkedin-chrome-copilot",
+	"claude-classroom-submit",
+	"pedro-portfolio-recipes",
+];
 
 // These contracts exercise the existing catalogue, not a second project database.
 // Remote navigation is not needed: source destinations are asserted without sends.
@@ -50,9 +57,8 @@ for (const locale of ["en", "pt", "es"]) {
 				expect(box?.height).toBeGreaterThanOrEqual(44);
 			}
 		}
-		const speech = cards.filter({ has: page.getByRole("heading", { name: "kokoro-speakd" }) });
-		await expect(speech.locator("p")).toContainText("Unix");
-		await expect(speech.locator("p")).not.toContainText(/200\s?ms|3[-–]5\s?s/);
+		// kokoro-speakd now renders as a flagship card above this shelf, so its
+		// latency-token guard lives in portfolio.spec.ts next to that card.
 		await expect(section).toHaveScreenshot(`showcase-${locale}.png`);
 
 		const summary = section.locator("summary");

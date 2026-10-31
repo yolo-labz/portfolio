@@ -330,13 +330,13 @@
 			"outcome": "Pipeline ao vivo e self-hostável a ~US$ 0,006/documento. Cada campo extraído rastreia até o seu trecho de origem e pode ser buscado em texto completo."
 		},
 		"wa": {
-			"tagline": "Um canal de agente persistente que trata o corpo da mensagem de entrada como um perímetro de auditoria não confiável. Go, hexagonal, assinado com Sigstore.",
+			"tagline": "Automatize fluxos pessoais de WhatsApp por um daemon persistente, com allowlist e limites de taxa.",
 			"description": "Uma sessão de WhatsApp persistente embrulhada num daemon (`wad`), com um cliente CLI enxuto (`wa`) que emite comandos por um socket unix JSON-RPC. Ratchet store em SQLite, allowlist + rate limiter + rampa de warmup antes do primeiro envio. As mensagens de entrada chegam embrulhadas em tags <channel> para que um agente downstream não possa confiar no corpo de uma mensagem para alterar a allowlist ou disparar envios. Apache-2.0, GoReleaser para GitHub Releases + homebrew-tap + flake.nix.",
 			"problemStatement": "Dê a um agente autônomo um canal de WhatsApp de verdade e todo corpo de mensagem de entrada vira uma superfície de injeção. Uma mensagem forjada nunca pode alterar a allowlist nem disparar um envio. Uma biblioteca de API de parceiro vazando pela base de código torna a fronteira de confiança impossível de auditar.",
 			"solutionSummary": "Camadas hexagonais impostas pelo golangci-lint: o código de domínio e de aplicação fisicamente não consegue importar a biblioteca do WhatsApp, ela fica em quarentena nos adapters. Mensagens de entrada chegam embrulhadas em tags <channel>, então o agente não pode confiar num corpo para alterar estado. Allowlist com negação por padrão, rate limits por segundo/minuto/dia e uma rampa de warmup de 25/50/100% antes do primeiro envio. Ratchet store em SQLite sobre modernc.org/sqlite: CGO_ENABLED=0, sem cadeia de build CGO.",
 			"constraint": "Um agente autônomo com canal de WhatsApp de verdade faz de todo corpo de mensagem de entrada uma superfície de injeção. Uma biblioteca de API de parceiro vazando pela base de código torna a fronteira de confiança impossível de auditar.",
 			"decision": "Pôr a biblioteca do WhatsApp em quarentena nos adapters e deixar o golangci-lint reprovar o build se o código de domínio/aplicação a importar. Embrulhar os corpos de entrada em tags <channel> para que não possam ser aceitos como gatilho de mudança de estado. Negação por padrão na allowlist e rampa de 25/50/100% numa sessão nova.",
-			"outcome": "Um daemon cuja fronteira de confiança é auditável: a biblioteca está contida, o corpo da mensagem não consegue escalar privilégio e cada release é assinado com Sigstore em SLSA L2."
+			"outcome": "Um daemon com perímetro de confiança auditável: a biblioteca do WhatsApp fica contida, o corpo da mensagem não escala privilégio, e cada release leva SBOMs e um bundle de assinatura de checksums."
 		},
 		"serverless-data-api": {
 			"tagline": "CRUD serverless em nível de produção no Terraform: IAM com privilégio mínimo, planos de uso por API-key, PITR e um teardown que não deixa nenhum órfão.",
@@ -360,7 +360,7 @@
 			"solutionSummary": "SQLAlchemy async + asyncpg para acesso não-bloqueante ao PostgreSQL. Colunas indexadas em (neighborhood, price, posted_date) mantêm os agregados em poucos ms. Um script de seed gera preços com distribuição gaussiana em torno das medianas por bairro. Um único `docker compose up` coloca PostgreSQL + API + dashboard no ar; os endpoints de exportação CSV/JSON respeitam os mesmos filtros da UI ao vivo."
 		},
 		"claude-mac-chrome": {
-			"tagline": "Conduz SPAs em React/Ember que rejeitam eventos sintéticos, enviando eventos reais de ponteiro do SO em coordenadas de tela calculadas.",
+			"tagline": "Endereçe perfis e abas do Chrome a partir de scripts no macOS sem depender da ordem das janelas.",
 			"description": "Lê o catálogo autoritativo de perfis do Local State do Chrome e associa perfis a janelas abertas via e-mails embutidos nos títulos das abas. IDs de janela/aba estáveis entre aberturas. Combinado com cliclick + pbcopy, conduz single-page apps que rejeitam eventos programáticos.",
 			"problemStatement": "Os SPAs do LinkedIn, Calendly e Upwork bloqueiam cliques programáticos via `event.isTrusted === true`. Extensões de navegador não contornam; Playwright via remote-debugging-port funciona, mas atrapalha a sessão do usuário.",
 			"solutionSummary": "Automação nativa do macOS: cliclick em coordenadas de tela calculadas (bounds da janela + rect do viewport) envia eventos reais de ponteiro do SO com isTrusted=true. Detecção de perfil do Chrome via JSON do Local State. AppleScript orquestra o foco de janela + aba. Combinado com pbcopy + Cmd+V para input em contenteditable do React."
@@ -372,9 +372,9 @@
 			"solutionSummary": "Um plugin em Bash 3.2 irmão do claude-mac-chrome. Lê as posições via scrape do DOM na visão de dono e conduz os saves por locale em /edit/forms/<id>/?language=<lang>&country=<cc> via injeção de JS por AppleScript. Fallback de cliclick para caminhos protegidos por eventos reais de ponteiro do SO. Log de auditoria por ação; confirmação em duas etapas em qualquer equivalente de Enviar."
 		},
 		"kokoro-speakd": {
-			"tagline": "Carrega o modelo de TTS uma vez e serve a síntese por socket unix: resposta quente abaixo de 200ms, em vez de cold load de 3-5s por chamada.",
+			"tagline": "Mantenha o Kokoro pronto entre pedidos de fala, com reprodução local interrompível.",
 			"description": "Carrega o modelo Kokoro 82M uma vez no start do daemon e expõe um socket unix para requisições repetidas de síntese. Integração nativa com launchd no macOS + systemd no Linux. Publicado no PyPI com atestações PEP 740.",
-			"problemStatement": "O load do modelo a cada requisição adiciona 3-5s de latência a toda chamada de TTS. O feedback de voz por sessão do Claude Code precisa de resposta abaixo de um segundo.",
+			"problemStatement": "Carregar o modelo de TTS a cada pedido paga o custo de warm-up em toda resposta, e uma máquina com muitas sessões do Claude Code sente isso. Fala nova também deve cancelar a anterior em vez de entrar na fila atrás dela.",
 			"solutionSummary": "Arquitetura de daemon: o modelo fica em memória, as requisições chegam por socket unix, com aceleração opcional por GPU via ONNX Runtime. Distribuído via PyPI Trusted Publishing com atestações de build-provenance PEP 740."
 		},
 		"claude-classroom-submit": {
@@ -384,16 +384,28 @@
 			"solutionSummary": "Pular o navegador por completo. rclone sobe para o Drive, a REST API do Classroom anexa + entrega. Fluxo OAuth 2.0 com refresh-token guardado em ~/.config/claude-classroom-submit/tokens.json."
 		},
 		"fand": {
-			"tagline": "Acelera as fans em curvas guiadas por temperatura antes de o throttling térmico começar, com reload de config sem downtime via SIGHUP. Rust + launchd.",
-			"description": "Lê sensores do SMC via chamadas de sistema diretas, aplica curvas de fan configuradas pelo usuário e suporta overrides por máquina. Hot-reload no SIGHUP. Rust 1.84 com dependências fixadas exatas para builds reprodutíveis.",
-			"problemStatement": "Os padrões de fan do Apple Silicon são conservadores demais sob carga sustentada de CPU + GPU (Claude Code + Docker + navegador + ffmpeg). As fans só aceleram quando o throttling térmico já começou.",
-			"solutionSummary": "Um daemon em userspace faz polling do SMC, aplica curvas agressivas antes do throttle e recarrega a config sem reiniciar. Distribuído como binário universal2 via brew + GitHub Releases."
+			"tagline": "Configure modos de ventoinha guiados por temperatura em Macs Apple Silicon compatíveis.",
+			"description": "Um loop de controle single-thread lê os sensores do SMC e aciona curvas por ventoinha com suavização EMA e histerese. No Apple Silicon o SMC aceita F0md=0 (auto) ou 1 (mínimo forçado), então cada tick se reduz a mínimo forçado ou auto; alvos de RPM arbitrários são somente leitura. Config em TOML com overrides por máquina, reload por SIGHUP, módulo nix-darwin e dependências com pin exato.",
+			"problemStatement": "Sob carga sustentada de CPU e GPU, o controle de ventoinha do Apple Silicon fica em auto, e o macOS não oferece forma declarativa de pedir resfriamento forçado sem um app com GUI.",
+			"solutionSummary": "Um daemon em espaço de usuário lê o SMC e escolhe mínimo forçado ou auto a partir de uma curva de temperatura com histerese, devolvendo o controle ao gerenciamento térmico do macOS. A config fica em TOML atrás de um módulo nix-darwin e recarrega por SIGHUP sem reiniciar."
 		},
 		"pedro-portfolio-recipes": {
 			"tagline": "Padrões curtos e prontos para copiar das stacks que entrego: cada um é problema, snippet funcional, tradeoff e anti-padrão.",
 			"description": "Oito receitas de código capability-first: skills de plugin de Claude Code, automação multi-perfil de Chrome, RAG híbrido com pgvector + BM25, verificação de atestação Sigstore, overlays de flake NixOS, módulos Terraform paralelos em Azure/GCP, secrets com sops-nix e hooks de pré-commit poliglotas com lefthook. Cada receita é um diretório: problema, snippet funcional, tradeoff, anti-padrão.",
 			"problemStatement": "Revisores e colaboradores precisam de evidência rápida de que uma alegação de stack é sustentada por código de verdade. Copy de marketing não faz isso, e apps completos têm a resolução errada para \"me mostre como você ligaria a busca híbrida\".",
 			"solutionSummary": "Um repositório público de receitas curtas e autocontidas em recipes/<topic>/README.md. Sem build step, sem framework compartilhado. Cada receita se sustenta sozinha em 200–500 palavras: problema, snippet, tradeoff, anti-padrão, referência. MIT, com baseline de SonarQube + Dependabot + lefthook."
+		},
+		"anthropic-throttle-proxy": {
+			"tagline": "Faça o pacing do tráfego da API da Anthropic entre clientes, com filas por bearer e um dashboard ao vivo.",
+			"description": "Um gateway e ingress self-hosted que aplica o limite de concorrência por conta uma única vez, de forma justa, onde o operador controla. Round-robin entre conexões de cliente distintas, um teto AIMD que encolhe em 429/503 e volta a subir em 2xx consecutivos, pacing guiado por anthropic-ratelimit-* e Retry-After, dashboard HTMX e métricas Prometheus. Python, aiohttp, deploy em Dokku.",
+			"problemStatement": "O limite de streams concorrentes por conta da Anthropic não escala com o tier Max, então muitas sessões paralelas do Claude atrás de um único bearer OAuth geram uma tempestade de retries na camada HTTP.",
+			"solutionSummary": "O proxy coloca o limite uma vez para a frota inteira: filas justas por bearer, teto vivo guiado pelo pushback do provedor e pacing que respeita Retry-After. Os modos de fila são opt-in, então o padrão continua pass-through."
+		},
+		"chrome-bridge": {
+			"tagline": "Controle um perfil Chromium dedicado a partir de uma CLI local, via extensão e relay.",
+			"description": "Uma extensão MV3 desempacotada carregada em um perfil Chromium dedicado, pareada com um relay Python de stdlib em 127.0.0.1:9224. As tarefas passam por chrome.cookies, chrome.scripting e chrome.debugger e voltam em JSON para quem chamou.",
+			"problemStatement": "Ligar um driver de automação ao perfil de navegação do dia a dia coloca automação e sessões pessoais no mesmo navegador, e a rota via AppleScript só existe no macOS.",
+			"solutionSummary": "O trabalho passa por uma extensão dentro de um perfil dedicado e por um relay localhost que qualquer ferramenta irmã pode chamar. Cliques de debug usam chrome.debugger e o DevTools Protocol, que é entrada CDP e não um mecanismo separado de confiança de evento; confira as restrições de domínio da extensão antes de usar."
 		}
 	},
 	"ProjectDetail": {
@@ -414,12 +426,11 @@
 		"selectedWorkLead": "A restrição, a decisão e o resultado medido. Só o resultado final não ensina nada.",
 		"openSourceStamp": "open-source & demos",
 		"openSourceHeading": "Ferramentas open-source da yolo-labz",
-		"openSourceLead": "Mensageria, infraestrutura, voz e ferramentas de sistema. Quatro pontos de partida, com código-fonte e notas de implementação.",
+		"openSourceLead": "Quatro pontos de partida com código-fonte e notas de implementação, escolhidos por amplitude, não por popularidade.",
 		"browseRepositories": "Todos os repositórios",
 		"selectedRepositories": "Projetos selecionados da yolo-labz",
 		"projectNotes": "Ver projeto",
 		"projectNotesLabel": "Notas do projeto: {project}",
-		"speechSummary": "Daemon de socket Unix para um único usuário: mantém o Kokoro pronto entre pedidos de fala, com reprodução local interrompível.",
 		"sourceCode": "Código",
 		"sourceCodeLabel": "Código-fonte: {project}",
 		"moreProjects": "Mais projetos e demos ({count})"
