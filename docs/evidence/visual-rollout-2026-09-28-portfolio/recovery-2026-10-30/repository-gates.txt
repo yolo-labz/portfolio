@@ -1,0 +1,7 @@
+code-slop-gate: unknown flag: --worktree
+── alignment gate ─────────────────────────────
+scanned: 3 changed code file(s) · 0 error(s) · 0 warning(s)
+───────────────────────────────────────────────
+✓ PASS — no completion-theater or scope violations over threshold.
+
+GATE_EXIT code-slop=2 alignment=0

@@ -18,7 +18,10 @@
 	--color-text-muted: #a6adc8; /* subtext0 */
 	--color-accent: #00c77a; /* emerald — primary CTA / data plane (restored pre-relaunch hue) */
 	--color-accent-hover: #00db8c; /* brighter emerald */
-	--color-accent-dim: #45475a; /* surface1 — accent badge background */
+	--color-accent-dim: #313244; /* surface0 — accent badge background (was surface1
+	                                  #45475a: emerald-on-surface1 measured 4.11:1, below
+	                                  the WCAG AA 4.5:1 floor for the 12px mono chip text;
+	                                  surface0 gives 5.66:1 and keeps the locked emerald) */
 	--color-link: #89b4fa; /* blue — embedding / links */
 	--color-warn: #fab387; /* peach — audit / persistence */
 	--color-compliance: #f9e2af; /* yellow — compliance badges */

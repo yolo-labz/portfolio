@@ -330,13 +330,13 @@
 			"outcome": "A live, self-hostable pipeline at ~$0.006/document. Every extracted field traces to its source span and is searchable in full text."
 		},
 		"wa": {
-			"tagline": "A persistent agent channel that treats the inbound message body as an untrusted audit perimeter. Go, hexagonal, Sigstore-signed.",
+			"tagline": "Automate personal WhatsApp workflows through a persistent daemon with allowlist and rate controls.",
 			"description": "A persistent WhatsApp session wrapped in a daemon (`wad`) with a thin CLI client (`wa`) that issues commands over a JSON-RPC unix socket. SQLite ratchet store, allowlist + rate limiter + warmup ramp before the first send. Inbound messages are wrapped in <channel> tags so a downstream agent cannot trust a message body to mutate the allowlist or trigger sends. Apache-2.0, GoReleaser to GitHub Releases + homebrew-tap + flake.nix.",
 			"problemStatement": "Give an autonomous agent a real WhatsApp channel and every inbound message body becomes an injection surface. A crafted message must never mutate the allowlist or trigger a send. A partner-API library leaking across the codebase makes the trust boundary impossible to audit.",
 			"solutionSummary": "Hexagonal layering enforced by golangci-lint: domain and app code physically cannot import the WhatsApp library, it stays quarantined in adapters. Inbound messages arrive wrapped in <channel> tags, so the agent can't trust a body to mutate state. Default-deny allowlist, per-second/minute/day rate limits, a 25/50/100% warmup ramp before the first send. SQLite ratchet store on modernc.org/sqlite: CGO_ENABLED=0, no CGO build chain.",
 			"constraint": "An autonomous agent with a real WhatsApp channel makes every inbound message body an injection surface. A partner-API library leaking across the codebase makes the trust boundary impossible to audit.",
 			"decision": "Quarantine the WhatsApp library to adapters and let golangci-lint fail the build if domain/app code imports it; wrap inbound bodies in <channel> tags so they can't be trusted to mutate state; default-deny the allowlist and ramp sends 25/50/100% on a fresh session.",
-			"outcome": "A daemon whose trust boundary is auditable: the library is contained, the message body can't escalate privilege, and every release is Sigstore-signed at SLSA L2."
+			"outcome": "A daemon whose trust boundary is auditable: the WhatsApp library is contained, a message body cannot escalate privilege, and releases carry SBOMs and a checksum signature bundle."
 		},
 		"serverless-data-api": {
 			"tagline": "Production-grade serverless CRUD in Terraform: IAM least-privilege, API-key usage plans, PITR, and a teardown that leaves zero orphans.",
@@ -354,7 +354,7 @@
 			"solutionSummary": "One adapter per source isolates response-shape drift. Pydantic v2 enforces the unified schema at the seam. SHA-256 over (title, employer, location, posted_date) handles dedupe. A GitHub Actions cron runs the collector daily, commits the JSON, and redeploys the static site. The site falls back to a curated 30-row seed when the API output is missing: the demo never breaks."
 		},
 		"claude-mac-chrome": {
-			"tagline": "Drives React/Ember SPAs that reject synthetic events, by sending real OS pointer events at computed screen coordinates.",
+			"tagline": "Address Chrome profiles and tabs from macOS scripts without relying on window order.",
 			"description": "Reads Chrome's Local State authoritative profile catalog and matches profiles to open windows via emails embedded in tab titles. Stable window/tab IDs across opens. Combined with cliclick + pbcopy, it drives single-page apps that reject programmatic events.",
 			"problemStatement": "LinkedIn, Calendly, and Upwork single-page apps gate programmatic clicks via `event.isTrusted === true`. Browser extensions can't bypass it; Playwright via remote-debugging-port works but disrupts the user session.",
 			"solutionSummary": "macOS-native automation: cliclick at computed screen coords (window bounds + viewport rect) sends real OS pointer events with isTrusted=true. Chrome profile detection via Local State JSON. AppleScript orchestrates window + tab focus. Combined with pbcopy + Cmd+V for React contenteditable input."
@@ -366,9 +366,9 @@
 			"solutionSummary": "A Bash 3.2 plugin sibling to claude-mac-chrome. Reads positions via owner-view DOM scrape, drives per-locale /edit/forms/<id>/?language=<lang>&country=<cc> saves via AppleScript JS-injection. cliclick fallback for paths gated on real OS pointer events. Audit log per action; two-phase confirm on any Send equivalent."
 		},
 		"kokoro-speakd": {
-			"tagline": "Loads the TTS model once and serves synthesis over a unix socket: sub-200ms warm response, instead of a 3-5s cold load per call.",
+			"tagline": "Keep Kokoro ready between speech requests, with interruptible local playback.",
 			"description": "Loads the Kokoro 82M model once at daemon start and exposes a unix socket for repeat synthesis requests. Native macOS launchd + Linux systemd integration. PyPI-published with PEP 740 attestations.",
-			"problemStatement": "Per-request model load adds 3-5s latency to every TTS call. Claude Code session-level voice feedback needs sub-second response.",
+			"problemStatement": "Loading the TTS model per request pays the warm-up cost on every response, and a machine running many Claude Code sessions feels it. New speech should also cancel the older utterance instead of queueing behind it.",
 			"solutionSummary": "Daemon architecture: the model is held in memory, requests arrive via unix socket, with optional GPU acceleration via ONNX Runtime. Distributed via PyPI Trusted Publishing with PEP 740 build-provenance attestations."
 		},
 		"claude-classroom-submit": {
@@ -378,16 +378,28 @@
 			"solutionSummary": "Skip the browser entirely. rclone uploads to Drive, the Classroom REST API attaches + turns in. OAuth 2.0 refresh-token flow stored at ~/.config/claude-classroom-submit/tokens.json."
 		},
 		"fand": {
-			"tagline": "Ramps fans on temperature-driven curves before thermal throttling starts, with zero-downtime SIGHUP config reload. Rust + launchd.",
-			"description": "Reads SMC sensors via direct system calls, applies user-configured fan curves, and supports per-machine overrides. Hot-reload on SIGHUP. Rust 1.84 with exact-pin dependencies for reproducible builds.",
-			"problemStatement": "Apple Silicon fan defaults are too conservative under sustained CPU + GPU load (Claude Code + Docker + browser + ffmpeg). Fans don't ramp up until thermal throttling has already started.",
-			"solutionSummary": "A userspace daemon polls the SMC, applies aggressive curves before throttle, and reloads config without restart. Distributed as a universal2 binary via brew + GitHub Releases."
+			"tagline": "Configure temperature-driven fan modes on supported Apple Silicon Macs.",
+			"description": "A single-threaded control loop reads SMC sensors and drives per-fan curves with EMA smoothing and hysteresis. Apple Silicon accepts F0md=0 (auto) or 1 (forced minimum), so each tick reduces to forced minimum or auto; arbitrary RPM targets are read-only. TOML config with per-machine overrides, hot reload on SIGHUP, a nix-darwin module and exact-pinned dependencies.",
+			"problemStatement": "Under sustained CPU and GPU load, Apple Silicon fan control stays in auto, and macOS gives no declarative way to ask for forced cooling without a GUI app.",
+			"solutionSummary": "A userspace daemon polls the SMC and picks forced minimum or auto from a temperature curve with hysteresis, then hands control back to macOS thermal management. The config lives in TOML behind a nix-darwin module and reloads on SIGHUP without a restart."
 		},
 		"pedro-portfolio-recipes": {
 			"tagline": "Short, copy-pasteable patterns from the stacks I ship: each one is problem, working snippet, tradeoff, anti-pattern.",
 			"description": "Eight capability-first code recipes: Claude Code plugin skills, Chrome multi-profile automation, pgvector + BM25 hybrid RAG, Sigstore attestation verification, NixOS flake overlays, parallel Azure/GCP Terraform modules, sops-nix secrets, and polyglot lefthook pre-commit hooks. Each recipe is one directory: problem, working snippet, tradeoff, anti-pattern.",
 			"problemStatement": "Reviewers and collaborators need fast evidence that a stack claim is backed by actual code. Marketing copy doesn't do that, and full apps are the wrong resolution for 'show me how you'd wire hybrid search'.",
 			"solutionSummary": "A public repo of short, self-contained recipes under recipes/<topic>/README.md. No build step, no shared framework. Each recipe stands alone at 200–500 words: problem, snippet, tradeoff, anti-pattern, reference. MIT, with a SonarQube + Dependabot + lefthook baseline."
+		},
+		"anthropic-throttle-proxy": {
+			"tagline": "Pace Anthropic API traffic across clients with per-bearer queues and a live dashboard.",
+			"description": "A self-hosted gateway and ingress that applies the per-account concurrency cap once, fairly, where the operator controls it. Round-robin across distinct client connections, an AIMD ceiling that shrinks on 429/503 and ramps back on consecutive 2xx, header-aware pacing from anthropic-ratelimit-* and Retry-After, an HTMX dashboard and Prometheus metrics. Python, aiohttp, Dokku deploy.",
+			"problemStatement": "Anthropic's per-account concurrent-stream cap does not scale with the Max tier, so many parallel Claude sessions behind one OAuth bearer produce a retry storm at the HTTP layer.",
+			"solutionSummary": "The proxy places the cap once for the whole fleet: fair per-bearer queues, a live ceiling driven by provider pushback, and pacing that honors Retry-After. Queue modes are opt-in, so the default stays pass-through."
+		},
+		"chrome-bridge": {
+			"tagline": "Drive a dedicated Chromium profile from a local CLI through an extension and relay.",
+			"description": "An unpacked MV3 extension loaded into a dedicated Chromium profile, paired with a Python stdlib relay on 127.0.0.1:9224. Jobs dispatch through chrome.cookies, chrome.scripting and chrome.debugger input, and return JSON to the caller.",
+			"problemStatement": "Attaching an automation driver to the daily browsing profile puts automation and personal sessions in one browser, and the AppleScript route only exists on macOS.",
+			"solutionSummary": "Route the work through an extension inside a dedicated profile and a localhost relay any sibling tool can shell out to. Debug clicks use chrome.debugger and the DevTools Protocol, which is CDP input rather than a separate event-trust mechanism; check the extension's domain restrictions before use."
 		}
 	},
 	"ProjectDetail": {
@@ -407,6 +419,14 @@
 		"selectedWorkHeading": "Selected work",
 		"selectedWorkLead": "Constraint, decision, measured outcome. The result alone teaches nothing.",
 		"openSourceStamp": "open-source & demos",
-		"openSourceHeading": "Open-source & demos"
+		"openSourceHeading": "Open-source tools, by yolo-labz",
+		"openSourceLead": "Four starting points with source code and implementation notes, chosen for breadth rather than popularity.",
+		"browseRepositories": "All repositories",
+		"selectedRepositories": "Selected yolo-labz projects",
+		"projectNotes": "Project notes",
+		"projectNotesLabel": "Project notes: {project}",
+		"sourceCode": "Source",
+		"sourceCodeLabel": "Source code: {project}",
+		"moreProjects": "More projects & demos ({count})"
 	}
 }

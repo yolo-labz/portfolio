@@ -46,6 +46,7 @@
 			"!**/.next",
 			"!**/dist",
 			"!**/.turbo",
+			"!**/docs/evidence",
 			"!**/*.py",
 			"!**/__pycache__",
 			"!**/.venv",

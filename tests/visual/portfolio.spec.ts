@@ -3,8 +3,11 @@
 // page carries an O(N) baseline cost and we want the diff signal to stay
 // loud.
 //
-// Project pages: top 5 featured cards from apps/web/src/data/projects.ts
-// (`featured: true`). Adding a route?
+// Project pages: the flagship cards plus the three deep-dive routes this suite
+// already carried. Flagships are the six named propositions in
+// yolo-labz/.github docs/brand-positioning.md (`featured: true` in
+// apps/web/src/data/projects.ts), so a card and its page are never out of step.
+// Adding a route?
 //   1) append below
 //   2) regenerate baselines via `pnpm test:visual:update` inside the pinned
 //      playwright Docker image (see tests/visual/README.md)
@@ -16,9 +19,17 @@ import { expect, test } from "@playwright/test";
 const PAGES: ReadonlyArray<{ name: string; path: string }> = [
 	{ name: "home", path: "/en" },
 	{ name: "about", path: "/en/about" },
-	// Top 5 featured projects (apps/web/src/data/projects.ts: featured === true).
+	// The six flagship cards (apps/web/src/data/projects.ts: featured === true).
 	{ name: "project-wa", path: "/en/projects/wa" },
 	{ name: "project-claude-mac-chrome", path: "/en/projects/claude-mac-chrome" },
+	{ name: "project-kokoro-speakd", path: "/en/projects/kokoro-speakd" },
+	{ name: "project-fand", path: "/en/projects/fand" },
+	{
+		name: "project-anthropic-throttle-proxy",
+		path: "/en/projects/anthropic-throttle-proxy",
+	},
+	{ name: "project-chrome-bridge", path: "/en/projects/chrome-bridge" },
+	// Deep-dive routes this suite already covered, kept for regression signal.
 	{
 		name: "project-linkedin-chrome-copilot",
 		path: "/en/projects/linkedin-chrome-copilot",
@@ -51,6 +62,23 @@ test.beforeEach(async ({ page }) => {
 	});
 });
 
+// Card-copy guard, moved here with the card it protects: kokoro-speakd is a
+// flagship card now, and the brand-positioning corpus marks its old latency
+// tokens as needs-measurement. The card must state the boundary instead.
+test("flagship cards state the audited one-liner, not a latency token", async ({ page }) => {
+	await page.goto("/en");
+	await page.waitForLoadState("networkidle");
+	// The card wrapper is the heading's parent: title, tagline, badges, metrics
+	// and the repo anchor all live inside it.
+	const card = page
+		.locator("#projects")
+		.getByRole("heading", { name: /kokoro-speakd/ })
+		.locator("..");
+	const copy = await card.innerText();
+	expect(copy).toContain("Keep Kokoro ready between speech requests");
+	expect(copy).not.toMatch(/200\s?ms|3[-\u2013]5\s?s/);
+});
+
 for (const { name, path } of PAGES) {
 	test(`${name} renders without visual regression`, async ({ page }) => {
 		await page.goto(path);
@@ -79,19 +107,36 @@ for (const { name, path } of PAGES) {
 			await document.fonts.ready;
 		});
 
-		// Final settle: a full-document scroll cycle pushes the layout into
-		// its final state for any content-visibility / IntersectionObserver
-		// driven expansion (motion components, animated counters) that
-		// survives the eager-load pass.
-		await page.evaluate(async () => {
-			window.scrollTo(0, document.body.scrollHeight);
-			await new Promise((resolve) => setTimeout(resolve, 300));
-			window.scrollTo(0, 0);
-			await new Promise((resolve) => setTimeout(resolve, 300));
-		});
+		// Visit each section and wait for its actual content, not an arbitrary
+		// delay: a fast scroll can outrun hydration and leave motion cards blank.
+		// Instant scroll also avoids the old mid-smooth-scroll screenshot race.
+		for (const section of await page.locator("main section").all()) {
+			await section.evaluate((element) =>
+				element.scrollIntoView({ behavior: "instant", block: "start" }),
+			);
+			await expect
+				.poll(() =>
+					section.evaluate(
+						(element) =>
+							Array.from(element.querySelectorAll<HTMLElement>("[style]")).filter(
+								(child) => child.style.opacity && Number(getComputedStyle(child).opacity) < 1,
+							).length,
+					),
+				)
+				.toBe(0);
+		}
+		await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+		await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 
 		await expect(page).toHaveScreenshot(`${name}.png`, {
 			fullPage: true,
 		});
+		// Retain actual pixels for hydration/stability evidence, including passing runs.
+		if (name.startsWith("home")) {
+			await test.info().attach(`${name}-settled`, {
+				body: await page.screenshot({ fullPage: true, animations: "disabled", scale: "css" }),
+				contentType: "image/png",
+			});
+		}
 	});
 }
