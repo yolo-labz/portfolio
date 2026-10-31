@@ -239,6 +239,29 @@ reports inherited dependency vulnerabilities (including critical Next/Sentry
 advisories) as baseline warnings, not fixes supplied by this visual slice; no
 manifest/lockfile change is concealed in the delivery.
 
+### Delivery checkpoint — 30/10/2026 23:23 BRT
+
+Recovery commit **`1f6ed9fcf0bda85281d76c92c27062cb4afaecd7`** was pushed as a
+normal fast-forward to the existing branch, including rescue `10841d7`.
+Exact-head remote result: **10/10 SUCCESS**, including all five required checks.
+[Machine receipt](evidence/visual-rollout-2026-09-28-portfolio/recovery-2026-10-30/ci-code-head.json)
+/ [live main rules](evidence/visual-rollout-2026-09-28-portfolio/recovery-2026-10-30/main-rules.json).
+
+- [CI: lint/types + build](https://github.com/yolo-labz/portfolio/actions/runs/41159394298)
+- [Pinned visual regression](https://github.com/yolo-labz/portfolio/actions/runs/41159394321)
+- [Lighthouse + a11y budgets](https://github.com/yolo-labz/portfolio/actions/runs/41159394311)
+- [SonarQube](https://github.com/yolo-labz/portfolio/actions/runs/41159394632)
+- [Code quality/alignment](https://github.com/yolo-labz/portfolio/actions/runs/41159394293)
+- [CodeQL](https://github.com/yolo-labz/portfolio/actions/runs/41159394305)
+- [Stealth/framing](https://github.com/yolo-labz/portfolio/actions/runs/41159394294)
+
+PR remains **OPEN / DRAFT**, assigned to **phsb5321**, with no auto-merge enabled.
+Main still points to `bf3ca9b3f3fdc890387c5c84601a96f47bc14376`; the deploy workflow
+is unchanged. The subsequent report/receipt-only commit does not alter the tested
+UI, browser specs, verifier or golden pixels; its own fresh required checks still apply.
+The stopping boundary is green draft delivery for review, **not merge/deploy**.
+No automated model review or human approval is claimed.
+
 ## Authorization and remaining gates
 
 - Verified GitHub identity `phsb5321`; it is the repository's available assignee.
