@@ -1,163 +1,184 @@
-"use client";
-
-import { Badge, Button } from "@portfolio/ui";
-import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { FigStamp } from "@/components/shared/fig-stamp";
-import type { Project } from "@/data/projects";
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "@/components/shared/icons";
+import { type Project, workIndex } from "@/data/projects";
 import { Link } from "@/i18n/navigation";
 
 interface ProjectDetailProps {
 	project: Project;
 }
 
+// Case-study template (Read mode). The decision record leads the body because it is
+// the proof; the facts column holds what a reviewer checks (role, stack, source).
+// Server component: the page ships no motion and no client JS of its own.
 export function ProjectDetail({ project }: ProjectDetailProps) {
-	const reduced = useReducedMotion();
 	// Per-project prose lives under the "Projects" namespace, keyed by slug.
 	const t = useTranslations("Projects");
-	// Static case-study UI labels.
 	const ui = useTranslations("ProjectDetail");
+	const index = useTranslations("Index");
 	const slug = project.slug;
 
-	// Optional narrative-arc fields. `hasArc` flags featured/case-study projects;
-	// each field is then guarded with t.has so a project that carries only some of
-	// the three (constraint/decision/outcome) never renders an empty row.
-	const hasConstraint = Boolean(project.hasArc) && t.has(`${slug}.constraint`);
-	const hasDecision = Boolean(project.hasArc) && t.has(`${slug}.decision`);
-	const hasOutcome = Boolean(project.hasArc) && t.has(`${slug}.outcome`);
-	const hasArc = hasConstraint || hasDecision || hasOutcome;
+	// Optional narrative-arc fields, each guarded so a partial record never renders
+	// an empty row.
+	const arc = (["constraint", "decision", "outcome"] as const).filter(
+		(key) => Boolean(project.hasArc) && t.has(`${slug}.${key}`),
+	);
+	const arcTone = { constraint: "text-warn", decision: "text-link", outcome: "text-accent" };
+
+	// Prev/next walk the home index order; projects outside it get no walk.
+	const at = workIndex.findIndex((entry) => entry.project.slug === slug);
+	const entry = at >= 0 ? workIndex[at] : undefined;
+	const prev = at > 0 ? workIndex[at - 1] : undefined;
+	const next = at >= 0 && at < workIndex.length - 1 ? workIndex[at + 1] : undefined;
 
 	return (
-		<article className="px-6 pt-32 pb-16">
-			<div className="mx-auto max-w-4xl">
-				{/* LCP element on project routes is the <h1>, so the entrance only
-				    animates the y offset: starting at opacity 0 hides the title until
-				    hydration, which cost ~4s of LCP render delay on mobile. */}
-				<motion.div
-					initial={reduced ? {} : { y: 20 }}
-					animate={{ y: 0 }}
-					transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+		<article className="px-6 pt-24 pb-20 sm:pt-28">
+			<div className="mx-auto max-w-6xl">
+				<Link
+					href={{ pathname: "/", hash: "projects" }}
+					className="-ml-1 inline-flex min-h-11 items-center gap-2 px-1 text-sm text-text-muted transition-colors hover:text-text"
 				>
-					<Link
-						href={{ pathname: "/", hash: "projects" }}
-						className="mb-8 inline-flex items-center text-sm text-text-muted transition-colors hover:text-text"
-					>
-						&larr; {ui("backToProjects")}
-					</Link>
+					<ArrowLeft />
+					{ui("backToProjects")}
+				</Link>
 
-					<h1 className="text-4xl font-bold tracking-tight">{project.title}</h1>
-					<p className="mt-3 text-lg text-text-muted">{t(`${slug}.tagline`)}</p>
+				<header className="mt-6 max-w-4xl">
+					<h1 className="text-step-5 leading-[1.1] font-semibold tracking-[-0.025em] text-balance">
+						{project.title}
+					</h1>
+					<p className="mt-5 max-w-[50ch] text-step-1 leading-relaxed text-text-muted">
+						{t(`${slug}.tagline`)}
+					</p>
+				</header>
 
-					<div className="mt-6 flex flex-wrap gap-2">
-						{project.techStack.map((tech) => (
-							<Badge key={tech.name} variant="accent">
-								{tech.name}
-							</Badge>
-						))}
-					</div>
-
-					{(project.links.demo || project.links.source) && (
-						<div className="mt-6 flex flex-wrap gap-3">
-							{project.links.demo && (
-								<Button
-									variant="primary"
-									size="sm"
-									as="a"
-									href={project.links.demo}
-									target="_blank"
-									rel="noopener noreferrer"
+				<div className="mt-14 grid gap-12 border-t border-border pt-10 lg:grid-cols-12">
+					<aside className="lg:col-span-4">
+						<div className="lg:sticky lg:top-24">
+							{entry && (
+								<p
+									className={`text-sm font-medium ${entry.kind === "caseFile" ? "text-warn" : "text-link"}`}
 								>
-									{ui("liveDemo")}
-								</Button>
+									{index(entry.kind)}
+								</p>
 							)}
-							{project.links.source && (
-								<Button
-									variant="secondary"
-									size="sm"
-									as="a"
-									href={project.links.source}
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									{ui("viewSource")}
-								</Button>
-							)}
-						</div>
-					)}
-				</motion.div>
-
-				<motion.dl
-					className="mt-12 grid gap-x-8 gap-y-5 sm:grid-cols-2"
-					initial={reduced ? {} : { opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-				>
-					{project.metrics.map((metric) => (
-						<div key={metric.label} className="border-l border-dashed border-overlay pl-4">
-							<dt className="text-xs text-text-muted">{metric.label}</dt>
-							<dd className="mt-0.5 font-mono text-sm font-medium text-text">{metric.value}</dd>
-						</div>
-					))}
-				</motion.dl>
-
-				<motion.div
-					className="mt-12 space-y-10"
-					initial={reduced ? {} : { opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-				>
-					<div>
-						<h2 className="mb-3 text-xl font-semibold">{ui("problemHeading")}</h2>
-						<p className="leading-relaxed text-text-muted">{t(`${slug}.problemStatement`)}</p>
-					</div>
-
-					<div>
-						<h2 className="mb-3 text-xl font-semibold">{ui("solutionHeading")}</h2>
-						<p className="leading-relaxed text-text-muted">{t(`${slug}.solutionSummary`)}</p>
-					</div>
-
-					{hasArc && (
-						<div className="rounded-lg border border-border border-l-2 border-l-accent bg-bg-card p-6">
-							<FigStamp n="01" label={ui("decisionRecord")} />
-							<dl className="mt-4 space-y-5">
-								{hasConstraint && (
-									<div>
-										<dt className="font-mono text-xs uppercase tracking-wide text-accent">
-											{ui("constraint")}
-										</dt>
-										<dd className="mt-1 leading-relaxed text-text-muted">
-											{t(`${slug}.constraint`)}
-										</dd>
+							<dl className="mt-4 border-t border-border">
+								{project.metrics.map((metric) => (
+									<div key={metric.label} className="border-b border-border py-3">
+										<dt className="text-xs text-text-muted">{metric.label}</dt>
+										<dd className="mt-1 text-sm text-text">{metric.value}</dd>
 									</div>
-								)}
-								{hasDecision && (
-									<div>
-										<dt className="font-mono text-xs uppercase tracking-wide text-accent">
-											{ui("decision")}
-										</dt>
-										<dd className="mt-1 leading-relaxed text-text-muted">
-											{t(`${slug}.decision`)}
-										</dd>
-									</div>
-								)}
-								{hasOutcome && (
-									<div>
-										<dt className="font-mono text-xs uppercase tracking-wide text-accent">
-											{ui("outcome")}
-										</dt>
-										<dd className="mt-1 leading-relaxed text-text-muted">{t(`${slug}.outcome`)}</dd>
-									</div>
-								)}
+								))}
+								<div className="border-b border-border py-3">
+									<dt className="text-xs text-text-muted">{ui("stack")}</dt>
+									<dd className="mt-1 font-mono text-xs leading-relaxed text-text">
+										{project.techStack.map((tech) => tech.name).join(" · ")}
+									</dd>
+								</div>
 							</dl>
+							{(project.links.demo || project.links.source) && (
+								<ul className="mt-4 flex flex-wrap gap-x-6 text-sm">
+									{project.links.source && (
+										<li>
+											<a
+												href={project.links.source}
+												className="inline-flex min-h-11 items-center gap-2 text-link underline underline-offset-4"
+											>
+												{ui("viewSource")} <ArrowUpRight />
+											</a>
+										</li>
+									)}
+									{project.links.demo && (
+										<li>
+											<a
+												href={project.links.demo}
+												className="inline-flex min-h-11 items-center gap-2 text-link underline underline-offset-4"
+											>
+												{ui("liveDemo")} <ArrowUpRight />
+											</a>
+										</li>
+									)}
+								</ul>
+							)}
 						</div>
-					)}
+					</aside>
 
-					<div>
-						<h2 className="mb-3 text-xl font-semibold">{ui("overviewHeading")}</h2>
-						<p className="leading-relaxed text-text-muted">{t(`${slug}.description`)}</p>
+					<div className="min-w-0 space-y-14 lg:col-span-8">
+						{arc.length > 0 && (
+							<section aria-labelledby="decision-record">
+								<h2 id="decision-record" className="text-step-2 font-semibold tracking-[-0.01em]">
+									{ui("decisionRecord")}
+								</h2>
+								<dl className="mt-6 border-t border-border">
+									{arc.map((key) => (
+										<div
+											key={key}
+											className="grid gap-x-8 gap-y-2 border-b border-border py-6 sm:grid-cols-[8rem_1fr]"
+										>
+											<dt className={`text-sm font-medium ${arcTone[key]}`}>{ui(key)}</dt>
+											<dd className="max-w-[50ch] leading-relaxed text-text">
+												{t(`${slug}.${key}`)}
+											</dd>
+										</div>
+									))}
+								</dl>
+							</section>
+						)}
+
+						<section aria-labelledby="problem" className="max-w-[50ch]">
+							<h2 id="problem" className="text-step-2 font-semibold tracking-[-0.01em]">
+								{ui("problemHeading")}
+							</h2>
+							<p className="mt-4 leading-relaxed text-text-muted">
+								{t(`${slug}.problemStatement`)}
+							</p>
+						</section>
+
+						<section aria-labelledby="solution" className="max-w-[50ch]">
+							<h2 id="solution" className="text-step-2 font-semibold tracking-[-0.01em]">
+								{ui("solutionHeading")}
+							</h2>
+							<p className="mt-4 leading-relaxed text-text-muted">{t(`${slug}.solutionSummary`)}</p>
+						</section>
+
+						<section aria-labelledby="overview" className="max-w-[50ch]">
+							<h2 id="overview" className="text-step-2 font-semibold tracking-[-0.01em]">
+								{ui("overviewHeading")}
+							</h2>
+							<p className="mt-4 leading-relaxed text-text-muted">{t(`${slug}.description`)}</p>
+						</section>
 					</div>
-				</motion.div>
+				</div>
+
+				{(prev || next) && (
+					<nav
+						aria-label={ui("walkLabel")}
+						className="mt-20 grid border-y border-border sm:grid-cols-2"
+					>
+						{prev ? (
+							<Link
+								href={`/projects/${prev.project.slug}`}
+								className="group flex min-h-20 flex-col justify-center gap-1 py-5 sm:pr-8"
+							>
+								<span className="inline-flex items-center gap-2 text-xs text-text-muted">
+									<ArrowLeft /> {ui("previous")}
+								</span>
+								<span className="font-medium text-text group-hover:text-accent">{prev.name}</span>
+							</Link>
+						) : (
+							<span />
+						)}
+						{next && (
+							<Link
+								href={`/projects/${next.project.slug}`}
+								className="group flex min-h-20 flex-col justify-center gap-1 border-t border-border py-5 sm:items-end sm:border-t-0 sm:border-l sm:pl-8 sm:text-right"
+							>
+								<span className="inline-flex items-center gap-2 text-xs text-text-muted">
+									{ui("next")} <ArrowRight />
+								</span>
+								<span className="font-medium text-text group-hover:text-accent">{next.name}</span>
+							</Link>
+						)}
+					</nav>
+				)}
 			</div>
 		</article>
 	);

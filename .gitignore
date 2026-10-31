@@ -33,6 +33,8 @@ playwright/.cache/
 
 # Lighthouse CI
 .lighthouseci/
+.lighthouseci-desktop/
+.lighthouseci-mobile/
 
 # Claude Code (per-machine local settings)
 .claude/settings.local.json*

@@ -1,25 +1,23 @@
 import { setRequestLocale } from "next-intl/server";
+import { CaseFiles } from "@/components/home/case-files";
+import { WorkIndex } from "@/components/home/work-index";
 import { ContactCTA } from "@/components/sections/contact-cta";
-import { ExperienceTimeline } from "@/components/sections/experience-timeline";
-import { HeroMetrics } from "@/components/sections/hero-metrics";
-import { ProjectShowcase } from "@/components/sections/project-showcase";
-import { ProofBand } from "@/components/sections/proof-band";
+import { OrganizationShowcase } from "@/components/sections/organization-showcase";
 import { ServicesLadder } from "@/components/sections/services-ladder";
-import { SkillsMatrix } from "@/components/sections/skills-matrix";
 
+// Experience first (the index of work), Persuade after (case files, services, the
+// close). The layout already provides <main>; this page is a fragment of sections.
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
 	return (
-		<main>
-			<HeroMetrics />
-			<ProjectShowcase />
+		<>
+			<WorkIndex />
+			<CaseFiles />
+			<OrganizationShowcase />
 			<ServicesLadder />
-			<SkillsMatrix />
-			<ExperienceTimeline />
-			<ProofBand />
 			<ContactCTA />
-		</main>
+		</>
 	);
 }

@@ -1,6 +1,8 @@
-import { Card } from "@portfolio/ui";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { ContactCTA } from "@/components/sections/contact-cta";
+import { ExperienceTimeline } from "@/components/sections/experience-timeline";
+import { SkillsMatrix } from "@/components/sections/skills-matrix";
 
 export async function generateMetadata({
 	params,
@@ -126,15 +128,13 @@ function sonarDashboardUrl(slug: string) {
 function statusPill(status: ClaimStatus, labels: { backed: string; pending: string }) {
 	if (status === "backed") {
 		return (
-			<span className="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono text-xs text-emerald-300">
+			<span className="inline-flex items-center text-xs font-medium text-accent">
 				{labels.backed}
 			</span>
 		);
 	}
 	return (
-		<span className="inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 font-mono text-xs text-amber-300">
-			{labels.pending}
-		</span>
+		<span className="inline-flex items-center text-xs font-medium text-warn">{labels.pending}</span>
 	);
 }
 
@@ -148,124 +148,136 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 	const statusLabels = { backed: t("statusBacked"), pending: t("statusPending") };
 
 	return (
-		<section className="mx-auto w-full max-w-5xl px-6 py-24">
-			<header className="space-y-6">
-				<p className="font-mono text-sm text-accent">{t("eyebrow")}</p>
-				<h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl">{t("category")}</h1>
-				<p className="max-w-3xl text-lg leading-relaxed text-text">{t("diagnostic")}</p>
-				<p className="max-w-3xl text-base leading-relaxed text-text-muted">{t("summary")}</p>
-			</header>
-
-			<div className="mt-16 space-y-6">
-				<div className="flex items-end justify-between gap-4">
-					<div>
-						<h2 className="text-2xl font-semibold tracking-tight">{t("claimEvidenceHeading")}</h2>
-						<p className="mt-2 max-w-2xl text-sm text-text-muted">{t("claimEvidenceIntro")}</p>
+		<>
+			<section className="mx-auto w-full max-w-6xl px-6 pt-24 pb-20 sm:pt-28">
+				<header className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+					<h1 className="text-step-5 leading-[1.1] font-semibold tracking-[-0.025em] text-balance lg:col-span-7">
+						{t("category")}
+					</h1>
+					<div className="space-y-5 lg:col-span-5 lg:pt-2">
+						<p className="max-w-[50ch] text-step-1 leading-relaxed text-text">{t("diagnostic")}</p>
+						<p className="max-w-[50ch] text-base leading-relaxed text-text-muted">{t("summary")}</p>
 					</div>
-				</div>
+				</header>
 
-				<Card className="overflow-hidden p-0">
-					<div className="overflow-x-auto">
-						<table className="w-full border-collapse text-left text-sm">
-							<thead className="border-b border-border bg-surface/40 font-mono text-xs uppercase tracking-wide text-text-muted">
-								<tr>
-									<th scope="col" className="px-5 py-3">
-										{t("tableHeaderClaim")}
-									</th>
-									<th scope="col" className="px-5 py-3">
-										{t("tableHeaderEvidence")}
-									</th>
-									<th scope="col" className="px-5 py-3">
-										{t("tableHeaderStatus")}
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								{claimEvidenceMap.map((row, i) => (
-									<tr
-										key={row.url + claims[i]}
-										className="border-b border-border/50 align-top last:border-b-0"
-									>
-										<td className="px-5 py-4 text-text">{claims[i]}</td>
-										<td className="px-5 py-4">
-											{row.status === "backed" ? (
-												<a
-													href={row.url}
-													target="_blank"
-													rel="noopener noreferrer"
-													className="break-all font-mono text-xs text-accent hover:underline"
-												>
-													{row.url.replace(/^https?:\/\//, "")}
-												</a>
-											) : (
-												<span className="font-mono text-xs text-text-muted">
-													{t("evidenceAnonymized")}
-												</span>
-											)}
-											<div className="mt-1 font-mono text-[10px] uppercase tracking-wide text-text-muted">
-												{row.evidenceType}
-											</div>
-										</td>
-										<td className="px-5 py-4">{statusPill(row.status, statusLabels)}</td>
+				<div className="mt-16 space-y-6">
+					<div className="flex items-end justify-between gap-4">
+						<div>
+							<h2 className="text-step-3 font-semibold tracking-[-0.02em]">
+								{t("claimEvidenceHeading")}
+							</h2>
+							<p className="mt-2 max-w-[50ch] text-sm text-text-muted">{t("claimEvidenceIntro")}</p>
+						</div>
+					</div>
+
+					<div className="border-y border-border">
+						<div className="overflow-x-auto">
+							<table className="w-full border-collapse text-left text-sm">
+								<thead className="border-b border-border text-xs text-text-muted">
+									<tr>
+										<th scope="col" className="py-3 pr-5">
+											{t("tableHeaderClaim")}
+										</th>
+										<th scope="col" className="py-3 pr-5">
+											{t("tableHeaderEvidence")}
+										</th>
+										<th scope="col" className="py-3 pr-5">
+											{t("tableHeaderStatus")}
+										</th>
 									</tr>
-								))}
-							</tbody>
-						</table>
+								</thead>
+								<tbody>
+									{claimEvidenceMap.map((row, i) => (
+										<tr
+											key={row.url + claims[i]}
+											className="border-b border-border align-top last:border-b-0"
+										>
+											<td className="py-4 pr-5 text-text">{claims[i]}</td>
+											<td className="py-4 pr-5">
+												{row.status === "backed" ? (
+													<a
+														href={row.url}
+														target="_blank"
+														rel="noopener noreferrer"
+														className="break-all font-mono text-xs text-link underline underline-offset-4"
+													>
+														{row.url.replace(/^https?:\/\//, "")}
+													</a>
+												) : (
+													<span className="font-mono text-xs text-text-muted">
+														{t("evidenceAnonymized")}
+													</span>
+												)}
+												<div className="mt-1 font-mono text-xs uppercase tracking-wide text-text-muted">
+													{row.evidenceType}
+												</div>
+											</td>
+											<td className="py-4 pr-5">{statusPill(row.status, statusLabels)}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
 					</div>
-				</Card>
-			</div>
-
-			<div className="mt-16 space-y-6">
-				<div>
-					<h2 className="text-2xl font-semibold tracking-tight">{t("codeQualityHeading")}</h2>
-					<p className="mt-2 max-w-2xl text-sm text-text-muted">{t("codeQualityIntro")}</p>
 				</div>
 
-				<Card className="p-0">
-					<ul className="divide-y divide-border/60">
-						{sonarRepos.map((repo) => (
-							<li
-								key={repo.slug}
-								className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between"
-							>
-								<div className="flex items-baseline gap-3">
-									<a
-										href={sonarDashboardUrl(repo.slug)}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="font-mono text-sm text-accent hover:underline"
-									>
-										{repo.label}
-									</a>
-									<span className="font-mono text-[10px] uppercase tracking-wide text-text-muted">
-										{repo.language}
-									</span>
-								</div>
-								<div className="flex flex-wrap items-center gap-2">
-									{sonarMetrics.map((m) => (
+				<div className="mt-16 space-y-6">
+					<div>
+						<h2 className="text-step-3 font-semibold tracking-[-0.02em]">
+							{t("codeQualityHeading")}
+						</h2>
+						<p className="mt-2 max-w-[50ch] text-sm text-text-muted">{t("codeQualityIntro")}</p>
+					</div>
+
+					<div className="border-y border-border">
+						<ul className="divide-y divide-border">
+							{sonarRepos.map((repo) => (
+								<li
+									key={repo.slug}
+									className="flex flex-col gap-3 py-4 pr-5 sm:flex-row sm:items-center sm:justify-between"
+								>
+									<div className="flex items-baseline gap-3">
 										<a
-											key={m.key}
 											href={sonarDashboardUrl(repo.slug)}
 											target="_blank"
 											rel="noopener noreferrer"
-											aria-label={`${repo.label} ${m.alt}`}
-											className="inline-flex"
+											className="font-mono text-sm text-link underline underline-offset-4"
 										>
-											{/* eslint-disable-next-line @next/next/no-img-element */}
-											<img
-												src={sonarBadgeUrl(repo.slug, m.key)}
-												alt={`${repo.label} — ${m.alt}`}
-												loading="lazy"
-												className="h-5"
-											/>
+											{repo.label}
 										</a>
-									))}
-								</div>
-							</li>
-						))}
-					</ul>
-				</Card>
-			</div>
-		</section>
+										<span className="font-mono text-xs uppercase tracking-wide text-text-muted">
+											{repo.language}
+										</span>
+									</div>
+									<div className="flex flex-wrap items-center gap-2">
+										{sonarMetrics.map((m) => (
+											<a
+												key={m.key}
+												href={sonarDashboardUrl(repo.slug)}
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label={`${repo.label} ${m.alt}`}
+												className="inline-flex min-h-6 items-center"
+											>
+												<img
+													src={sonarBadgeUrl(repo.slug, m.key)}
+													alt={`${repo.label} — ${m.alt}`}
+													loading="lazy"
+													className="h-5"
+												/>
+											</a>
+										))}
+									</div>
+								</li>
+							))}
+						</ul>
+					</div>
+				</div>
+
+				<ExperienceTimeline />
+				<SkillsMatrix />
+			</section>
+			<ContactCTA />
+		</>
 	);
 }

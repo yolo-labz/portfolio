@@ -1,7 +1,8 @@
 "use client";
 
-import { Button } from "@portfolio/ui";
+import { useTranslations } from "next-intl";
 import { useEffect } from "react";
+import { Link } from "@/i18n/navigation";
 
 export default function ErrorPage({
 	error,
@@ -10,25 +11,35 @@ export default function ErrorPage({
 	error: Error & { digest?: string };
 	reset: () => void;
 }) {
+	const t = useTranslations("ErrorPage");
+
 	useEffect(() => {
 		console.error(error);
 	}, [error]);
 
 	return (
-		<div className="flex min-h-[70vh] flex-col items-center justify-center px-6 text-center">
-			<p className="font-mono text-sm text-accent">Error</p>
-			<h1 className="mt-2 text-3xl font-bold tracking-tight">Something went wrong</h1>
-			<p className="mt-3 text-text-muted">
-				An unexpected error occurred. You can try again or go back to the homepage.
-			</p>
-			<div className="mt-8 flex gap-4">
-				<Button variant="primary" size="md" onClick={reset}>
-					Try Again
-				</Button>
-				<Button as="a" href="/" variant="secondary" size="md">
-					Go Home
-				</Button>
+		<section className="px-6 pt-24 pb-20 sm:pt-28">
+			<div className="mx-auto max-w-3xl">
+				<h1 className="text-step-5 leading-[1.1] font-semibold tracking-[-0.025em] text-balance">
+					{t("title")}
+				</h1>
+				<p className="mt-5 max-w-[50ch] text-step-1 leading-relaxed text-text-muted">{t("body")}</p>
+				<div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+					<button
+						type="button"
+						onClick={reset}
+						className="inline-flex min-h-11 items-center rounded-sm bg-accent px-4 font-medium text-bg transition-colors hover:bg-accent-hover"
+					>
+						{t("retry")}
+					</button>
+					<Link
+						href="/"
+						className="inline-flex min-h-11 items-center text-text-muted underline decoration-border underline-offset-4 hover:text-text"
+					>
+						{t("home")}
+					</Link>
+				</div>
 			</div>
-		</div>
+		</section>
 	);
 }

@@ -6,30 +6,41 @@
 	   primary accent: restored to the pre-relaunch emerald (oklch(0.72 0.19 160),
 	   hex-pinned) per Pedro 01/06/2026 — Catppuccin mauve read as generic
 	   "AI purple". Color carries meaning (emerald = primary/stage-1, peach =
-	   audit, yellow = compliance), never decoration. No gradients, no glows. */
-	--color-bg: #1e1e2e; /* base */
-	--color-bg-elevated: #181825; /* mantle */
-	--color-bg-card: #181825; /* mantle */
-	--color-crust: #11111b;
-	--color-surface: #313244; /* surface0 */
-	--color-border: #45475a; /* surface1 */
-	--color-overlay: #6c7086; /* grid, dashed measurement leaders, hint text */
-	--color-text: #cdd6f4;
-	--color-text-muted: #a6adc8; /* subtext0 */
-	--color-accent: #00c77a; /* emerald — primary CTA / data plane (restored pre-relaunch hue) */
-	--color-accent-hover: #00db8c; /* brighter emerald */
-	--color-accent-dim: #313244; /* surface0 — accent badge background (was surface1
-	                                  #45475a: emerald-on-surface1 measured 4.11:1, below
-	                                  the WCAG AA 4.5:1 floor for the 12px mono chip text;
-	                                  surface0 gives 5.66:1 and keeps the locked emerald) */
-	--color-link: #89b4fa; /* blue — embedding / links */
-	--color-warn: #fab387; /* peach — audit / persistence */
-	--color-compliance: #f9e2af; /* yellow — compliance badges */
+	   audit, yellow = compliance), never decoration. No gradients, no glows.
+	   Remodel 2026-10: the dot-grid ground is gone; structure comes from hairline
+	   rules (--color-border), and the gremlin plate shares --color-bg exactly. */
+	/* OKLCH tokens (2026-10 remodel, best-of-best addendum). Each value is the exact
+	   OKLCH of the hex-pinned Catppuccin Mocha colour in its comment and round-trips
+	   to that hex, so the palette is unchanged while the neutrals' blue-lavender
+	   tint (hue ~280) is explicit. */
+	--color-bg: oklch(24.29% 0.0304 283.91); /* #1e1e2e base; equals the gremlin plate */
+	--color-bg-elevated: oklch(21.55% 0.0254 284.06); /* #181825 mantle */
+	--color-bg-card: oklch(21.55% 0.0254 284.06); /* #181825 mantle */
+	--color-crust: oklch(18.28% 0.0204 284.2); /* #11111b */
+	--color-surface: oklch(32.4% 0.0319 281.98); /* #313244 surface0 */
+	--color-border: oklch(40.37% 0.032 280.15); /* #45475a surface1, the rule colour */
+	--color-overlay: oklch(54.97% 0.0345 277.1); /* #6c7086 */
+	--color-text: oklch(87.87% 0.0426 272.28); /* #cdd6f4 */
+	--color-text-muted: oklch(75.1% 0.0396 273.93); /* #a6adc8 subtext0 */
+	--color-accent: oklch(73.01% 0.1737 157.04); /* #00c77a emerald: action + state */
+	--color-accent-hover: oklch(78.55% 0.1821 158.51); /* #00db8c */
+	--color-accent-dim: oklch(32.4% 0.0319 281.98); /* #313244: emerald chip ground, 5.66:1 */
+	--color-link: oklch(76.64% 0.1113 259.88); /* #89b4fa blue: links, repositories */
+	--color-warn: oklch(82.37% 0.1015 52.63); /* #fab387 peach: audit, constraints */
+	--color-compliance: oklch(91.93% 0.0704 86.53); /* #f9e2af yellow: compliance only */
+
+	/* Fluid modular scale: ratio 1.125 at 360px growing to 1.2 at 1280px (base 1rem). */
+	--text-step-1: clamp(1.125rem, 1.096rem + 0.13vw, 1.2rem);
+	--text-step-2: clamp(1.266rem, 1.197rem + 0.303vw, 1.44rem);
+	--text-step-3: clamp(1.424rem, 1.305rem + 0.529vw, 1.728rem);
+	--text-step-4: clamp(1.602rem, 1.417rem + 0.821vw, 2.074rem);
+	--text-step-5: clamp(1.802rem, 1.533rem + 1.194vw, 2.488rem);
+	--text-step-6: clamp(2.027rem, 1.652rem + 1.667vw, 2.986rem);
 
 	--font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
 	--font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
 
-	--ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 	--radius-card: 0.75rem; /* 12px per VISUAL-IDENTITY containers.radius_px */
 }
 
@@ -39,6 +50,7 @@ html {
 }
 
 body {
+	font-optical-sizing: auto; /* Inter's opsz axis: display cut at heading sizes */
 	background-color: var(--color-bg);
 	color: var(--color-text);
 	font-family: var(--font-sans);
@@ -46,24 +58,118 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-/* Engineering-notebook dot-grid (VISUAL-IDENTITY.md §2.3 + §6.2). 40px spacing,
-   ~1.2px dots, overlay color, kept subtle so it structures without competing with
-   text. Replaces the banned hero glow blob. */
-body::before {
-	content: "";
-	position: fixed;
-	inset: 0;
-	z-index: -1;
-	pointer-events: none;
-	background-image: radial-gradient(circle, rgba(108, 112, 134, 0.16) 1.2px, transparent 1.3px);
-	background-size: 38px 38px;
-}
-
+/* Browser surfaces carry the palette too: selection, caret, scrollbar. */
 ::selection {
-	background-color: rgba(0, 199, 122, 0.3); /* emerald */
+	background-color: oklch(73.01% 0.1737 157.04 / 0.3); /* emerald */
+	color: var(--color-text);
 }
 
+html {
+	caret-color: var(--color-accent);
+	scrollbar-color: var(--color-border) var(--color-crust);
+}
+
+/* Tabular figures only where numbers line up (tables, dates). Inter's tnum also
+   swaps punctuation to tabular widths, which opened gaps around hyphens in prose. */
+table,
+time {
+	font-variant-numeric: tabular-nums;
+}
+
+/* Running text: no one-word last lines, and one measure everywhere. Inter's ch
+   (the "0" advance) is wider than its average glyph, so 50ch sets ~70 characters. */
+p {
+	text-wrap: pretty;
+}
+main p,
+main dd,
+main .list-disc > li {
+	max-inline-size: 50ch;
+}
+
+/* Mobile drawer entrance (components/layout/mobile-nav.tsx). */
+@media (prefers-reduced-motion: no-preference) {
+	.drawer-scrim {
+		animation: drawer-fade 200ms var(--ease-out-expo) both;
+	}
+	.drawer-panel {
+		animation: drawer-in 320ms var(--ease-out-expo) both;
+	}
+}
+@keyframes drawer-fade {
+	from {
+		opacity: 0;
+	}
+}
+@keyframes drawer-in {
+	from {
+		transform: translateX(100%);
+	}
+}
+
+/* The one authored entrance: the work index types itself in, row by row. Rows
+   are visible by default (transform only, never opacity) so LCP and no-JS
+   readers are unaffected; reduced motion removes it entirely. */
+@media (prefers-reduced-motion: no-preference) {
+	.work-row {
+		animation: work-row-in 520ms var(--ease-out-expo) both;
+		animation-delay: calc(var(--i, 0) * 45ms + 80ms);
+	}
+}
+
+@keyframes work-row-in {
+	from {
+		transform: translateY(6px);
+		clip-path: inset(0 100% 0 0);
+	}
+	to {
+		transform: none;
+		clip-path: inset(0 0 0 0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+	}
+}
+
+/* Designed focus: a 2px emerald ring offset off the ground, squared to the 2px
+   radius language; links in running text get the same ring plus a lit underline. */
 :focus-visible {
 	outline: 2px solid var(--color-accent);
-	outline-offset: 2px;
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+a:focus-visible {
+	text-decoration-color: var(--color-accent);
+}
+
+/* More contrast on request: muted text and rules step up one tone. */
+@media (prefers-contrast: more) {
+	:root {
+		--color-text-muted: var(--color-text);
+		--color-border: var(--color-overlay);
+	}
+}
+
+/* Cross-document view transitions where supported (a soft cross-fade on full
+   navigations such as the locale switch). ponytail: client-side route changes
+   are not covered; React's <ViewTransition> is canary-only in 19.2. Upgrade by
+   enabling experimental.viewTransition once React ships it stable. */
+@media (prefers-reduced-motion: no-preference) {
+	@view-transition {
+		navigation: auto;
+	}
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 180ms;
+		animation-timing-function: var(--ease-out-expo);
+	}
 }

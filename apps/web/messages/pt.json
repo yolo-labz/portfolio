@@ -18,53 +18,27 @@
 		"es": "Español"
 	},
 	"Hero": {
-		"eyebrow": "Arquitetura de IA com rigor de compliance · RAG · agentes · MCP",
 		"headingLead": "Stacks de IA reprovam na primeira auditoria em três pontos:",
 		"headingSeams": "proveniência do prompt, linhagem da recuperação, comprovação do resultado.",
-		"body": "Projeto e construo sistemas de RAG e de agentes para cargas reguladas: bancário, fiscal, jurídico. A trilha de auditoria é a entrega. Um número sem rastreio de fonte é uma falha de compliance; a arquitetura nunca confia no modelo para lembrar de onde leu. Aderente à LGPD, à BCB 4.893 e à exigência de registro do Art. 12 do EU AI Act.",
-		"ctaPrimary": "Enviar um briefing",
-		"ctaSecondary": "Ler os writeups de arquitetura",
-		"stats": [
-			{
-				"value": 6,
-				"suffix": "",
-				"label": "repositórios públicos",
-				"detail": "SLSA L2 · assinados com Sigstore · verifique com um comando"
-			},
-			{
-				"value": 2,
-				"suffix": "",
-				"label": "projetos de demonstração com código aberto",
-				"detail": "extração com IA · pipeline de vagas, código aberto"
-			},
-			{
-				"value": 152,
-				"suffix": "",
-				"label": "módulos NixOS",
-				"detail": "frota declarativa multi-host · 153 PRs mergeados"
-			},
-			{
-				"value": 0,
-				"suffix": "",
-				"label": "cifras alucinadas por construção",
-				"detail": "citação obrigatória + revalidação do trecho: sem caminho para um número sem fonte"
-			}
-		]
+		"body": "Projeto e construo sistemas de RAG e de agentes para cargas reguladas: bancário, fiscal, jurídico. A trilha de auditoria é a entrega. Um número sem rastreio de fonte é uma falha de compliance; a arquitetura nunca confia no modelo para lembrar de onde leu. Aderente à LGPD, à BCB 4.893 e à exigência de registro do Art. 12 do EU AI Act."
 	},
-	"ProofBand": {
-		"figLabel": "alegação → evidência",
-		"heading": "Toda alegação aqui é auditável",
-		"bodyBefore": "Seis repositórios públicos em",
-		"bodyAfter": ", cada um com SLSA L2, assinatura Sigstore e bloqueio em checks do SonarQube ao vivo. Leia o código, não um screenshot. O trabalho com clientes permanece anonimizado: writeups de arquitetura, nunca nomes.",
-		"aboutLink": "Veja o mapa completo de alegação → evidência →"
+	"Index": {
+		"heading": "Índice do trabalho",
+		"caseFile": "Caso de cliente",
+		"repository": "Repositório",
+		"note": "O trabalho com clientes é anonimizado. Os repositórios são públicos em github.com/yolo-labz.",
+		"renderAlt": "O gremlin programador da yolo-labz digitando num teclado, renderizado a partir do seu modelo 3D reproduzível"
+	},
+	"CaseFiles": {
+		"heading": "Quatro registros de decisão de trabalho regulado",
+		"read": "Ler o registro completo"
 	},
 	"Services": {
-		"figLabel": "como um contrato evolui",
 		"heading": "Comece por um veredito. Escale quando a prova se sustentar.",
 		"intro": "Cada oferta entrega uma entrega definida, com escopo fechado na assinatura. O caminho mais comum: um diagnóstico primeiro, depois a construção quando a arquitetura se prova contra os dados reais do cliente.",
 		"outcomeLabel": "Resultado:",
 		"footer": "Todo contrato começa por uma conversa de discovery curta e um diagnóstico por escrito. Escopo fechado na assinatura.",
-		"footerCta": "Enviar um briefing →",
+		"footerCta": "Enviar um briefing",
 		"rungs": [
 			{
 				"rung": "Pattern",
@@ -237,13 +211,15 @@
 		"ctaPrimary": "Enviar um briefing",
 		"ctaSecondary": "GitHub"
 	},
+	"Footer": {
+		"claimMap": "Mapa de afirmações e evidências"
+	},
 	"About": {
 		"metaTitle": "Sobre — Pedro Balbino",
 		"metaDescription": "Arquiteto de IA com Rigor de Compliance para cargas reguladas na LATAM e no mundo. RAG em produção, sistemas de agentes e integrações MCP com trilhas de auditoria e proveniência de decisão. Cada alegação mapeada a evidência verificável.",
-		"eyebrow": "Sobre",
 		"category": "Arquiteto de IA com Rigor de Compliance para Cargas Reguladas na LATAM e no Mundo",
 		"diagnostic": "Stacks de IA regulada reprovam na auditoria em três pontos, sempre os mesmos: proveniência do prompt, linhagem da recuperação, comprovação do resultado. A correção está na arquitetura. Três planos, dados, controle, compliance, com o plano de compliance rodando como sidecar: um ledger de auditoria encadeado por hash, ancorado fora do caminho da requisição.",
-		"summary": "A prova tem duas frentes. Open source primeiro, porque é verificável: seis plugins de Claude Code assinados com Sigstore em github.com/yolo-labz, mais projetos de demonstração de extração com IA e pipeline de vagas com o código aberto. O trabalho com clientes é construído em equipe, anonimizado, sob NDA. Nele, contribuí para um agente de declaração fiscal regulada de IRPF (extração de campos, validação de saída estruturada), construí o backend e a camada de dados de um chatbot educacional multilíngue, atuei num backend de varejo orientado a eventos e contribuí para uma prova de conceito de RAG jurídico. Os números concretos que posso mostrar são os que estão nos repositórios.",
+		"summary": "A prova tem duas frentes. Open source primeiro, porque é verificável: seis ferramentas open-source em github.com/yolo-labz, mais projetos de demonstração de extração com IA e pipeline de vagas com o código aberto. O trabalho com clientes é construído em equipe, anonimizado, sob NDA. Nele, contribuí para um agente de declaração fiscal regulada de IRPF (extração de campos, validação de saída estruturada), construí o backend e a camada de dados de um chatbot educacional multilíngue, atuei num backend de varejo orientado a eventos e contribuí para uma prova de conceito de RAG jurídico. Os números concretos que posso mostrar são os que estão nos repositórios.",
 		"claimEvidenceHeading": "Alegação → Evidência",
 		"claimEvidenceIntro": "Cada alegação corresponde a um artefato verificável. Repositórios públicos apontam direto para o código. As linhas marcadas como \"writeup pendente\" são writeups de arquitetura anonimizados: a arquitetura sai, o nome do cliente nunca.",
 		"tableHeaderClaim": "Alegação",
@@ -272,7 +248,6 @@
 	"Thesis": {
 		"metaTitle": "IA regulada reprova na primeira auditoria na camada de recuperação — Pedro Balbino",
 		"metaDescription": "Um argumento em construção para desenhar a trilha de auditoria antes do prompt: proveniência, linhagem e comprovação do resultado são a restrição arquitetural primária da IA regulada, não o modelo.",
-		"figLabel": "posição · arquitetura de IA regulada",
 		"title": "IA regulada reprova na primeira auditoria na camada de recuperação, não no modelo.",
 		"subtitle": "Um argumento em construção para desenhar a trilha de auditoria antes do prompt.",
 		"p1": "A maioria dos projetos de IA regulada aloca o risco no lugar errado. O modelo recebe todo o escrutínio: qual fornecedor, qual eval, qual guardrail. A parte que de fato reprova na auditoria entra como detalhe de última hora, e ela é esta: é possível reconstruir um resultado, seis meses depois, a partir das entradas que o produziram? Em cargas reguladas essa reconstrução não é um luxo. <strong>É a entrega.</strong>",
@@ -409,24 +384,36 @@
 		"problemHeading": "O problema",
 		"solutionHeading": "A solução",
 		"overviewHeading": "Visão geral",
-		"decisionRecord": "registro de decisão",
+		"decisionRecord": "Registro de decisão",
 		"constraint": "Restrição",
 		"decision": "Decisão",
-		"outcome": "Resultado"
+		"outcome": "Resultado",
+		"stack": "Stack",
+		"previous": "Anterior",
+		"next": "Próximo",
+		"walkLabel": "Mais trabalhos"
 	},
 	"ProjectShowcase": {
-		"selectedWorkStamp": "trabalhos selecionados",
-		"selectedWorkHeading": "Trabalhos selecionados",
-		"selectedWorkLead": "A restrição, a decisão e o resultado medido. Só o resultado final não ensina nada.",
-		"openSourceStamp": "open-source & demos",
 		"openSourceHeading": "Ferramentas open-source da yolo-labz",
 		"openSourceLead": "Quatro pontos de partida com código-fonte e notas de implementação, escolhidos por amplitude, não por popularidade.",
 		"browseRepositories": "Todos os repositórios",
 		"selectedRepositories": "Projetos selecionados da yolo-labz",
 		"projectNotes": "Ver projeto",
-		"projectNotesLabel": "Notas do projeto: {project}",
+		"projectNotesLabel": "Ver projeto: {project}",
 		"sourceCode": "Código",
 		"sourceCodeLabel": "Código-fonte: {project}",
 		"moreProjects": "Mais projetos e demos ({count})"
+	},
+	"NotFound": {
+		"title": "Nada arquivado neste endereço",
+		"body": "O link pode estar antigo ou com erro de digitação. Todo o trabalho do site está listado abaixo.",
+		"home": "Voltar ao índice",
+		"workHeading": "Todo o trabalho"
+	},
+	"ErrorPage": {
+		"title": "Esta página não conseguiu renderizar",
+		"body": "O erro foi registrado. Tente mais uma vez ou volte ao índice.",
+		"retry": "Tentar de novo",
+		"home": "Voltar ao índice"
 	}
 }

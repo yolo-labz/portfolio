@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ProjectDetail } from "@/components/project/project-detail";
+import { ContactCTA } from "@/components/sections/contact-cta";
 import { projects } from "@/data/projects";
 import { SITE_URL } from "@/lib/constants";
 
@@ -56,6 +57,7 @@ export default async function ProjectPage({ params }: Props) {
 		<>
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml }} />
 			<ProjectDetail project={project} />
+			<ContactCTA />
 		</>
 	);
 }

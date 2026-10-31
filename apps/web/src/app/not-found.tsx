@@ -12,7 +12,7 @@ export default function GlobalNotFound() {
 					margin: 0,
 					background: "#1e1e2e",
 					color: "#cdd6f4",
-					fontFamily: "system-ui, -apple-system, sans-serif",
+					fontFamily: "Inter, system-ui, -apple-system, sans-serif",
 				}}
 			>
 				<div
@@ -27,20 +27,23 @@ export default function GlobalNotFound() {
 						textAlign: "center",
 					}}
 				>
-					<p
+					<h1
+						style={{ fontSize: "1.875rem", fontWeight: 600, letterSpacing: "-0.025em", margin: 0 }}
+					>
+						Nothing is filed at this address
+					</h1>
+					<a
+						href="/en"
 						style={{
-							fontFamily: "ui-monospace, monospace",
 							color: "#00c77a",
-							fontSize: "0.875rem",
+							marginTop: "1rem",
+							minHeight: "44px",
+							display: "inline-flex",
+							alignItems: "center",
+							textUnderlineOffset: "4px",
 						}}
 					>
-						404
-					</p>
-					<h1 style={{ fontSize: "1.875rem", fontWeight: 700, margin: 0 }}>
-						This page doesn&rsquo;t exist
-					</h1>
-					<a href="/" style={{ color: "#00c77a", marginTop: "1rem", textDecoration: "none" }}>
-						Go home &rarr;
+						Back to the index of work
 					</a>
 				</div>
 			</body>
