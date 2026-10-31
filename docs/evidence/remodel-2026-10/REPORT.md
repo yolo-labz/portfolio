@@ -30,7 +30,7 @@ Screens: `before-shots/` are the `origin/main` Playwright goldens; `after-shots/
 regenerated goldens (same pinned image). First viewport side by side:
 `first-viewport-before-after.png`, `first-viewport-mobile-before-after.png`.
 
-## Lighthouse (median of 3, same host, same session)
+## Lighthouse, local and relative only (median of 3, same loaded host, same session)
 
 `run.sh` builds the standalone bundle in `mcr.microsoft.com/playwright:v1.62.1-noble`.
 Before = `origin/main` @ `28df28a` (`before-lhr/`); after = this branch (`after-lhr/`).
@@ -64,15 +64,42 @@ gone); the home page gains about 54 KB of WebP for the render.
   React `<ViewTransition>` (marked `ponytail:` in `globals.css`).
 - Favicon mark moved off its gradient and off-palette colours onto emerald on base.
 
-## Gates
+## Gates (CI on PR #167, head 67c99fa, run 41252629623, 3 runs per URL)
 
-| Gate | Result |
-|---|---|
-| Lighthouse 100/100/100/100 | **Met in CI** on PR #167 (`lighthouse + a11y budgets`, run 41249349772, desktop preset, 3 runs × 4 templates): the median of every template is 100/100/100/100. One /en run scored 99 on Performance and the other eleven scored 100. A11y, BP and SEO gate at 1.0 as errors, and CLS ≤ 0.02 as an error. The local table above was taken at host load 60-157 and is only a relative comparison. |
-| axe 0 | `axe.mjs`, axe-core 4.14.0, all WCAG 2.0-2.2 A/AA rules + best-practice, 8 routes × desktop and mobile: **0 violations** (`AXE_TOTAL=0`). Fixed on the way: pt/es shelf links whose accessible name did not contain the visible label. |
-| Impeccable detector | `detect --json apps/web/src` → **0 findings** |
-| CLS | 0.000 on every route and form factor in the Lighthouse pairs above |
-| Mobile LCP < 1.8 s | **Unverified.** CI runs the desktop preset only, and the local mobile runs (≈ 2.6 s, with origin/main at 2.3-2.8 s) were taken on a host at load ≈ 100, so they cannot prove or disprove it. This PR adds a mobile pass (`lighthouserc.mobile.json`, LCP ≤ 1800 ms reported as a warning, CLS ≤ 0.02 as an error), so the CI log is the measurement of record. |
+| Template | Desktop P/A/BP/SEO | Mobile P/A/BP/SEO (median) | Mobile LCP (3 runs) | CLS max |
+|---|---|---|---|---|
+| /en | **100/100/100/100** ×3 | 94/100/100/100 | 2728, 2887, 2902 ms | 0 |
+| /en/about | **100/100/100/100** ×3 | 95/100/100/100 | 2715, 2731, 2901 ms | 0 |
+| /en/thesis | **100/100/100/100** ×3 | 98/100/100/100 | 2417, 2437, 2719 ms | 0 |
+| /en/projects/compliance-tax-agent | **100/100/100/100** ×3 | 98/100/100/100 | 2419, 2432, 2717 ms | 0 |
+
+- **Lighthouse 100×4: met on desktop for all four templates, every run.** In CI,
+  accessibility, best practices and SEO fail the build below 100 on both form factors,
+  and CLS fails it above 0.02.
+- **axe: 0.** `axe.mjs` ran axe-core 4.14.0 with all WCAG 2.0-2.2 A/AA rules plus
+  best-practice over 8 routes at desktop and mobile widths. On the way it fixed pt/es
+  shelf links whose accessible name did not contain the visible label.
+- **Impeccable detector: 0** (`detect --json apps/web/src`). The brand-locked Inter
+  `overused-font` finding is waived in config, with the reason in DESIGN.md.
+- **CLS: 0.000** on every run.
+- **Mobile LCP < 1.8 s: not met (2.4-2.9 s). Measured reason:**
+  - In the observed trace, first paint and LCP are the same frame at **158 ms**. The h1
+    paints with everything else; nothing is late on the device.
+  - The 2.4-2.9 s comes from Lighthouse's *simulated* throttling (lantern):
+    - At 1.47 Mbps with a 4× CPU slowdown, lantern charges LCP with every request
+      started before the observed paint.
+    - On /en those requests total about 360 KB: document 32, CSS 8, fonts 114, render 10
+      and Next/React JS 196. That alone is about 2 s of transfer, plus TTFB.
+  - This PR cut that JS from ≈ 259 KB to ≈ 196 KB gzip:
+    - `motion/react` left the bundle; the drawer now animates in CSS.
+    - The Sentry browser SDK loads only when a DSN is baked into the build, and none is in prod.
+    - Effect on mobile Performance: from 86-96 to 94-98. Effect on TBT: from 400-1000 ms to 42-133 ms.
+  - Reaching 1.8 s under lantern would mean shipping under about 220 KB before first
+    paint. That means no client React on these pages, an architecture change outside
+    this brief.
+  - The remaining mobile Performance points (2-6) have the same cause.
+  - Inter's `opsz` axis (the optical-sizing requirement) costs about 25 KB of that
+    budget (≈ 0.14 s simulated). It is kept by choice.
 
 ## Independent critique (Design Tooling seat wT:pC, advisory)
 
@@ -107,10 +134,14 @@ not a regression of this change.
 | `pnpm lint` (biome + voice-lint + retirement) | 0 |
 | `pnpm typecheck` | 0 |
 | `pnpm --filter @portfolio/web build` | 0 |
-| `pnpm exec playwright test` (49 passed, 1 skipped: desktop-only contract on mobile) | 0 |
-| `impeccable detect --json src/components src/app` → `[]` | 0 |
+| `pnpm exec playwright test` (all passed, none skipped; CI `playwright toHaveScreenshot` green) | 0 |
+| `impeccable detect --json apps/web/src` → `[]` | 0 |
+| `axe.mjs` → `AXE_TOTAL=0` | 0 |
+| CI on PR #167: 10/10 checks pass | 0 |
 | `docs/evidence/remodel-2026-10/run.sh` (both trees) | 0 |
 
 New executable checks (`tests/visual/portfolio.spec.ts`): first viewport holds all ten
 index rows and the render with non-empty alt, rows ≥ 44 px; reduced motion removes the
-index entrance (`animation-name: none`).
+index entrance (`animation-name: none`); localized 404 per locale (status 404, ten work
+links); `prefers-contrast: more` raises muted text; the mobile drawer opens as a modal
+dialog with focus inside and closes on Escape with focus returned.
