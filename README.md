@@ -1,16 +1,16 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/hero-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="docs/assets/hero-light.svg">
-  <img alt="portfolio: Turborepo monorepo for Next.js portfolio site + 4 mixed-stack project case studies" src="docs/assets/hero-dark.svg">
+  <img alt="portfolio: Turborepo monorepo for Next.js portfolio site + 3 mixed-stack project case studies" src="docs/assets/hero-dark.svg">
 </picture>
 
 <div align="center">
 
 # portfolio
 
-**Turborepo monorepo housing the Next.js 16 portfolio site + 4 mixed-stack project case studies.**
+**Turborepo monorepo housing the Next.js 16 portfolio site + 3 mixed-stack project case studies.**
 
-Live at [pedro.home301server.com.br](https://pedro.home301server.com.br/). One pnpm workspace, one Turbo task graph, one Dockerfile, one Dokku push. The site, the shared UI library, and four project subfolders (TypeScript + Python + Terraform) all build and lint under a single command.
+Live at [pedro.home301server.com.br](https://pedro.home301server.com.br/). One pnpm workspace, one Turbo task graph, one Dockerfile, one Dokku push. The site, the shared UI library, and three project subfolders (TypeScript + Python + Terraform) all build and lint under a single command.
 
 [![CI](https://github.com/yolo-labz/portfolio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/yolo-labz/portfolio/actions/workflows/ci.yml)
 [![Visual regression](https://github.com/yolo-labz/portfolio/actions/workflows/visual-regression.yml/badge.svg?branch=main)](https://github.com/yolo-labz/portfolio/actions/workflows/visual-regression.yml)
@@ -28,11 +28,11 @@ Live at [pedro.home301server.com.br](https://pedro.home301server.com.br/). One p
 
 ## Capability
 
-**Pattern.** Turborepo monorepo housing a Next.js 16 portfolio site, a shared `packages/ui` component library exported as raw TypeScript source (no build step), and 4 mixed-stack project case-study subfolders (TypeScript + Python + Terraform) wired into a single Turbo task graph.
+**Pattern.** Turborepo monorepo housing a Next.js 16 portfolio site, a shared `packages/ui` component library exported as raw TypeScript source (no build step), and 3 mixed-stack project case-study subfolders (TypeScript + Python + Terraform) wired into a single Turbo task graph.
 
 **Trade-off.** Monorepo tooling overhead — pnpm workspaces, Turbo remote cache, Biome 2.x as the single lint+format authority — in exchange for a shared component library, atomic deploys, and one CI workflow that lints, type-checks, builds, and visual-regresses every workspace on every push.
 
-**Use when.** Shipping a portfolio that needs to host multiple capability case-studies (AI document processor, executive job board, real-estate price tracker, serverless data API) on a single domain, with a single deploy surface, and a single design system.
+**Use when.** Shipping a portfolio that needs to host multiple capability case-studies (AI document processor, executive job board, serverless data API) on a single domain, with a single deploy surface, and a single design system.
 
 ```bash
 pnpm install --frozen-lockfile
@@ -45,11 +45,11 @@ pnpm test:visual  # Playwright toHaveScreenshot visual-regression suite
 
 ## Demo
 
-Static screenshot grid of the live site at three different routes (home view, project detail, about) rendered from the production build at [pedro.home301server.com.br](https://pedro.home301server.com.br/). 1200x900 PNG, no autobiographical text overlay.
+Screenshot grid of this branch's local production build at three routes (home, project detail, about), captured on 21/09/2026. 1200×900 PNG; not evidence of a production deployment.
 
 ![portfolio: 3-up screenshot grid covering the home view, a project case-study detail page, and the about page with claim-to-evidence matrix](./docs/assets/portfolio-grid.png)
 
-The grid is reproducible from the live build with [`docs/assets/portfolio-grid.html`](./docs/assets/portfolio-grid.html) (which also contains the regeneration recipe).
+Reproduce with `node scripts/capture-portfolio.mjs` against the local production server. The existing [`grid layout`](./docs/assets/portfolio-grid.html) composites the actual page captures; provenance is in [`portfolio-grid.json`](./docs/assets/portfolio-grid.json).
 
 ## How `portfolio` compares
 
@@ -58,7 +58,7 @@ Closest peers in the Next.js-portfolio-template ecosystem:
 | Capability                                            | `portfolio` (this repo) | [`create-next-app`](https://nextjs.org/docs/api-reference/create-next-app) | [Tailwind UI templates](https://tailwindui.com/templates) |
 |-------------------------------------------------------|:---:|:---:|:---:|
 | Turborepo monorepo + shared `packages/ui`             | yes | no  | no  |
-| 4 mixed-stack project subfolders (TS + Python)        | yes | no  | no  |
+| 3 mixed-stack project subfolders (TS + Python)        | yes | no  | no  |
 | Dokku continuous deploy on `main`                     | yes | manual | manual |
 | Tagged release path (SLSA L2 + dual SBOM)             | yes | no  | no  |
 | Biome 2.x (single lint + format authority)            | yes | ESLint + Prettier | ESLint + Prettier |
@@ -88,7 +88,6 @@ packages/ui/                    # shared component library, raw TS source (no bu
 projects/                       # portfolio project subfolders
 ai-document-processor/
 exec-job-board/
-realestate-price-tracker/
 serverless-data-api/
 scripts/                        # setup-dokku.sh + marketing-apply-repo-metadata.sh
 .github/workflows/              # ci, deploy-dokku, no-ai-slips, sonar, terraform,

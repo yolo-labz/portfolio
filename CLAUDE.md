@@ -34,8 +34,6 @@ The Turbo `package.json` wrappers are thin (most `build`/`lint`/`typecheck` are 
 ```bash
 pnpm --filter @portfolio/exec-job-board collect          # python -m collector.main → data/jobs.json
 cd projects/exec-job-board/site && pnpm dev              # Next.js site
-cd projects/realestate-price-tracker && docker compose up # FastAPI + Postgres + dashboard
-cd projects/realestate-price-tracker && docker compose --profile seed up seed
 cd projects/serverless-data-api/infra && terraform fmt -recursive && terraform validate
 cd projects/ai-document-processor && docker compose up   # api + dashboard
 ```
@@ -46,9 +44,8 @@ Turborepo monorepo with pnpm workspaces. Three workspace groups:
 
 - **`apps/web`** — Next.js 16 portfolio site (App Router, React 19, Tailwind CSS v4, Motion). Section components in `src/components/sections/` (hero-metrics, project-showcase, proof-band, services-ladder, skills-matrix, experience-timeline, contact-cta) are the homepage building blocks.
 - **`packages/ui`** — Shared component library (Button, Card, Badge). Raw TypeScript source exports — no build step. Next.js transpiles it via `transpilePackages` in `next.config.ts`.
-- **`projects/*`** — 4 self-contained portfolio projects, each a thin `package.json` wrapper (Turbo orchestration only) over its own language tooling. Biome ignores `*.py`; Python uses ruff per-project. Workspace globs also pull in `projects/*/site` and `projects/*/dashboard` as real Next.js workspaces.
+- **`projects/*`** — 3 self-contained portfolio projects, each a thin `package.json` wrapper (Turbo orchestration only) over its own language tooling. Biome ignores `*.py`; Python uses ruff per-project. Workspace globs also pull in `projects/*/site` and `projects/*/dashboard` as real Next.js workspaces.
   - `exec-job-board` — Python collector (httpx/pydantic) + Next.js `site` (Fuse.js search). Spec 003.
-  - `realestate-price-tracker` — FastAPI/SQLAlchemy `api` + Next.js `dashboard` (Recharts/React-Leaflet) + Postgres, via `docker compose`. Spec 004.
   - `serverless-data-api` — Terraform `infra` + Python Lambda `lambda_src` + `openapi.yaml`, DynamoDB. Spec 005.
   - `ai-document-processor` — `api` + `dashboard` via `docker compose`. Spec 006.
 
@@ -89,7 +86,7 @@ Six workflows under `.github/workflows/`:
 
 - `portfolio` (this site) → `portfolio.home301server.com.br`, via `deploy-dokku.yml`.
 - `exec-job-board` → deployed by `collect-jobs.yml` after each data refresh.
-- `realestate-price-tracker` + `ai-document-processor` ship their own `Dockerfile.dokku`/`docker-compose.yml`.
+- `ai-document-processor` ships its own `Dockerfile.dokku`/`docker-compose.yml`.
 
 Portfolio-site deploy specifics:
 - `Dockerfile.dokku` — 3-stage build: deps → build (standalone) → runner (non-root)
@@ -120,8 +117,6 @@ Design principles and governance rules are in `.specify/memory/constitution.md`.
 - N/A (static site, no database) (001-production-ready-site)
 - Python 3.12 (collector), TypeScript (site) + httpx, pydantic (collector); Next.js, Tailwind CSS v4, Fuse.js (site) (003-exec-job-board)
 - JSON file committed to git (`data/jobs.json`) (003-exec-job-board)
-- Python 3.12 (API + pipeline), TypeScript (dashboard) + FastAPI, SQLAlchemy (async), asyncpg (API); Next.js, Recharts, React-Leaflet, Tailwind CSS v4 (dashboard) (004-realestate-price-tracker)
-- PostgreSQL 16 (Docker Compose) (004-realestate-price-tracker)
 - Python 3.12 (Lambda handlers), HCL (Terraform) + AWS Lambda Powertools v2, Pydantic v2 (Lambda); Terraform >= 1.7 (IaC) (005-serverless-data-api)
 - DynamoDB (single-table, on-demand, zero idle cost) (005-serverless-data-api)
 - Python (api), TypeScript (dashboard) — containerized via docker compose (006-ai-document-processor)

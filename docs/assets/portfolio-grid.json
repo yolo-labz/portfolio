@@ -1,0 +1,17 @@
+{
+	"capturedAt": "2026-09-21T12:44:10.788Z",
+	"source": "local production build, not deployed",
+	"base": "bf3ca9b3f3fdc890387c5c84601a96f47bc14376",
+	"sourceSha256": "38e66ce0eba5e2179a9ae0ac81e957b3bd0430175caa910b7389a6c04fe98c14",
+	"englishMessagesSha256": "699401531f98f0f4954732816f66b3eaa7cc9332f0ca980742374509a9ee0c8e",
+	"browser": "151.0.7922.34",
+	"routes": {
+		"home": "/en",
+		"projects": "/en/projects/compliance-tax-agent",
+		"about": "/en/about"
+	},
+	"width": 1200,
+	"height": 900,
+	"audio": false,
+	"sha256": "82f2bf3433127f62bebafc2abc08da65f6cfef553d04f31227b7535db19b4932"
+}

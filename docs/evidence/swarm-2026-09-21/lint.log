@@ -1,0 +1,47 @@
+
+> @portfolio/root@ lint /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm
+> biome check . && node scripts/voice-lint.mjs && node --experimental-strip-types scripts/check-retirement.mjs
+
+Checked 123 files in 113ms. No fixes applied.
+soft en Thesis.p2: flat burstiness (CV 0.14 over 5 sentences)
+soft en Thesis.p3: flat burstiness (CV 0.34 over 5 sentences)
+soft en Thesis.p4: anaphora ("a …" x3)
+soft en Thesis.p4: flat burstiness (CV 0.34 over 7 sentences)
+soft en Projects.compliance-tax-agent.description: flat burstiness (CV 0.32 over 5 sentences)
+soft en Projects.compliance-tax-agent.decision: flat burstiness (CV 0.18 over 4 sentences)
+soft en Projects.compliance-tax-agent.outcome: flat burstiness (CV 0.32 over 4 sentences)
+soft en Projects.event-driven-retail.constraint: anaphora ("the …" x3)
+soft en Projects.legal-domain-rag.description: flat burstiness (CV 0.17 over 4 sentences)
+soft en Projects.ai-document-processor.description: flat burstiness (CV 0.24 over 7 sentences)
+soft en Projects.wa.description: flat burstiness (CV 0.35 over 4 sentences)
+soft en Projects.wa.solutionSummary: flat burstiness (CV 0.25 over 4 sentences)
+soft en Projects.serverless-data-api.solutionSummary: flat burstiness (CV 0.12 over 5 sentences)
+soft en Projects.linkedin-chrome-copilot.solutionSummary: flat burstiness (CV 0.21 over 4 sentences)
+soft en Projects.pedro-portfolio-recipes.solutionSummary: flat burstiness (CV 0.24 over 4 sentences)
+soft pt Thesis.p2: flat burstiness (CV 0.23 over 5 sentences)
+soft pt Thesis.p4: anaphora ("um …" x3)
+soft pt Projects.compliance-tax-agent.description: flat burstiness (CV 0.25 over 5 sentences)
+soft pt Projects.compliance-tax-agent.solutionSummary: flat burstiness (CV 0.31 over 6 sentences)
+soft pt Projects.compliance-tax-agent.decision: flat burstiness (CV 0.20 over 4 sentences)
+soft pt Projects.event-driven-retail.solutionSummary: anaphora ("o …" x3)
+soft pt Projects.legal-domain-rag.description: flat burstiness (CV 0.16 over 4 sentences)
+soft pt Projects.ai-document-processor.description: flat burstiness (CV 0.25 over 7 sentences)
+soft pt Projects.wa.solutionSummary: flat burstiness (CV 0.26 over 4 sentences)
+soft pt Projects.serverless-data-api.solutionSummary: flat burstiness (CV 0.19 over 5 sentences)
+soft pt Projects.pedro-portfolio-recipes.solutionSummary: flat burstiness (CV 0.26 over 4 sentences)
+soft es Thesis.p2: flat burstiness (CV 0.20 over 5 sentences)
+soft es Thesis.p4: anaphora ("un …" x3)
+soft es Projects.compliance-tax-agent.description: flat burstiness (CV 0.28 over 5 sentences)
+soft es Projects.compliance-tax-agent.decision: flat burstiness (CV 0.19 over 4 sentences)
+soft es Projects.legal-domain-rag.description: flat burstiness (CV 0.08 over 4 sentences)
+soft es Projects.ai-document-processor.description: flat burstiness (CV 0.24 over 7 sentences)
+soft es Projects.wa.solutionSummary: flat burstiness (CV 0.21 over 4 sentences)
+soft es Projects.serverless-data-api.solutionSummary: flat burstiness (CV 0.14 over 5 sentences)
+soft es Projects.exec-job-board.solutionSummary: flat burstiness (CV 0.31 over 5 sentences)
+soft es Projects.pedro-portfolio-recipes.solutionSummary: flat burstiness (CV 0.24 over 4 sentences)
+voice-lint: clean (0 hard, 36 advisory warning(s)).
+retirement: PASS (public source, build references, locales, retained projects)
+(node:211548) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/apps/web/src/data/projects.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/notroot/Documents/Code/yolo-labz/portfolio-138-retirement-swarm/apps/web/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -1,0 +1,39 @@
+Read-only GLM phase tool evidence; recovered, not re-measured by implementation seat.
+
+Tool result ed09f7d6
+== realestate-tracker ==
+200 https://realestate-tracker.home301server.com.br/
+== exec-job-board ==
+200 https://exec-job-board.home301server.com.br/
+== ai-docs ==
+200 https://ai-docs.home301server.com.br/
+== portfolio ==
+200 https://portfolio.home301server.com.br/en
+
+
+Tool result 2d49f05c
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+<
+=== api ===
+404
+

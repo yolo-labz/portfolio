@@ -3,17 +3,18 @@
 	"private": true,
 	"packageManager": "pnpm@10.28.2",
 	"engines": {
-		"node": ">=22.0.0"
+		"node": ">=22.6.0"
 	},
 	"scripts": {
 		"dev": "turbo dev",
 		"build": "turbo build",
-		"lint": "biome check . && node scripts/voice-lint.mjs",
+		"lint": "biome check . && node scripts/voice-lint.mjs && node --experimental-strip-types scripts/check-retirement.mjs",
 		"lint:fix": "biome check --write .",
 		"lint:voice": "node scripts/voice-lint.mjs",
 		"format": "biome format --write .",
 		"typecheck": "turbo typecheck",
 		"clean": "turbo clean && rm -rf node_modules",
+		"test:retirement": "node --experimental-strip-types scripts/check-retirement.mjs && node scripts/test-retirement.mjs",
 		"test:visual": "playwright test",
 		"test:visual:update": "playwright test --update-snapshots",
 		"test:visual:report": "playwright show-report test-results/playwright-report"

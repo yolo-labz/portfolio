@@ -66,7 +66,9 @@ screenshots.
 - [ ] **2A.7** README with architecture diagram
 - [ ] **2A.8** Screenshot for the portfolio site
 
-### 2B — Real Estate Price Tracker (`projects/realestate-price-tracker`)
+### 2B — Real Estate Price Tracker (retired 21/09/2026)
+
+Historical plan only: the application and public demonstration are retired; Spec 004 remains archival. Other projects remain active.
 
 **Priority: HIGH** — showcases data extraction + full-stack + dashboards.
 
