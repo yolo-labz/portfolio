@@ -1,26 +1,8 @@
-import { ImageResponse } from "next/og";
+import { letterMark } from "@/lib/icon";
 
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
 export default function Icon() {
-	return new ImageResponse(
-		<div
-			style={{
-				fontSize: 20,
-				background: "#1a1a2e",
-				width: "100%",
-				height: "100%",
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "center",
-				color: "#5ec4a0",
-				fontWeight: 700,
-				borderRadius: 4,
-			}}
-		>
-			P
-		</div>,
-		{ ...size },
-	);
+	return letterMark({ size: 32, fontSize: 20, radius: 4, flat: true });
 }
