@@ -64,6 +64,20 @@ gone); the home page gains about 54 KB of WebP for the render.
   React `<ViewTransition>` (marked `ponytail:` in `globals.css`).
 - Favicon mark moved off its gradient and off-palette colours onto emerald on base.
 
+## Deliberate boundaries
+
+Two limits are decisions, not defects. Both are measurable.
+
+1. **The ten index taglines stay on one line at desktop widths** (clipped with
+   `line-clamp-1`, full text still in the accessible name). A second line varies the row height
+   and pushes the tenth work out of the 1280×800 first viewport, which is the Experience-mode
+   contract the Playwright suite asserts. Shortening the taglines instead would mean new copy in
+   three locales for ten works.
+2. **Mobile LCP is 2.5-3.0 s under Lighthouse's simulated throttling** against the 1.8 s target.
+   The observed trace paints first content and the LCP h1 in the same frame at 158 ms;
+   lantern instead charges LCP for the whole pre-paint request set (~360 KB). The measured
+   reason per lost Performance point is in the Gates section above.
+
 ## Gates (CI on PR #167, head 67c99fa, run 41252629623, 3 runs per URL; re-measured on #168, head 34e2036, run 41255396134)
 
 | Template | Desktop P/A/BP/SEO | Mobile P/A/BP/SEO (median) | Mobile LCP (3 runs) | CLS max |
