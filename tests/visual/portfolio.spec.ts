@@ -90,9 +90,9 @@ test("home first viewport shows the work index and the gremlin render", async ({
 	const render = page.locator('#projects img[src*="gremlin-hero"]');
 	await expect(render).toBeVisible();
 	await expect(render).not.toHaveAttribute("alt", "");
+	// Round: fractional grid distribution lands the 44 px min-height at
+	// 43.99997 on some runs, which is not a tap-target failure.
 	for (const row of await rows.all())
-		// Round: fractional grid distribution lands the 44 px min-height at
-		// 43.99997 on some runs, which is not a tap-target failure.
 		expect(Math.round((await row.boundingBox())?.height ?? 0)).toBeGreaterThanOrEqual(44);
 });
 
