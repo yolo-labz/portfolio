@@ -91,7 +91,9 @@ test("home first viewport shows the work index and the gremlin render", async ({
 	await expect(render).toBeVisible();
 	await expect(render).not.toHaveAttribute("alt", "");
 	for (const row of await rows.all())
-		expect((await row.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+		// Round: fractional grid distribution lands the 44 px min-height at
+		// 43.99997 on some runs, which is not a tap-target failure.
+		expect(Math.round((await row.boundingBox())?.height ?? 0)).toBeGreaterThanOrEqual(44);
 });
 
 // Reduced motion: the index entrance is removed, not merely shortened to zero
