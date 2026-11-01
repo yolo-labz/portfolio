@@ -112,15 +112,19 @@ The responses:
 | `max-w-[65ch]` measured 86-88 characters | One global measure: `main p, main dd, .list-disc > li` at 50ch, with the same value in the classes. Re-measured at 1280 on /en, the case study, /about and /thesis: no prose block exceeds 75 characters (`main p` max 72). |
 | Case-study column overflow | The facts column was already `lg:sticky lg:top-24`. Verified: after a 1200px scroll it holds at y = 96. The static first-viewport rule flags the long right column by design; the decision record is the first thing in it. |
 | Hyphen gaps | Confirmed and caused by this PR: global `tabular-nums` made Inter swap punctuation to tabular widths. Now scoped to `table, time`; the mobile render shows normal hyphens. |
-| `overused-font` (Inter) | Waived as `ignoreValues` in `apps/web/.impeccable/config.json`, with the reason recorded in DESIGN.md (brand-locked). |
+| `overused-font` (Inter) | Waived as `ignoreValues` in `.impeccable/config.json`, with the reason recorded in DESIGN.md (brand-locked). |
 | Stragglers | `p { text-wrap: pretty }`. |
 | Target size under 24px | Locale buttons and Sonar badge links now have `min-h-6` (and `min-w-6`). |
 | Mascot vs. thesis | Answered in `directions.md`. |
 
-Adjacent debt found, not fixed here: /about "Code quality" shows SonarQube badges that
-render "Project has not been found" for several yolo-labz projects (badge keys or
-public visibility on the Sonar server). This predates the PR; it needs a server-side fix
-or the row hidden, and is logged in the Brain Storm save-state.
+Post-merge follow-up (PR #168, from the live critique):
+- The case-file sidebar is the sticky grid item (`lg:sticky lg:top-20 lg:self-start`).
+- `text-wrap: pretty` now also covers `dd` and `li`.
+- The Inter ignore moved to the repo-root `.impeccable/config.json`.
+- The /about "Code quality" section is removed. All six SonarQube projects exist but are
+  **private** (checked through `api/projects/search`), so every badge rendered "Project has
+  not been found", and the copy's "the dashboard is public" was false. To restore it, make
+  the projects public in Sonar, then revert this hunk.
 
  `/<locale>/<unknown>` returns status 404 but the
 HTML is Next's `__next_error__` shell, and the localized 404 renders only after

@@ -228,8 +228,6 @@
 		"evidenceAnonymized": "anonymized writeup",
 		"statusBacked": "backed",
 		"statusPending": "writeup pending",
-		"codeQualityHeading": "Code quality",
-		"codeQualityIntro": "Every plugin runs Sonar quality + security gates per release. The dashboard is public, and each badge links to the live scan: no screenshots, no caching.",
 		"claims": [
 			"Claude Code plugins shipped",
 			"Chrome/macOS workflow tooling",
