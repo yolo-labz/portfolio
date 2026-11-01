@@ -51,54 +51,52 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 				</header>
 
 				<div className="mt-14 grid gap-12 border-t border-border pt-10 lg:grid-cols-12">
-					<aside className="lg:col-span-4">
-						<div className="lg:sticky lg:top-24">
-							{entry && (
-								<p
-									className={`text-sm font-medium ${entry.kind === "caseFile" ? "text-warn" : "text-link"}`}
-								>
-									{index(entry.kind)}
-								</p>
-							)}
-							<dl className="mt-4 border-t border-border">
-								{project.metrics.map((metric) => (
-									<div key={metric.label} className="border-b border-border py-3">
-										<dt className="text-xs text-text-muted">{metric.label}</dt>
-										<dd className="mt-1 text-sm text-text">{metric.value}</dd>
-									</div>
-								))}
-								<div className="border-b border-border py-3">
-									<dt className="text-xs text-text-muted">{ui("stack")}</dt>
-									<dd className="mt-1 font-mono text-xs leading-relaxed text-text">
-										{project.techStack.map((tech) => tech.name).join(" · ")}
-									</dd>
+					<aside className="lg:sticky lg:top-20 lg:col-span-4 lg:self-start">
+						{entry && (
+							<p
+								className={`text-sm font-medium ${entry.kind === "caseFile" ? "text-warn" : "text-link"}`}
+							>
+								{index(entry.kind)}
+							</p>
+						)}
+						<dl className="mt-4 border-t border-border">
+							{project.metrics.map((metric) => (
+								<div key={metric.label} className="border-b border-border py-3">
+									<dt className="text-xs text-text-muted">{metric.label}</dt>
+									<dd className="mt-1 text-sm text-text">{metric.value}</dd>
 								</div>
-							</dl>
-							{(project.links.demo || project.links.source) && (
-								<ul className="mt-4 flex flex-wrap gap-x-6 text-sm">
-									{project.links.source && (
-										<li>
-											<a
-												href={project.links.source}
-												className="inline-flex min-h-11 items-center gap-2 text-link underline underline-offset-4"
-											>
-												{ui("viewSource")} <ArrowUpRight />
-											</a>
-										</li>
-									)}
-									{project.links.demo && (
-										<li>
-											<a
-												href={project.links.demo}
-												className="inline-flex min-h-11 items-center gap-2 text-link underline underline-offset-4"
-											>
-												{ui("liveDemo")} <ArrowUpRight />
-											</a>
-										</li>
-									)}
-								</ul>
-							)}
-						</div>
+							))}
+							<div className="border-b border-border py-3">
+								<dt className="text-xs text-text-muted">{ui("stack")}</dt>
+								<dd className="mt-1 font-mono text-xs leading-relaxed text-text">
+									{project.techStack.map((tech) => tech.name).join(" · ")}
+								</dd>
+							</div>
+						</dl>
+						{(project.links.demo || project.links.source) && (
+							<ul className="mt-4 flex flex-wrap gap-x-6 text-sm">
+								{project.links.source && (
+									<li>
+										<a
+											href={project.links.source}
+											className="inline-flex min-h-11 items-center gap-2 text-link underline underline-offset-4"
+										>
+											{ui("viewSource")} <ArrowUpRight />
+										</a>
+									</li>
+								)}
+								{project.links.demo && (
+									<li>
+										<a
+											href={project.links.demo}
+											className="inline-flex min-h-11 items-center gap-2 text-link underline underline-offset-4"
+										>
+											{ui("liveDemo")} <ArrowUpRight />
+										</a>
+									</li>
+								)}
+							</ul>
+						)}
 					</aside>
 
 					<div className="min-w-0 space-y-14 lg:col-span-8">

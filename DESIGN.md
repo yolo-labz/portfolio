@@ -111,7 +111,7 @@ Under `prefers-contrast: more`, muted text takes the body colour and rules take 
 ## Typography
 
 Inter is a deliberate brand choice, locked in `CLAUDE.md` and the vault identity, not a
-default; the detector's `overused-font` rule is waived in `apps/web/.impeccable/config.json`
+default; the detector's `overused-font` rule is waived for `inter` in the repo-root `.impeccable/config.json`
 for that reason. The distinct voice is the split: Inter for text, JetBrains Mono for data: repository names, stacks, the e-mail address,
 periods. Inter loads with its `opsz` axis and `font-optical-sizing: auto`, so headings
 get the display cut. Sizes come from one fluid modular scale, `text-step-1` … `-6`:

@@ -228,8 +228,6 @@
 		"evidenceAnonymized": "writeup anonimizado",
 		"statusBacked": "comprovada",
 		"statusPending": "writeup pendente",
-		"codeQualityHeading": "Qualidade de código",
-		"codeQualityIntro": "Cada plugin roda os gates de qualidade + segurança do Sonar a cada release. O dashboard é público e cada selo aponta direto para o scan ao vivo: sem screenshots, sem cache.",
 		"claims": [
 			"Plugins de Claude Code entregues",
 			"Ferramental de workflow para Chrome/macOS",
