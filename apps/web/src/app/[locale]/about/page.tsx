@@ -118,24 +118,29 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 	return (
 		<>
 			<section className="mx-auto w-full max-w-6xl px-6 pt-24 pb-20 sm:pt-28">
-				<header className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+				<header className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
 					<h1 className="text-step-5 leading-[1.1] font-semibold tracking-[-0.025em] text-balance lg:col-span-7">
 						{t("category")}
 					</h1>
-					<div className="space-y-5 lg:col-span-5 lg:pt-2">
-						<p className="max-w-[50ch] text-step-1 leading-relaxed text-text">{t("diagnostic")}</p>
-						<p className="max-w-[50ch] text-base leading-relaxed text-text-muted">{t("summary")}</p>
-					</div>
+					{/* One paragraph only: at 1280 the H1 sets three lines, so a second
+					    paragraph here left ~370 px of dead column under it. The proof
+					    paragraph now opens the claim section, where it belongs. */}
+					<p className="max-w-[50ch] text-step-1 leading-relaxed text-text lg:col-span-5 lg:pt-2">
+						{t("diagnostic")}
+					</p>
 				</header>
 
 				<div className="mt-16 space-y-6">
-					<div className="flex items-end justify-between gap-4">
-						<div>
+					<div className="grid gap-6 lg:grid-cols-12 lg:gap-12">
+						<div className="lg:col-span-5">
 							<h2 className="text-step-3 font-semibold tracking-[-0.02em]">
 								{t("claimEvidenceHeading")}
 							</h2>
 							<p className="mt-2 max-w-[50ch] text-sm text-text-muted">{t("claimEvidenceIntro")}</p>
 						</div>
+						<p className="max-w-[50ch] text-base leading-relaxed text-text-muted lg:col-span-6 lg:col-start-7">
+							{t("summary")}
+						</p>
 					</div>
 
 					<div className="border-y border-border">

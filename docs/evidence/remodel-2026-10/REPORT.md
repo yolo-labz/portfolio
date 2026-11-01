@@ -64,7 +64,7 @@ gone); the home page gains about 54 KB of WebP for the render.
   React `<ViewTransition>` (marked `ponytail:` in `globals.css`).
 - Favicon mark moved off its gradient and off-palette colours onto emerald on base.
 
-## Gates (CI on PR #167, head 67c99fa, run 41252629623, 3 runs per URL)
+## Gates (CI on PR #167, head 67c99fa, run 41252629623, 3 runs per URL; re-measured on #168, head 34e2036, run 41255396134)
 
 | Template | Desktop P/A/BP/SEO | Mobile P/A/BP/SEO (median) | Mobile LCP (3 runs) | CLS max |
 |---|---|---|---|---|
@@ -126,7 +126,32 @@ Post-merge follow-up (PR #168, from the live critique):
   not been found", and the copy's "the dashboard is public" was false. To restore it, make
   the projects public in Sonar, then revert this hunk.
 
- `/<locale>/<unknown>` returns status 404 but the
+On the re-measured head the picture is unchanged: desktop 100/100/100/100 with LCP
+638-744 ms; mobile Performance 95-96 with LCP 2568-2882 ms; CLS 0.000 on every run.
+
+## Round 3: /about hero density (PR #169)
+
+The Design Tooling re-score on #168 held H8 at 3 for one reason: at 1280 the /about hero
+set a three-line H1 in a seven-column cell against a 22-line lede in five columns, so the
+hero box was 532 px tall for 131 px of headline. Measured dead block under the H1: 374 px.
+
+Fix, in the page's own vocabulary (no new copy, no invented claim): the diagnostic
+paragraph keeps the right column, and the "the proof splits two ways" paragraph moves down
+to open the Claim to Evidence band, where it frames the table that follows.
+
+| | before | after |
+|---|---|---|
+| /about hero box at 1280 | 532 px | 226 px |
+| dead block under the H1 | 374 px | 95 px |
+| hero columns | H1 vs H1 + 2 paragraphs | H1 vs 1 paragraph |
+| claim band | heading + legend stacked, 5 columns used | heading + legend (5) beside the proof paragraph (6-12) |
+
+Evidence: `about-hero-before-1280.png`, `about-hero-after-1280.png`,
+`about-hero-before-after.png` (desktop halves scaled to 640 px, before on the right).
+Mobile at 390 keeps the reading order H1, diagnostic, claim heading, legend, proof.
+The six /about goldens (en/pt/es x desktop/mobile) were regenerated.
+
+`/<locale>/<unknown>` returns status 404 but the
 HTML is Next's `__next_error__` shell, and the localized 404 renders only after
 hydration. It is the same on `origin/main` (checked against the main build), so it is
 not a regression of this change.
