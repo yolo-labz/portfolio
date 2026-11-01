@@ -54,7 +54,8 @@ for (const locale of ["en", "pt", "es"]) {
 			for (const link of await card.locator("a").all()) {
 				await expect(link).toHaveAccessibleName(new RegExp(slug));
 				const box = await link.boundingBox();
-				expect(box?.height).toBeGreaterThanOrEqual(44);
+				// Rounded: fractional grid distribution can land a 44 px box at 43.99997.
+				expect(Math.round(box?.height ?? 0)).toBeGreaterThanOrEqual(44);
 			}
 		}
 		// kokoro-speakd now renders as a flagship card above this shelf, so its
