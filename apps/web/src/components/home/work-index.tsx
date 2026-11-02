@@ -7,9 +7,10 @@ import { Link } from "@/i18n/navigation";
 // index of ten works fills the rest, and the gremlin render sits beside it as the
 // one doing the typing. Server component: no client JS on the LCP path.
 //
-// The render is `gremlin-hero.png` from yolo-labz/.github `model/` (Blender
-// Workbench, flat albedo), cropped and re-encoded only; its plate is exactly the
-// page ground #1e1e2e, so it needs no frame. Provenance: public/brand/README.md.
+// The render is a published plate from yolo-labz/.github `model/` (Blender Workbench,
+// flat albedo): `make renders` emits fitted 804x770 and 402x385 frames whose plate is
+// exactly the page ground #1e1e2e, so it needs no frame and no crop correction.
+// Provenance and sha256s: public/brand/README.md.
 export function WorkIndex() {
 	const t = useTranslations("Index");
 	const hero = useTranslations("Hero");
@@ -30,17 +31,29 @@ export function WorkIndex() {
 				</h1>
 
 				{/* One element, two placements: beside the thesis on small screens, the
-				    full plate beside the index from lg up. srcSet keeps phones on 402w. */}
-				<img
-					src="/brand/gremlin-hero-804.webp"
-					srcSet="/brand/gremlin-hero-402.webp 402w, /brand/gremlin-hero-804.webp 804w"
-					sizes="(min-width: 1024px) 360px, 128px"
-					alt={t("renderAlt")}
-					width={804}
-					height={770}
-					fetchPriority="high"
-					className="col-start-2 row-start-1 -mt-1 w-24 sm:w-32 lg:sticky lg:top-24 lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:mt-0 lg:w-full"
-				/>
+				    full plate beside the index from lg up. srcSet keeps phones on 402w.
+				    AVIF first (5-13 KB), then WebP, then the PNG fallback; `contents`
+				    keeps the <img> as the grid item so the placement classes still land. */}
+				<picture className="contents">
+					<source
+						type="image/avif"
+						srcSet="/brand/gremlin-hero-402x385-dark.avif 402w, /brand/gremlin-hero-804x770-dark.avif 804w"
+						sizes="(min-width: 1024px) 360px, 128px"
+					/>
+					<source
+						type="image/webp"
+						srcSet="/brand/gremlin-hero-402x385-dark.webp 402w, /brand/gremlin-hero-804x770-dark.webp 804w"
+						sizes="(min-width: 1024px) 360px, 128px"
+					/>
+					<img
+						src="/brand/gremlin-hero-804x770-dark.png"
+						alt={t("renderAlt")}
+						width={804}
+						height={770}
+						fetchPriority="high"
+						className="col-start-2 row-start-1 -mt-1 w-24 sm:w-32 lg:sticky lg:top-24 lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:mt-0 lg:w-full"
+					/>
+				</picture>
 
 				<div className="col-span-2 lg:col-span-8 lg:col-start-1">
 					<h2 className="sr-only">{t("heading")}</h2>

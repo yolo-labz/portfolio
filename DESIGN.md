@@ -166,9 +166,10 @@ are not transitioned yet: React's `<ViewTransition>` is canary-only in 19.2.
 ## Imagery
 
 Only renders from `yolo-labz/.github` `model/` (`params.json` is the source of truth).
-Shipped: `apps/web/public/brand/gremlin-hero-{804,402}.webp`, cropped from
-`gremlin-hero.png` (sha256 `e2b29966…95eb`, byte-identical across two `make model`
-runs on 31/10/2026). Provenance and the regeneration recipe: `apps/web/public/brand/README.md`.
+Shipped: the published plates `apps/web/public/brand/gremlin-hero-{804x770,402x385}-dark.{avif,webp,png}`
+from `make renders` — fitted frames (content plus a 6% margin), so `width`/`height` come
+from the filename with no crop correction, and the plate is exactly `--color-bg`. Served
+AVIF first, then WebP, then PNG. Provenance and sha256s: `apps/web/public/brand/README.md`.
 Never generated lettering, never a new pose, never a filter or glow on the render.
 
 ## Do's and Don'ts
