@@ -7,7 +7,6 @@ const selected = [
 	"serverless-data-api",
 	"linkedin-chrome-copilot",
 	"claude-classroom-submit",
-	"pedro-portfolio-recipes",
 ];
 
 // These contracts exercise the existing catalogue, not a second project database.
