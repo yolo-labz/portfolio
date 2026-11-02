@@ -7,7 +7,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 // Serving that same file is what stops the site card and the GitHub preview drifting:
 // the bytes on the wire equal the bytes the gate checks.
 export const SHARE_IMAGE = {
-	url: "/opengraph-image",
+	// The extension matters: the metadata route is served as a static asset, and the
+	// extensionless /opengraph-image returns 404 on this deployment (verified live).
+	url: "/opengraph-image.png",
 	width: 1200,
 	height: 630,
 	alt: "The yolo-labz gremlin typing at a keyboard on the Catppuccin Mocha ground, beside the yolo-labz wordmark and the line “Small tools. Deliberate automation.”",
