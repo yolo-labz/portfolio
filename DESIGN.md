@@ -1,6 +1,6 @@
 ---
 name: pedro.balbino portfolio
-description: Compliance-grade AI architecture, shown as an index of work beside the yolo-labz gremlin at its keyboard.
+description: An index of work beside the yolo-labz gremlin at its keyboard.
 colors:
   ground: "#1e1e2e"
   ground-raised: "#181825"

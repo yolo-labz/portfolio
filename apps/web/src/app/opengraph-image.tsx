@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt =
-	"Pedro Balbino — Open-source tools for scripting messaging, browser workflows and local services.";
+	"Pedro Balbino, Compliance-Grade AI Architect. Most AI stacks fail audit at the same three seams. Regulated LATAM & global workloads: RAG, agents, MCP, audit-trail by design.";
 
 export default function OGImage() {
 	return new ImageResponse(

@@ -10,7 +10,7 @@
 
 **Turborepo monorepo housing the Next.js 16 portfolio site + 3 mixed-stack project case studies.**
 
-Live at [pedro.home301server.com.br](https://pedro.home301server.com.br/). One pnpm workspace, one Turbo task graph, one Dockerfile, one Dokku push. The site, the shared UI library, and three project subfolders (TypeScript + Python + Terraform) all build and lint under a single command.
+Deployed to `portfolio.home301server.com.br` (see `deploy-dokku.yml`). One pnpm workspace, one Turbo task graph, one Dockerfile, one Dokku push. The site, the shared UI library, and three project subfolders (TypeScript + Python + Terraform) all build and lint under a single command.
 
 [![CI](https://github.com/yolo-labz/portfolio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/yolo-labz/portfolio/actions/workflows/ci.yml)
 [![Visual regression](https://github.com/yolo-labz/portfolio/actions/workflows/visual-regression.yml/badge.svg?branch=main)](https://github.com/yolo-labz/portfolio/actions/workflows/visual-regression.yml)
@@ -30,7 +30,7 @@ Live at [pedro.home301server.com.br](https://pedro.home301server.com.br/). One p
 
 **Pattern.** Turborepo monorepo housing a Next.js 16 portfolio site, a shared `packages/ui` component library exported as raw TypeScript source (no build step), and 3 mixed-stack project case-study subfolders (TypeScript + Python + Terraform) wired into a single Turbo task graph.
 
-**Trade-off.** Monorepo tooling overhead — pnpm workspaces, Turbo remote cache, Biome 2.x as the single lint+format authority — in exchange for a shared component library, atomic deploys, and one CI workflow that lints, type-checks, builds, and visual-regresses every workspace on every push.
+**Trade-off.** Monorepo tooling overhead — pnpm workspaces, Turborepo, Biome 2.x as the single lint+format authority — in exchange for a shared component library, atomic deploys, and one CI workflow that lints, type-checks, builds, and visual-regresses every workspace on every push.
 
 **Use when.** Shipping a portfolio that needs to host multiple capability case-studies (AI document processor, executive job board, serverless data API) on a single domain, with a single deploy surface, and a single design system.
 
@@ -60,7 +60,7 @@ Closest peers in the Next.js-portfolio-template ecosystem:
 | Turborepo monorepo + shared `packages/ui`             | yes | no  | no  |
 | 3 mixed-stack project subfolders (TS + Python)        | yes | no  | no  |
 | Dokku continuous deploy on `main`                     | yes | manual | manual |
-| Tagged release path (SLSA L2 + dual SBOM)             | yes | no  | no  |
+| Tag-triggered release workflow (build attestation + CycloneDX/SPDX SBOMs; no release published yet) | yes | no  | no  |
 | Biome 2.x (single lint + format authority)            | yes | ESLint + Prettier | ESLint + Prettier |
 | SHA-pinned actions + Dependabot                       | yes | optional | optional |
 | Playwright `toHaveScreenshot` visual-regression CI    | yes | no  | no  |
@@ -74,7 +74,7 @@ For sites that need none of this — a single `apps/web` with no shared library,
 
 - Node.js >=22, pnpm 10.28.2, TypeScript 6.0
 - Next.js 16.2 (App Router, React 19.2, Tailwind CSS 4.3)
-- Turborepo 2.9 task graph + remote caching
+- Turborepo 2.9 task graph
 - Python 3.12 in `projects/` subprojects (pyenv-pinned via `.python-version`)
 - Biome 2.5 (lint + format)
 - Playwright 1.61 visual-regression CI
@@ -127,11 +127,18 @@ MIT - see [LICENSE](./LICENSE).
 
 ---
 
-## Services
+## Contact
 
-Compliance-grade AI architecture for regulated workloads - async-first, USD-denominated, LATAM-based / EN-fluent. See [blog.home301server.com.br/services](https://blog.home301server.com.br/services/).
+Engagement details are on the deployed site and in the engineering notes at [blog.home301server.com.br/services](https://blog.home301server.com.br/services/). This README describes the repository, not a service offer.
 
 ## Related
 
-- [`yolo-labz/wa`](https://github.com/yolo-labz/wa) - WhatsApp daemon
-- [`yolo-labz/.github`](https://github.com/yolo-labz/.github) - org profile + supply-chain story
+Open-source tools for scripting messaging, browser workflows and local services, by the same org (each README states its platform limits and license):
+
+- [`wa`](https://github.com/yolo-labz/wa) - personal WhatsApp workflows through a persistent daemon
+- [`chrome-bridge`](https://github.com/yolo-labz/chrome-bridge) - drive a dedicated Chromium profile from a local CLI
+- [`claude-mac-chrome`](https://github.com/yolo-labz/claude-mac-chrome) - address Chrome profiles and tabs from macOS scripts
+- [`fand`](https://github.com/yolo-labz/fand) - temperature-driven fan modes on supported Apple Silicon Macs
+- [`kokoro-speakd`](https://github.com/yolo-labz/kokoro-speakd) - keep Kokoro ready between speech requests
+- [`anthropic-throttle-proxy`](https://github.com/yolo-labz/anthropic-throttle-proxy) - pace Anthropic API traffic across clients
+- [`yolo-labz/.github`](https://github.com/yolo-labz/.github) - org profile and the claim source (`docs/brand-positioning.md`)
