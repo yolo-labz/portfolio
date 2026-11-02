@@ -118,7 +118,9 @@ no named shifting element.
 while the site's own positioning is *Compliance-Grade AI Architect for regulated workloads*. Rule 5
 means the policy card ships (it is the gate-enforced artefact), so a share of this site shows the org
 sentence. That is a policy question for `yolo-labz/.github`, not something to fix by quietly swapping
-the card here; if the mapping changes, this table and `og-card.png` change together.
+the card here; if the mapping changes, this table and `og-card.png` change together. The decision,
+with both options and their costs, is written up in
+[`docs/share-card-decision.md`](./share-card-decision.md) — one line from the policy owner settles it.
 
 ## Gate map
 
