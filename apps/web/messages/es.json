@@ -356,12 +356,6 @@
 			"problemStatement": "Bajo carga sostenida de CPU y GPU, el control de ventiladores de Apple Silicon se queda en auto, y macOS no ofrece una forma declarativa de pedir refrigeración forzada sin una app con GUI.",
 			"solutionSummary": "Un daemon en espacio de usuario lee el SMC y elige mínimo forzado o auto desde una curva de temperatura con histéresis, devolviendo el control a la gestión térmica de macOS. La config vive en TOML detrás de un módulo nix-darwin y se recarga por SIGHUP sin reiniciar."
 		},
-		"pedro-portfolio-recipes": {
-			"tagline": "Patrones cortos y listos para copiar de los stacks que entrego: cada uno es problema, snippet funcional, compensación y antipatrón.",
-			"description": "Ocho recetas de código centradas en capacidades: skills de plugins de Claude Code, automatización multi-perfil de Chrome, RAG híbrido pgvector + BM25, verificación de comprobaciones con Sigstore, overlays de flakes de NixOS, módulos de Terraform paralelos para Azure/GCP, secretos con sops-nix y hooks pre-commit políglotas con lefthook. Cada receta es un directorio: problema, snippet funcional, compensación, antipatrón.",
-			"problemStatement": "Los revisores y colaboradores necesitan evidencia rápida de que una afirmación sobre un stack está respaldada por código real. El copy de marketing no sirve, y las apps completas son la resolución equivocada para 'muéstrame cómo conectarías la búsqueda híbrida'.",
-			"solutionSummary": "Un repo público de recetas cortas y autocontenidas en recipes/<topic>/README.md. Sin paso de build ni framework compartido. Cada receta se sostiene sola en 200-500 palabras: problema, snippet, compensación, antipatrón y referencia. MIT, con una base de SonarQube + Dependabot + lefthook."
-		},
 		"anthropic-throttle-proxy": {
 			"tagline": "Regula el tráfico de la API de Anthropic entre clientes con colas por bearer y un panel en vivo.",
 			"description": "Un gateway e ingress self-hosted que aplica el límite de concurrencia por cuenta una sola vez, de forma justa, donde el operador controla. Round-robin entre conexiones de cliente distintas, un techo AIMD que se reduce con 429/503 y vuelve a subir con 2xx consecutivos, pacing guiado por anthropic-ratelimit-* y Retry-After, panel HTMX y métricas Prometheus. Python, aiohttp, despliegue en Dokku.",
@@ -393,7 +387,7 @@
 	},
 	"ProjectShowcase": {
 		"openSourceHeading": "Herramientas de código abierto de yolo-labz",
-		"openSourceLead": "Cuatro puntos de partida con código fuente y notas de implementación, elegidos por amplitud, no por popularidad.",
+		"openSourceLead": "Tres puntos de partida con código fuente y notas de implementación, elegidos por amplitud, no por popularidad.",
 		"browseRepositories": "Todos los repositorios",
 		"selectedRepositories": "Proyectos seleccionados de yolo-labz",
 		"projectNotes": "Ver proyecto",

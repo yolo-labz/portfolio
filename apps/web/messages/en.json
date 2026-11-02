@@ -356,12 +356,6 @@
 			"problemStatement": "Under sustained CPU and GPU load, Apple Silicon fan control stays in auto, and macOS gives no declarative way to ask for forced cooling without a GUI app.",
 			"solutionSummary": "A userspace daemon polls the SMC and picks forced minimum or auto from a temperature curve with hysteresis, then hands control back to macOS thermal management. The config lives in TOML behind a nix-darwin module and reloads on SIGHUP without a restart."
 		},
-		"pedro-portfolio-recipes": {
-			"tagline": "Short, copy-pasteable patterns from the stacks I ship: each one is problem, working snippet, tradeoff, anti-pattern.",
-			"description": "Eight capability-first code recipes: Claude Code plugin skills, Chrome multi-profile automation, pgvector + BM25 hybrid RAG, Sigstore attestation verification, NixOS flake overlays, parallel Azure/GCP Terraform modules, sops-nix secrets, and polyglot lefthook pre-commit hooks. Each recipe is one directory: problem, working snippet, tradeoff, anti-pattern.",
-			"problemStatement": "Reviewers and collaborators need fast evidence that a stack claim is backed by actual code. Marketing copy doesn't do that, and full apps are the wrong resolution for 'show me how you'd wire hybrid search'.",
-			"solutionSummary": "A public repo of short, self-contained recipes under recipes/<topic>/README.md. No build step, no shared framework. Each recipe stands alone at 200–500 words: problem, snippet, tradeoff, anti-pattern, reference. MIT, with a SonarQube + Dependabot + lefthook baseline."
-		},
 		"anthropic-throttle-proxy": {
 			"tagline": "Pace Anthropic API traffic across clients with per-bearer queues and a live dashboard.",
 			"description": "A self-hosted gateway and ingress that applies the per-account concurrency cap once, fairly, where the operator controls it. Round-robin across distinct client connections, an AIMD ceiling that shrinks on 429/503 and ramps back on consecutive 2xx, header-aware pacing from anthropic-ratelimit-* and Retry-After, an HTMX dashboard and Prometheus metrics. Python, aiohttp, Dokku deploy.",
@@ -393,7 +387,7 @@
 	},
 	"ProjectShowcase": {
 		"openSourceHeading": "Open-source tools, by yolo-labz",
-		"openSourceLead": "Four starting points with source code and implementation notes, chosen for breadth rather than popularity.",
+		"openSourceLead": "Three starting points with source code and implementation notes, chosen for breadth rather than popularity.",
 		"browseRepositories": "All repositories",
 		"selectedRepositories": "Selected yolo-labz projects",
 		"projectNotes": "Project notes",

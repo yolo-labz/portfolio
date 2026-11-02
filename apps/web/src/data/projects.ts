@@ -307,23 +307,6 @@ export const projects: Project[] = [
 		featured: true,
 	},
 	{
-		slug: "pedro-portfolio-recipes",
-		title: "pedro-portfolio-recipes — capability-first code recipes",
-		techStack: [
-			{ name: "Bash", category: "language" },
-			{ name: "SQL", category: "language" },
-			{ name: "Nix", category: "language" },
-			{ name: "Terraform", category: "infrastructure" },
-			{ name: "GitHub Actions", category: "service" },
-		],
-		metrics: [
-			{ label: "Recipes", value: "8 self-contained" },
-			{ label: "Baseline", value: "SonarQube · lefthook · Dependabot" },
-		],
-		links: { source: "https://github.com/yolo-labz/pedro-portfolio-recipes" },
-		featured: false,
-	},
-	{
 		slug: "anthropic-throttle-proxy",
 		title: "anthropic-throttle-proxy — fleet-wide pacing and request admission",
 		techStack: [

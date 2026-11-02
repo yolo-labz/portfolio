@@ -4,13 +4,12 @@ import { ArrowRight, ArrowUpRight } from "@/components/shared/icons";
 import { projects } from "@/data/projects";
 import { Link } from "@/i18n/navigation";
 
-// Four capability entry points, not a popularity or uptime ranking. Keep the
+// Three capability entry points, not a popularity or uptime ranking. Keep the
 // catalogue as the source of truth; every other non-featured project stays below.
 // The six brand-positioning flagships lead the home index, so this shelf starts
 // after them and only offers repos whose source is public.
 const selectedSlugs = new Set([
 	"serverless-data-api",
-	"pedro-portfolio-recipes",
 	"claude-classroom-submit",
 	"linkedin-chrome-copilot",
 ]);
