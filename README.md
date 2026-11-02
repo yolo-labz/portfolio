@@ -20,7 +20,7 @@ Deployed to `portfolio.home301server.com.br` (see `deploy-dokku.yml`). One pnpm 
 [![Turborepo](https://img.shields.io/badge/Turborepo-2.x-EF4444?logo=turborepo&logoColor=white)](./turbo.json)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/yolo-labz/portfolio/badge)](https://scorecard.dev/viewer/?uri=github.com/yolo-labz/portfolio)
 
-[Capability](#capability) · [Demo](#demo) · [How portfolio compares](#how-portfolio-compares) · [Stack](#stack) · [Layout](#layout) · [Run locally](#run-locally) · [CI](#ci)
+[Design canon](./docs/design-canon.md) · [Capability](#capability) · [Demo](#demo) · [How portfolio compares](#how-portfolio-compares) · [Stack](#stack) · [Layout](#layout) · [Run locally](#run-locally) · [CI](#ci)
 
 </div>
 
@@ -142,3 +142,4 @@ Open-source tools for scripting messaging, browser workflows and local services,
 - [`kokoro-speakd`](https://github.com/yolo-labz/kokoro-speakd) - keep Kokoro ready between speech requests
 - [`anthropic-throttle-proxy`](https://github.com/yolo-labz/anthropic-throttle-proxy) - pace Anthropic API traffic across clients
 - [`yolo-labz/.github`](https://github.com/yolo-labz/.github) - org profile and the claim source (`docs/brand-positioning.md`)
+- [`docs/design-canon.md`](./docs/design-canon.md) - the rules that settle a design argument here, each with its failing example
