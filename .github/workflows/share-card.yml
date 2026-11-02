@@ -1,0 +1,88 @@
+# Share-card gate.
+#
+# The rule is not owned here. `yolo-labz/.github` holds the policy
+# (`profile/assets/brand/share-cards.json`), the canonical card and
+# `scripts/check-profile.py share-cards`, which audits the live org over the
+# GitHub API. That checker cannot see a pull request — it reads
+# `repos/<repo>/contents/...` on the default branch — and this site deploys on
+# merge, so a wrong card would ship and only fail afterwards.
+#
+# So: the pinned `.github` checkout supplies the policy and the image test, this
+# tree supplies the card, and `scripts/check-share-card.py` compares them. The
+# upstream checker still runs end to end for the published state on push and
+# weekly. One policy, one implementation of "is this a 1200x630 PNG" — the
+# portfolio imports `image_facts` from the pinned checker instead of copying it.
+#
+# The `.github` ref is a full SHA on purpose: a change to the brand rule arrives
+# here as a reviewable bump, not as a silent overnight failure.
+name: share-card
+
+on:
+  pull_request:
+    paths:
+      - ".github/og-card.png"
+      - ".github/og-card.html"
+      - ".github/workflows/share-card.yml"
+      - "scripts/check-share-card.py"
+      - "apps/web/src/lib/share.ts"
+  push:
+    branches: [main]
+    paths:
+      - ".github/og-card.png"
+      - ".github/og-card.html"
+      - ".github/workflows/share-card.yml"
+      - "scripts/check-share-card.py"
+      - "apps/web/src/lib/share.ts"
+  schedule:
+    # Weekly drift report: the canonical card can move in .github without this
+    # repository touching anything, and that is exactly how a card goes stale.
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+env:
+  ORG_POLICY_REF: 12524c0997e71d9677a4d11cb690e4b773f6788a
+
+jobs:
+  share-card:
+    name: share card matches the org policy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout this repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # The staleness rule compares commit dates on both sides, so this needs
+          # history for the card path — a depth-1 clone answers "" and the
+          # comparison would be silently skipped.
+          fetch-depth: 0
+
+      - name: Checkout the org policy at a pinned ref
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: yolo-labz/.github
+          ref: ${{ env.ORG_POLICY_REF }}
+          path: .org-github
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Card in this tree matches the policy
+        run: python3 scripts/check-share-card.py --org .org-github --family yolo-labz/portfolio
+
+      - name: Published cards still match (main and weekly only)
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .org-github/scripts/check-profile.py share-cards --repo .org-github
