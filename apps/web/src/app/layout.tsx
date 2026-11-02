@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
-// Root-level metadata files (opengraph-image.tsx, manifest.ts, icons,
+// Root-level metadata files (opengraph-image.png, manifest.ts, icons,
 // not-found.tsx) resolve `metadataBase` against THIS segment — the
 // [locale]/layout.tsx metadataBase does not propagate up to the root, so
 // without this Next falls back to the build host (localhost in CI) when

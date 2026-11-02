@@ -5,6 +5,7 @@ import { ProjectDetail } from "@/components/project/project-detail";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { projects } from "@/data/projects";
 import { SITE_URL } from "@/lib/constants";
+import { pageMeta } from "@/lib/share";
 
 interface Props {
 	params: Promise<{ locale: string; slug: string }>;
@@ -24,10 +25,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	// Localized prose (tagline) lives in the "Projects" namespace, keyed by slug.
 	const t = await getTranslations({ locale, namespace: "Projects" });
 
-	return {
+	// Project pages keep their own generated card; only the family card is a file.
+	return pageMeta({
+		locale,
+		path: `/projects/${project.slug}`,
 		title: `${project.title} — Pedro Balbino`,
 		description: t(`${slug}.tagline`),
-	};
+		image: {
+			url: `/${locale}/projects/${project.slug}/opengraph-image`,
+			width: 1200,
+			height: 630,
+			alt: `${project.title} — decision record card`,
+		},
+	});
 }
 
 export default async function ProjectPage({ params }: Props) {
