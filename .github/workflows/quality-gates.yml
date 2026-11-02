@@ -29,7 +29,7 @@ jobs:
       contents: read
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@dc2769abcc0fcfbadfc1df54081c1608579ef6b2 # v2.22.2
+        uses: step-security/harden-runner@46b06cea07f9e64621fdf066ba77ac6915163d43 # v2.22.3
         with:
           egress-policy: audit
 
@@ -46,6 +46,6 @@ jobs:
       # silent no-op until a repo has .feature files), an alignment-gate
       # path-mode fix, and that gate's first test suite.
       - name: Quality gates on the PR diff
-        uses: yolo-labz/quality-gates@53a2ec059829562716a60ff508c007d74bad2bd3 # v1 + #2..#8 (jscpd ratchet)
+        uses: yolo-labz/quality-gates@570bc2fbbd0cc1ad7bec76e90d87b36af814c7f8 # v1 + #2..#8 (jscpd ratchet)
         with:
           base-ref: origin/main
