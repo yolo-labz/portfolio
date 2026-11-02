@@ -91,7 +91,18 @@ export function WorkIndex() {
 							</li>
 						))}
 					</ol>
-					<p className="mt-4 text-xs text-text-muted">{t("note")}</p>
+					<p className="mt-4 text-xs text-text-muted">
+						{t.rich("note", {
+							link: (chunks) => (
+								<a
+									href="https://github.com/yolo-labz"
+									className="underline decoration-border underline-offset-4 transition-colors hover:text-text"
+								>
+									{chunks}
+								</a>
+							),
+						})}
+					</p>
 				</div>
 			</div>
 		</section>

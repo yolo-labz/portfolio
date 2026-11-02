@@ -12,7 +12,8 @@ export function Header() {
 	const cta = useTranslations("Contact");
 	const pathname = usePathname();
 	const isHome = pathname === "/";
-	const linkClass = "text-sm text-text-muted hover:text-text transition-colors";
+	const linkClass =
+		"inline-flex min-h-6 items-center text-sm text-text-muted hover:text-text transition-colors";
 
 	return (
 		<header className="fixed top-0 z-50 w-full border-b border-border bg-bg">
@@ -22,7 +23,7 @@ export function Header() {
 			>
 				<Link
 					href="/"
-					className="font-mono text-sm font-medium text-text hover:text-accent transition-colors"
+					className="inline-flex min-h-6 items-center font-mono text-sm font-medium text-text hover:text-accent transition-colors"
 				>
 					{t("home")}
 				</Link>

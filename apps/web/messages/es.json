@@ -26,7 +26,7 @@
 		"heading": "Índice del trabajo",
 		"caseFile": "Caso de cliente",
 		"repository": "Repositorio",
-		"note": "El trabajo con clientes está anonimizado. Los repositorios son públicos en github.com/yolo-labz.",
+		"note": "El trabajo con clientes está anonimizado. Los repositorios son públicos en <link>github.com/yolo-labz</link>.",
 		"renderAlt": "El gremlin programador de yolo-labz tecleando, renderizado desde su modelo 3D reproducible"
 	},
 	"CaseFiles": {
