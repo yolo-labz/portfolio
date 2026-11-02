@@ -55,7 +55,7 @@ assert.equal(limited.bad.length, 0, "rate limiting must not fail the gate");
 // Rate-limited API falls back to the visitor's view of github.com.
 const reply = (status, body = {}) => ({ status, json: async () => body });
 const asVisitor = (webStatus) => async (url) =>
-	url.startsWith("https://api.github.com") ? reply(403) : reply(webStatus);
+	new URL(url).hostname === "api.github.com" ? reply(403) : reply(webStatus);
 assert.deepEqual(await githubLookup("a/b", asVisitor(200)), { status: 200, private: false });
 assert.deepEqual(await githubLookup("a/b", asVisitor(404)), { status: 404 });
 assert.deepEqual(await githubLookup("a/b", async () => reply(200, { private: true })), {

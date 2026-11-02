@@ -3,11 +3,7 @@ import { projects } from "../../apps/web/src/data/projects";
 
 // Catalogue order, not editorial order: the shelf renders `projects` in array
 // order, so this list has to follow apps/web/src/data/projects.ts.
-const selected = [
-	"serverless-data-api",
-	"linkedin-chrome-copilot",
-	"claude-classroom-submit",
-];
+const selected = ["serverless-data-api", "linkedin-chrome-copilot", "claude-classroom-submit"];
 
 // These contracts exercise the existing catalogue, not a second project database.
 // Remote navigation is not needed: source destinations are asserted without sends.
