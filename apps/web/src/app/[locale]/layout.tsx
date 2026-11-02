@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { hasLocale } from "next-intl";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { pickClientMessages } from "@/i18n/client-messages";
+import { ClientIntlProvider } from "@/i18n/client-provider";
 import { routing } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/constants";
 import { inter, jetbrainsMono } from "@/lib/fonts";
@@ -83,6 +85,9 @@ export default async function LocaleLayout({
 	}
 	setRequestLocale(locale);
 	const t = await getTranslations("Layout");
+	// Only the namespaces the client components read cross the boundary; the rest
+	// of the catalogue stays on the server (see i18n/client-messages.ts).
+	const clientMessages = pickClientMessages(await getMessages());
 
 	return (
 		<html lang={locale} className={`${inter.variable} ${jetbrainsMono.variable}`}>
@@ -94,11 +99,11 @@ export default async function LocaleLayout({
 				>
 					{t("skipToContent")}
 				</a>
-				<NextIntlClientProvider>
+				<ClientIntlProvider locale={locale} messages={clientMessages}>
 					<Header />
 					<main id="main-content">{children}</main>
 					<Footer />
-				</NextIntlClientProvider>
+				</ClientIntlProvider>
 			</body>
 		</html>
 	);

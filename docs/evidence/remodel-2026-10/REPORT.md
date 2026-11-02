@@ -158,10 +158,60 @@ and unused CSS is 0 B.
    PRODUCT.md/DESIGN.md, so it needs Pedro.
 2. **Inter without the `opsz` axis** — 73.3 KB is the variable face with optical sizing, which the
    best-of-best addendum requires. Dropping `opsz` saves roughly 25 KB and loses the display cut.
-3. **Trim the client message catalogue** — the document carries every namespace; only the header
-   and drawer need them client-side. Estimated 20–30 KB between HTML and the RSC payload.
+3. ~~Trim the client message catalogue~~ — **done, see below.** The document carried every
+   namespace; only the header, drawer, locale switcher and error boundary need them client-side.
+   Measured saving: 13.0–14.6 KB gzipped per locale.
 4. **The real answer for the metric**: the CI model charges a 1.6 Mbps link for every byte the page
    ships. A text LCP cannot go much below it without removing bytes that the design asked for.
+
+## Client catalogue trim (P-LCP-2, 02/11/2026)
+
+The `<NextIntlClientProvider>` in the locale layout had no `messages` prop, so next-intl serialized
+**the whole catalogue** into every response. Four client components (`header`, `mobile-nav`,
+`locale-switcher`, the error boundary) read four namespaces: `Nav` (149 B), `Contact` (267 B),
+`LocaleSwitcher` (83 B), `ErrorPage` (168 B) — **667 B of a 36 755 B catalogue**.
+
+### What changed
+
+- `src/i18n/client-messages.ts` — `CLIENT_NAMESPACES` plus `pickClientMessages()`, which narrows the
+  catalogue and **throws** when a listed namespace is missing (a renamed message file must fail the
+  build, not render blank navigation).
+- `src/i18n/client-provider.tsx` — a `"use client"` provider wrapper, so the missing-key policy can
+  be a function: `onError` logs to the console, `getMessageFallback` renders
+  `[missing: <namespace>.<key>]` where the value would be. A missing key is never a silent blank.
+- `scripts/check-client-namespaces.mjs` (added to `pnpm lint`) — scans every `"use client"` module
+  for `useTranslations("<ns>")` and fails if that namespace is missing from `CLIENT_NAMESPACES`, or
+  if the list carries a namespace no client module reads. It caught `Header`'s `Contact` usage on
+  the first run.
+
+### Bytes (standalone build, `curl` + `gzip -6`, 3 locales)
+
+| Locale | HTML before | HTML after | **gzip before** | **gzip after** | Δ gzip |
+|---|---|---|---|---|---|
+| `/en` | 167 701 B | 130 856 B | 31 212 B | **18 174 B** | **−13 038 B (−41.8%)** |
+| `/pt` | 175 300 B | 133 784 B | 33 914 B | **19 504 B** | **−14 410 B (−42.5%)** |
+| `/es` | 177 434 B | 134 105 B | 34 023 B | **19 427 B** | **−14 596 B (−42.9%)** |
+
+The document is on the LCP path (nothing paints before it arrives), so this is the one lever that
+was both engineering-only and worth 13–15 KB: 4.1% of the 352 KB the page shipped.
+
+### LCP (390 px, mobile preset, 3 interleaved runs per locale per build)
+
+| Locale | LCP before | LCP after | Δ | page bytes (median) | CLS | a11y/BP/SEO |
+|---|---|---|---|---|---|---|
+| `/en` | 3198 ms | 3169 ms | −29 | 313 758 → 326 060 | 0.000 | 100 |
+| `/pt` | 2460 ms | 2576 ms | +116 | 316 417 → 328 054 | 0.000 | 100 |
+| `/es` | 2965 ms | 3003 ms | +38 | 316 579 → 327 989 | 0.000 | 100 |
+
+**The trim does not move LCP.** The deltas are ±120 ms against a 2400–3200 ms run-to-run spread on
+this host, and the page-byte medians *rose* by ~12 KB because the number of Next.js RSC prefetch
+requests varied between runs (3 in the "after" runs, 0 in the "before" runs) — that is run variance,
+not the change; the document transfer is deterministic at **32 010 → 18 929 B** in the LHRs.
+The point of shipping it is the byte win and the guard, not the score.
+
+Found by this work: the CI image's Chromium resolves the hero `<picture>` to WebP rather than AVIF
+(see the byte inventory above), so the AVIF plates from #172 do not show up in that model either.
+
 
 ### Reproducing this
 
