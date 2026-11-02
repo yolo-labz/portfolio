@@ -8,10 +8,16 @@
 # merge, so a wrong card would ship and only fail afterwards.
 #
 # So: the pinned `.github` checkout supplies the policy and the image test, this
-# tree supplies the card, and `scripts/check-share-card.py` compares them. The
-# upstream checker still runs end to end for the published state on push and
-# weekly. One policy, one implementation of "is this a 1200x630 PNG" — the
-# portfolio imports `image_facts` from the pinned checker instead of copying it.
+# tree supplies the card, and `scripts/check-share-card.py` compares them. One
+# policy, one implementation of "is this a 1200x630 PNG" — the portfolio imports
+# `image_facts` from the pinned checker instead of copying it.
+#
+# The full `check-profile.py share-cards` audit stays in `yolo-labz/.github` and
+# is NOT run here: one of its families is `phsb5321/blog`, which is a PRIVATE
+# repo, so this repository's GITHUB_TOKEN resolves it as "does not resolve in its
+# repo" and the run fails for a reason that has nothing to do with this site.
+# (Measured on the first main run, 41505381258.) The org-wide audit belongs where
+# a token that can see every family already lives.
 #
 # The `.github` ref is a full SHA on purpose: a change to the brand rule arrives
 # here as a reviewable bump, not as a silent overnight failure.
@@ -80,9 +86,3 @@ jobs:
 
       - name: Card in this tree matches the policy
         run: python3 scripts/check-share-card.py --org .org-github --family yolo-labz/portfolio
-
-      - name: Published cards still match (main and weekly only)
-        if: github.event_name != 'pull_request'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: python3 .org-github/scripts/check-profile.py share-cards --repo .org-github
