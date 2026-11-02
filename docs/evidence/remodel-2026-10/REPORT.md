@@ -73,10 +73,111 @@ Two limits are decisions, not defects. Both are measurable.
    and pushes the tenth work out of the 1280×800 first viewport, which is the Experience-mode
    contract the Playwright suite asserts. Shortening the taglines instead would mean new copy in
    three locales for ten works.
-2. **Mobile LCP is 2.5-3.0 s under Lighthouse's simulated throttling** against the 1.8 s target.
-   The observed trace paints first content and the LCP h1 in the same frame at 158 ms;
-   lantern instead charges LCP for the whole pre-paint request set (~360 KB). The measured
-   reason per lost Performance point is in the Gates section above.
+2. **Mobile LCP is 2.4-2.8 s under Lighthouse's simulated throttling** against the 1.8 s target.
+   Measured on 02/11 (P-LCP): the LCP element is the hero `h1` (text) on all three locales, with
+   **0 ms load delay and 0 ms load time** — every millisecond is render delay on a 356 KB page at
+   1.638 Mbps and 4× CPU. The floor with all JS and all webfonts blocked is **1705 ms**, so 1.8 s is
+   unreachable for this architecture, not merely unmet. Full attribution, byte inventory and the
+   rejected candidates: "Mobile LCP: the measured floor" below.
+
+## Mobile LCP: the measured floor (P-LCP, 02/11/2026)
+
+The target was mobile LCP under 1.8 s at 390 px. This section replaces the earlier hand-wave
+with a measurement: what the LCP element is, what it waits for, what the floor is, and what
+was tried and rejected.
+
+**Method.** `@lhci/cli@0.15.1` in the pinned Playwright image, `formFactor: mobile`,
+`screenEmulation` 390×844 DPR 3, `throttlingMethod: simulate` (1.638 Mbps, 150 ms RTT, 4× CPU
+slowdown) — the same model CI uses. Runs from the standalone build on localhost. Candidate
+changes were built twice and measured **interleaved** (base, change, base, change …) because this
+host is shared and per-session drift (base LCP moved 2433 → 2724 ms between sessions with no code
+change) is larger than the effects being chased.
+
+### The element and its phases
+
+| Route | LCP element | Simulated LCP | TTFB | Load delay | Load time | Render delay |
+|---|---|---|---|---|---|---|
+| `/en` | `h1#hero-heading` | 2777 ms | 476 | 0 | 0 | **2301** |
+| `/pt` | `h1#hero-heading` | 2597 ms | 466 | 0 | 0 | **2132** |
+| `/es` | `h1#hero-heading` | 2654 ms | 467 | 0 | 0 | **2187** |
+| `/en/projects/compliance-tax-agent` | lead `<p>` | 2420 ms | 457 | 0 | 0 | **1963** |
+
+It is text on every route, with **zero load delay and zero load time**: no image, no font and no
+stylesheet sits on the LCP path. Everything is `Render delay`. The same run's observed
+(unthrottled) trace puts TTFB at 94.7 ms and the element render delay at 214.7 ms — LCP 309 ms,
+first paint 309 ms, DOMContentLoaded 403 ms. The 2.5–2.8 s is the simulated model scaling a 356 KB
+page onto a 1.6 Mbps link at 4× CPU.
+
+### What is in those 356 KB
+
+| Resource | Bytes | Notes |
+|---|---|---|
+| Scripts (9 files) | 159 922 | App Router runtime + hydration; largest chunk 72.8 KB |
+| Fonts (2 files) | 114 097 | Inter latin wght+`opsz` 73.3 KB, JetBrains Mono 40.8 KB, both `preload`+`High` |
+| Document | 31 915 | HTML carries the next-intl message catalogue for the client |
+| RSC prefetches | 27 319 | 2 × `?_rsc=` issued on load by in-viewport links |
+| Hero plate | 9 773 | Chromium in this image resolves the `<picture>` to WebP, not AVIF |
+| CSS | 8 398 | one chunk, 0 ms render-blocking |
+| Other | 4 855 | manifest, icons |
+
+### The floor: what happens when pieces are removed
+
+Median of 3 runs each, `/en`, same session, same model (blocked via `blockedUrlPatterns`). Host load
+differs between sessions, so the two columns are not compared across sessions: the Δ column is
+within the session.
+
+| Variant | LCP median (session 1) | Δ | Reproducible capture |
+|---|---|---|---|
+| as shipped | 2768 ms | — | `lcp/baseline-short.json` — 2766 / 2416 / 2423 ms, 352 090 B |
+| all JS chunks blocked | 2269 ms | −499 | |
+| all CSS blocked | 2602 ms | −166 (inside noise) | |
+| all webfonts blocked | 2755 ms | −13 (noise) | |
+| **JS + webfonts blocked** | **1705 ms** | **−1063** | `lcp/floor-js-and-fonts-blocked.json` — 1702 / 1681 / 1680 ms, 50 808 B |
+
+**Reading: 1.8 s is unreachable for this page.** Stripping every script and every webfont — a page
+nobody would ship — lands at 1.68-1.71 s, because TTFB (0.46 s) plus parse/layout of the 50 KB that
+remains at 4× CPU already accounts for most of it. The floor capture is the tight one (three runs
+within 22 ms) and it is the strongest number here: with 160 KB of JS and 114 KB of fonts removed the
+page *still* misses 1.8 s. The shipped page needs both, and the pair costs ~1.06 s of the model.
+
+### What was tried and rejected
+
+| Candidate | LCP | FCP | CLS | Verdict |
+|---|---|---|---|---|
+| `preload: false` on JetBrains Mono | 2724 → 2475 (−249) | 1000 → 1259 (+259) | 0.000 | **not shipped**: same experiment on the next session, on the AVIF base, gave 2433 → 2796 (+363). Session drift exceeds the effect, so it is noise, and it trades FCP for LCP. |
+| `preload: false` on both families | 2537 | 1831 (+800) | **0.014** | rejected: worse FCP and a CLS regression |
+| `prefetch={false}` on the index rows | 2747 (+59) | 962 (−177) | 0.000 | rejected: no LCP effect, and it would slow the page's primary action |
+
+Nothing else on the path is actionable: render-blocking resources are already 0 ms, the LCP image
+audit is not applicable (the element is text), font-display is already `swap` for both families,
+and unused CSS is 0 B.
+
+### What would actually close the gap (owner decisions, not mine)
+
+1. **JetBrains Mono → system mono stack** — removes 40.8 KB and one request. Brand-locked in
+   PRODUCT.md/DESIGN.md, so it needs Pedro.
+2. **Inter without the `opsz` axis** — 73.3 KB is the variable face with optical sizing, which the
+   best-of-best addendum requires. Dropping `opsz` saves roughly 25 KB and loses the display cut.
+3. **Trim the client message catalogue** — the document carries every namespace; only the header
+   and drawer need them client-side. Estimated 20–30 KB between HTML and the RSC payload.
+4. **The real answer for the metric**: the CI model charges a 1.6 Mbps link for every byte the page
+   ships. A text LCP cannot go much below it without removing bytes that the design asked for.
+
+### Reproducing this
+
+```bash
+# standalone build on :3000, then:
+npx -y @lhci/cli@0.15.1 collect --config=docs/evidence/remodel-2026-10/lcp/config-baseline.json
+node docs/evidence/remodel-2026-10/lcp/capture.mjs .lighthouseci baseline-short.json "baseline"
+npx -y @lhci/cli@0.15.1 collect --config=docs/evidence/remodel-2026-10/lcp/config-floor.json
+node docs/evidence/remodel-2026-10/lcp/capture.mjs .lighthouseci floor-js-and-fonts-blocked.json "floor"
+```
+
+`config-floor.json` is `config-baseline.json` plus
+`blockedUrlPatterns: ["*/_next/static/chunks/*.js", "*/_next/static/media/*.woff2"]`. The committed
+captures keep the element selector, both phase breakdowns (simulated and observed), the byte
+inventory per run and all four category scores; the full LHRs are not committed (each is about 1 MB,
+and one command above regenerates them). The four-route capture is the `after-lhr/mobile/*.json` set.
 
 ## Gates (CI on PR #167, head 67c99fa, run 41252629623, 3 runs per URL; re-measured on #168, head 34e2036, run 41255396134)
 

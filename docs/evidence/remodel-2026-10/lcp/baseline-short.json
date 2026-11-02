@@ -1,0 +1,215 @@
+{
+ "variant": "baseline (as shipped, origin/main)",
+ "captured_at": "2026-11-02T14:50:14.606Z",
+ "method": "@lhci/cli 0.15.1 collect; formFactor mobile; screenEmulation 390x844 DPR3; throttlingMethod simulate (1.638 Mbps, 150 ms RTT, 4x CPU); standalone Next build on localhost; pinned Playwright image",
+ "blocked_url_patterns": [],
+ "runs": [
+  {
+   "url": "http://localhost:3000/en",
+   "lcp_ms": 2766,
+   "fcp_ms": 1022,
+   "tbt_ms": 123,
+   "cls": 0,
+   "scores": {
+    "performance": 95,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "observed_ms": {
+    "fcp": 300,
+    "lcp": 300,
+    "dcl": 392
+   },
+   "lcp_element": {
+    "selector": "main#main-content > section#projects > div.mx-auto > h1#hero-heading",
+    "snippet": "<h1 id=\"hero-heading\" class=\"col-start-1 row-start-1 text-step-4 leading-[1.15] font-semibold tracking-…\">",
+    "nodeLabel": "AI stacks fail their first audit at three seams: prompt provenance, retrieval l…"
+   },
+   "lcp_phases_ms": {
+    "TTFB": 472,
+    "Load Delay": 0,
+    "Load Time": 0,
+    "Render Delay": 2294
+   },
+   "lcp_observed_phases_ms": {
+    "timeToFirstByte": 94,
+    "elementRenderDelay": 207
+   },
+   "blocked": [],
+   "bytes_by_type": {
+    "Document": {
+     "requests": 1,
+     "bytes": 32021
+    },
+    "Font": {
+     "requests": 2,
+     "bytes": 114097
+    },
+    "Stylesheet": {
+     "requests": 1,
+     "bytes": 8406
+    },
+    "Script": {
+     "requests": 9,
+     "bytes": 159922
+    },
+    "Image": {
+     "requests": 1,
+     "bytes": 5526
+    },
+    "Manifest": {
+     "requests": 1,
+     "bytes": 721
+    },
+    "Other": {
+     "requests": 2,
+     "bytes": 4134
+    },
+    "Fetch": {
+     "requests": 3,
+     "bytes": 27263
+    }
+   },
+   "total_bytes": 352090
+  },
+  {
+   "url": "http://localhost:3000/en",
+   "lcp_ms": 2416,
+   "fcp_ms": 980,
+   "tbt_ms": 145,
+   "cls": 0,
+   "scores": {
+    "performance": 96,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "observed_ms": {
+    "fcp": 206,
+    "lcp": 206,
+    "dcl": 190
+   },
+   "lcp_element": {
+    "selector": "main#main-content > section#projects > div.mx-auto > h1#hero-heading",
+    "snippet": "<h1 id=\"hero-heading\" class=\"col-start-1 row-start-1 text-step-4 leading-[1.15] font-semibold tracking-…\">",
+    "nodeLabel": "AI stacks fail their first audit at three seams: prompt provenance, retrieval l…"
+   },
+   "lcp_phases_ms": {
+    "TTFB": 458,
+    "Load Delay": 0,
+    "Load Time": 0,
+    "Render Delay": 1958
+   },
+   "lcp_observed_phases_ms": {
+    "timeToFirstByte": 24,
+    "elementRenderDelay": 182
+   },
+   "blocked": [],
+   "bytes_by_type": {
+    "Document": {
+     "requests": 1,
+     "bytes": 32021
+    },
+    "Font": {
+     "requests": 2,
+     "bytes": 114097
+    },
+    "Stylesheet": {
+     "requests": 1,
+     "bytes": 8406
+    },
+    "Script": {
+     "requests": 9,
+     "bytes": 159922
+    },
+    "Image": {
+     "requests": 1,
+     "bytes": 5526
+    },
+    "Manifest": {
+     "requests": 1,
+     "bytes": 721
+    },
+    "Other": {
+     "requests": 2,
+     "bytes": 4134
+    },
+    "Fetch": {
+     "requests": 3,
+     "bytes": 27263
+    }
+   },
+   "total_bytes": 352090
+  },
+  {
+   "url": "http://localhost:3000/en",
+   "lcp_ms": 2423,
+   "fcp_ms": 1012,
+   "tbt_ms": 100,
+   "cls": 0,
+   "scores": {
+    "performance": 97,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "observed_ms": {
+    "fcp": 208,
+    "lcp": 208,
+    "dcl": 205
+   },
+   "lcp_element": {
+    "selector": "main#main-content > section#projects > div.mx-auto > h1#hero-heading",
+    "snippet": "<h1 id=\"hero-heading\" class=\"col-start-1 row-start-1 text-step-4 leading-[1.15] font-semibold tracking-…\">",
+    "nodeLabel": "AI stacks fail their first audit at three seams: prompt provenance, retrieval l…"
+   },
+   "lcp_phases_ms": {
+    "TTFB": 461,
+    "Load Delay": 0,
+    "Load Time": 0,
+    "Render Delay": 1961
+   },
+   "lcp_observed_phases_ms": {
+    "timeToFirstByte": 23,
+    "elementRenderDelay": 184
+   },
+   "blocked": [],
+   "bytes_by_type": {
+    "Document": {
+     "requests": 1,
+     "bytes": 32021
+    },
+    "Font": {
+     "requests": 2,
+     "bytes": 114097
+    },
+    "Stylesheet": {
+     "requests": 1,
+     "bytes": 8406
+    },
+    "Script": {
+     "requests": 9,
+     "bytes": 159922
+    },
+    "Image": {
+     "requests": 1,
+     "bytes": 5526
+    },
+    "Manifest": {
+     "requests": 1,
+     "bytes": 721
+    },
+    "Other": {
+     "requests": 2,
+     "bytes": 4134
+    },
+    "Fetch": {
+     "requests": 3,
+     "bytes": 27263
+    }
+   },
+   "total_bytes": 352090
+  }
+ ]
+}
