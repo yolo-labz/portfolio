@@ -9,20 +9,26 @@ import { ClientIntlProvider } from "@/i18n/client-provider";
 import { routing } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/constants";
 import { inter, jetbrainsMono } from "@/lib/fonts";
+import { pageMeta } from "@/lib/share";
 import "../globals.css";
 
-export const metadata: Metadata = {
-	metadataBase: new URL(SITE_URL),
-	title: "Pedro Balbino — Compliance-Grade AI Architect",
-	description:
-		"Compliance-grade AI architecture for regulated LATAM & global workloads: production RAG, agent systems, and MCP integrations with audit trails, decision provenance, and cost ceilings designed in from day one.",
-	openGraph: {
-		title: "Pedro Balbino — Compliance-Grade AI Architect",
-		description:
-			"Production RAG, agent systems, and MCP integrations for regulated workloads — where the audit trail, decision provenance, and cost ceiling are first-class architectural citizens.",
-		type: "website",
-	},
-};
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+	const { locale } = await params;
+	return {
+		metadataBase: new URL(SITE_URL),
+		...pageMeta({
+			locale,
+			path: "",
+			title: "Pedro Balbino — Compliance-Grade AI Architect",
+			description:
+				"Compliance-grade AI architecture for regulated LATAM & global workloads: production RAG, agent systems, and MCP integrations with audit trails, decision provenance, and cost ceilings designed in from day one.",
+		}),
+	};
+}
 
 export const viewport: Viewport = {
 	themeColor: "#1e1e2e",

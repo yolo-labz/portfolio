@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { ReactNode } from "react";
+import { metadataForParams } from "@/lib/share";
 
-export async function generateMetadata({
+export function generateMetadata({
 	params,
 }: {
 	params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-	const { locale } = await params;
-	setRequestLocale(locale);
-	const t = await getTranslations("Thesis");
-
-	return {
-		title: t("metaTitle"),
-		description: t("metaDescription"),
-	};
+	return metadataForParams(params, "/thesis", "Thesis");
 }
 
 export default async function ThesisPage({ params }: { params: Promise<{ locale: string }> }) {

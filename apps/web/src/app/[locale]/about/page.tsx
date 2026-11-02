@@ -3,20 +3,14 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { ExperienceTimeline } from "@/components/sections/experience-timeline";
 import { SkillsMatrix } from "@/components/sections/skills-matrix";
+import { metadataForParams } from "@/lib/share";
 
-export async function generateMetadata({
+export function generateMetadata({
 	params,
 }: {
 	params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-	const { locale } = await params;
-	setRequestLocale(locale);
-	const t = await getTranslations("About");
-
-	return {
-		title: t("metaTitle"),
-		description: t("metaDescription"),
-	};
+	return metadataForParams(params, "/about", "About");
 }
 
 type ClaimStatus = "backed" | "unbacked-anonymized-pending";
