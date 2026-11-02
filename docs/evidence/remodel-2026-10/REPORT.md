@@ -161,8 +161,12 @@ and unused CSS is 0 B.
 3. ~~Trim the client message catalogue~~ — **done, see below.** The document carried every
    namespace; only the header, drawer, locale switcher and error boundary need them client-side.
    Measured saving: 13.0–14.6 KB gzipped per locale.
-4. **The real answer for the metric**: the CI model charges a 1.6 Mbps link for every byte the page
-   ships. A text LCP cannot go much below it without removing bytes that the design asked for.
+4. ~~The 160 KB of JavaScript~~ — **measured, and there is nothing to take.** 152.8 KB of that is
+   the framework; the app's own client code is ~3 KB. See "The JS bundle" below.
+5. **The real answer for the metric**: the CI model charges a 1.6 Mbps link for every byte the page
+   ships. A text LCP cannot go much below it without removing bytes that the design asked for, and
+   below ~150 KB of that is React/Next itself. The only remaining lever is dropping client hydration
+   on these pages entirely: an architecture change, not a slice.
 
 ## Client catalogue trim (P-LCP-2, 02/11/2026)
 
@@ -211,6 +215,76 @@ The point of shipping it is the byte win and the guard, not the score.
 
 Found by this work: the CI image's Chromium resolves the hero `<picture>` to WebP rather than AVIF
 (see the byte inventory above), so the AVIF plates from #172 do not show up in that model either.
+
+
+## The JS bundle: 152.8 KB of framework, ~3 KB of app code (P-LCP-3, 02/11/2026)
+
+Measured on the standalone build (chunk gzip sizes + the script tags each route actually emits),
+not inferred from a guess.
+
+### Per route and per locale: one identical set
+
+Every route (`/en`, `/pt`, `/es`, `/en/about`, `/en/thesis`, and a case study) references **the same
+10 chunks**, and 9 of them are fetched. There is no route-specific JavaScript and **no locale
+bundle** — nothing about `pt` or `es` ships to `en`. Today's JS is not a per-route problem.
+
+| Chunk (gz) | What it is | Evidence |
+|---|---|---|
+| **72 317 B** | react-dom + the App Router client (`hydrateRoot`, `__next_f`, `createFromFetch`) | strings in chunk |
+| **46 298 B** | Next router client (prefetch machinery, `flushSync`) | 86 × `prefetch` |
+| **16 363 B** | Next client runtime | |
+| **7 728 B** | Next client router/link edges (`useRouter`) | |
+| **4 396 B** | Turbopack runtime | |
+| **3 524 B** | Next client runtime | |
+| **2 985 B** | `next-intl` client + `LocaleSwitcher` | `useTranslations`, `LocaleSwitcher` |
+| 2 031 B / 612 B | app boundary/route chunks | |
+| **Σ 156 254 B** | **shipped to every route, every locale** | |
+
+A tenth reference, `0cz1d0mv5g_q7.js` (**39 473 B gz**), is emitted with `<script noModule>`: the
+legacy polyfill bundle. Modern browsers never fetch it, which is why the Lighthouse network log
+shows 9 scripts and 159 922 B transfer rather than 10 and 196 KB.
+
+### The framework floor, measured
+
+Probe: replaced `header.tsx` with a client component that imports nothing app-specific, rebuilt, and
+compared. The four vendor chunks came back **byte-identical** (same content hashes, same sizes); the
+total moved 195 727 → 194 130 B, and the difference is exactly the two small app chunks
+(`3d1wetk4i2bhq.js` 2 985 B + `0ri5r7ighgets.js` 612 B). Reverted uncommitted.
+
+So: **~3 KB of the 156 KB is ours.** Dynamic-importing the drawer, the locale switcher or the error
+boundary would move at most 3 KB off the first request and add a request to fetch it — a net loss,
+rejected on measurement rather than taste. All four `"use client"` components genuinely need the
+directive: `header` and `mobile-nav` call `usePathname`/`useTranslations` and hold state;
+`locale-switcher` calls `useRouter`; `error.tsx` must be a client boundary by definition.
+
+Probe two: the Sentry build wrapper. Rebuilt without `withSentryConfig` (production has no DSN, so
+the browser SDK is dead code behind `if (dsn)`): 156 448 B vs 156 254 B shipped — **+194 B, i.e.
+noise**. The wrapper is not shipping the SDK; the conditional in `instrumentation-client.ts` is
+doing its job. Left alone.
+
+### What did change
+
+`next.config.ts` had `experimental.optimizePackageImports: ["motion"]` left over from before the D2
+remodel removed `motion/react` (#167). Nothing imports `motion` (`grep -r 'motion/react' src` is
+empty), so the mapping rewrote imports of a package no module imports. Removed; the rebuild is
+byte-identical at **156 254 B gz** across all three locales, which is the proof it was inert.
+
+### The floor, restated with the JS total
+
+| | Bytes (gz) |
+|---|---|
+| JavaScript, shipped (9 chunks) | **156 254** |
+| …of which framework (React + Next + Turbopack) | ~152 800 |
+| …of which ours (`next-intl` client + app boundaries) | ~3 400 |
+| Document (/en, after the catalogue trim) | 18 199 |
+| Fonts | 114 097 |
+| Hero plate + CSS + manifest | ~18 500 |
+| **Page total** | **~352 KB** |
+
+The 1.68–1.70 s floor from the P-LCP measurement stands, and it was measured the only way that
+settles the question: with **all** JS and **all** fonts blocked. Removing 3 KB of app code cannot
+change it. LCP after this slice (2 runs per locale, 390 px, mobile preset): 2423–2454 ms (`/en`),
+2736–2994 (`/pt`), 2428–2475 (`/es`); CLS 0.000 and a11y/BP/SEO 100 in every run.
 
 
 ### Reproducing this
