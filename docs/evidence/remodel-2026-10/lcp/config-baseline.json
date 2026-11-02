@@ -1,0 +1,32 @@
+{
+ "ci": {
+  "collect": {
+   "url": [
+    "http://localhost:3000/en"
+   ],
+   "numberOfRuns": 3,
+   "settings": {
+    "formFactor": "mobile",
+    "screenEmulation": {
+     "mobile": true,
+     "width": 390,
+     "height": 844,
+     "deviceScaleFactor": 3,
+     "disabled": false
+    },
+    "throttlingMethod": "simulate",
+    "onlyCategories": [
+     "performance",
+     "accessibility",
+     "best-practices",
+     "seo"
+    ],
+    "chromeFlags": "--no-sandbox --headless=new --disable-dev-shm-usage"
+   }
+  },
+  "upload": {
+   "target": "filesystem",
+   "outputDir": ".lighthouseci"
+  }
+ }
+}

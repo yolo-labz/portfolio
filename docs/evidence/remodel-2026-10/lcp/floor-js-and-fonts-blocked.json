@@ -1,0 +1,215 @@
+{
+ "variant": "floor: all JS + all webfonts blocked",
+ "captured_at": "2026-11-02T14:50:14.949Z",
+ "method": "@lhci/cli 0.15.1 collect; formFactor mobile; screenEmulation 390x844 DPR3; throttlingMethod simulate (1.638 Mbps, 150 ms RTT, 4x CPU); standalone Next build on localhost; pinned Playwright image",
+ "blocked_url_patterns": [
+  "*/_next/static/chunks/*.js",
+  "*/_next/static/media/*.woff2"
+ ],
+ "runs": [
+  {
+   "url": "http://localhost:3000/en",
+   "lcp_ms": 1702,
+   "fcp_ms": 1394,
+   "tbt_ms": 0,
+   "cls": 0,
+   "scores": {
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "observed_ms": {
+    "fcp": 176,
+    "lcp": 176,
+    "dcl": 175
+   },
+   "lcp_element": {
+    "selector": "main#main-content > section#projects > div.mx-auto > h1#hero-heading",
+    "snippet": "<h1 id=\"hero-heading\" class=\"col-start-1 row-start-1 text-step-4 leading-[1.15] font-semibold tracking-…\">",
+    "nodeLabel": "AI stacks fail their first audit at three seams: prompt provenance, retrieval l…"
+   },
+   "lcp_phases_ms": {
+    "TTFB": 459,
+    "Load Delay": 0,
+    "Load Time": 0,
+    "Render Delay": 1244
+   },
+   "lcp_observed_phases_ms": {
+    "timeToFirstByte": 34,
+    "elementRenderDelay": 142
+   },
+   "blocked": [
+    "*/_next/static/chunks/*.js",
+    "*/_next/static/media/*.woff2"
+   ],
+   "bytes_by_type": {
+    "Document": {
+     "requests": 1,
+     "bytes": 32021
+    },
+    "Stylesheet": {
+     "requests": 1,
+     "bytes": 8406
+    },
+    "Image": {
+     "requests": 1,
+     "bytes": 5526
+    },
+    "Font": {
+     "requests": 15,
+     "bytes": 0
+    },
+    "Script": {
+     "requests": 10,
+     "bytes": 0
+    },
+    "Manifest": {
+     "requests": 1,
+     "bytes": 721
+    },
+    "Other": {
+     "requests": 2,
+     "bytes": 4134
+    }
+   },
+   "total_bytes": 50808
+  },
+  {
+   "url": "http://localhost:3000/en",
+   "lcp_ms": 1681,
+   "fcp_ms": 1376,
+   "tbt_ms": 0,
+   "cls": 0,
+   "scores": {
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "observed_ms": {
+    "fcp": 148,
+    "lcp": 148,
+    "dcl": 143
+   },
+   "lcp_element": {
+    "selector": "main#main-content > section#projects > div.mx-auto > h1#hero-heading",
+    "snippet": "<h1 id=\"hero-heading\" class=\"col-start-1 row-start-1 text-step-4 leading-[1.15] font-semibold tracking-…\">",
+    "nodeLabel": "AI stacks fail their first audit at three seams: prompt provenance, retrieval l…"
+   },
+   "lcp_phases_ms": {
+    "TTFB": 455,
+    "Load Delay": 0,
+    "Load Time": 0,
+    "Render Delay": 1226
+   },
+   "lcp_observed_phases_ms": {
+    "timeToFirstByte": 18,
+    "elementRenderDelay": 130
+   },
+   "blocked": [
+    "*/_next/static/chunks/*.js",
+    "*/_next/static/media/*.woff2"
+   ],
+   "bytes_by_type": {
+    "Document": {
+     "requests": 1,
+     "bytes": 32021
+    },
+    "Stylesheet": {
+     "requests": 1,
+     "bytes": 8406
+    },
+    "Image": {
+     "requests": 1,
+     "bytes": 5526
+    },
+    "Font": {
+     "requests": 15,
+     "bytes": 0
+    },
+    "Script": {
+     "requests": 10,
+     "bytes": 0
+    },
+    "Manifest": {
+     "requests": 1,
+     "bytes": 721
+    },
+    "Other": {
+     "requests": 2,
+     "bytes": 4134
+    }
+   },
+   "total_bytes": 50808
+  },
+  {
+   "url": "http://localhost:3000/en",
+   "lcp_ms": 1680,
+   "fcp_ms": 1375,
+   "tbt_ms": 0,
+   "cls": 0,
+   "scores": {
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "observed_ms": {
+    "fcp": 200,
+    "lcp": 200,
+    "dcl": 187
+   },
+   "lcp_element": {
+    "selector": "main#main-content > section#projects > div.mx-auto > h1#hero-heading",
+    "snippet": "<h1 id=\"hero-heading\" class=\"col-start-1 row-start-1 text-step-4 leading-[1.15] font-semibold tracking-…\">",
+    "nodeLabel": "AI stacks fail their first audit at three seams: prompt provenance, retrieval l…"
+   },
+   "lcp_phases_ms": {
+    "TTFB": 455,
+    "Load Delay": 0,
+    "Load Time": 0,
+    "Render Delay": 1225
+   },
+   "lcp_observed_phases_ms": {
+    "timeToFirstByte": 19,
+    "elementRenderDelay": 181
+   },
+   "blocked": [
+    "*/_next/static/chunks/*.js",
+    "*/_next/static/media/*.woff2"
+   ],
+   "bytes_by_type": {
+    "Document": {
+     "requests": 1,
+     "bytes": 32021
+    },
+    "Stylesheet": {
+     "requests": 1,
+     "bytes": 8406
+    },
+    "Image": {
+     "requests": 1,
+     "bytes": 5526
+    },
+    "Font": {
+     "requests": 15,
+     "bytes": 0
+    },
+    "Script": {
+     "requests": 10,
+     "bytes": 0
+    },
+    "Manifest": {
+     "requests": 1,
+     "bytes": 721
+    },
+    "Other": {
+     "requests": 2,
+     "bytes": 4134
+    }
+   },
+   "total_bytes": 50808
+  }
+ ]
+}
