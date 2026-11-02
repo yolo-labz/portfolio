@@ -8,9 +8,9 @@ const nextConfig: NextConfig = {
 	images: {
 		formats: ["image/avif", "image/webp"],
 	},
-	experimental: {
-		optimizePackageImports: ["motion"],
-	},
+	// No `experimental.optimizePackageImports`: its only entry was "motion", and
+	// motion/react left the bundle in the D2 remodel (#167), so the mapping was
+	// rewriting imports of a package nothing imports.
 };
 
 // Auto-detects ./src/i18n/request.ts as the request config.
