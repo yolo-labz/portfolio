@@ -34,4 +34,7 @@ layout shift on decode.
 
 In a clone of `yolo-labz/.github`: `python3 profile/assets/brand/hero/publish.py`
 (and `--verify`). Copy the five files above here unchanged. The Blender plates
-(`gremlin-hero-*-dark.*`) served until 08/11/2026 remain in git history.
+(`gremlin-hero-*-dark.*`) served until 08/11/2026 remain in git history, except
+`gremlin-hero-804x770-dark.png` (72209 B, `770fcdfa…d6ef`): the page no longer serves
+it, but it stays as the input of `scripts/make-share-card.py`, because the share card
+remains a model render (the decision covers the hero and avatar only).
