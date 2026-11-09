@@ -55,8 +55,9 @@ reading time, producing `● min` (blog#196).
 The image the site serves is the image the policy declares — byte for byte — and its URL must resolve.
 **Why:** the card is the brand seen by people who never open the site; two artefacts drift silently,
 and a 404 renders no image at all.
-**Right:** `apps/web/src/app/opengraph-image.png` = `.github/og-card.png` (sha256 `30918b31…`), served
-at `/opengraph-image.png`; policy in `yolo-labz/.github` `profile/assets/brand/share-cards.json`.
+**Right:** `apps/web/src/app/opengraph-image.png` = `.github/og-card.png` (sha256 `b5716757…`), served
+at `/opengraph-image.png`; policy in `yolo-labz/.github` `profile/assets/brand/share-cards.json`;
+`scripts/check-share-card.py` fails when the two files differ.
 **Violates:** a `next/og` card that images something the declared file does not (02/11), or pointing
 `og:image` at an extensionless URL that returns 404 (portfolio#184 → #185).
 
@@ -90,8 +91,8 @@ header link, inside the unchanged 56 px masthead.
 Renders are published plates from `yolo-labz/.github` `model/`; generated lettering is not brand art.
 **Why:** the gremlin is reproducible and provenance-tracked; a card drawn with text by hand has
 neither provenance nor a way back to the source.
-**Right:** `.github/og-card.render.*` → `og-card.png`, and the AVIF plates in
-`apps/web/public/brand/`.
+**Right:** `scripts/make-share-card.py` — the published plate plus typeset site copy → `og-card.png`,
+and the AVIF plates in `apps/web/public/brand/`.
 **Violates:** replacing a published card with a `next/og` composition (02/11, reverted in #184).
 
 ### 9. A quality claim needs a sample, not an anecdote
@@ -113,14 +114,12 @@ no named shifting element.
 | How the system is built (colour, type, grid, motion) | `DESIGN.md` | `check-design-tokens`, review |
 | Which image the share card must be | `share-cards.json` policy | `check-profile.py share-cards` → 0 violations |
 
-**Known tension, recorded rather than hidden:** the share-card policy maps this repository to the
-**org** card — "Open-source tools for scripting messaging, browser workflows and local services" —
-while the site's own positioning is *Compliance-Grade AI Architect for regulated workloads*. Rule 5
-means the policy card ships (it is the gate-enforced artefact), so a share of this site shows the org
-sentence. That is a policy question for `yolo-labz/.github`, not something to fix by quietly swapping
-the card here; if the mapping changes, this table and `og-card.png` change together. The decision,
-with both options and their costs, is written up in
-[`docs/share-card-decision.md`](./share-card-decision.md) — one line from the policy owner settles it.
+**Share card, decided 08/11/2026 (Option A of [`docs/share-card-decision.md`](./share-card-decision.md)):**
+this site ships its **own** card — the site's sentence (name, *Compliance-Grade AI Architect*, the home
+`<h1>`) on the brand frame — not the org card. The policy still owns which file ships
+(`share-cards.json` → `.github/og-card.png`); this repository owns what that file says. Never copy the
+org card over it: when the org card moves and the staleness rule fires, re-render with
+`scripts/make-share-card.py`.
 
 ## Gate map
 
