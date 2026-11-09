@@ -1,6 +1,17 @@
 # Decision needed: which sentence does a share of this site carry?
 
-**Status:** proposed, awaiting one answer from the owner of `yolo-labz/.github`.
+**Status:** **decided 08/11/2026 — Option A**, implemented as below. The rest of this record is the
+proposal as filed on 02/11, kept unchanged.
+
+**As implemented (differs from step 1–2 of "If A" on purpose):** the site card *replaces the bytes* of
+`.github/og-card.png` instead of adding `.github/og-card-<site>.png`. The portfolio gate
+(`.github/workflows/share-card.yml`) pins the policy at a full `.github` SHA and path-filters on
+`.github/og-card.png`; a new filename would leave that gate checking the old org copy until the
+workflow is edited, and the fleet token cannot write workflow files. Keeping the path keeps the gate
+on the file that actually ships. The policy change in `yolo-labz/.github` is therefore an annotation of
+the `portfolio` family (it is a site card, re-render it, never copy the org card over it), not a path
+change. The card is rendered by `scripts/make-share-card.py`, and `scripts/check-share-card.py` now
+also fails when `apps/web/src/app/opengraph-image.png` differs from the declared card.
 **Owner of the call:** Pedro (the share-card policy lives in `yolo-labz/.github`, not here).
 **Decides:** the image the `portfolio` family is required to serve, and therefore the sentence a share
 card shows.

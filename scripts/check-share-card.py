@@ -83,6 +83,11 @@ def main(argv: list[str]) -> int:
         help="policy family to validate against this tree",
     )
     parser.add_argument(
+        "--served",
+        default="apps/web/src/app/opengraph-image.png",
+        help="the file the site serves as og:image; must equal the declared card byte for byte",
+    )
+    parser.add_argument(
         "--root",
         default=".",
         help="this repository's checkout (the card is read from here)",
@@ -124,6 +129,15 @@ def main(argv: list[str]) -> int:
             f"share-card: FAIL {fam['name']}: {fam['image']} is "
             f"{facts[0]} {facts[1]}x{facts[2]}, policy declares "
             f"{declared[0]} {declared[1]}x{declared[2]}",
+            file=sys.stderr,
+        )
+        return 1
+
+    served = root / args.served
+    if not served.is_file() or served.read_bytes() != card_path.read_bytes():
+        print(
+            f"share-card: FAIL {fam['name']}: {args.served} is not byte-identical to {fam['image']} "
+            "— the site would serve a card the policy never checked",
             file=sys.stderr,
         )
         return 1

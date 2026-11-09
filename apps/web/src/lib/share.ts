@@ -5,14 +5,16 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 // byte-for-byte copy of `.github/og-card.png`, the image the share-card policy
 // (yolo-labz/.github `profile/assets/brand/share-cards.json`) declares for this repo.
 // Serving that same file is what stops the site card and the GitHub preview drifting:
-// the bytes on the wire equal the bytes the gate checks.
+// the bytes on the wire equal the bytes the gate checks. It is the SITE card (the
+// site's own sentence, docs/share-card-decision.md Option A), rendered by
+// scripts/make-share-card.py — never copy the org card over it.
 export const SHARE_IMAGE = {
 	// The extension matters: the metadata route is served as a static asset, and the
 	// extensionless /opengraph-image returns 404 on this deployment (verified live).
 	url: "/opengraph-image.png",
 	width: 1200,
 	height: 630,
-	alt: "The yolo-labz gremlin typing at a keyboard on the Catppuccin Mocha ground, beside the yolo-labz wordmark and the line “Small tools. Deliberate automation.”",
+	alt: "Pedro Balbino, Compliance-Grade AI Architect: “AI stacks fail their first audit at three seams: prompt provenance, retrieval lineage, output attestation.” Beside it, the yolo-labz gremlin typing at a keyboard.",
 } as const;
 
 export const LOCALE_ALTERNATES = { en: "/en", pt: "/pt", es: "/es" } as const;
