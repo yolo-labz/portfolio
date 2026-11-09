@@ -85,13 +85,14 @@ header link, inside the unchanged 56 px masthead.
 
 ## Claims about quality
 
-### 8. Brand art comes from the model pipeline, never from type
+### 8. Brand art comes from published brand files, never from type
 
-Renders are published plates from `yolo-labz/.github` `model/`; generated lettering is not brand art.
+Art is published by `yolo-labz/.github`: the hero is the adopted GPT master (08/11/2026,
+`profile/assets/brand/hero/`), cards come from `model/`; generated lettering is not brand art.
 **Why:** the gremlin is reproducible and provenance-tracked; a card drawn with text by hand has
 neither provenance nor a way back to the source.
-**Right:** `.github/og-card.render.*` → `og-card.png`, and the AVIF plates in
-`apps/web/public/brand/`.
+**Right:** `.github/og-card.render.*` → `og-card.png`, and the hero files in
+`apps/web/public/brand/` copied byte-for-byte from `hero/manifest.json`.
 **Violates:** replacing a published card with a `next/og` composition (02/11, reverted in #184).
 
 ### 9. A quality claim needs a sample, not an anecdote

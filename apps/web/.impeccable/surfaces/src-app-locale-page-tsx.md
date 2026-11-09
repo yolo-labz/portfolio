@@ -14,7 +14,7 @@ Audience and job: an engineering lead at a regulated-AI shop deciding, from evid
 whether to send a brief. Action: send a brief (mailto). Proof: the ten works (four
 anonymized client case files, six yolo-labz repositories) and their decision records.
 Constraints: Catppuccin Mocha hex-pinned, emerald `#00c77a` primary, no gradients or
-glows, Inter + JetBrains Mono, gremlin renders only from `yolo-labz/.github` `model/`.
+glows, Inter + JetBrains Mono, gremlin art only as published by `yolo-labz/.github`.
 
 Unattended run (Brain Storm D2, 31/10/2026): no decision page could be answered, so the
 world is the brief-pinned one and the composition below was chosen by the seat. Build
