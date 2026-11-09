@@ -110,6 +110,7 @@ no named shifting element.
 | Question | Authority | Enforced by |
 | --- | --- | --- |
 | What a page claims, and how the org is positioned | `yolo-labz/.github` `docs/brand-positioning.md` | `check-profile` (claims, share cards, a11y alt) |
+| The site's own category (*Compliance-Grade AI Architect*) | `.specify/memory/constitution.md` + the vault corpus ([`positioning-decision.md`](./positioning-decision.md), option C) | review (constitution Principle I) |
 | How a page is structured, and how it behaves | this file | review + the gates below |
 | How the system is built (colour, type, grid, motion) | `DESIGN.md` | `check-design-tokens`, review |
 | Which image the share card must be | `share-cards.json` policy | `check-profile.py share-cards` → 0 violations |
