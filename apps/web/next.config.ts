@@ -1,4 +1,4 @@
-import { withSentryConfig } from "@sentry/nextjs";
+import { withSentryConfig } from "@sentry/nextjs/config";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -21,5 +21,5 @@ const withNextIntl = createNextIntlPlugin();
 export default withSentryConfig(withNextIntl(nextConfig), {
 	silent: !process.env.CI,
 	sourcemaps: { disable: true },
-	disableLogger: true,
+	webpack: { treeshake: { removeDebugLogging: true } },
 });

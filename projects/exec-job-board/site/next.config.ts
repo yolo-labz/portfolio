@@ -1,4 +1,4 @@
-import { withSentryConfig } from "@sentry/nextjs";
+import { withSentryConfig } from "@sentry/nextjs/config";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -10,5 +10,5 @@ const nextConfig: NextConfig = {
 export default withSentryConfig(nextConfig, {
 	silent: !process.env.CI,
 	sourcemaps: { disable: true },
-	disableLogger: true,
+	webpack: { treeshake: { removeDebugLogging: true } },
 });
