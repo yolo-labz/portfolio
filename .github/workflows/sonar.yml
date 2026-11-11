@@ -41,9 +41,23 @@ jobs:
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
 
+      # Every scan downloads the scanner JRE, the scanner engine and the analyzer plugins
+      # from the SonarQube server. Under concurrent scans the server drops some of those
+      # downloads ("Call to URL [.../api/v2/analysis/engine] failed: closed", "Fail to
+      # download plugin [javascript] ... Connection reset"), and the required check goes red.
+      # ponytail: the key only rolls when this file changes; after a server upgrade the
+      # scanner re-downloads what changed until the next roll.
+      - name: Cache scanner JRE, engine and plugins
+        if: steps.check.outputs.skip == 'false'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.sonar/cache
+          key: sonar-scanner-${{ runner.os }}-${{ hashFiles('.github/workflows/sonar.yml') }}
+          restore-keys: sonar-scanner-${{ runner.os }}-
+
       - name: SonarQube scan
         if: steps.check.outputs.skip == 'false'
-        uses: SonarSource/sonarqube-scan-action@e805d875275f728fac1885b413934be6d7c63f65 # v6.0.0
+        uses: SonarSource/sonarqube-scan-action@e805d875275f728fac1885b413934be6d7c63f65 # v8.4.1
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
