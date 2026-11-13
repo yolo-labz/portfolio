@@ -30,7 +30,7 @@ docker run --rm --ipc=host \
   -e HOME=/tmp \
   -e CI=true \
   --entrypoint bash \
-  mcr.microsoft.com/playwright:v1.62.1-noble \
+  mcr.microsoft.com/playwright:v1.65.0-noble \
   -c '
     set -e
     # Activate corepack-pinned pnpm without writing to /root.
@@ -101,7 +101,7 @@ docker run --rm --network=host --ipc=host \
   --user "$(id -u):$(id -g)" -e HOME=/tmp \
   -v "$PWD:/work" \
   -v "$(git rev-parse --path-format=absolute --git-common-dir):$(git rev-parse --path-format=absolute --git-common-dir):ro" \
-  -w /work mcr.microsoft.com/playwright:v1.62.1-noble \
+  -w /work mcr.microsoft.com/playwright:v1.65.0-noble \
   node scripts/capture-portfolio.mjs
 ```
 
