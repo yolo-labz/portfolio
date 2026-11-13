@@ -46,6 +46,6 @@ jobs:
       # silent no-op until a repo has .feature files), an alignment-gate
       # path-mode fix, and that gate's first test suite.
       - name: Quality gates on the PR diff
-        uses: yolo-labz/quality-gates@f301024da59f1554d7eb04cceef9bc30457ead3b # v1 + #2..#8 (jscpd ratchet)
+        uses: yolo-labz/quality-gates@d971107b1c98c906ec745eff797e8b0eb7002876 # v1 + #2..#8 (jscpd ratchet)
         with:
           base-ref: origin/main
