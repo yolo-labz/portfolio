@@ -37,9 +37,10 @@
 		"read": "Read the full record"
 	},
 	"FleetCases": {
-		"heading": "Agents under controls: three records from my own fleet",
-		"intro": "I run a fleet of coding agents on my own machines. When a control misfires or one is missing, I write the same decision record I write for client work: the constraint, the decision, the number, the cost.",
-		"read": "Read the record"
+		"heading": "Agents under controls: five decision records",
+		"intro": "Three come from my own agent fleet and two from public repositories you can open. Each one is the record I would write for client work: the constraint, the decision, the number, the cost.",
+		"read": "Read the record",
+		"code": "Open the code"
 	},
 	"Services": {
 		"heading": "Start with a verdict. Scale when the proof holds.",
@@ -402,6 +403,24 @@
 			"constraint": "The reload had to work under the Nix wrapper without a failure being thrown away. The same shape, a step that cannot fail, is how an access review, a key rotation or a sync job stays green while it does nothing.",
 			"decision": "Match on argv[0] instead of the process name, and keep the match in one helper so the three callers cannot drift apart. Test it against forged-argv decoys.",
 			"outcome": "The reload reaches the wrapped process, and the check in the repo fails on the old name match in three cases. Cost: one 19-line helper, a 39-line test, 82 added lines across seven files, and four days of wrong colours."
+		},
+		"throttle-gateway-incident": {
+			"tagline": "A gateway that paces agent traffic let its concurrency ceiling fall from 64 to 1 in 5 minutes 18 seconds, then refused 16 requests that day. The incident record has a receipt for every claim.",
+			"description": "The throttle gateway sits between a fleet of coding agents and a model provider. It shrinks a shared concurrency ceiling when the provider pushes back and grows it again on success. On 19 October 2026 one lane received a run of 429 responses with no Retry-After header, and each one counted as pushback. The ceiling went from 64 to the floor value of 1 between 16:47:10 and 16:52:28 and stayed there for about two hours. The incident record is in the repository, with the log line or code line behind each statement.",
+			"problemStatement": "With the ceiling at 1 and generations lasting 171 to 304 seconds, the admission check could not promise a second request a start inside its 180 second wait limit. It refused with a 503 instead of queuing. That produced 16 queue-timeout 503s: two single ones, a cluster of 4 and a storm of 10 across 8 clients. One agent session ended in the retry loop. A restart at 18:48 changed nothing, because the fresh process registered the lane at 12 and fell back to 1 within 4 minutes 51 seconds.",
+			"solutionSummary": "Two changes. A floor of 2 on the ceiling for that lane, and a 240 second cap on how long a Retry-After hold may last on four gates. A second restart at 19:10 applied the floor. The lane was back at 17 concurrent requests 10 minutes later and at 59 after 38 minutes.",
+			"constraint": "A gate that paces agents must not become the outage. Without Retry-After or rate-limit headers it cannot tell its own overload from the provider's, and the shrink rule fires on both.",
+			"decision": "Write the record before closing the incident: timeline, root-cause chain, blast radius split into confirmed and not attributable, and each mitigation with the command that verifies it. Ship the smallest change that stops the collapse, and say in the same document that it defers the storm and does not remove it.",
+			"outcome": "The lane recovered 38 minutes after the floor went in. The record names what is still open. At a ceiling of 2 the third concurrent request is still refused, and the 17:57 cluster shows it. Headerless 429s still shrink the ceiling: six more times between 19:20 and 19:27. A structural fix needs a floor derived from measured service time, or a policy that queues instead of refusing. Cost: one lane at 1 request for two hours and one lost agent session."
+		},
+		"quality-gates-selftest": {
+			"tagline": "A repository that ships three required checks ran its own test suites on no pull request. Turning CI on found a shell bug on the first run, and a new suite found a switch that did nothing.",
+			"description": "quality-gates packages three CI gates as one GitHub Action: code-slop, alignment and a Gherkin linter. Consumers pin it by commit, and on the public wa repository it is a required check. On 10 August 2026 the repository had zero workflows and zero runs, so the gate suites ran on no pull request. A bug in a gate would have reached every consumer on the next pin bump with nothing in between.",
+			"problemStatement": "A green merge was read as evidence of an effect it did not have. The suites existed: 9 discrimination tests for the Gherkin linter, 7 for its wrapper, the dependency ratchet. None ran in CI. alignment-gate had no suite at all while being a required check on wa. The same audit measured how far the checks reach. wa has 11 required checks. The six private fleet repositories returned 403 on branch protection and have none, so the same action there is a signal that can be merged over.",
+			"solutionSummary": "A selftest workflow runs shell syntax checks, shellcheck, the three suites and actionlint over action.yml, with actionlint installed from a pinned tarball and a SHA-256 check. Then 27 discrimination cases for alignment-gate, each rule paired with the near miss that must not fire. Then branch protection on the repository itself: two required contexts, squash only, up to date before merge.",
+			"constraint": "A gate that flags everything gets switched off, and one that flags nothing certifies unfinished work. Testing one direction catches neither. A repository whose product is supply-chain hardening also could not fetch its own linter through curl piped to bash.",
+			"decision": "Pair every rule with its near miss, run the suites on every pull request, and state in the README which repositories the action gates and which it only reports on. The README says the repository sat in the gap it documents, and the next pull request closes it.",
+			"outcome": "Shellcheck, switched on in the first pull request, found `A && B || C` in alignment-gate: when the path scan failed it also ran the diff scan and joined two outputs. The 27 cases found on their first run that ALIGN_FAIL_ON_DEBUG=1 did nothing, because the toggle only downgrades errors and the rule was declared a warning. One word fixed it. Cost: 139 added lines in the first pull request and 214 in the second."
 		}
 	},
 	"ProjectDetail": {
