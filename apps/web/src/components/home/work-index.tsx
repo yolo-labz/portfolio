@@ -86,7 +86,7 @@ export function WorkIndex() {
 									>
 										{name}
 									</span>
-									<span className="col-span-2 col-start-1 row-start-2 line-clamp-2 text-sm text-text-muted sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:line-clamp-1">
+									<span className="col-span-2 col-start-1 row-start-2 text-sm text-text-muted sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:line-clamp-1">
 										{projects(`${project.slug}.tagline`)}
 									</span>
 									<span className="col-start-2 row-start-1 flex items-center justify-end gap-2 text-xs text-text-muted sm:col-start-3">
