@@ -30,7 +30,7 @@ Deployed to `portfolio.home301server.com.br` (see `deploy-dokku.yml`). One pnpm 
 
 **Pattern.** Turborepo monorepo housing a Next.js 16 portfolio site, a shared `packages/ui` component library exported as raw TypeScript source (no build step), and 3 mixed-stack project case-study subfolders (TypeScript + Python + Terraform) wired into a single Turbo task graph.
 
-**Trade-off.** Monorepo tooling overhead — pnpm workspaces, Turborepo, Biome 2.x as the single lint+format authority — in exchange for a shared component library, atomic deploys, and one CI workflow that lints, type-checks, builds, and visual-regresses every workspace on every push.
+**Trade-off.** The cost is monorepo tooling overhead: pnpm workspaces, Turborepo, and Biome 2.x as the single lint and format authority. In exchange you get a shared component library, atomic deploys, and one CI workflow that lints, type-checks, builds, and visual-regresses every workspace on every push.
 
 **Use when.** Shipping a portfolio that needs to host multiple capability case-studies (AI document processor, executive job board, serverless data API) on a single domain, with a single deploy surface, and a single design system.
 
@@ -68,7 +68,7 @@ Closest peers in the Next.js-portfolio-template ecosystem:
 | SonarCloud static analysis                            | yes | no  | no  |
 | `pnpm dev` runs Turbopack + workspace graph           | yes | one app only | one app only |
 
-For sites that need none of this — a single `apps/web` with no shared library, no project case-studies, no monorepo orchestration — [`create-next-app`](https://nextjs.org/docs/api-reference/create-next-app) is the right answer. This repo's overhead pays off only once you have 2+ stacks to deploy and a shared design system to enforce.
+If your site needs none of this (a single `apps/web`, no shared library, no project case studies, no monorepo orchestration), [`create-next-app`](https://nextjs.org/docs/api-reference/create-next-app) is the right answer. This repo's overhead pays off only once you have 2+ stacks to deploy and a shared design system to enforce.
 
 ## Stack
 

@@ -7,10 +7,9 @@ import { Link } from "@/i18n/navigation";
 // index of ten works fills the rest, and the gremlin render sits beside it as the
 // one doing the typing. Server component: no client JS on the LCP path.
 //
-// The art is the adopted hero (08/11/2026): the GPT master, cut by yolo-labz/.github
-// `profile/assets/brand/hero/publish.py` into 804x770 and 402x385 crops of one window
-// on the Mocha base plate, so it needs no frame. Provenance and sha256s:
-// public/brand/README.md.
+// The art is the hero from yolo-labz/.github `profile/assets/brand/hero/`: 804x770 and
+// 402x385 crops of one window on the Mocha base plate, so it needs no frame. File sizes
+// and sha256s: public/brand/README.md.
 export function WorkIndex() {
 	const t = useTranslations("Index");
 	const hero = useTranslations("Hero");
@@ -37,16 +36,16 @@ export function WorkIndex() {
 				<picture className="contents">
 					<source
 						type="image/avif"
-						srcSet="/brand/gremlin-hero-gpt-402x385.avif 402w, /brand/gremlin-hero-gpt-804x770.avif 804w"
+						srcSet="/brand/gremlin-hero-402x385.avif 402w, /brand/gremlin-hero-804x770.avif 804w"
 						sizes="(min-width: 1024px) 360px, 128px"
 					/>
 					<source
 						type="image/webp"
-						srcSet="/brand/gremlin-hero-gpt-402x385.webp 402w, /brand/gremlin-hero-gpt-804x770.webp 804w"
+						srcSet="/brand/gremlin-hero-402x385.webp 402w, /brand/gremlin-hero-804x770.webp 804w"
 						sizes="(min-width: 1024px) 360px, 128px"
 					/>
 					<img
-						src="/brand/gremlin-hero-gpt-804x770.png"
+						src="/brand/gremlin-hero-804x770.png"
 						alt={t("renderAlt")}
 						width={804}
 						height={770}
