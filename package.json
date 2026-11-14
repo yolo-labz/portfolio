@@ -8,7 +8,7 @@
 	"scripts": {
 		"dev": "turbo dev",
 		"build": "turbo build",
-		"lint": "biome check . && node scripts/voice-lint.mjs && node scripts/check-no-em-dash.mjs && node --experimental-strip-types scripts/check-retirement.mjs && node scripts/check-client-namespaces.mjs && node scripts/test-public-repo-links.mjs && node scripts/check-public-repo-links.mjs",
+		"lint": "biome check . && node scripts/voice-lint.mjs && node scripts/check-no-em-dash.mjs && node --experimental-strip-types scripts/check-retirement.mjs && node scripts/check-client-namespaces.mjs && node scripts/test-public-repo-links.mjs && node scripts/check-public-repo-links.mjs && node scripts/test-design-tokens.mjs && node scripts/check-design-tokens.mjs",
 		"lint:fix": "biome check --write .",
 		"lint:voice": "node scripts/voice-lint.mjs",
 		"format": "biome format --write .",
