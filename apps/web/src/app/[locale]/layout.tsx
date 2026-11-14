@@ -23,7 +23,7 @@ export async function generateMetadata({
 		...pageMeta({
 			locale,
 			path: "",
-			title: "Pedro Balbino — Compliance-Grade AI Architect",
+			title: "Pedro Balbino | Compliance-Grade AI Architect",
 			description:
 				"Compliance-grade AI architecture for regulated LATAM & global workloads: production RAG, agent systems, and MCP integrations with audit trails, decision provenance, and cost ceilings designed in from day one.",
 		}),
@@ -44,9 +44,9 @@ const jsonLd = {
 		{
 			"@type": "WebSite",
 			url: SITE_URL,
-			name: "Pedro Balbino — Compliance-Grade AI Architect",
+			name: "Pedro Balbino",
 			description:
-				"Production RAG, agent systems, and MCP integrations for regulated LATAM & global workloads — audit trails, decision provenance, and cost ceilings designed in from day one.",
+				"Production RAG, agent systems, and MCP integrations for regulated LATAM & global workloads: audit trails, decision provenance, and cost ceilings designed in from day one.",
 		},
 		{
 			"@type": "Person",

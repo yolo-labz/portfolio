@@ -29,7 +29,7 @@ function formatSalary(min: number | null, max: number | null, currency: string):
 	};
 
 	if (min !== null && max !== null) {
-		return `${fmt(min)} \u2013 ${fmt(max)} ${currency}`;
+		return `${fmt(min)} to ${fmt(max)} ${currency}`;
 	}
 	if (min !== null) return `From ${fmt(min)} ${currency}`;
 	if (max !== null) return `Up to ${fmt(max)} ${currency}`;

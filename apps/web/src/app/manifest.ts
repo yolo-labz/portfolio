@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
 	return {
-		name: "Pedro Balbino — Software Engineer",
+		name: "Pedro Balbino | Software Engineer",
 		short_name: "Pedro B.",
 		description:
 			"Production-grade data pipelines, automation systems, and full-stack applications.",

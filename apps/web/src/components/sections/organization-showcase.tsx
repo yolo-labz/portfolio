@@ -99,7 +99,7 @@ export function OrganizationShowcase() {
 							<li key={project.slug}>
 								<Link href={`/projects/${project.slug}`} className="block py-4 hover:underline">
 									<h4 className="break-words font-mono text-sm text-text">
-										{project.title.split(" — ")[0]}
+										{project.title.split(": ")[0]}
 									</h4>
 									<p className="mt-1 text-sm leading-relaxed text-text-muted">
 										{t(`${project.slug}.tagline`)}
