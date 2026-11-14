@@ -88,10 +88,10 @@ header link, inside the unchanged 56 px masthead.
 
 ### 8. Brand art comes from published brand files, never from type
 
-Art is published by `yolo-labz/.github`: the hero is the adopted GPT master (08/11/2026,
-`profile/assets/brand/hero/`), cards come from `model/`; generated lettering is not brand art.
-**Why:** the gremlin is reproducible and provenance-tracked; a card drawn with text by hand has
-neither provenance nor a way back to the source.
+Art is published by `yolo-labz/.github`: the hero is in
+`profile/assets/brand/hero/`, cards come from `model/`; painted lettering is not brand art.
+**Why:** every brand file has a source you can point at; a card with text drawn on it has
+no way back to that source.
 **Right:** `scripts/make-share-card.py` — the published Blender plate plus typeset site copy →
 `og-card.png`, and the hero files in `apps/web/public/brand/` copied byte-for-byte from
 `hero/manifest.json`.
