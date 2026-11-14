@@ -163,6 +163,20 @@ Cross-document view transitions (`@view-transition`) cross-fade full navigations
 browsers that support them, 180 ms, off under reduced motion. Client-side route changes
 are not transitioned yet: React's `<ViewTransition>` is canary-only in 19.2.
 
+## Small screens
+
+Measured on 13/11/2026 at 360, 390 and 430px in en, pt and es: no route scrolled sideways, layout shift was 0, no image was oversize. The losses were one 24px home link and 12px labels. Rules at 40rem and below:
+
+| Rule | Value |
+|---|---|
+| Breakpoints | `40rem` phone (`sm`), `48rem` nav (`md`) |
+| Type floor | 14px: `--text-xs` is lifted to `0.875rem` in `globals.css` |
+| Tap target | at least 44 x 44px (`min-h-11`) |
+| Gap between targets | at least 8px (`gap-2`) |
+| Spacing steps | 4, 8, 12, 16, 24px (Tailwind 1, 2, 3, 4, 6) |
+
+`tests/visual/mobile-overflow.spec.ts` fails CI when a route scrolls sideways at 360px. Index rows share a hairline and are full-width links of 44px or more, so they are not counted as crowded targets.
+
 ## Imagery
 
 Only files published by `yolo-labz/.github`. The hero is the GPT master adopted on
