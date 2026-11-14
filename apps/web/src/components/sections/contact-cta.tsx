@@ -22,9 +22,7 @@ export function ContactCTA() {
 					>
 						{t("ctaPrimary")}
 					</h2>
-					<p className="mt-6 max-w-measure text-step-1 leading-body text-text-muted">
-						{t("body")}
-					</p>
+					<p className="mt-6 max-w-measure text-step-1 leading-body text-text-muted">{t("body")}</p>
 				</div>
 				<div className="flex flex-col justify-end gap-6 lg:col-span-5">
 					<a

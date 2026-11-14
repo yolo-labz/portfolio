@@ -125,9 +125,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 							<h2 id="problem" className="text-step-2 font-semibold tracking-[-0.01em]">
 								{ui("problemHeading")}
 							</h2>
-							<p className="mt-4 leading-body text-text-muted">
-								{t(`${slug}.problemStatement`)}
-							</p>
+							<p className="mt-4 leading-body text-text-muted">{t(`${slug}.problemStatement`)}</p>
 						</section>
 
 						<section aria-labelledby="solution" className="max-w-measure">

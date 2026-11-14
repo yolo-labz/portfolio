@@ -130,7 +130,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 							<h2 className="text-step-3 font-semibold tracking-heading">
 								{t("claimEvidenceHeading")}
 							</h2>
-							<p className="mt-2 max-w-measure text-sm text-text-muted">{t("claimEvidenceIntro")}</p>
+							<p className="mt-2 max-w-measure text-sm text-text-muted">
+								{t("claimEvidenceIntro")}
+							</p>
 						</div>
 						<p className="max-w-measure text-base leading-body text-text-muted lg:col-span-6 lg:col-start-7">
 							{t("summary")}
