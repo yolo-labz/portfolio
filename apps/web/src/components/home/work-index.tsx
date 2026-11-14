@@ -25,7 +25,7 @@ export function WorkIndex() {
 			<div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto] items-start gap-x-4 lg:grid-cols-12 lg:gap-x-12">
 				<h1
 					id="hero-heading"
-					className="col-start-1 row-start-1 text-step-4 leading-[1.15] font-semibold tracking-[-0.02em] text-balance lg:col-span-7"
+					className="col-start-1 row-start-1 text-step-4 leading-tight font-semibold tracking-heading text-balance lg:col-span-7"
 				>
 					{hero("headingLead")} <span className="text-accent">{hero("headingSeams")}</span>
 				</h1>
@@ -58,8 +58,8 @@ export function WorkIndex() {
 				<div className="col-span-2 lg:col-span-8 lg:col-start-1">
 					{/* Ten-second test: the role and one proof sit above the index, so the
 					    first screen answers "what do you do" and "show me" before any scroll. */}
-					<p className="mt-5 text-base leading-relaxed text-text">{hero("lead")}</p>
-					<p className="mt-1.5 text-sm leading-relaxed text-text-muted">
+					<p className="mt-5 text-base leading-body text-text">{hero("lead")}</p>
+					<p className="mt-1.5 text-sm leading-body text-text-muted">
 						<span className="font-medium text-accent">{hero("proofLabel")}:</span>{" "}
 						<Link
 							href="/projects/compliance-tax-agent"

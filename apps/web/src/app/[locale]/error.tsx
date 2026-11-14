@@ -20,10 +20,10 @@ export default function ErrorPage({
 	return (
 		<section className="px-6 pt-24 pb-20 sm:pt-28">
 			<div className="mx-auto max-w-3xl">
-				<h1 className="text-step-5 leading-[1.1] font-semibold tracking-[-0.025em] text-balance">
+				<h1 className="text-step-5 leading-tight font-semibold tracking-display text-balance">
 					{t("title")}
 				</h1>
-				<p className="mt-5 max-w-[50ch] text-step-1 leading-relaxed text-text-muted">{t("body")}</p>
+				<p className="mt-5 max-w-measure text-step-1 leading-body text-text-muted">{t("body")}</p>
 				<div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
 					<button
 						type="button"

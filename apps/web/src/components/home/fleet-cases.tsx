@@ -26,11 +26,11 @@ export function FleetCases() {
 				<div className="grid gap-6 lg:grid-cols-12 lg:gap-12">
 					<h2
 						id="fleet-cases-heading"
-						className="text-step-4 leading-tight font-semibold tracking-[-0.02em] text-balance lg:col-span-5"
+						className="text-step-4 leading-tight font-semibold tracking-heading text-balance lg:col-span-5"
 					>
 						{t("heading")}
 					</h2>
-					<p className="max-w-[50ch] text-base leading-relaxed text-text-muted lg:col-span-7">
+					<p className="max-w-measure text-base leading-body text-text-muted lg:col-span-7">
 						{t("intro")}
 					</p>
 				</div>
@@ -43,11 +43,11 @@ export function FleetCases() {
 								key={project.slug}
 								className="grid gap-x-12 gap-y-4 border-b border-border py-8 lg:grid-cols-12"
 							>
-								<h3 className="text-step-1 font-semibold tracking-[-0.01em] text-balance lg:col-span-4">
+								<h3 className="text-step-1 font-semibold tracking-heading text-balance lg:col-span-4">
 									{name}
 								</h3>
 								<div className="lg:col-span-8">
-									<p className="max-w-[60ch] text-base leading-relaxed text-text">
+									<p className="max-w-measure text-base leading-body text-text">
 										{projectCopy(`${project.slug}.tagline`)}
 									</p>
 									<Link

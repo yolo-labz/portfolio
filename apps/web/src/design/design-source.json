@@ -1,9 +1,9 @@
 {
 	"repo": "yolo-labz/.github",
 	"path": "design/dist",
-	"rev": "b8b10c6304270756555874e6956d2d92ddb3edc6",
+	"rev": "7d15141dfd7341836f0e16f15160dc309870fa2a",
 	"files": {
-		"tokens.css": "6f78c0b027cd0a2f08617d74c94df48a3fe332a79afd812f4aa3b1ca3d61a7a7",
-		"tailwind.css": "411d169034f58b8d34e29bd9a545815ae5df128b570998b300fc00526b5c3411"
+		"tokens.css": "b5d8df30763e08f5931f9f29fd334648e4ffd75a009241246a26dae70bd9125f",
+		"tailwind.css": "e6b6e8a522bb4b76793a6e238b0d13b8d63a7128bd631bc1c150f62af326ca53"
 	}
 }
