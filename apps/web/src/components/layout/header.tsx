@@ -14,7 +14,7 @@ export function Header() {
 	const pathname = usePathname();
 	const isHome = pathname === "/";
 	const linkClass =
-		"inline-flex min-h-6 items-center text-sm text-text-muted hover:text-text transition-colors";
+		"inline-flex min-h-11 items-center text-sm text-text-muted hover:text-text transition-colors";
 
 	return (
 		<header className="fixed top-0 z-50 w-full border-b border-border bg-bg">
@@ -30,7 +30,7 @@ export function Header() {
 				</Link>
 
 				{/* Desktop: the emerald CTA replaces the #contact anchor. */}
-				<ul className="hidden items-center gap-6 md:flex">
+				<ul className="hidden items-center gap-3 md:flex lg:gap-6">
 					{navItems
 						.filter((item) => item.key !== "contact")
 						.map((item) => {
@@ -73,7 +73,7 @@ export function Header() {
 					<li>
 						<a
 							href={`mailto:${CONTACT_EMAIL}`}
-							className={`${contactEvent("header", "email")} inline-flex min-h-9 items-center rounded-sm bg-accent px-3.5 text-sm font-medium text-bg transition-colors hover:bg-accent-hover`}
+							className={`${contactEvent("header", "email")} inline-flex min-h-11 items-center rounded-sm bg-accent px-3.5 text-sm font-medium text-bg transition-colors hover:bg-accent-hover`}
 						>
 							{cta("ctaPrimary")}
 						</a>
