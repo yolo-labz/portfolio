@@ -170,7 +170,7 @@
 			{
 				"role": "Arquitecto de IA con grado de cumplimiento / Arquitecto Cloud",
 				"company": "Grupo de servicios de TI tier-1 · LATAM",
-				"period": "jul 2025 — presente",
+				"period": "jul 2025 a presente",
 				"current": true,
 				"deliverables": [
 					"Contribuí a un RAG con grado de cumplimiento sobre Azure OpenAI: origen verificable de las decisiones, registro del rastro de auditoría y pruebas de regresión sobre evaluaciones congeladas para cargas reguladas",
@@ -182,7 +182,7 @@
 			{
 				"role": "Ingeniero de software de sistemas",
 				"company": "Operadora de telecomunicaciones · LATAM",
-				"period": "oct 2024 — sep 2025",
+				"period": "oct 2024 a sep 2025",
 				"current": false,
 				"deliverables": [
 					"Diseñé un ETL serverless sobre AWS Lambda + Step Functions para datos de facturación de telecomunicaciones tier-1",
@@ -194,7 +194,7 @@
 			{
 				"role": "Ingeniero de software sénior",
 				"company": "Estudio de ingeniería de producto · e-commerce / fintech / logística",
-				"period": "jul 2021 — oct 2024",
+				"period": "jul 2021 a oct 2024",
 				"current": false,
 				"deliverables": [
 					"Entregué 12+ sistemas en producción en e-commerce, fintech y logística",
@@ -215,7 +215,7 @@
 		"claimMap": "Mapa de afirmaciones y evidencias"
 	},
 	"About": {
-		"metaTitle": "Perfil — Pedro Balbino",
+		"metaTitle": "Perfil | Pedro Balbino",
 		"metaDescription": "Arquitecto de IA con grado de cumplimiento para cargas reguladas en LATAM y a nivel global. RAG en producción, sistemas de agentes e integraciones MCP con rastros de auditoría y origen verificable de las decisiones. Cada afirmación respaldada por evidencia verificable.",
 		"category": "Arquitecto de IA con grado de cumplimiento para cargas reguladas en LATAM y a nivel global",
 		"diagnostic": "Los stacks de IA regulada reprueban su primera auditoría en los mismos tres puntos: trazabilidad del prompt, origen de lo recuperado y prueba del resultado. La solución está en la arquitectura. Un plano de datos, un plano de control y un plano de cumplimiento corriendo como sidecar: un registro de solo anexado que registra lo que ocurrió, firmado, fuera de la ruta de solicitud.",
@@ -238,13 +238,13 @@
 			"Flota NixOS multi-host (152 módulos, 153 PRs)",
 			"RAG con grado de cumplimiento para banca regulada (colaborador)",
 			"Backend de retail orientado a eventos (ingeniero de backend)",
-			"RAG de dominio legal — prueba de concepto (colaborador)",
-			"Chatbot educativo multilingüe — backend + capa de datos (consultor externo)",
-			"Agente de declaración de impuestos IRPF — extracción + validación (en equipo)"
+			"RAG de dominio legal, prueba de concepto (colaborador)",
+			"Chatbot educativo multilingüe, backend y capa de datos (consultor externo)",
+			"Agente de declaración de impuestos IRPF, extracción y validación (en equipo)"
 		]
 	},
 	"Thesis": {
-		"metaTitle": "La IA regulada reprueba su primera auditoría en la capa de recuperación — Pedro Balbino",
+		"metaTitle": "La IA regulada reprueba su primera auditoría en la capa de recuperación | Pedro Balbino",
 		"metaDescription": "Un argumento de trabajo para diseñar el rastro de auditoría antes que el prompt: la trazabilidad del prompt, el origen de lo recuperado y la prueba del resultado son la restricción arquitectónica principal de la IA regulada. El modelo no lo es.",
 		"title": "La IA regulada reprueba su primera auditoría en la capa de recuperación, no en el modelo.",
 		"subtitle": "Un argumento de trabajo para diseñar el rastro de auditoría antes que el prompt.",

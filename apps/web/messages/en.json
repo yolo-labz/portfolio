@@ -170,7 +170,7 @@
 			{
 				"role": "Compliance-Grade AI Architect / Cloud Architect",
 				"company": "Tier-1 IT services group · LATAM",
-				"period": "Jul 2025 — Present",
+				"period": "Jul 2025 to Present",
 				"current": true,
 				"deliverables": [
 					"Contributed to a compliance-grade RAG on Azure OpenAI: decision provenance, audit-trail logging, frozen-eval regression checks for regulated workloads",
@@ -182,7 +182,7 @@
 			{
 				"role": "Systems Software Engineer",
 				"company": "Telecom carrier · LATAM",
-				"period": "Oct 2024 — Sep 2025",
+				"period": "Oct 2024 to Sep 2025",
 				"current": false,
 				"deliverables": [
 					"Designed serverless ETL on AWS Lambda + Step Functions for tier-1 telecom billing data",
@@ -194,7 +194,7 @@
 			{
 				"role": "Senior Software Engineer",
 				"company": "Product engineering studio · e-commerce / fintech / logistics",
-				"period": "Jul 2021 — Oct 2024",
+				"period": "Jul 2021 to Oct 2024",
 				"current": false,
 				"deliverables": [
 					"Delivered 12+ production systems across e-commerce, fintech, and logistics",
@@ -215,7 +215,7 @@
 		"claimMap": "Claim and evidence map"
 	},
 	"About": {
-		"metaTitle": "About — Pedro Balbino",
+		"metaTitle": "About | Pedro Balbino",
 		"metaDescription": "Compliance-Grade AI Architect for regulated LATAM & global workloads. Production RAG, agent systems, and MCP integrations with audit trails and decision provenance. Every claim maps to verifiable evidence.",
 		"category": "Compliance-Grade AI Architect for Regulated LATAM & Global Workloads",
 		"diagnostic": "Regulated AI stacks fail their first audit at three seams: prompt provenance, retrieval lineage, output attestation. The fix is architectural. A data plane, a control plane, and a compliance plane running as a sidecar: an append-only ledger that records what happened, signed, outside the request path.",
@@ -238,13 +238,13 @@
 			"Multi-host NixOS fleet (152 modules, 153 PRs)",
 			"Regulated banking compliance RAG (contributor)",
 			"Event-driven retail commerce backend (backend engineer)",
-			"Legal-domain RAG — proof-of-concept (contributor)",
-			"Multilingual education chatbot — backend + data layer (consultant)",
-			"IRPF tax-filing agent — extraction + validation (team)"
+			"Legal-domain RAG, proof of concept (contributor)",
+			"Multilingual education chatbot, backend and data layer (consultant)",
+			"IRPF tax-filing agent, extraction and validation (team)"
 		]
 	},
 	"Thesis": {
-		"metaTitle": "Regulated AI fails its first audit at the retrieval layer — Pedro Balbino",
+		"metaTitle": "Regulated AI fails its first audit at the retrieval layer | Pedro Balbino",
 		"metaDescription": "A working argument for designing the audit trail before the prompt: provenance, lineage, and attestation are the primary architectural constraint for regulated AI. The model isn't.",
 		"title": "Regulated AI fails its first audit at the retrieval layer, not the model.",
 		"subtitle": "A working argument for designing the audit trail before the prompt.",

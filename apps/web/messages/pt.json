@@ -170,7 +170,7 @@
 			{
 				"role": "Arquiteto de IA com Rigor de Compliance / Arquiteto de Cloud",
 				"company": "Grupo de serviços de TI tier-1 · LATAM",
-				"period": "jul 2025 — presente",
+				"period": "jul 2025 a presente",
 				"current": true,
 				"deliverables": [
 					"Contribuí para um RAG com rigor de compliance no Azure OpenAI: proveniência de decisão, registro de trilha de auditoria e verificações de regressão sobre eval congelada para cargas reguladas",
@@ -182,7 +182,7 @@
 			{
 				"role": "Engenheiro de Software de Sistemas",
 				"company": "Operadora de telecom · LATAM",
-				"period": "out 2024 — set 2025",
+				"period": "out 2024 a set 2025",
 				"current": false,
 				"deliverables": [
 					"Projetei ETL serverless em AWS Lambda + Step Functions para dados de billing de telecom tier-1",
@@ -194,7 +194,7 @@
 			{
 				"role": "Engenheiro de Software Sênior",
 				"company": "Estúdio de engenharia de produto · e-commerce / fintech / logística",
-				"period": "jul 2021 — out 2024",
+				"period": "jul 2021 a out 2024",
 				"current": false,
 				"deliverables": [
 					"Entreguei mais de 12 sistemas em produção em e-commerce, fintech e logística",
@@ -215,7 +215,7 @@
 		"claimMap": "Mapa de afirmações e evidências"
 	},
 	"About": {
-		"metaTitle": "Sobre — Pedro Balbino",
+		"metaTitle": "Sobre | Pedro Balbino",
 		"metaDescription": "Arquiteto de IA com Rigor de Compliance para cargas reguladas na LATAM e no mundo. RAG em produção, sistemas de agentes e integrações MCP com trilhas de auditoria e proveniência de decisão. Cada alegação mapeada a evidência verificável.",
 		"category": "Arquiteto de IA com Rigor de Compliance para Cargas Reguladas na LATAM e no Mundo",
 		"diagnostic": "Stacks de IA regulada reprovam na auditoria em três pontos, sempre os mesmos: proveniência do prompt, linhagem da recuperação, comprovação do resultado. A correção está na arquitetura. Três planos, dados, controle, compliance, com o plano de compliance rodando como sidecar: um ledger de auditoria encadeado por hash, ancorado fora do caminho da requisição.",
@@ -244,7 +244,7 @@
 		]
 	},
 	"Thesis": {
-		"metaTitle": "IA regulada reprova na primeira auditoria na camada de recuperação — Pedro Balbino",
+		"metaTitle": "IA regulada reprova na primeira auditoria na camada de recuperação | Pedro Balbino",
 		"metaDescription": "Um argumento em construção para desenhar a trilha de auditoria antes do prompt: proveniência, linhagem e comprovação do resultado são a restrição arquitetural primária da IA regulada, não o modelo.",
 		"title": "IA regulada reprova na primeira auditoria na camada de recuperação, não no modelo.",
 		"subtitle": "Um argumento em construção para desenhar a trilha de auditoria antes do prompt.",

@@ -9,16 +9,13 @@
 //   SOFT (warn, exit 0): tic-overuse advisories — flat burstiness, anaphora,
 //     negation-contrast density. Surfaced for the author; never fails CI.
 //
-// Em-dash policy: allowed only in data-ish fields (date ranges, meta titles,
-// claim labels), never in prose. See DASH_EXEMPT below.
+// Em-dash policy: none, anywhere. Ranges use "to", title separators use "|".
+// scripts/check-no-em-dash.mjs covers every served file; this check names the catalog key.
 
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const FILES = ["en", "pt", "es"].map((l) => `apps/web/messages/${l}.json`);
-
-// Keys whose values may carry a typographic em-dash (ranges, title separators, labels).
-const DASH_EXEMPT = /(\.period$|\.metaTitle$|^About\.claims\.\d+$)/;
 
 // EN-only banned lexicon (2026-active tells + model manner-words). Word-boundary, case-insensitive.
 const BANNED_EN = [
@@ -92,7 +89,7 @@ for (const rel of FILES) {
 
 	for (const [path, text] of strings) {
 		// HARD: em-dash in prose.
-		if (text.includes("—") && !DASH_EXEMPT.test(path)) {
+		if (text.includes("—")) {
 			console.error(`HARD ${lang} ${path}: em-dash in prose ("${text.slice(0, 60)}…")`);
 			hardFails++;
 		}

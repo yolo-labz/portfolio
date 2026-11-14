@@ -49,7 +49,7 @@ export interface Project {
 export const projects: Project[] = [
 	{
 		slug: "compliance-tax-agent",
-		title: "Compliance-grade tax-filing agent — Brazilian IRPF",
+		title: "Compliance-grade tax-filing agent: Brazilian IRPF",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "Typed-tool agent loop", category: "framework" },
@@ -89,7 +89,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "legal-domain-rag",
-		title: "Legal-domain RAG — per-jurisdiction retrieval, citations that hold",
+		title: "Legal-domain RAG: per-jurisdiction retrieval, citations that hold",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "AWS Bedrock", category: "service" },
@@ -99,7 +99,7 @@ export const projects: Project[] = [
 		],
 		metrics: [
 			{ label: "Stage", value: "proof-of-concept (2024)" },
-			{ label: "Retrieval", value: "per-jurisdiction indexes — no cross-regime bleed" },
+			{ label: "Retrieval", value: "per-jurisdiction indexes, no cross-regime bleed" },
 			{ label: "Citations", value: "deterministically validated, never from memory" },
 			{ label: "Cost", value: "serverless, usage-tracked" },
 		],
@@ -109,7 +109,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "multilingual-rag",
-		title: "Multilingual education chatbot — grounded retrieval, PT/EN",
+		title: "Multilingual education chatbot: grounded retrieval, PT/EN",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "Azure OpenAI", category: "service" },
@@ -120,7 +120,7 @@ export const projects: Project[] = [
 		metrics: [
 			{ label: "My role", value: "backend + data layer (consultant)" },
 			{ label: "Scale", value: "699K+ enrollment records" },
-			{ label: "Release gate", value: "frozen-eval — no silent regression" },
+			{ label: "Release gate", value: "frozen-eval, no silent regression" },
 			{ label: "Retrieval", value: "grounded, bilingual PT/EN" },
 		],
 		links: {},
@@ -129,7 +129,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "ai-document-processor",
-		title: "ai-document-processor — auditable document extraction pipeline",
+		title: "ai-document-processor: auditable document extraction pipeline",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "FastAPI", category: "framework" },
@@ -154,7 +154,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "wa",
-		title: "wa — WhatsApp daemon with an auditable trust boundary",
+		title: "wa: WhatsApp daemon with an auditable trust boundary",
 		techStack: [
 			{ name: "Go", category: "language" },
 			{ name: "whatsmeow", category: "framework" },
@@ -174,7 +174,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "serverless-data-api",
-		title: "serverless-data-api — the boring layers tutorials skip",
+		title: "serverless-data-api: the boring layers tutorials skip",
 		techStack: [
 			{ name: "Terraform", category: "infrastructure" },
 			{ name: "Python", category: "language" },
@@ -198,7 +198,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "exec-job-board",
-		title: "exec-job-board — multi-source data aggregation pipeline",
+		title: "exec-job-board: multi-source data aggregation pipeline",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "httpx", category: "framework" },
@@ -219,7 +219,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "claude-mac-chrome",
-		title: "claude-mac-chrome — Chrome automation for Claude Code on macOS",
+		title: "claude-mac-chrome: Chrome automation for Claude Code on macOS",
 		techStack: [
 			{ name: "Bash", category: "language" },
 			{ name: "AppleScript", category: "language" },
@@ -238,7 +238,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "linkedin-chrome-copilot",
-		title: "linkedin-chrome-copilot — per-locale LinkedIn form automation",
+		title: "linkedin-chrome-copilot: per-locale LinkedIn form automation",
 		techStack: [
 			{ name: "Bash", category: "language" },
 			{ name: "AppleScript", category: "language" },
@@ -254,7 +254,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "kokoro-speakd",
-		title: "kokoro-speakd — persistent Kokoro TTS daemon",
+		title: "kokoro-speakd: persistent Kokoro TTS daemon",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "ONNX Runtime", category: "framework" },
@@ -275,7 +275,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "claude-classroom-submit",
-		title: "claude-classroom-submit — autonomous Google Classroom turn-in",
+		title: "claude-classroom-submit: autonomous Google Classroom turn-in",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "Google Classroom API", category: "service" },
@@ -291,7 +291,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "fand",
-		title: "fand — Apple Silicon thermal daemon",
+		title: "fand: Apple Silicon thermal daemon",
 		techStack: [
 			{ name: "Rust", category: "language" },
 			{ name: "SMC", category: "service" },
@@ -308,7 +308,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "anthropic-throttle-proxy",
-		title: "anthropic-throttle-proxy — fleet-wide pacing and request admission",
+		title: "anthropic-throttle-proxy: fleet-wide pacing and request admission",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "aiohttp", category: "framework" },
@@ -327,7 +327,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "chrome-bridge",
-		title: "chrome-bridge — extension plus localhost relay for Chromium automation",
+		title: "chrome-bridge: extension plus localhost relay for Chromium automation",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "Chrome MV3 extension", category: "framework" },
@@ -377,7 +377,7 @@ export const workIndex: WorkEntry[] = [
 		return {
 			project,
 			kind: "caseFile" as const,
-			name: project.title.split(" — ")[0] ?? project.title,
+			name: project.title.split(": ")[0] ?? project.title,
 		};
 	}),
 	...projects
