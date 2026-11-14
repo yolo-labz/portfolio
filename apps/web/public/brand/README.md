@@ -7,11 +7,11 @@ window, so phones see the same framing.
 
 | File | Bytes | sha256 |
 |---|---|---|
-| `gremlin-hero-804x770.avif` | 14318 | `32d6e47f45bcd38afb5a33007ef97c23eefd8b9862a9ba52c72d63785015560e` |
-| `gremlin-hero-804x770.webp` | 28762 | `66ad1491640b1be50b1cbad80e3e5066b5a7c967c86574df57c1e627c45439eb` |
-| `gremlin-hero-804x770.png` | 489167 | `d04b5272b0901d4798c3bde68fd460562b84adefccf59a6860164cdfb29d1f7b` |
-| `gremlin-hero-402x385.avif` | 6881 | `89116e28d4f24119b02005c04ce42af5342c1a9a86cba87c26f6049b9227584f` |
-| `gremlin-hero-402x385.webp` | 12606 | `58d8d6aa408a2bc114207ae190dd2cf2dcbccf8b432f4d6750df342689729bed` |
+| `gremlin-hero-804x770.avif` | 10500 | `a54235d56c07e2ec8da7152192c851cfc822d86bd38176bdc79b6b9ad119e1e6` |
+| `gremlin-hero-804x770.webp` | 20652 | `eaf15272e90ecb2e3bd91b2ac150d72e719ab08ce24c3c81806229e942db7167` |
+| `gremlin-hero-804x770.png` | 39097 | `ab6423565c3628036de518fa397b9267b8c6c15073946ca29dbbcec3dd1a70a4` |
+| `gremlin-hero-402x385.avif` | 5437 | `fdcf3e52865d7bca72e7d6a6a04786a336aec99e6b8ac7c84e077f03fc8f353f` |
+| `gremlin-hero-402x385.webp` | 10228 | `feb419f6353a172640f5bf7ca78f695cc1b8cdfb0a7653022762c6ba0c747f31` |
 
 The values are quoted from the published `hero/manifest.json`, and the files here
 were re-hashed against it after copying. Verify with:
@@ -31,5 +31,5 @@ layout shift on decode.
 ## Updating
 
 Copy the five files from `profile/assets/brand/hero/` in `yolo-labz/.github`
-unchanged. `gremlin-hero-804x770-dark.png` (72209 B, `770fcdfa…d6ef`) stays as the
+unchanged. `gremlin-hero-804x770-dark.png` (39097 B, `ab642356…70a4`) stays as the
 input of `scripts/make-share-card.py`; the page no longer serves it.
