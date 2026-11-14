@@ -175,7 +175,7 @@ Measured on 13/11/2026 at 360, 390 and 430px in en, pt and es: no route scrolled
 | Gap between targets | at least 8px (`gap-2`) |
 | Spacing steps | 4, 8, 12, 16, 24px (Tailwind 1, 2, 3, 4, 6) |
 
-`tests/visual/mobile-overflow.spec.ts` fails CI when a route scrolls sideways at 360px. Index rows share a hairline and are full-width links of 44px or more, so they are not counted as crowded targets.
+`tests/visual/mobile-overflow.spec.ts` fails CI when a route scrolls sideways at 360, 768 or 820px. The desktop nav starts at 768px (`md`) with 44px targets and a 12px gap; the 24px gap returns at `lg`. Index rows share a hairline and are full-width links of 44px or more, so they are not counted as crowded targets.
 
 ## Imagery
 
