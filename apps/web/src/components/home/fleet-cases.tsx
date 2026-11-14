@@ -43,7 +43,7 @@ export function FleetCases() {
 								key={project.slug}
 								className="grid gap-x-12 gap-y-4 border-b border-border py-8 lg:grid-cols-12"
 							>
-								<h3 className="text-step-1 font-semibold tracking-heading text-balance lg:col-span-4">
+								<h3 className="text-step-1 font-semibold tracking-[-0.01em] text-balance lg:col-span-4">
 									{name}
 								</h3>
 								<div className="lg:col-span-8">

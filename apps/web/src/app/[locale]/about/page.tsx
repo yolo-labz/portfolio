@@ -113,7 +113,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 		<>
 			<section className="mx-auto w-full max-w-6xl px-6 pt-24 pb-20 sm:pt-28">
 				<header className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
-					<h1 className="text-step-5 leading-tight font-semibold tracking-display text-balance lg:col-span-7">
+					<h1 className="text-step-5 leading-[1.1] font-semibold tracking-display text-balance lg:col-span-7">
 						{t("category")}
 					</h1>
 					{/* One paragraph only: at 1280 the H1 sets three lines, so a second

@@ -14,7 +14,7 @@ export default function NotFound() {
 			<div className="mx-auto max-w-3xl">
 				<h1
 					id="not-found-heading"
-					className="text-step-5 leading-tight font-semibold tracking-display text-balance"
+					className="text-step-5 leading-[1.1] font-semibold tracking-display text-balance"
 				>
 					{t("title")}
 				</h1>
