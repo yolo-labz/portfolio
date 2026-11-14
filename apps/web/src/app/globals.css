@@ -89,6 +89,16 @@ main .list-disc > li {
 	max-inline-size: 50ch;
 }
 
+/* Small screens: nothing under 14px (mobile audit 13/11/2026 found 12px labels and
+   table headers). Tailwind v4 reads --text-xs for every `text-xs`, so one override
+   lifts them all at 40rem and below. */
+@media (max-width: 40rem) {
+	:root {
+		--text-xs: 0.875rem;
+		--text-xs--line-height: 1.375;
+	}
+}
+
 /* Mobile drawer entrance (components/layout/mobile-nav.tsx). */
 @media (prefers-reduced-motion: no-preference) {
 	.drawer-scrim {
