@@ -36,11 +36,11 @@ export function OrganizationShowcase() {
 					<div className="max-w-2xl">
 						<h3
 							id="open-source-heading"
-							className="text-step-4 leading-tight font-semibold tracking-[-0.02em] text-balance"
+							className="text-step-4 leading-tight font-semibold tracking-heading text-balance"
 						>
 							{ui("openSourceHeading")}
 						</h3>
-						<p className="mt-4 text-base leading-relaxed text-text-muted">{ui("openSourceLead")}</p>
+						<p className="mt-4 text-base leading-body text-text-muted">{ui("openSourceLead")}</p>
 					</div>
 					<a
 						href="https://github.com/yolo-labz"
@@ -62,7 +62,7 @@ export function OrganizationShowcase() {
 							<h4 className="break-words font-mono text-base font-semibold text-text">
 								{project.slug}
 							</h4>
-							<p className="mt-3 flex-1 text-sm leading-relaxed text-text-muted">
+							<p className="mt-3 flex-1 text-sm leading-body text-text-muted">
 								{t(`${project.slug}.tagline`)}
 							</p>
 							<div className="mt-5 flex flex-wrap gap-1.5">
@@ -104,7 +104,7 @@ export function OrganizationShowcase() {
 									<h4 className="break-words font-mono text-sm text-text">
 										{project.title.split(": ")[0]}
 									</h4>
-									<p className="mt-1 text-sm leading-relaxed text-text-muted">
+									<p className="mt-1 text-sm leading-body text-text-muted">
 										{t(`${project.slug}.tagline`)}
 									</p>
 								</Link>

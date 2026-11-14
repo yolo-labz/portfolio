@@ -18,11 +18,11 @@ export function ContactCTA() {
 				<div className="lg:col-span-7">
 					<h2
 						id="contact-heading"
-						className="text-step-6 leading-[1.05] font-semibold tracking-[-0.03em] text-balance"
+						className="text-step-6 leading-tight font-semibold tracking-display text-balance"
 					>
 						{t("ctaPrimary")}
 					</h2>
-					<p className="mt-6 max-w-[50ch] text-step-1 leading-relaxed text-text-muted">
+					<p className="mt-6 max-w-measure text-step-1 leading-body text-text-muted">
 						{t("body")}
 					</p>
 				</div>

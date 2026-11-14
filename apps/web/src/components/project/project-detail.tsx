@@ -42,10 +42,10 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 				</Link>
 
 				<header className="mt-6 max-w-4xl">
-					<h1 className="text-step-5 leading-[1.1] font-semibold tracking-[-0.025em] text-balance">
+					<h1 className="text-step-5 leading-tight font-semibold tracking-display text-balance">
 						{project.title}
 					</h1>
-					<p className="mt-5 max-w-[50ch] text-step-1 leading-relaxed text-text-muted">
+					<p className="mt-5 max-w-measure text-step-1 leading-body text-text-muted">
 						{t(`${slug}.tagline`)}
 					</p>
 				</header>
@@ -68,7 +68,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 							))}
 							<div className="border-b border-border py-3">
 								<dt className="text-xs text-text-muted">{ui("stack")}</dt>
-								<dd className="mt-1 font-mono text-xs leading-relaxed text-text">
+								<dd className="mt-1 font-mono text-xs leading-body text-text">
 									{project.techStack.map((tech) => tech.name).join(" · ")}
 								</dd>
 							</div>
@@ -102,7 +102,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 					<div className="min-w-0 space-y-14 lg:col-span-8">
 						{arc.length > 0 && (
 							<section aria-labelledby="decision-record">
-								<h2 id="decision-record" className="text-step-2 font-semibold tracking-[-0.01em]">
+								<h2 id="decision-record" className="text-step-2 font-semibold tracking-heading">
 									{ui("decisionRecord")}
 								</h2>
 								<dl className="mt-6 border-t border-border">
@@ -112,7 +112,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 											className="grid gap-x-8 gap-y-2 border-b border-border py-6 sm:grid-cols-[8rem_1fr]"
 										>
 											<dt className={`text-sm font-medium ${arcTone[key]}`}>{ui(key)}</dt>
-											<dd className="max-w-[50ch] leading-relaxed text-text">
+											<dd className="max-w-measure leading-body text-text">
 												{t(`${slug}.${key}`)}
 											</dd>
 										</div>
@@ -121,27 +121,27 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 							</section>
 						)}
 
-						<section aria-labelledby="problem" className="max-w-[50ch]">
-							<h2 id="problem" className="text-step-2 font-semibold tracking-[-0.01em]">
+						<section aria-labelledby="problem" className="max-w-measure">
+							<h2 id="problem" className="text-step-2 font-semibold tracking-heading">
 								{ui("problemHeading")}
 							</h2>
-							<p className="mt-4 leading-relaxed text-text-muted">
+							<p className="mt-4 leading-body text-text-muted">
 								{t(`${slug}.problemStatement`)}
 							</p>
 						</section>
 
-						<section aria-labelledby="solution" className="max-w-[50ch]">
-							<h2 id="solution" className="text-step-2 font-semibold tracking-[-0.01em]">
+						<section aria-labelledby="solution" className="max-w-measure">
+							<h2 id="solution" className="text-step-2 font-semibold tracking-heading">
 								{ui("solutionHeading")}
 							</h2>
-							<p className="mt-4 leading-relaxed text-text-muted">{t(`${slug}.solutionSummary`)}</p>
+							<p className="mt-4 leading-body text-text-muted">{t(`${slug}.solutionSummary`)}</p>
 						</section>
 
-						<section aria-labelledby="overview" className="max-w-[50ch]">
-							<h2 id="overview" className="text-step-2 font-semibold tracking-[-0.01em]">
+						<section aria-labelledby="overview" className="max-w-measure">
+							<h2 id="overview" className="text-step-2 font-semibold tracking-heading">
 								{ui("overviewHeading")}
 							</h2>
-							<p className="mt-4 leading-relaxed text-text-muted">{t(`${slug}.description`)}</p>
+							<p className="mt-4 leading-body text-text-muted">{t(`${slug}.description`)}</p>
 						</section>
 					</div>
 				</div>
