@@ -1,7 +1,7 @@
 # Plan
 
 Base: `bf3ca9b3f3fdc890387c5c84601a96f47bc14376` (`origin/main`).
-Worktree: `portfolio-20260928-org-showcase`; generator: OpenAI GPT-6 Astra.
+Worktree: `portfolio-20260928-org-showcase`.
 
 1. Replace only the non-featured shelf in `project-showcase.tsx` with a scoped
    `OrganizationShowcase`. Reuse `Card`, `Badge`, `FigStamp` and localized `Link`.
@@ -20,6 +20,4 @@ Worktree: `portfolio-20260928-org-showcase`; generator: OpenAI GPT-6 Astra.
    to verified identity `phsb5321`. Inspect CI and policy, never infer deploy consent.
 6. Write `docs/visual-rollout-2026-09-28-portfolio.md` with exact evidence and gates.
 
-Art dependency: p9's supplied `github-profile-010-gpt-gremlin-art/profile/assets/brand/
-exploration/2026-09-28/` directory was absent at pickup, 28/09/2026 19:44 BRT.
-No image generation, shared browser mutation or external publication is part of this slice.
+No shared browser mutation or external publication is part of this slice.

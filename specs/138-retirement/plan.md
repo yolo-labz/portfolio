@@ -10,4 +10,4 @@ Evidence: prior R2 HTTP result was nginx welcome HTML and API 404. `projects.ts`
 4. Regenerate the existing screenshot grid from a local production build with the existing Playwright dependency. Refresh only affected baseline pages in the pinned Noble image if available; otherwise report renderer gate honestly.
 5. Run commands, keep evidence in docs/evidence/swarm-2026-09-21, commit report and prepare replacement PR without closing #135.
 
-Generator: OpenAI GPT-6 Astra. Spec/plan/tasks process only; no legacy workflow or reviewer spawn.
+Spec/plan/tasks process only; no legacy workflow or reviewer spawn.
