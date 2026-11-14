@@ -41,7 +41,7 @@ export function CaseFiles() {
 							className="grid gap-x-12 gap-y-5 border-b border-border py-10 lg:grid-cols-12"
 						>
 							<div className="lg:col-span-4">
-								<h3 className="text-step-2 font-semibold tracking-heading text-balance">
+								<h3 className="text-step-2 font-semibold tracking-[-0.01em] text-balance">
 									{name}
 								</h3>
 								<p className="mt-2 text-sm text-text-muted">{project.metrics[0]?.value}</p>

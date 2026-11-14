@@ -18,7 +18,7 @@ export function ContactCTA() {
 				<div className="lg:col-span-7">
 					<h2
 						id="contact-heading"
-						className="text-step-6 leading-tight font-semibold tracking-display text-balance"
+						className="text-step-6 leading-[1.05] font-semibold tracking-[-0.03em] text-balance"
 					>
 						{t("ctaPrimary")}
 					</h2>

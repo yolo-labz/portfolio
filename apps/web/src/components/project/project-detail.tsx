@@ -42,7 +42,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 				</Link>
 
 				<header className="mt-6 max-w-4xl">
-					<h1 className="text-step-5 leading-tight font-semibold tracking-display text-balance">
+					<h1 className="text-step-5 leading-[1.1] font-semibold tracking-display text-balance">
 						{project.title}
 					</h1>
 					<p className="mt-5 max-w-measure text-step-1 leading-body text-text-muted">
@@ -102,7 +102,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 					<div className="min-w-0 space-y-14 lg:col-span-8">
 						{arc.length > 0 && (
 							<section aria-labelledby="decision-record">
-								<h2 id="decision-record" className="text-step-2 font-semibold tracking-heading">
+								<h2 id="decision-record" className="text-step-2 font-semibold tracking-[-0.01em]">
 									{ui("decisionRecord")}
 								</h2>
 								<dl className="mt-6 border-t border-border">
@@ -122,7 +122,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 						)}
 
 						<section aria-labelledby="problem" className="max-w-measure">
-							<h2 id="problem" className="text-step-2 font-semibold tracking-heading">
+							<h2 id="problem" className="text-step-2 font-semibold tracking-[-0.01em]">
 								{ui("problemHeading")}
 							</h2>
 							<p className="mt-4 leading-body text-text-muted">
@@ -131,14 +131,14 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 						</section>
 
 						<section aria-labelledby="solution" className="max-w-measure">
-							<h2 id="solution" className="text-step-2 font-semibold tracking-heading">
+							<h2 id="solution" className="text-step-2 font-semibold tracking-[-0.01em]">
 								{ui("solutionHeading")}
 							</h2>
 							<p className="mt-4 leading-body text-text-muted">{t(`${slug}.solutionSummary`)}</p>
 						</section>
 
 						<section aria-labelledby="overview" className="max-w-measure">
-							<h2 id="overview" className="text-step-2 font-semibold tracking-heading">
+							<h2 id="overview" className="text-step-2 font-semibold tracking-[-0.01em]">
 								{ui("overviewHeading")}
 							</h2>
 							<p className="mt-4 leading-body text-text-muted">{t(`${slug}.description`)}</p>
