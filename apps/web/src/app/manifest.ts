@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
 			"Production-grade data pipelines, automation systems, and full-stack applications.",
 		start_url: "/",
 		display: "standalone",
-		background_color: "#1a1a2e",
-		theme_color: "#1a1a2e",
+		background_color: "#1e1e2e",
+		theme_color: "#1e1e2e",
 		// Next.js only emits metadata image routes for the reserved file names
 		// (icon, icon1, icon2, apple-icon, opengraph-image). The previous
 		// icon-192/icon-512 files were never routed, so both entries 404'd — the
