@@ -28,7 +28,7 @@ export function LocaleSwitcher() {
 						type="button"
 						onClick={() => router.replace(pathname, { locale: loc })}
 						aria-current={loc === active ? "true" : undefined}
-						className={`inline-flex min-h-6 min-w-6 items-center justify-center ${
+						className={`inline-flex min-h-11 min-w-11 items-center justify-center ${
 							loc === active ? "text-accent" : "text-text-muted transition-colors hover:text-text"
 						}`}
 					>

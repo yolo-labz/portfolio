@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { ArrowRight } from "@/components/shared/icons";
+import { ArrowRight, ArrowUpRight } from "@/components/shared/icons";
 import { fleetCaseSlugs, projects } from "@/data/projects";
 import { Link } from "@/i18n/navigation";
 
@@ -58,6 +58,16 @@ export function FleetCases() {
 										<span className="sr-only">: {name}</span>
 										<ArrowRight />
 									</Link>
+									{project.links.source && (
+										<a
+											href={project.links.source}
+											className="mt-3 ml-6 inline-flex min-h-11 items-center gap-2 text-sm text-link underline decoration-border underline-offset-4"
+										>
+											{t("code")}
+											<span className="sr-only">: {name}</span>
+											<ArrowUpRight />
+										</a>
+									)}
 								</div>
 							</li>
 						);

@@ -30,16 +30,17 @@
 		"caseFile": "Caso de cliente",
 		"repository": "Repositório",
 		"note": "O trabalho com clientes é anonimizado. Os repositórios são públicos em <link>github.com/yolo-labz</link>.",
-		"renderAlt": "Gremlin programador verde, de orelhas pontudas e sorriso de presas, digitando num teclado, com detalhes de código em malva"
+		"renderAlt": "O gremlin da yolo-labz digitando num teclado, com olhos escuros e angulosos de pupilas roxas, orelhas pontudas e um sorriso pequeno com presas"
 	},
 	"CaseFiles": {
 		"heading": "Quatro registros de decisão de trabalho regulado",
 		"read": "Ler o registro completo"
 	},
 	"FleetCases": {
-		"heading": "Agentes sob controle: três registros da minha própria frota",
-		"intro": "Rodo uma frota de agentes de código nas minhas próprias máquinas. Quando um controle erra ou falta, escrevo o mesmo registro de decisão que escrevo para trabalho de cliente: a restrição, a decisão, o número, o custo.",
-		"read": "Ler o registro"
+		"heading": "Agentes sob controle: cinco registros de decisão",
+		"intro": "Três vêm da minha própria frota de agentes e dois de repositórios públicos que você pode abrir. Cada um é o registro que eu escreveria para trabalho de cliente: a restrição, a decisão, o número, o custo.",
+		"read": "Ler o registro",
+		"code": "Abrir o código"
 	},
 	"Services": {
 		"heading": "Comece por um veredito. Escale quando a prova se sustentar.",
@@ -402,6 +403,24 @@
 			"constraint": "A recarga tinha de funcionar sob o wrapper do Nix sem que uma falha fosse jogada fora. O mesmo formato, um passo que não pode falhar, é como uma revisão de acessos, uma rotação de chave ou um job de sincronização fica verde sem fazer nada.",
 			"decision": "Casar pelo argv[0] em vez do nome do processo, e manter a busca em um só helper para que os três chamadores não se afastem. Testar contra iscas de argv forjado.",
 			"outcome": "A recarga chega ao processo embrulhado, e a checagem no repositório falha em três casos com a busca antiga por nome. Custo: um helper de 19 linhas, um teste de 39 linhas, 82 linhas adicionadas em sete arquivos e quatro dias de cores erradas."
+		},
+		"throttle-gateway-incident": {
+			"tagline": "Um gateway que dá o ritmo do tráfego dos agentes deixou o teto de concorrência cair de 64 para 1 em 5 minutos e 18 segundos e depois recusou 16 requisições no dia. O registro do incidente tem um comprovante para cada afirmação.",
+			"description": "O throttle gateway fica entre uma frota de agentes de código e um provedor de modelo. Ele reduz um teto de concorrência compartilhado quando o provedor reage com recusa e o aumenta de novo a cada sucesso. Em 19 de outubro de 2026 uma faixa recebeu uma sequência de respostas 429 sem o cabeçalho Retry-After, e cada uma contou como recusa do provedor. O teto foi de 64 ao piso de 1 entre 16:47:10 e 16:52:28 e ficou lá por cerca de duas horas. O registro do incidente está no repositório, com a linha de log ou de código por trás de cada afirmação.",
+			"problemStatement": "Com o teto em 1 e gerações de 171 a 304 segundos, a checagem de admissão não conseguia prometer a uma segunda requisição um início dentro do limite de espera de 180 segundos. Ela recusava com 503 em vez de enfileirar. Isso gerou 16 respostas 503 por tempo de fila: duas isoladas, um grupo de 4 e uma tempestade de 10 em 8 clientes. Uma sessão de agente terminou no laço de tentativas. Um reinício às 18:48 não mudou nada, porque o processo novo registrou a faixa em 12 e voltou a 1 em 4 minutos e 51 segundos.",
+			"solutionSummary": "Duas mudanças. Um piso de 2 para o teto dessa faixa, e um limite de 240 segundos para a duração de uma espera por Retry-After em quatro gateways. Um segundo reinício às 19:10 aplicou o piso. A faixa voltou a 17 requisições concorrentes 10 minutos depois e a 59 após 38 minutos.",
+			"constraint": "Um gateway que dá o ritmo dos agentes não pode virar a indisponibilidade. Sem Retry-After nem cabeçalhos de limite, ele não distingue a própria sobrecarga da do provedor, e a regra de redução dispara nos dois casos.",
+			"decision": "Escrever o registro antes de encerrar o incidente: linha do tempo, cadeia de causa raiz, raio de impacto separado em confirmado e não atribuível, e cada mitigação com o comando que a verifica. Entregar a menor mudança que impede o colapso e dizer no mesmo documento que ela adia a tempestade e não a remove.",
+			"outcome": "A faixa se recuperou 38 minutos depois da entrada do piso. O registro nomeia o que continua em aberto. Com o teto em 2, a terceira requisição concorrente ainda é recusada, e o grupo das 17:57 mostra isso. Respostas 429 sem cabeçalho ainda reduzem o teto: mais seis vezes entre 19:20 e 19:27. Uma correção estrutural precisa de um piso derivado do tempo de serviço medido, ou de uma política que enfileira em vez de recusar. Custo: uma faixa com 1 requisição por duas horas e uma sessão de agente perdida."
+		},
+		"quality-gates-selftest": {
+			"tagline": "Um repositório que entrega três checagens obrigatórias rodou as próprias suítes de teste em nenhum pull request. Ligar o CI achou um bug de shell na primeira execução, e uma suíte nova achou uma chave que não fazia nada.",
+			"description": "O quality-gates empacota três gates de CI como uma única GitHub Action: code-slop, alignment e um linter de Gherkin. Os consumidores o fixam por commit, e no repositório público wa ele é uma checagem obrigatória. Em 10 de agosto de 2026 o repositório tinha zero workflows e zero execuções, então as suítes dos gates não rodavam em nenhum pull request. Um bug em um gate chegaria a todos os consumidores no próximo avanço de versão, sem nada no meio do caminho.",
+			"problemStatement": "Um merge verde era lido como prova de um efeito que ele não tinha. As suítes existiam: 9 testes de discriminação para o linter de Gherkin, 7 para o wrapper, o ratchet de dependências. Nenhuma rodava no CI. O alignment-gate não tinha suíte nenhuma, apesar de ser checagem obrigatória no wa. A mesma auditoria mediu o alcance das checagens. O wa tem 11 checagens obrigatórias. Os seis repositórios privados da frota responderam 403 na proteção de branch e não têm nenhuma, então a mesma action ali é um sinal que se pode ignorar no merge.",
+			"solutionSummary": "Um workflow de selftest roda checagens de sintaxe de shell, shellcheck, as três suítes e o actionlint sobre o action.yml, com o actionlint instalado de um tarball fixado e verificação de SHA-256. Depois, 27 casos de discriminação para o alignment-gate, cada regra pareada com o quase-acerto que não pode disparar. Depois, proteção de branch no próprio repositório: dois contextos obrigatórios, só squash, atualizado antes do merge.",
+			"constraint": "Um gate que acusa tudo é desligado, e um que não acusa nada certifica trabalho inacabado. Testar um só sentido não pega nenhum dos dois. Um repositório cujo produto é endurecimento de cadeia de suprimentos também não podia baixar o próprio linter com curl entregue ao bash.",
+			"decision": "Parear cada regra com o seu quase-acerto, rodar as suítes em todo pull request e declarar no README quais repositórios a action bloqueia e quais ela só reporta. O README diz que o repositório estava na lacuna que ele documenta, e o pull request seguinte a fecha.",
+			"outcome": "O shellcheck, ligado no primeiro pull request, achou `A && B || C` no alignment-gate: quando a varredura de caminho falhava, ela também rodava a varredura de diff e juntava duas saídas. Os 27 casos descobriram na primeira execução que ALIGN_FAIL_ON_DEBUG=1 não fazia nada, porque a chave só rebaixa erros e a regra estava declarada como aviso. Uma palavra resolveu. Custo: 139 linhas adicionadas no primeiro pull request e 214 no segundo."
 		}
 	},
 	"ProjectDetail": {

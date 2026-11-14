@@ -403,6 +403,47 @@ export const projects: Project[] = [
 		featured: false,
 		hasArc: true,
 	},
+	{
+		slug: "throttle-gateway-incident",
+		title: "Throttle gateway: a concurrency ceiling that fell from 64 to 1",
+		techStack: [
+			{ name: "Python", category: "language" },
+			{ name: "aiohttp", category: "framework" },
+			{ name: "AIMD pacing", category: "service" },
+			{ name: "systemd", category: "infrastructure" },
+		],
+		metrics: [
+			{ label: "Collapse", value: "ceiling 64 to 1 in 5 min 18 s, pinned for about 2 h" },
+			{ label: "Refused", value: "16 queue-timeout 503s, 1 agent session lost" },
+			{ label: "Recovery", value: "17 after 10 min, 59 after 38 min" },
+			{ label: "Still open", value: "at a ceiling of 2 the third request is refused" },
+		],
+		links: {
+			source:
+				"https://github.com/yolo-labz/anthropic-throttle-proxy/blob/71ed5c3f11ca485b424d19cadb04d50808f43614/docs/incidents/2026-10-19-free-lane-collapse.md",
+		},
+		featured: false,
+		hasArc: true,
+	},
+	{
+		slug: "quality-gates-selftest",
+		title: "quality-gates: three gates the fleet pins, none of them had CI",
+		techStack: [
+			{ name: "Bash", category: "language" },
+			{ name: "Node.js", category: "language" },
+			{ name: "GitHub Actions", category: "infrastructure" },
+			{ name: "Gherkin AST", category: "service" },
+		],
+		metrics: [
+			{ label: "Before", value: "0 workflows, 0 runs, suites on no pull request" },
+			{ label: "Added", value: "27 discrimination cases for alignment-gate" },
+			{ label: "Found", value: "a shell bug and a switch that did nothing" },
+			{ label: "Cost", value: "139 and 214 added lines in two pull requests" },
+		],
+		links: { source: "https://github.com/yolo-labz/quality-gates/pull/7" },
+		featured: false,
+		hasArc: true,
+	},
 ];
 
 // The home index and the case-study prev/next walk share one order: the four
@@ -415,13 +456,15 @@ const caseFileSlugs = [
 	"multilingual-rag",
 ] as const;
 
-// Records from running my own agent fleet. They are decision records like the client
+// Records from running my own agent fleet, and two from public repositories. They are decision records like the client
 // case files, but they are not in the home index (its ten rows are a layout contract)
 // and not on the open-source shelf; the home page shows them in their own section.
 export const fleetCaseSlugs = [
 	"fleet-refusal-guard",
 	"fleet-workspace-guard",
 	"fleet-silent-reload",
+	"throttle-gateway-incident",
+	"quality-gates-selftest",
 ] as const;
 
 export type WorkKind = "caseFile" | "repository";
