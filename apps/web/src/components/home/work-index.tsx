@@ -20,7 +20,7 @@ export function WorkIndex() {
 		<section
 			id="projects"
 			aria-labelledby="hero-heading"
-			className="scroll-mt-14 px-6 pt-24 pb-16 sm:pt-28 lg:pt-20"
+			className="scroll-mt-14 px-6 pt-24 pb-16 sm:pt-28 lg:pt-16"
 		>
 			<div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto] items-start gap-x-4 lg:grid-cols-12 lg:gap-x-12">
 				<h1
@@ -56,9 +56,21 @@ export function WorkIndex() {
 				</picture>
 
 				<div className="col-span-2 lg:col-span-8 lg:col-start-1">
+					{/* Ten-second test: the role and one proof sit above the index, so the
+					    first screen answers "what do you do" and "show me" before any scroll. */}
+					<p className="mt-5 text-base leading-relaxed text-text">{hero("lead")}</p>
+					<p className="mt-1.5 text-sm leading-relaxed text-text-muted">
+						<span className="font-medium text-accent">{hero("proofLabel")}:</span>{" "}
+						<Link
+							href="/projects/compliance-tax-agent"
+							className="underline decoration-border underline-offset-4 transition-colors hover:text-accent focus-visible:text-accent"
+						>
+							{hero("proof")}
+						</Link>
+					</p>
 					<h2 className="sr-only">{t("heading")}</h2>
 					{/* Subgrid: every row shares one set of columns, sized to the longest name. */}
-					<ol className="mt-8 border-t border-border sm:mt-10 sm:grid sm:grid-cols-[max-content_minmax(0,1fr)_max-content] sm:gap-x-6 lg:mt-8">
+					<ol className="mt-8 border-t border-border sm:mt-8 sm:grid sm:grid-cols-[max-content_minmax(0,1fr)_max-content] sm:gap-x-6 lg:mt-6">
 						{workIndex.map(({ project, kind, name }, i) => (
 							<li
 								key={project.slug}

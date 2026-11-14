@@ -20,7 +20,10 @@
 	"Hero": {
 		"headingLead": "Los stacks de IA reprueban su primera auditoría en tres puntos:",
 		"headingSeams": "trazabilidad del prompt, origen de lo recuperado y prueba del resultado.",
-		"body": "Construyo sistemas RAG y de agentes para cargas reguladas: banca, fiscal y legal. El rastro de auditoría es el entregable. Un número sin fuente es una falla de cumplimiento, así que la arquitectura nunca le confía al modelo que recuerde dónde leyó algo. Construido conforme a LGPD, BCB 4.893 y la obligación de registro del Artículo 12 del EU AI Act."
+		"body": "El rastro de auditoría es el entregable. Un número sin fuente es una falla de cumplimiento, así que la arquitectura nunca le confía al modelo que recuerde dónde leyó algo. Construido conforme a LGPD, BCB 4.893 y la obligación de registro del Artículo 12 del EU AI Act.",
+		"lead": "Construyo sistemas RAG y de agentes para cargas reguladas: banca, fiscal y legal.",
+		"proofLabel": "Prueba",
+		"proof": "Agente de declaración de impuestos con tope de 40 turnos por declaración, cada número revalidado contra su fuente."
 	},
 	"Index": {
 		"heading": "Índice del trabajo",
@@ -32,6 +35,11 @@
 	"CaseFiles": {
 		"heading": "Cuatro registros de decisión de trabajo regulado",
 		"read": "Leer el registro completo"
+	},
+	"FleetCases": {
+		"heading": "Agentes bajo control: tres registros de mi propia flota",
+		"intro": "Opero una flota de agentes de código en mis propias máquinas. Cuando un control falla o falta, escribo el mismo registro de decisión que escribo para el trabajo con clientes: la restricción, la decisión, el número, el costo.",
+		"read": "Leer el registro"
 	},
 	"Services": {
 		"heading": "Empieza con un veredicto. Escala cuando la prueba aguante.",
@@ -367,6 +375,33 @@
 			"description": "Una extensión MV3 sin empaquetar cargada en un perfil Chromium dedicado, emparejada con un relay Python de stdlib en 127.0.0.1:9224. Los trabajos pasan por chrome.cookies, chrome.scripting y chrome.debugger y vuelven como JSON a quien llamó.",
 			"problemStatement": "Enganchar un driver de automatización al perfil de navegación diario pone automatización y sesiones personales en el mismo navegador, y la ruta por AppleScript solo existe en macOS.",
 			"solutionSummary": "El trabajo pasa por una extensión dentro de un perfil dedicado y por un relay localhost que cualquier herramienta hermana puede invocar. Los clics de debug usan chrome.debugger y el DevTools Protocol, que es entrada CDP y no un mecanismo aparte de confianza de evento; revisa las restricciones de dominio de la extensión antes de usarla."
+		},
+		"fleet-refusal-guard": {
+			"tagline": "Un guardia sobre la salida de los agentes seguía frenando agentes que estaban trabajando. Conté primero: 127 alertas en 76.474 mensajes, 126 equivocadas. Después del arreglo, una.",
+			"description": "El guardia lee lo que dice un agente de código y lo redirige cuando el texto parece una negativa. Decide con una tabla de frases, y cada frase es un juicio sobre el trabajo de otra persona. Medí la tabla contra todo el registro de mensajes y anoté los tres defectos con sus conteos. Cambié solo esos tres. El fixture que fija el resultado revisa los dos sentidos: las falsas alertas siguen fuera y las negativas verdaderas siguen detectándose.",
+			"problemStatement": "El guardia redirigió a un agente en medio de una tarea porque un entregable de 3.652 caracteres contenía las palabras \"I can't even\". En todo el registro, 127 de 76.474 mensajes del asistente coincidieron con la tabla, y 126 de esos 127 eran el agente nombrando su propio método dentro de un trabajo en curso: \"which I won't do\", \"I won't merge without green CI\", \"out of scope\" sobre un archivo.",
+			"solutionSummary": "Tres defectos, tres arreglos estrechos. \"Out of scope\" contaba como negativa y como su propia base de política, así que la comprobación se confirmaba sola. Palabras sueltas como \"policy\" y \"harm\" contaban como base, así que cualquier frase que mencionara una regla que el agente estaba cumpliendo parecía un rechazo. Una negativa débil contaba si una palabra de política aparecía en cualquier parte del mensaje. Ahora la base tiene que estar en la frase de la propia negativa, y la negativa tiene que ser la respuesta, no una cláusula que sigue hacia un plan.",
+			"constraint": "Un guardia que frena agentes debe lo que debe un control de auditoría: sus falsos positivos son un costo que alguien paga, y sin un conteo nadie sabe cuánto. El registro era la única evidencia, y el arreglo no podía hacer que una negativa real fuera más fácil de pasar por alto.",
+			"decision": "Medir la tabla contra los 76.474 mensajes antes de tocarla. Arreglar los tres defectos que señalaron los conteos. Fijar los dos sentidos en un fixture: nueve negativas verdaderas del corpus del 31 de octubre y tres marcadas a mano del registro del propio guardia tienen que seguir detectándose. Descartado: una ventana más amplia para textos con tono de daño. Con tres tamaños de ventana recuperó 13, 15 y 19 de 27, y solo donde el sustantivo de daño ya estaba en la frase de la negativa. Esa clase necesita un detector propio.",
+			"outcome": "Las alertas sobre trabajo en curso bajaron de 127 a 1, y esa una rechaza una instrucción de forma abierta. Las redirecciones en el registro del propio guardia bajaron de 17 a 3. Las nueve negativas verdaderas y las tres marcadas a mano siguen detectándose. La clase de daño sigue como brecha conocida, anotada junto al fixture."
+		},
+		"fleet-workspace-guard": {
+			"tagline": "Cerrar el último panel de un workspace borra el workspace, y nada lo avisa. Hice que la confirmación nombrara lo que destruye y añadí un reparador para las pérdidas que un guardia no evita.",
+			"description": "herdr es el multiplexor de terminal donde corren los agentes. Su comando de cerrar se ve igual cuando ordenas una pestaña y cuando borras un workspace con todos los agentes dentro, y no hay deshacer. El 10 de noviembre de 2026, dos cierres de panel eliminaron un workspace a las 11:18. La flota siguió corriendo con 84 plazas de agente en 13 workspaces durante dos horas, hasta que alguien lo notó.",
+			"problemStatement": "El guardia existente contaba cierres. Un cierre queda debajo de cualquier umbral, así que un acto del tamaño de un workspace pasó como un lote de uno, y un conteo no dice qué workspace se va. La pérdida vino después de agentes muertos por falta de memoria: los agentes murieron, se cerraron los últimos paneles y el workspace se fue con ellos.",
+			"solutionSummary": "Dos controles. Una regla aparte, la C1w, rechaza un cierre que puede demostrar que vacía un workspace, salvo que el token de confirmación nombre ese workspace. Si el conteo de paneles es ilegible, el cierre pasa como no demostrable en lugar de contarse como cero. El segundo control es un reparador con un temporizador de cinco minutos. Restaura un workspace que un manifiesto reciente vio y que la sesión activa ya no tiene, y nunca cierra ni renombra nada.",
+			"constraint": "Una confirmación solo es un control si nombra lo que destruye. Y una reparación que trae workspaces de vuelta tampoco puede deshacer un workspace que alguien cerró a propósito.",
+			"decision": "Nombrar el objeto en el token. Reparar a partir de evidencia registrada, con cuatro frenos: un workspace vivo en otra sesión se movió, no se perdió; una lista de retirados mantiene cerrado lo que se cerró a propósito, y una lista ilegible detiene la ejecución completa; un enfriamiento evita que una reparación que falla se convierta en un bucle cada cinco minutos; una sesión cuyo manifiesto envejeció está dormida, no perdida. Los 13 casos de prueba del reparador cubren cada freno.",
+			"outcome": "El arreglo se integró esa misma tarde, menos de cinco horas después de la pérdida. En la flota en vivo vacié un workspace de prueba cerrando su último panel, y el reparador lo recreó e inició el agente en el panel nuevo dentro de un ciclo del temporizador. Costo: dos cambios y unas 850 líneas añadidas. Los 28 hallazgos de auditoría de la flota siguen abiertos, porque alinear ese catálogo es un cambio aparte."
+		},
+		"fleet-silent-reload": {
+			"tagline": "Cada recarga de tema encontraba la terminal por el nombre del proceso. El wrapper de Nix cambió el nombre, y un \"|| true\" al final tiró el error. Durante cuatro días no pasó nada y nada lo avisó.",
+			"description": "Tres llamadores recargan Ghostty cuando cambia la paleta: una unit de systemd, un post-hook de plantilla y un script de recarga. Los tres buscaban el proceso por nombre. En Nix el binario viene envuelto y el nombre pasa a ser .ghostty-wrappe, así que la búsqueda no encontraba nada y el error se descartaba. Ninguna ventana siguió un cambio de paleta desde el 5 de noviembre. Lo confirmé pidiéndole a un panel su color de fondo: seguía respondiendo con los colores del arranque hasta una señal manual.",
+			"problemStatement": "Un paso que termina en \"|| true\" no puede fallar, así que su éxito no dice nada. La recarga existía, corría en cada cambio de paleta y decía que todo estaba bien, y no hacía nada. Nadie podía saber que había dejado de funcionar.",
+			"solutionSummary": "Un helper compartido ahora encuentra el proceso por argv[0], el nombre que el wrapper conserva, y los tres llamadores lo usan. Una comprobación de comportamiento le entrega al helper nombres de proceso falsificados como señuelos. La búsqueda antigua por nombre falla en tres de esos casos.",
+			"constraint": "La recarga tenía que funcionar bajo el wrapper de Nix sin que se tirara un fallo. La misma forma, un paso que no puede fallar, es como una revisión de accesos, una rotación de claves o un job de sincronización se queda en verde sin hacer nada.",
+			"decision": "Buscar por argv[0] en lugar del nombre del proceso, y mantener la búsqueda en un solo helper para que los tres llamadores no se separen. Probarlo contra señuelos de argv falsificado.",
+			"outcome": "La recarga llega al proceso envuelto, y la comprobación del repositorio falla en tres casos con la búsqueda antigua por nombre. Costo: un helper de 19 líneas, una prueba de 39 líneas, 82 líneas añadidas en siete archivos y cuatro días de colores equivocados."
 		}
 	},
 	"ProjectDetail": {
