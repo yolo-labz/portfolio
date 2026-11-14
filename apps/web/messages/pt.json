@@ -20,7 +20,10 @@
 	"Hero": {
 		"headingLead": "Stacks de IA reprovam na primeira auditoria em três pontos:",
 		"headingSeams": "proveniência do prompt, linhagem da recuperação, comprovação do resultado.",
-		"body": "Projeto e construo sistemas de RAG e de agentes para cargas reguladas: bancário, fiscal, jurídico. A trilha de auditoria é a entrega. Um número sem rastreio de fonte é uma falha de compliance; a arquitetura nunca confia no modelo para lembrar de onde leu. Aderente à LGPD, à BCB 4.893 e à exigência de registro do Art. 12 do EU AI Act."
+		"body": "A trilha de auditoria é a entrega. Um número sem rastreio de fonte é uma falha de compliance; a arquitetura nunca confia no modelo para lembrar de onde leu. Aderente à LGPD, à BCB 4.893 e à exigência de registro do Art. 12 do EU AI Act.",
+		"lead": "Projeto e construo sistemas de RAG e de agentes para cargas reguladas: bancário, fiscal, jurídico.",
+		"proofLabel": "Prova",
+		"proof": "Agente de declaração fiscal com teto de 40 turnos por declaração, cada número revalidado contra a fonte."
 	},
 	"Index": {
 		"heading": "Índice do trabalho",
@@ -32,6 +35,11 @@
 	"CaseFiles": {
 		"heading": "Quatro registros de decisão de trabalho regulado",
 		"read": "Ler o registro completo"
+	},
+	"FleetCases": {
+		"heading": "Agentes sob controle: três registros da minha própria frota",
+		"intro": "Rodo uma frota de agentes de código nas minhas próprias máquinas. Quando um controle erra ou falta, escrevo o mesmo registro de decisão que escrevo para trabalho de cliente: a restrição, a decisão, o número, o custo.",
+		"read": "Ler o registro"
 	},
 	"Services": {
 		"heading": "Comece por um veredito. Escale quando a prova se sustentar.",
@@ -367,6 +375,33 @@
 			"description": "Uma extensão MV3 desempacotada carregada em um perfil Chromium dedicado, pareada com um relay Python de stdlib em 127.0.0.1:9224. As tarefas passam por chrome.cookies, chrome.scripting e chrome.debugger e voltam em JSON para quem chamou.",
 			"problemStatement": "Ligar um driver de automação ao perfil de navegação do dia a dia coloca automação e sessões pessoais no mesmo navegador, e a rota via AppleScript só existe no macOS.",
 			"solutionSummary": "O trabalho passa por uma extensão dentro de um perfil dedicado e por um relay localhost que qualquer ferramenta irmã pode chamar. Cliques de debug usam chrome.debugger e o DevTools Protocol, que é entrada CDP e não um mecanismo separado de confiança de evento; confira as restrições de domínio da extensão antes de usar."
+		},
+		"fleet-refusal-guard": {
+			"tagline": "Um guarda sobre a saída dos agentes continuava barrando agentes que estavam trabalhando. Contei primeiro: 127 alertas em 76.474 mensagens, 126 errados. Depois da correção, um.",
+			"description": "O guarda lê o que um agente de código diz e redireciona o agente quando o texto parece uma recusa. Ele decide por uma tabela de frases, e cada frase é um julgamento sobre o trabalho de outra pessoa. Medi a tabela contra o log inteiro de mensagens e anotei os três defeitos com suas contagens. Mudei só esses três. O fixture que fixa o resultado confere os dois sentidos: os falsos alertas continuam fora e as recusas verdadeiras continuam sendo pegas.",
+			"problemStatement": "O guarda redirecionou um agente no meio de uma tarefa porque uma entrega de 3.652 caracteres continha as palavras \"I can't even\". No log inteiro, 127 de 76.474 mensagens do assistente casaram com a tabela, e 126 dessas 127 eram o agente nomeando o próprio método dentro de um trabalho em andamento: \"which I won't do\", \"I won't merge without green CI\", \"out of scope\" sobre um arquivo.",
+			"solutionSummary": "Três defeitos, três correções estreitas. \"Out of scope\" contava como recusa e como a própria base de política, então a checagem se confirmava sozinha. Palavras soltas como \"policy\" e \"harm\" contavam como base, então qualquer frase que citasse uma regra que o agente estava obedecendo parecia uma negativa. Uma negativa fraca contava se uma palavra de política aparecesse em qualquer ponto da mensagem. Agora a base tem de estar na frase da própria negativa, e a negativa tem de ser a resposta, não uma oração que segue para um plano.",
+			"constraint": "Um guarda que barra agentes deve o que um controle de auditoria deve: seus falsos positivos são um custo que alguém paga, e sem contagem ninguém sabe o tamanho. O log era a única evidência, e a correção não podia tornar uma recusa de verdade mais fácil de passar.",
+			"decision": "Medir a tabela contra as 76.474 mensagens antes de mexer nela. Corrigir os três defeitos que as contagens apontaram. Fixar os dois sentidos em um fixture: nove recusas verdadeiras do corpus de 31 de outubro e três marcadas à mão a partir do log do próprio guarda precisam continuar sendo pegas. Descartado: uma janela maior para textos com tom de dano. Em três tamanhos de janela ela recuperou 13, 15 e 19 de 27, e só onde o substantivo de dano já estava na frase da negativa. Essa classe precisa de um detector próprio.",
+			"outcome": "Os alertas sobre trabalho em andamento caíram de 127 para 1, e esse um recusa uma instrução abertamente. Os redirecionamentos no log do próprio guarda caíram de 17 para 3. As nove recusas verdadeiras e as três marcadas à mão continuam sendo pegas. A classe de dano segue como lacuna conhecida, registrada ao lado do fixture."
+		},
+		"fleet-workspace-guard": {
+			"tagline": "Fechar o último painel de um workspace apaga o workspace, e nada avisa. Fiz a confirmação nomear o que destrói e depois acrescentei um reparador para as perdas que um guarda não impede.",
+			"description": "O herdr é o multiplexador de terminal onde os agentes rodam. O comando de fechar parece igual quando você arruma uma aba e quando apaga um workspace com todos os agentes dentro, e não há como desfazer. Em 10 de novembro de 2026, dois fechamentos de painel removeram um workspace às 11:18. A frota seguiu rodando com 84 vagas de agente em 13 workspaces por duas horas, até alguém perceber.",
+			"problemStatement": "O guarda existente contava fechamentos. Um fechamento fica abaixo de qualquer limite, então um ato do tamanho de um workspace passou como lote de um, e uma contagem não diz qual workspace some. A perda veio depois de agentes mortos por falta de memória: os agentes morreram, os últimos painéis foram fechados e o workspace foi junto.",
+			"solutionSummary": "Dois controles. Uma regra separada, a C1w, recusa um fechamento que consegue provar que esvazia um workspace, a menos que o token de confirmação nomeie esse workspace. Se a contagem de painéis estiver ilegível, o fechamento passa como não provável em vez de ser tratado como zero. O segundo controle é um reparador num timer de cinco minutos. Ele restaura um workspace que um manifesto recente viu e que a sessão ativa não tem mais, e nunca fecha nem renomeia nada.",
+			"constraint": "Uma confirmação só é um controle se nomeia o que destrói. E um reparo que traz workspaces de volta não pode desfazer um workspace que alguém fechou de propósito.",
+			"decision": "Nomear o objeto no token. Reparar a partir de evidência registrada, com quatro freios: um workspace ativo em outra sessão foi movido, não perdido; uma lista de aposentados mantém fechado o que foi fechado de propósito, e uma lista ilegível interrompe a execução inteira; um intervalo de espera impede que um reparo que falha vire laço a cada cinco minutos; uma sessão cujo manifesto envelheceu está dormindo, não perdida. Os 13 casos de teste do reparador cobrem cada freio.",
+			"outcome": "A correção entrou na mesma tarde, menos de cinco horas depois da perda. Na frota ao vivo, esvaziei um workspace de teste fechando o último painel, e o reparador o recriou e iniciou o agente no painel novo em um ciclo do timer. Custo: duas mudanças e cerca de 850 linhas adicionadas. Os 28 achados de auditoria da frota continuam abertos, porque alinhar esse catálogo é uma mudança à parte."
+		},
+		"fleet-silent-reload": {
+			"tagline": "Toda recarga de tema achava o terminal pelo nome do processo. O wrapper do Nix mudou o nome, e um \"|| true\" no fim jogou o erro fora. Por quatro dias nada aconteceu e nada avisou.",
+			"description": "Três chamadores recarregam o Ghostty quando a paleta muda: uma unit do systemd, um post-hook de template e um script de recarga. Os três achavam o processo pelo nome. No Nix o binário vem embrulhado e o nome vira .ghostty-wrappe, então a busca não achava nada e o erro era descartado. Nenhuma janela seguiu uma troca de paleta desde 5 de novembro. Confirmei perguntando a um painel pela cor de fundo: ele ainda respondia com as cores do boot até um sinal manual.",
+			"problemStatement": "Um passo que termina em \"|| true\" não pode falhar, então o sucesso dele não diz nada. A recarga existia, rodava a cada troca de paleta e dizia que estava tudo bem, e não fazia nada. Ninguém tinha como saber que ela tinha parado de funcionar.",
+			"solutionSummary": "Um helper compartilhado agora acha o processo pelo argv[0], o nome que o wrapper preserva, e os três chamadores o usam. Uma checagem de comportamento entrega ao helper nomes de processo forjados como iscas. A busca antiga por nome falha em três desses casos.",
+			"constraint": "A recarga tinha de funcionar sob o wrapper do Nix sem que uma falha fosse jogada fora. O mesmo formato, um passo que não pode falhar, é como uma revisão de acessos, uma rotação de chave ou um job de sincronização fica verde sem fazer nada.",
+			"decision": "Casar pelo argv[0] em vez do nome do processo, e manter a busca em um só helper para que os três chamadores não se afastem. Testar contra iscas de argv forjado.",
+			"outcome": "A recarga chega ao processo embrulhado, e a checagem no repositório falha em três casos com a busca antiga por nome. Custo: um helper de 19 linhas, um teste de 39 linhas, 82 linhas adicionadas em sete arquivos e quatro dias de cores erradas."
 		}
 	},
 	"ProjectDetail": {

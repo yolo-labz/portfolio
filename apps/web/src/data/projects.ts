@@ -344,6 +344,65 @@ export const projects: Project[] = [
 		links: { source: "https://github.com/yolo-labz/chrome-bridge" },
 		featured: true,
 	},
+	{
+		slug: "fleet-refusal-guard",
+		title: "Agent output guard: measured over 76,474 messages",
+		techStack: [
+			{ name: "TypeScript", category: "language" },
+			{ name: "pi extension", category: "framework" },
+			{ name: "Two-direction fixture", category: "service" },
+		],
+		metrics: [
+			{ label: "Corpus", value: "76,474 agent messages" },
+			{ label: "False flags", value: "127 before, 1 after" },
+			{ label: "True refusals", value: "9 of 9 and 3 of 3 still caught" },
+			{ label: "Cost", value: "5 files, about 350 added lines" },
+		],
+		links: {},
+		featured: false,
+		hasArc: true,
+	},
+	{
+		slug: "fleet-workspace-guard",
+		title: "Agent workspace guard: closing the last pane needs a name",
+		techStack: [
+			{ name: "TypeScript", category: "language" },
+			{ name: "Python", category: "language" },
+			{ name: "systemd timer", category: "infrastructure" },
+			{ name: "herdr", category: "service" },
+		],
+		metrics: [
+			{
+				label: "Loss",
+				value: "1 workspace deleted, 2 hours before anyone noticed (fleet of 84 seats)",
+			},
+			{ label: "Fix shipped", value: "same afternoon, under 5 hours" },
+			{ label: "Healer", value: "every 5 minutes, 4 brakes, 13 test cases" },
+			{ label: "Cost", value: "2 changes, about 850 added lines" },
+		],
+		links: {},
+		featured: false,
+		hasArc: true,
+	},
+	{
+		slug: "fleet-silent-reload",
+		title: "Silent failure: a reload that reported success for four days",
+		techStack: [
+			{ name: "Nix", category: "language" },
+			{ name: "Shell", category: "language" },
+			{ name: "Ghostty", category: "service" },
+			{ name: "systemd", category: "infrastructure" },
+		],
+		metrics: [
+			{ label: "Silent for", value: "4 days, 5 to 9 November 2026" },
+			{ label: "Callers affected", value: "3" },
+			{ label: "Old match, decoy cases failed", value: "3" },
+			{ label: "Cost", value: "7 files, 82 added lines" },
+		],
+		links: {},
+		featured: false,
+		hasArc: true,
+	},
 ];
 
 // The home index and the case-study prev/next walk share one order: the four
@@ -354,6 +413,15 @@ const caseFileSlugs = [
 	"event-driven-retail",
 	"legal-domain-rag",
 	"multilingual-rag",
+] as const;
+
+// Records from running my own agent fleet. They are decision records like the client
+// case files, but they are not in the home index (its ten rows are a layout contract)
+// and not on the open-source shelf; the home page shows them in their own section.
+export const fleetCaseSlugs = [
+	"fleet-refusal-guard",
+	"fleet-workspace-guard",
+	"fleet-silent-reload",
 ] as const;
 
 export type WorkKind = "caseFile" | "repository";

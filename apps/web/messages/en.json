@@ -20,7 +20,10 @@
 	"Hero": {
 		"headingLead": "AI stacks fail their first audit at three seams:",
 		"headingSeams": "prompt provenance, retrieval lineage, output attestation.",
-		"body": "I build RAG and agent systems for regulated work: banking, tax, legal. The audit trail is the deliverable there. A number without a source span is a compliance failure, so the architecture never trusts the model to remember where it read something. Built to LGPD, BCB 4.893, and the EU AI Act Art. 12 logging mandate."
+		"body": "In that work the audit trail is the deliverable. A number without a source span is a compliance failure, so the architecture never trusts the model to remember where it read something. Built to LGPD, BCB 4.893, and the EU AI Act Art. 12 logging mandate.",
+		"lead": "I build RAG and agent systems for regulated work: banking, tax, legal.",
+		"proofLabel": "Proof",
+		"proof": "Tax-filing agent capped at 40 tool turns per filing, every number re-validated against its source span."
 	},
 	"Index": {
 		"heading": "Index of work",
@@ -32,6 +35,11 @@
 	"CaseFiles": {
 		"heading": "Four decision records from regulated work",
 		"read": "Read the full record"
+	},
+	"FleetCases": {
+		"heading": "Agents under controls: three records from my own fleet",
+		"intro": "I run a fleet of coding agents on my own machines. When a control misfires or one is missing, I write the same decision record I write for client work: the constraint, the decision, the number, the cost.",
+		"read": "Read the record"
 	},
 	"Services": {
 		"heading": "Start with a verdict. Scale when the proof holds.",
@@ -367,6 +375,33 @@
 			"description": "An unpacked MV3 extension loaded into a dedicated Chromium profile, paired with a Python stdlib relay on 127.0.0.1:9224. Jobs dispatch through chrome.cookies, chrome.scripting and chrome.debugger input, and return JSON to the caller.",
 			"problemStatement": "Attaching an automation driver to the daily browsing profile puts automation and personal sessions in one browser, and the AppleScript route only exists on macOS.",
 			"solutionSummary": "Route the work through an extension inside a dedicated profile and a localhost relay any sibling tool can shell out to. Debug clicks use chrome.debugger and the DevTools Protocol, which is CDP input rather than a separate event-trust mechanism; check the extension's domain restrictions before use."
+		},
+		"fleet-refusal-guard": {
+			"tagline": "A guard on agent output kept stopping agents that were working. I counted first: 127 flags in 76,474 messages, 126 of them wrong. After the fix, one.",
+			"description": "The guard reads what a coding agent says and reroutes the agent when the text looks like a refusal. It decides from a table of phrases, and every phrase is a ruling on someone else's work. I measured the table against the whole message log and wrote down three defects with their counts. I changed only those three. The fixture that pins the result checks both directions: the false flags stay gone and the true refusals stay caught.",
+			"problemStatement": "The guard rerouted an agent in the middle of a task because a 3,652-character deliverable contained the words \"I can't even\". Across the log, 127 of 76,474 assistant messages matched the table, and 126 of the 127 were the agent naming its own method inside running work: \"which I won't do\", \"I won't merge without green CI\", \"out of scope\" on a file.",
+			"solutionSummary": "Three defects, three narrow fixes. \"Out of scope\" counted as a refusal and as its own policy ground, so the check confirmed itself. Bare words such as \"policy\" and \"harm\" counted as grounds, so any sentence that mentioned a rule the agent was obeying looked like a decline. A weak decline counted when a policy word appeared anywhere in the message. Now the ground has to sit in the decline's own sentence, and the decline has to be the answer, not a clause that carries on into a plan.",
+			"constraint": "A guard that stops agents owes what an audit control owes: its false positives are a cost someone pays, and without a count nobody can say how big. The log was the only evidence, and the fix could not make a real refusal easier to miss.",
+			"decision": "Measure the table against all 76,474 messages before touching it. Fix the three defects the counts named. Pin both directions in one fixture: nine true refusals from the 31 October corpus and three hand-labelled ones from the guard's own log must still be caught. Rejected: a wider window for harm-framed texts. At three window sizes it recovered 13, 15 and 19 of 27, and only where the harm noun already sat in the decline's sentence. That class needs its own detector.",
+			"outcome": "Flags on running work fell from 127 to 1, and that one refuses an instruction outright. Reroutes in the guard's own log fell from 17 to 3. All nine true refusals and all three hand-labelled ones are still caught. The harm class stays a known gap, written down next to the fixture."
+		},
+		"fleet-workspace-guard": {
+			"tagline": "Closing the last pane of a workspace deletes the workspace, and nothing says so. I made the confirmation name what it destroys, then added a healer for the losses a guard cannot prevent.",
+			"description": "herdr is the terminal multiplexer the agents run in. Its close command looks the same whether you are tidying a tab or deleting a workspace with every agent in it, and there is no undo. On 10 November 2026, two pane closes removed a workspace at 11:18. The fleet kept running with 84 agent seats across 13 workspaces for two hours, until a person noticed.",
+			"problemStatement": "The existing guard counted closes. One close sits below every threshold, so an act the size of a workspace passed as a batch of one, and a count cannot say which workspace goes. The loss followed agents killed for memory: the agents died, then the last panes were closed, and the workspace went with them.",
+			"solutionSummary": "Two controls. A separate rule, C1w, refuses a close it can prove empties a workspace unless the confirmation token names that workspace. If the pane count is unreadable, the close passes as unprovable instead of being guessed as zero. The second control is a healer on a five-minute timer. It restores a workspace that a recent manifest saw and the live session no longer has, and it never closes or renames anything.",
+			"constraint": "A confirmation is only a control if it names the thing it destroys. A repair that brings workspaces back also must not undo a workspace someone closed on purpose.",
+			"decision": "Name the object in the token. Heal from recorded evidence, with four brakes: a workspace that is live in another session is moved, not lost; a retirement list keeps a deliberate close closed, and an unreadable list stops the whole run; a cool-down keeps a failing heal from looping every five minutes; a session whose manifest has gone stale is asleep, not lost. The healer's 13 test cases cover each brake.",
+			"outcome": "The fix merged the same afternoon, under five hours after the loss. On the live fleet I emptied a probe workspace by closing its last pane, and the healer recreated it and started the agent on the fresh pane within one timer tick. Cost: two changes and about 850 added lines. The fleet's 28 standing audit findings stay open, because aligning that catalog is its own change."
+		},
+		"fleet-silent-reload": {
+			"tagline": "Every theme reload matched the terminal by process name. The Nix wrapper changed the name, and a trailing \"|| true\" threw the error away. For four days nothing happened and nothing said so.",
+			"description": "Three callers reload Ghostty when the palette changes: a systemd unit, a template post-hook and a reload script. All three matched the process by name. Under Nix the binary is wrapped and its name becomes .ghostty-wrappe, so the match found nothing and the error was discarded. No window followed a palette change from 5 November. I confirmed it by asking a pane for its background colour: it still answered with the boot colours until one manual signal.",
+			"problemStatement": "A step that ends in \"|| true\" cannot fail, so its success says nothing. The reload existed, ran on every palette change and reported fine, and it did nothing. Nobody could tell it had stopped working.",
+			"solutionSummary": "One shared helper now finds the process by argv[0], the name the wrapper keeps, and all three callers use it. A behavioural check feeds the helper forged process names as decoys. The old name match fails three of those cases.",
+			"constraint": "The reload had to work under the Nix wrapper without a failure being thrown away. The same shape, a step that cannot fail, is how an access review, a key rotation or a sync job stays green while it does nothing.",
+			"decision": "Match on argv[0] instead of the process name, and keep the match in one helper so the three callers cannot drift apart. Test it against forged-argv decoys.",
+			"outcome": "The reload reaches the wrapped process, and the check in the repo fails on the old name match in three cases. Cost: one 19-line helper, a 39-line test, 82 added lines across seven files, and four days of wrong colours."
 		}
 	},
 	"ProjectDetail": {
