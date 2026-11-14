@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { ArrowUpRight } from "@/components/shared/icons";
+import { contactEvent } from "@/lib/analytics";
 import { CONTACT_EMAIL } from "@/lib/constants";
 
 // Persuade close. The action is the address itself, set large and clickable, not a
@@ -28,7 +29,7 @@ export function ContactCTA() {
 				<div className="flex flex-col justify-end gap-6 lg:col-span-5">
 					<a
 						href={`mailto:${CONTACT_EMAIL}`}
-						className="inline-flex min-h-11 items-center self-start border-b-2 border-accent pb-1 font-mono text-step-2 text-accent break-all transition-colors hover:text-accent-hover"
+						className={`${contactEvent("cta", "email")} inline-flex min-h-11 items-center self-start border-b-2 border-accent pb-1 font-mono text-step-2 text-accent break-all transition-colors hover:text-accent-hover`}
 					>
 						{CONTACT_EMAIL}
 					</a>
@@ -36,7 +37,7 @@ export function ContactCTA() {
 						<li>
 							<a
 								href="https://github.com/phsb5321"
-								className="inline-flex min-h-11 items-center gap-2 text-text-muted underline decoration-border underline-offset-4 hover:text-text"
+								className={`${contactEvent("cta", "github")} inline-flex min-h-11 items-center gap-2 text-text-muted underline decoration-border underline-offset-4 hover:text-text`}
 							>
 								GitHub <ArrowUpRight />
 							</a>
@@ -44,7 +45,7 @@ export function ContactCTA() {
 						<li>
 							<a
 								href="https://linkedin.com/in/balbinopedro"
-								className="inline-flex min-h-11 items-center gap-2 text-text-muted underline decoration-border underline-offset-4 hover:text-text"
+								className={`${contactEvent("cta", "linkedin")} inline-flex min-h-11 items-center gap-2 text-text-muted underline decoration-border underline-offset-4 hover:text-text`}
 							>
 								LinkedIn <ArrowUpRight />
 							</a>

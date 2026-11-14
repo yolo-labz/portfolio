@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { contactEvent } from "@/lib/analytics";
 import { CONTACT_EMAIL } from "@/lib/constants";
 
 export function Footer() {
@@ -18,17 +19,26 @@ export function Footer() {
 						</Link>
 					</li>
 					<li>
-						<a href={`mailto:${CONTACT_EMAIL}`} className={link}>
+						<a
+							href={`mailto:${CONTACT_EMAIL}`}
+							className={`${link} ${contactEvent("footer", "email")}`}
+						>
 							{CONTACT_EMAIL}
 						</a>
 					</li>
 					<li>
-						<a href="https://github.com/phsb5321" className={link}>
+						<a
+							href="https://github.com/phsb5321"
+							className={`${link} ${contactEvent("footer", "github")}`}
+						>
 							GitHub
 						</a>
 					</li>
 					<li>
-						<a href="https://linkedin.com/in/balbinopedro" className={link}>
+						<a
+							href="https://linkedin.com/in/balbinopedro"
+							className={`${link} ${contactEvent("footer", "linkedin")}`}
+						>
 							LinkedIn
 						</a>
 					</li>

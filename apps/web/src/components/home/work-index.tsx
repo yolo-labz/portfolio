@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { ArrowRight } from "@/components/shared/icons";
 import { workIndex } from "@/data/projects";
 import { Link } from "@/i18n/navigation";
+import { proofEvent } from "@/lib/analytics";
 
 // First viewport (Experience mode): the work leads. The thesis is one sentence, the
 // index of ten works fills the rest, and the gremlin render sits beside it as the
@@ -63,7 +64,7 @@ export function WorkIndex() {
 						<span className="font-medium text-accent">{hero("proofLabel")}:</span>{" "}
 						<Link
 							href="/projects/compliance-tax-agent"
-							className="underline decoration-border underline-offset-4 transition-colors hover:text-accent focus-visible:text-accent"
+							className={`${proofEvent} underline decoration-border underline-offset-4 transition-colors hover:text-accent focus-visible:text-accent`}
 						>
 							{hero("proof")}
 						</Link>

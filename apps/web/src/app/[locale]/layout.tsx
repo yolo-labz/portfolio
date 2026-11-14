@@ -11,6 +11,7 @@ import { SITE_URL } from "@/lib/constants";
 import { inter, jetbrainsMono } from "@/lib/fonts";
 import { pageMeta } from "@/lib/share";
 import "../globals.css";
+import Script from "next/script";
 
 export async function generateMetadata({
 	params,
@@ -98,6 +99,14 @@ export default async function LocaleLayout({
 	return (
 		<html lang={locale} className={`${inter.variable} ${jetbrainsMono.variable}`}>
 			<body>
+				{/* Plausible CE, self-hosted, no cookies (same instance and script as the blog). The
+				    script ignores localhost, so dev, CI and Lighthouse runs record nothing. */}
+				<Script
+					defer
+					strategy="afterInteractive"
+					data-domain={new URL(SITE_URL).hostname}
+					src="https://plausible.home301server.com.br/js/script.outbound-links.tagged-events.js"
+				/>
 				<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml }} />
 				<a
 					href="#main-content"
