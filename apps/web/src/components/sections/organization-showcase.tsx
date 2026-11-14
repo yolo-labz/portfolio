@@ -1,7 +1,7 @@
 import { Badge } from "@portfolio/ui";
 import { useTranslations } from "next-intl";
 import { ArrowRight, ArrowUpRight } from "@/components/shared/icons";
-import { projects } from "@/data/projects";
+import { fleetCaseSlugs, projects } from "@/data/projects";
 import { Link } from "@/i18n/navigation";
 
 // Three capability entry points, not a popularity or uptime ranking. Keep the
@@ -15,7 +15,10 @@ const selectedSlugs = new Set([
 ]);
 const selected = projects.filter((project) => !project.featured && selectedSlugs.has(project.slug));
 const remaining = projects.filter(
-	(project) => !project.featured && !selectedSlugs.has(project.slug),
+	(project) =>
+		!project.featured &&
+		!selectedSlugs.has(project.slug) &&
+		!(fleetCaseSlugs as readonly string[]).includes(project.slug),
 );
 
 export function OrganizationShowcase() {
@@ -99,7 +102,7 @@ export function OrganizationShowcase() {
 							<li key={project.slug}>
 								<Link href={`/projects/${project.slug}`} className="block py-4 hover:underline">
 									<h4 className="break-words font-mono text-sm text-text">
-										{project.title.split(" — ")[0]}
+										{project.title.split(": ")[0]}
 									</h4>
 									<p className="mt-1 text-sm leading-relaxed text-text-muted">
 										{t(`${project.slug}.tagline`)}

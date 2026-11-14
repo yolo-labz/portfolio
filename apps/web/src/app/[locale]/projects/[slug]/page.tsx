@@ -29,13 +29,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	return pageMeta({
 		locale,
 		path: `/projects/${project.slug}`,
-		title: `${project.title} — Pedro Balbino`,
+		title: `${project.title} | Pedro Balbino`,
 		description: t(`${slug}.tagline`),
 		image: {
 			url: `/${locale}/projects/${project.slug}/opengraph-image`,
 			width: 1200,
 			height: 630,
-			alt: `${project.title} — decision record card`,
+			alt: `${project.title}, decision record card`,
 		},
 	});
 }

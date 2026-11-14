@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { projects } from "../../apps/web/src/data/projects";
+import { fleetCaseSlugs, projects } from "../../apps/web/src/data/projects";
 
 // Catalogue order, not editorial order: the shelf renders `projects` in array
 // order, so this list has to follow apps/web/src/data/projects.ts.
@@ -62,7 +62,10 @@ for (const locale of ["en", "pt", "es"]) {
 		await page.keyboard.press("Enter");
 		await expect(section.locator("details")).toHaveAttribute("open", "");
 		const remaining = projects.filter(
-			(project) => !project.featured && !selected.includes(project.slug),
+			(project) =>
+				!project.featured &&
+				!selected.includes(project.slug) &&
+				!(fleetCaseSlugs as readonly string[]).includes(project.slug),
 		);
 		await expect(section.locator("details a")).toHaveCount(remaining.length);
 		for (const project of remaining) {

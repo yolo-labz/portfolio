@@ -48,6 +48,7 @@
 			"!**/.next",
 			"!**/dist",
 			"!**/.turbo",
+			"!apps/web/src/design",
 			"!**/docs/evidence",
 			"!**/*.py",
 			"!**/__pycache__",

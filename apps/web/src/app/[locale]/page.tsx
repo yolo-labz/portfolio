@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { CaseFiles } from "@/components/home/case-files";
+import { FleetCases } from "@/components/home/fleet-cases";
 import { WorkIndex } from "@/components/home/work-index";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { OrganizationShowcase } from "@/components/sections/organization-showcase";
@@ -15,6 +16,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 		<>
 			<WorkIndex />
 			<CaseFiles />
+			<FleetCases />
 			<OrganizationShowcase />
 			<ServicesLadder />
 			<ContactCTA />

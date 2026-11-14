@@ -49,7 +49,7 @@ export interface Project {
 export const projects: Project[] = [
 	{
 		slug: "compliance-tax-agent",
-		title: "Compliance-grade tax-filing agent — Brazilian IRPF",
+		title: "Compliance-grade tax-filing agent: Brazilian IRPF",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "Typed-tool agent loop", category: "framework" },
@@ -89,7 +89,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "legal-domain-rag",
-		title: "Legal-domain RAG — per-jurisdiction retrieval, citations that hold",
+		title: "Legal-domain RAG: per-jurisdiction retrieval, citations that hold",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "AWS Bedrock", category: "service" },
@@ -99,7 +99,7 @@ export const projects: Project[] = [
 		],
 		metrics: [
 			{ label: "Stage", value: "proof-of-concept (2024)" },
-			{ label: "Retrieval", value: "per-jurisdiction indexes — no cross-regime bleed" },
+			{ label: "Retrieval", value: "per-jurisdiction indexes, no cross-regime bleed" },
 			{ label: "Citations", value: "deterministically validated, never from memory" },
 			{ label: "Cost", value: "serverless, usage-tracked" },
 		],
@@ -109,7 +109,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "multilingual-rag",
-		title: "Multilingual education chatbot — grounded retrieval, PT/EN",
+		title: "Multilingual education chatbot: grounded retrieval, PT/EN",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "Azure OpenAI", category: "service" },
@@ -120,7 +120,7 @@ export const projects: Project[] = [
 		metrics: [
 			{ label: "My role", value: "backend + data layer (consultant)" },
 			{ label: "Scale", value: "699K+ enrollment records" },
-			{ label: "Release gate", value: "frozen-eval — no silent regression" },
+			{ label: "Release gate", value: "frozen-eval, no silent regression" },
 			{ label: "Retrieval", value: "grounded, bilingual PT/EN" },
 		],
 		links: {},
@@ -129,7 +129,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "ai-document-processor",
-		title: "ai-document-processor — auditable document extraction pipeline",
+		title: "ai-document-processor: auditable document extraction pipeline",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "FastAPI", category: "framework" },
@@ -154,7 +154,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "wa",
-		title: "wa — WhatsApp daemon with an auditable trust boundary",
+		title: "wa: WhatsApp daemon with an auditable trust boundary",
 		techStack: [
 			{ name: "Go", category: "language" },
 			{ name: "whatsmeow", category: "framework" },
@@ -174,7 +174,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "serverless-data-api",
-		title: "serverless-data-api — the boring layers tutorials skip",
+		title: "serverless-data-api: the boring layers tutorials skip",
 		techStack: [
 			{ name: "Terraform", category: "infrastructure" },
 			{ name: "Python", category: "language" },
@@ -198,7 +198,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "exec-job-board",
-		title: "exec-job-board — multi-source data aggregation pipeline",
+		title: "exec-job-board: multi-source data aggregation pipeline",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "httpx", category: "framework" },
@@ -219,7 +219,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "claude-mac-chrome",
-		title: "claude-mac-chrome — Chrome automation for Claude Code on macOS",
+		title: "claude-mac-chrome: Chrome automation for Claude Code on macOS",
 		techStack: [
 			{ name: "Bash", category: "language" },
 			{ name: "AppleScript", category: "language" },
@@ -238,7 +238,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "linkedin-chrome-copilot",
-		title: "linkedin-chrome-copilot — per-locale LinkedIn form automation",
+		title: "linkedin-chrome-copilot: per-locale LinkedIn form automation",
 		techStack: [
 			{ name: "Bash", category: "language" },
 			{ name: "AppleScript", category: "language" },
@@ -254,7 +254,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "kokoro-speakd",
-		title: "kokoro-speakd — persistent Kokoro TTS daemon",
+		title: "kokoro-speakd: persistent Kokoro TTS daemon",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "ONNX Runtime", category: "framework" },
@@ -275,7 +275,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "claude-classroom-submit",
-		title: "claude-classroom-submit — autonomous Google Classroom turn-in",
+		title: "claude-classroom-submit: autonomous Google Classroom turn-in",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "Google Classroom API", category: "service" },
@@ -291,7 +291,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "fand",
-		title: "fand — Apple Silicon thermal daemon",
+		title: "fand: Apple Silicon thermal daemon",
 		techStack: [
 			{ name: "Rust", category: "language" },
 			{ name: "SMC", category: "service" },
@@ -308,7 +308,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "anthropic-throttle-proxy",
-		title: "anthropic-throttle-proxy — fleet-wide pacing and request admission",
+		title: "anthropic-throttle-proxy: fleet-wide pacing and request admission",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "aiohttp", category: "framework" },
@@ -327,7 +327,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: "chrome-bridge",
-		title: "chrome-bridge — extension plus localhost relay for Chromium automation",
+		title: "chrome-bridge: extension plus localhost relay for Chromium automation",
 		techStack: [
 			{ name: "Python", category: "language" },
 			{ name: "Chrome MV3 extension", category: "framework" },
@@ -344,6 +344,65 @@ export const projects: Project[] = [
 		links: { source: "https://github.com/yolo-labz/chrome-bridge" },
 		featured: true,
 	},
+	{
+		slug: "fleet-refusal-guard",
+		title: "Agent output guard: measured over 76,474 messages",
+		techStack: [
+			{ name: "TypeScript", category: "language" },
+			{ name: "pi extension", category: "framework" },
+			{ name: "Two-direction fixture", category: "service" },
+		],
+		metrics: [
+			{ label: "Corpus", value: "76,474 agent messages" },
+			{ label: "False flags", value: "127 before, 1 after" },
+			{ label: "True refusals", value: "9 of 9 and 3 of 3 still caught" },
+			{ label: "Cost", value: "5 files, about 350 added lines" },
+		],
+		links: {},
+		featured: false,
+		hasArc: true,
+	},
+	{
+		slug: "fleet-workspace-guard",
+		title: "Agent workspace guard: closing the last pane needs a name",
+		techStack: [
+			{ name: "TypeScript", category: "language" },
+			{ name: "Python", category: "language" },
+			{ name: "systemd timer", category: "infrastructure" },
+			{ name: "herdr", category: "service" },
+		],
+		metrics: [
+			{
+				label: "Loss",
+				value: "1 workspace deleted, 2 hours before anyone noticed (fleet of 84 seats)",
+			},
+			{ label: "Fix shipped", value: "same afternoon, under 5 hours" },
+			{ label: "Healer", value: "every 5 minutes, 4 brakes, 13 test cases" },
+			{ label: "Cost", value: "2 changes, about 850 added lines" },
+		],
+		links: {},
+		featured: false,
+		hasArc: true,
+	},
+	{
+		slug: "fleet-silent-reload",
+		title: "Silent failure: a reload that reported success for four days",
+		techStack: [
+			{ name: "Nix", category: "language" },
+			{ name: "Shell", category: "language" },
+			{ name: "Ghostty", category: "service" },
+			{ name: "systemd", category: "infrastructure" },
+		],
+		metrics: [
+			{ label: "Silent for", value: "4 days, 5 to 9 November 2026" },
+			{ label: "Callers affected", value: "3" },
+			{ label: "Old match, decoy cases failed", value: "3" },
+			{ label: "Cost", value: "7 files, 82 added lines" },
+		],
+		links: {},
+		featured: false,
+		hasArc: true,
+	},
 ];
 
 // The home index and the case-study prev/next walk share one order: the four
@@ -354,6 +413,15 @@ const caseFileSlugs = [
 	"event-driven-retail",
 	"legal-domain-rag",
 	"multilingual-rag",
+] as const;
+
+// Records from running my own agent fleet. They are decision records like the client
+// case files, but they are not in the home index (its ten rows are a layout contract)
+// and not on the open-source shelf; the home page shows them in their own section.
+export const fleetCaseSlugs = [
+	"fleet-refusal-guard",
+	"fleet-workspace-guard",
+	"fleet-silent-reload",
 ] as const;
 
 export type WorkKind = "caseFile" | "repository";
@@ -377,7 +445,7 @@ export const workIndex: WorkEntry[] = [
 		return {
 			project,
 			kind: "caseFile" as const,
-			name: project.title.split(" — ")[0] ?? project.title,
+			name: project.title.split(": ")[0] ?? project.title,
 		};
 	}),
 	...projects
