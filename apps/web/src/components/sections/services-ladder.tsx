@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { ArrowRight } from "@/components/shared/icons";
+import { contactEvent } from "@/lib/analytics";
 import { CONTACT_EMAIL } from "@/lib/constants";
 
 // Productized, deliverable-scoped engagements (not job titles, not billed hours).
@@ -70,7 +71,7 @@ export function ServicesLadder() {
 					{t("footer")}
 					<a
 						href={`mailto:${CONTACT_EMAIL}`}
-						className="inline-flex min-h-11 items-center gap-2 font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent"
+						className={`${contactEvent("services", "email")} inline-flex min-h-11 items-center gap-2 font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent`}
 					>
 						{t("footerCta")}
 						<ArrowRight />

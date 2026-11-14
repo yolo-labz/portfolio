@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import { contactEvent } from "@/lib/analytics";
 import { CONTACT_EMAIL } from "@/lib/constants";
 import { navItems } from "@/lib/navigation";
 import { LocaleSwitcher } from "./locale-switcher";
@@ -72,7 +73,7 @@ export function Header() {
 					<li>
 						<a
 							href={`mailto:${CONTACT_EMAIL}`}
-							className="inline-flex min-h-9 items-center rounded-sm bg-accent px-3.5 text-sm font-medium text-bg transition-colors hover:bg-accent-hover"
+							className={`${contactEvent("header", "email")} inline-flex min-h-9 items-center rounded-sm bg-accent px-3.5 text-sm font-medium text-bg transition-colors hover:bg-accent-hover`}
 						>
 							{cta("ctaPrimary")}
 						</a>
