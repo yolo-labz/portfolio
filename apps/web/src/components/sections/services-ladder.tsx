@@ -32,11 +32,11 @@ export function ServicesLadder() {
 				<div className="grid gap-6 lg:grid-cols-12 lg:gap-12">
 					<h2
 						id="services-heading"
-						className="text-step-4 leading-tight font-semibold tracking-[-0.02em] text-balance lg:col-span-5"
+						className="text-step-4 leading-tight font-semibold tracking-heading text-balance lg:col-span-5"
 					>
 						{t("heading")}
 					</h2>
-					<p className="max-w-[50ch] text-base leading-relaxed text-text-muted lg:col-span-7">
+					<p className="max-w-measure text-base leading-body text-text-muted lg:col-span-7">
 						{t("intro")}
 					</p>
 				</div>
@@ -55,8 +55,8 @@ export function ServicesLadder() {
 								{rung.offers.map((offer) => (
 									<li key={offer.name}>
 										<h4 className="font-medium text-text">{offer.name}</h4>
-										<p className="mt-2 text-sm leading-relaxed text-text-muted">{offer.scope}</p>
-										<p className="mt-3 text-sm leading-relaxed text-text">
+										<p className="mt-2 text-sm leading-body text-text-muted">{offer.scope}</p>
+										<p className="mt-3 text-sm leading-body text-text">
 											<span className="font-medium text-accent">{t("outcomeLabel")}</span>{" "}
 											{offer.outcome}
 										</p>

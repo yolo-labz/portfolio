@@ -19,12 +19,12 @@ export default async function ThesisPage({ params }: { params: Promise<{ locale:
 
 	return (
 		<article className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24 sm:pt-28">
-			<h1 className="text-step-5 leading-[1.1] font-semibold tracking-[-0.025em] text-balance">
+			<h1 className="text-step-5 leading-[1.1] font-semibold tracking-display text-balance">
 				{t("title")}
 			</h1>
-			<p className="mt-5 text-step-1 leading-relaxed text-text-muted">{t("subtitle")}</p>
+			<p className="mt-5 text-step-1 leading-body text-text-muted">{t("subtitle")}</p>
 
-			<div className="mt-12 space-y-6 text-base leading-relaxed text-text-muted [&_strong]:font-semibold [&_strong]:text-text">
+			<div className="mt-12 space-y-6 text-base leading-body text-text-muted [&_strong]:font-semibold [&_strong]:text-text">
 				<p>{t.rich("p1", { strong })}</p>
 				<p>{t.rich("p2", { strong })}</p>
 				<p>{t.rich("p3", { strong })}</p>

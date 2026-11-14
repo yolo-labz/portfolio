@@ -8,7 +8,7 @@ export function SkillsMatrix() {
 
 	return (
 		<section id="skills" aria-labelledby="skills-heading" className="mt-20">
-			<h2 id="skills-heading" className="text-step-3 font-semibold tracking-[-0.02em]">
+			<h2 id="skills-heading" className="text-step-3 font-semibold tracking-heading">
 				{t("heading")}
 			</h2>
 			<p className="mt-2 text-text-muted">{t("intro")}</p>
@@ -21,8 +21,8 @@ export function SkillsMatrix() {
 					>
 						<dt className="font-semibold text-text">{domain.domain}</dt>
 						<dd>
-							<p className="text-sm leading-relaxed text-text-muted">{domain.description}</p>
-							<p className="mt-3 font-mono text-xs leading-relaxed text-text">
+							<p className="text-sm leading-body text-text-muted">{domain.description}</p>
+							<p className="mt-3 font-mono text-xs leading-body text-text">
 								{domain.technologies.join(" · ")}
 							</p>
 						</dd>

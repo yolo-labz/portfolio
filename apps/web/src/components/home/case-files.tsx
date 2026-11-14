@@ -25,11 +25,11 @@ export function CaseFiles() {
 				<div className="grid gap-6 lg:grid-cols-12 lg:gap-12">
 					<h2
 						id="case-files-heading"
-						className="text-step-4 leading-tight font-semibold tracking-[-0.02em] text-balance lg:col-span-5"
+						className="text-step-4 leading-tight font-semibold tracking-heading text-balance lg:col-span-5"
 					>
 						{t("heading")}
 					</h2>
-					<p className="max-w-[50ch] text-base leading-relaxed text-text-muted lg:col-span-7">
+					<p className="max-w-measure text-base leading-body text-text-muted lg:col-span-7">
 						{hero("body")}
 					</p>
 				</div>
@@ -59,7 +59,7 @@ export function CaseFiles() {
 									<dt className="text-xs font-medium tracking-wide text-warn uppercase">
 										{ui("constraint")}
 									</dt>
-									<dd className="mt-2 text-base leading-relaxed text-text">
+									<dd className="mt-2 text-base leading-body text-text">
 										{projects(`${project.slug}.constraint`)}
 									</dd>
 								</div>
@@ -67,7 +67,7 @@ export function CaseFiles() {
 									<dt className="text-xs font-medium tracking-wide text-accent uppercase">
 										{ui("outcome")}
 									</dt>
-									<dd className="mt-2 text-base leading-relaxed text-text-muted">
+									<dd className="mt-2 text-base leading-body text-text-muted">
 										{projects(`${project.slug}.outcome`)}
 									</dd>
 								</div>

@@ -14,11 +14,11 @@ export default function NotFound() {
 			<div className="mx-auto max-w-3xl">
 				<h1
 					id="not-found-heading"
-					className="text-step-5 leading-[1.1] font-semibold tracking-[-0.025em] text-balance"
+					className="text-step-5 leading-[1.1] font-semibold tracking-display text-balance"
 				>
 					{t("title")}
 				</h1>
-				<p className="mt-5 max-w-[50ch] text-step-1 leading-relaxed text-text-muted">{t("body")}</p>
+				<p className="mt-5 max-w-measure text-step-1 leading-body text-text-muted">{t("body")}</p>
 				<Link
 					href="/"
 					className="mt-6 inline-flex min-h-11 items-center gap-2 font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent"

@@ -8,7 +8,7 @@ export function ExperienceTimeline() {
 
 	return (
 		<section id="experience" aria-labelledby="experience-heading" className="mt-20">
-			<h2 id="experience-heading" className="text-step-3 font-semibold tracking-[-0.02em]">
+			<h2 id="experience-heading" className="text-step-3 font-semibold tracking-heading">
 				{t("heading")}
 			</h2>
 			<p className="mt-2 text-text-muted">{t("intro")}</p>
@@ -25,7 +25,7 @@ export function ExperienceTimeline() {
 							<p className={`mt-1 text-sm ${entry.current ? "text-accent" : "text-text-muted"}`}>
 								{entry.company}
 							</p>
-							<ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-text-muted marker:text-overlay">
+							<ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-body text-text-muted marker:text-overlay">
 								{entry.deliverables.map((item) => (
 									<li key={item}>{item}</li>
 								))}

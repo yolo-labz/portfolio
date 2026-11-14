@@ -100,7 +100,7 @@ export function MobileNav() {
 					/>
 					<nav
 						ref={drawerRef}
-						className="drawer-panel fixed right-0 top-0 z-50 flex h-full w-72 flex-col bg-bg-elevated p-6 shadow-2xl md:hidden"
+						className="drawer-panel fixed right-0 top-0 z-50 flex h-full w-72 flex-col bg-bg-elevated p-6 shadow-float md:hidden"
 						role="dialog"
 						aria-modal="true"
 						aria-label="Navigation menu"
