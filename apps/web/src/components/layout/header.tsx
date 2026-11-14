@@ -23,7 +23,7 @@ export function Header() {
 			>
 				<Link
 					href="/"
-					className="inline-flex min-h-6 items-center font-mono text-sm font-medium text-text hover:text-accent transition-colors"
+					className="inline-flex min-h-11 items-center font-mono text-sm font-medium text-text hover:text-accent transition-colors"
 				>
 					{t("home")}
 				</Link>

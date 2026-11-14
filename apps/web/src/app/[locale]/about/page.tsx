@@ -166,7 +166,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 														href={row.url}
 														target="_blank"
 														rel="noopener noreferrer"
-														className="break-all font-mono text-xs text-link underline underline-offset-4"
+														className="inline-flex min-h-11 items-center break-all font-mono text-xs text-link underline underline-offset-4"
 													>
 														{row.url.replace(/^https?:\/\//, "")}
 													</a>
