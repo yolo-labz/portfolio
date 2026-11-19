@@ -29,8 +29,12 @@ for (const width of [360, 390, 430]) {
 	test(`open the document processor and return via the header at ${width}px`, async ({ page }) => {
 		await page.setViewportSize({ width, height: 844 });
 		await page.goto("/en");
-		const project = page.locator("#projects").getByRole("link", { name: /ai-document-processor/i });
-		await expect(project).toBeVisible();
+		const details = page.locator("#open-source details");
+		const summary = details.locator("summary");
+		await expectNoOverflow(page);
+		await summary.tap();
+		await expect(details).toHaveAttribute("open", "");
+		const project = details.getByRole("link", { name: /ai-document-processor/i });
 		await expectNoOverflow(page);
 		await tapLink(project, projectPath);
 
@@ -41,7 +45,7 @@ for (const width of [360, 390, 430]) {
 		await tapLink(home, "/en");
 
 		await expect(page).toHaveURL("/en");
-		await expect(project).toBeVisible();
+		await expect(summary).toBeVisible();
 		await expectNoOverflow(page);
 	});
 }
