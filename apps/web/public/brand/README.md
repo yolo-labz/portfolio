@@ -10,10 +10,9 @@ and scaled to 804 × 770 and 402 × 385. The soft floor shadow is dropped.
 | File | Bytes | sha256 |
 |---|---|---|
 | `gremlin-hero-at-keyboard-804x770.avif` | 24605 | see `sha256sum` |
-| `gremlin-hero-at-keyboard-804x770.webp` | 77818 | see `sha256sum` |
-| `gremlin-hero-at-keyboard-804x770.png` | 177752 | see `sha256sum` |
+| `gremlin-hero-at-keyboard-804x770.webp` | 63402 | see `sha256sum` (WebP q64; SSIM 0.9867 vs q80; size above 60000 target) |
 | `gremlin-hero-at-keyboard-402x385.avif` | 10909 | see `sha256sum` |
-| `gremlin-hero-at-keyboard-402x385.webp` | 32640 | see `sha256sum` |
+| `gremlin-hero-at-keyboard-402x385.webp` | 31086 | see `sha256sum` (WebP q76; SSIM 0.9862 vs q80) |
 
 Verify with:
 
@@ -25,8 +24,7 @@ The alt text is per locale in `apps/web/messages/*.json` (`renderAlt`).
 
 ## Wiring
 
-`work-index.tsx` renders a `<picture>`: AVIF first, then WebP, then the PNG
-fallback in `<img>`. `width="804" height="770"` reserves the box, so there is no
+`work-index.tsx` renders a `<picture>`: AVIF first, then WebP. The `<img>` src is the 804 WebP (no PNG fallback). `width="804" height="770"` reserves the box, so there is no
 layout shift on decode.
 
 ## Share card
