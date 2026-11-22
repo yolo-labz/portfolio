@@ -13,6 +13,6 @@ export const config = {
 	// The static app/opengraph-image.png route has no extension in its URL and lives at
 	// the ROOT only. Without it here the locale middleware 307-redirects it to
 	// /en/opengraph-image, which 404s (there is no [locale]/opengraph-image route).
-	// The icons are plain files (icon.svg, apple-icon.png, favicon.ico), so the dot rule covers them.
+	// The icons are plain files (icon.png, apple-icon.png, favicon.ico), so the dot rule covers them.
 	matcher: "/((?!api|trpc|_next|_vercel|(?:opengraph-image)(?:/|$)|.*\\..*).*)",
 };
