@@ -249,7 +249,11 @@
 			"Backend de varejo orientado a eventos (engenheiro de backend)",
 			"RAG jurídico, prova de conceito (contribuí)",
 			"Chatbot educacional multilíngue, backend + camada de dados (consultor externo)",
-			"Agente de declaração fiscal IRPF, extração + validação (equipe)"
+			"Agente de declaração fiscal IRPF, extração + validação (equipe)",
+			"Fila de atualização de dependências (merge train) para organizações no GitHub (público; testes em Python 3.10, 3.12 e 3.14)",
+			"Releases assinados de plugins open source (SLSA L2, Sigstore)",
+			"Cadeia de suprimento e CI: rulesets e hooks do git como defesa em profundidade",
+			"Guardas de worktree para múltiplos agentes numa frota NixOS de 4 hosts"
 		]
 	},
 	"Thesis": {
