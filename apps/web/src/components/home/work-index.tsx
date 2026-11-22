@@ -63,7 +63,7 @@ export function WorkIndex() {
 						<span className="font-medium text-accent">{hero("proofLabel")}:</span>{" "}
 						<Link
 							href="/projects/compliance-tax-agent"
-							className={`${proofEvent} underline decoration-border underline-offset-4 transition-colors hover:text-accent focus-visible:text-accent`}
+							className={`${proofEvent} py-2 underline decoration-border underline-offset-4 transition-colors hover:text-accent focus-visible:text-accent`}
 						>
 							{hero("proof")}
 						</Link>
@@ -108,7 +108,7 @@ export function WorkIndex() {
 							link: (chunks) => (
 								<a
 									href="https://github.com/yolo-labz"
-									className="underline decoration-border underline-offset-4 transition-colors hover:text-text"
+									className="py-4 underline decoration-border underline-offset-4 transition-colors hover:text-text"
 								>
 									{chunks}
 								</a>

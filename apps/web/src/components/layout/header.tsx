@@ -14,7 +14,7 @@ export function Header() {
 	const pathname = usePathname();
 	const isHome = pathname === "/";
 	const linkClass =
-		"inline-flex min-h-11 items-center text-sm text-text-muted hover:text-text transition-colors";
+		"inline-flex min-h-11 items-center px-2.5 -mx-2.5 text-sm text-text-muted hover:text-text transition-colors";
 
 	return (
 		<header className="fixed top-0 z-50 w-full border-b border-border bg-bg">

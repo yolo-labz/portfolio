@@ -32,9 +32,10 @@ async function undersizedTargets(page: Page) {
 			if (
 				style.display === "none" ||
 				style.visibility === "hidden" ||
-				rect.width === 0 ||
-				rect.height === 0
+				rect.width <= 1 ||
+				rect.height <= 1
 			)
+				// 1px clipped boxes (the sr-only skip link) are not hit targets until focused.
 				continue;
 			total += 1;
 			const w = Math.round(rect.width);
