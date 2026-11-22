@@ -127,7 +127,7 @@ main .list-disc > li {
 /* Designed focus: a 2px emerald ring offset off the ground, squared to the 2px
    radius language; links in running text get the same ring plus a lit underline. */
 :focus-visible {
-	outline: 2px solid var(--color-accent);
+	outline: 2px solid var(--yl-color-focus-ring);
 	outline-offset: 3px;
 	border-radius: 2px;
 }
