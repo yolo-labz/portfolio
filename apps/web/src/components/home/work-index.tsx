@@ -32,21 +32,21 @@ export function WorkIndex() {
 
 				{/* One element, two placements: beside the thesis on small screens, the
 				    full plate beside the index from lg up. srcSet keeps phones on 402w.
-				    AVIF first (7-14 KB), then WebP, then the PNG fallback; `contents`
-				    keeps the <img> as the grid item so the placement classes still land. */}
+				    AVIF first (11-25 KB), then WebP; `contents` keeps the <img> as the
+				    grid item so the placement classes still land. */}
 				<picture className="contents">
 					<source
 						type="image/avif"
-						srcSet="/brand/gremlin-hero-402x385.avif 402w, /brand/gremlin-hero-804x770.avif 804w"
+						srcSet="/brand/gremlin-hero-at-keyboard-402x385.avif 402w, /brand/gremlin-hero-at-keyboard-804x770.avif 804w"
 						sizes="(min-width: 1024px) 360px, 128px"
 					/>
 					<source
 						type="image/webp"
-						srcSet="/brand/gremlin-hero-402x385.webp 402w, /brand/gremlin-hero-804x770.webp 804w"
+						srcSet="/brand/gremlin-hero-at-keyboard-402x385.webp 402w, /brand/gremlin-hero-at-keyboard-804x770.webp 804w"
 						sizes="(min-width: 1024px) 360px, 128px"
 					/>
 					<img
-						src="/brand/gremlin-hero-804x770.png"
+						src="/brand/gremlin-hero-at-keyboard-804x770.webp"
 						alt={t("renderAlt")}
 						width={804}
 						height={770}
