@@ -48,7 +48,7 @@ typography:
     letterSpacing: "normal"
 rounded:
   none: "0"
-  sm: "2px"
+  sm: "4px"
 spacing:
   row: "8px"
   group: "24px"
@@ -138,7 +138,7 @@ Flat. No shadows, no glows, no gradients, no blur behind the header (it is opaqu
   tagline, then a 4/8 split: a sticky facts column (kind, metrics, stack in mono, source
   links) and the body (decision record first, then problem, solution, overview), then a
   previous/next walk in index order, then the contact close.
-- **Primary action**: emerald fill, `#1e1e2e` text, 2 px radius, header only. Elsewhere
+- **Primary action**: emerald fill, `#1e1e2e` text, 4 px radius, header only. Elsewhere
   the action is an underlined link or the large mono address.
 - **Icons**: three authored 16 px line arrows (`components/shared/icons.tsx`), 1.5 stroke,
   round caps, `currentColor`. No text glyph stands in for an icon.
