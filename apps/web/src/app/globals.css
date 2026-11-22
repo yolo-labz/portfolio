@@ -112,6 +112,29 @@ main .list-disc > li {
 	}
 }
 
+/* Scroll reveal for home sections (ponytail: scroll-driven CSS, no JS). Only where
+   animation-timeline is supported; elsewhere sections render fully visible. Opacity
+   and transform only, so the compositor does the work. Reduced motion: no animation. */
+@supports (animation-timeline: view()) {
+	@media (prefers-reduced-motion: no-preference) {
+		.scroll-reveal {
+			animation: scroll-reveal-in linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 35%;
+		}
+	}
+}
+@keyframes scroll-reveal-in {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;

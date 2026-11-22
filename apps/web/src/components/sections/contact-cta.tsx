@@ -12,7 +12,7 @@ export function ContactCTA() {
 		<section
 			id="contact"
 			aria-labelledby="contact-heading"
-			className="scroll-mt-14 border-t border-border px-6 py-20 sm:py-28"
+			className="scroll-reveal scroll-mt-14 border-t border-border px-6 py-20 sm:py-28"
 		>
 			<div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-12 lg:gap-12">
 				<div className="lg:col-span-7">

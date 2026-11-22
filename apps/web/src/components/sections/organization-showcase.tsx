@@ -29,7 +29,7 @@ export function OrganizationShowcase() {
 		<section
 			id="open-source"
 			aria-labelledby="open-source-heading"
-			className="scroll-mt-24 border-t border-border px-6 py-20 sm:py-28"
+			className="scroll-reveal scroll-mt-24 border-t border-border px-6 py-20 sm:py-28"
 		>
 			<div className="mx-auto max-w-6xl">
 				<div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
