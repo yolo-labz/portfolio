@@ -82,7 +82,7 @@ const claimEvidenceMap: ClaimEvidence[] = [
 	},
 	{
 		evidenceType: "anonymized-writeup",
-		url: "https://blog.home301server.com.br/posts/2026-06-21-ai-irpf-tax-compliance-llm-agent",
+		url: "https://blog.home301server.com.br/",
 		status: "unbacked-anonymized-pending",
 	},
 	{
