@@ -249,7 +249,11 @@
 			"Event-driven retail commerce backend (backend engineer)",
 			"Legal-domain RAG, proof of concept (contributor)",
 			"Multilingual education chatbot, backend and data layer (consultant)",
-			"IRPF tax-filing agent, extraction and validation (team)"
+			"IRPF tax-filing agent, extraction and validation (team)",
+			"Dependency-update merge train for GitHub organisations (public, tested on Python 3.10, 3.12, 3.14)",
+			"Signed releases for open-source plugins (Sigstore)",
+			"Supply-chain and CI practice: git rulesets and hooks as defence in depth",
+			"Multi-agent worktree guards on a 4-host NixOS fleet"
 		]
 	},
 	"Thesis": {

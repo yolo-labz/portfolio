@@ -67,7 +67,7 @@ const claimEvidenceMap: ClaimEvidence[] = [
 	},
 	{
 		evidenceType: "anonymized-writeup",
-		url: "https://blog.home301server.com.br/posts/2026-05-17-event-driven-retail-bff-broker",
+		url: "https://blog.home301server.com.br/posts/2026-05-17-event-driven-retail-bff-broker-dispatcher",
 		status: "unbacked-anonymized-pending",
 	},
 	{
@@ -82,8 +82,28 @@ const claimEvidenceMap: ClaimEvidence[] = [
 	},
 	{
 		evidenceType: "anonymized-writeup",
-		url: "https://blog.home301server.com.br/posts/2026-06-21-ai-irpf-tax-compliance-llm-agent",
+		url: "https://blog.home301server.com.br/",
 		status: "unbacked-anonymized-pending",
+	},
+	{
+		evidenceType: "public-repo",
+		url: "https://github.com/yolo-labz/deps-train",
+		status: "backed",
+	},
+	{
+		evidenceType: "blog-post",
+		url: "https://blog.home301server.com.br/posts/2026-05-13-slsa-sigstore-solo-dev-supply-chain",
+		status: "backed",
+	},
+	{
+		evidenceType: "blog-post",
+		url: "https://blog.home301server.com.br/posts/2026-07-11-git-rulesets-hooks-defense-in-depth",
+		status: "backed",
+	},
+	{
+		evidenceType: "blog-post",
+		url: "https://blog.home301server.com.br/posts/2026-05-14-nixos-fleet-multi-agent-worktree-guards",
+		status: "backed",
 	},
 ];
 
