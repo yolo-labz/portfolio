@@ -17,7 +17,8 @@ export const SHARE_IMAGE = {
 	alt: "Pedro Balbino, Compliance-Grade AI Architect: “AI stacks fail their first audit at three seams: prompt provenance, retrieval lineage, output attestation.” Beside it, the yolo-labz gremlin typing at a keyboard.",
 } as const;
 
-export const LOCALE_ALTERNATES = { en: "/en", pt: "/pt", es: "/es" } as const;
+// x-default points at English: the root `/` redirects to `/en`, so it is the default locale.
+export const LOCALE_ALTERNATES = { en: "/en", pt: "/pt", es: "/es", "x-default": "/en" } as const;
 
 interface PageMeta {
 	locale: string;
