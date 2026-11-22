@@ -51,6 +51,12 @@ export async function check(root, { online = false, fetchText = defaultFetch } =
 		}
 	}
 
+	// Check the base rule. Link decoration has a separate colour contract.
+	const css = readFileSync(join(src, "app/globals.css"), "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
+	const focus = css.match(/^\s*:focus-visible\s*\{([^{}]*)\}/m)?.[1] ?? "";
+	if (!/(?:^|;)\s*outline\s*:[^;{}]*\bvar\(\s*--yl-color-focus-ring\s*\)[^;{}]*(?:;|$)/.test(focus))
+		problems.push("app/globals.css: :focus-visible outline must use --yl-color-focus-ring");
+
 	const palette = new Set(
 		[...readFileSync(join(dir, "tokens.css"), "utf8").matchAll(/#[0-9a-f]{6}\b/g)].map((m) => m[0]),
 	);

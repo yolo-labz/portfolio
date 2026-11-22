@@ -56,4 +56,11 @@ assert.ok(
 	"record that does not match upstream",
 );
 
-console.log("design drift gate: 5 cases pass");
+p = await run((r) => {
+	const file = join(r, "apps/web/src/app/globals.css");
+	const css = readFileSync(file, "utf8");
+	writeFileSync(file, css.replace("var(--yl-color-focus-ring)", "var(--color-accent)"));
+});
+assert.deepEqual(p, ["app/globals.css: :focus-visible outline must use --yl-color-focus-ring"]);
+
+console.log("design drift gate: 6 cases pass");
