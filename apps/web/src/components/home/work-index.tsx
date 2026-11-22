@@ -37,16 +37,16 @@ export function WorkIndex() {
 				<picture className="contents">
 					<source
 						type="image/avif"
-						srcSet="/brand/gremlin-hero-402x385.avif 402w, /brand/gremlin-hero-804x770.avif 804w"
+						srcSet="/brand/gremlin-hero-at-keyboard-402x385.avif 402w, /brand/gremlin-hero-at-keyboard-804x770.avif 804w"
 						sizes="(min-width: 1024px) 360px, 128px"
 					/>
 					<source
 						type="image/webp"
-						srcSet="/brand/gremlin-hero-402x385.webp 402w, /brand/gremlin-hero-804x770.webp 804w"
+						srcSet="/brand/gremlin-hero-at-keyboard-402x385.webp 402w, /brand/gremlin-hero-at-keyboard-804x770.webp 804w"
 						sizes="(min-width: 1024px) 360px, 128px"
 					/>
 					<img
-						src="/brand/gremlin-hero-804x770.png"
+						src="/brand/gremlin-hero-at-keyboard-804x770.png"
 						alt={t("renderAlt")}
 						width={804}
 						height={770}
