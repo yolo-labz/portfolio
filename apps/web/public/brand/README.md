@@ -9,10 +9,10 @@ and scaled to 804 × 770 and 402 × 385. The soft floor shadow is dropped.
 
 | File | Bytes | sha256 |
 |---|---|---|
-| `gremlin-hero-at-keyboard-804x770.avif` | 21260 | see `sha256sum` |
+| `gremlin-hero-at-keyboard-804x770.avif` | 24605 | see `sha256sum` |
 | `gremlin-hero-at-keyboard-804x770.webp` | 77818 | see `sha256sum` |
 | `gremlin-hero-at-keyboard-804x770.png` | 177752 | see `sha256sum` |
-| `gremlin-hero-at-keyboard-402x385.avif` | 11075 | see `sha256sum` |
+| `gremlin-hero-at-keyboard-402x385.avif` | 10909 | see `sha256sum` |
 | `gremlin-hero-at-keyboard-402x385.webp` | 32640 | see `sha256sum` |
 
 Verify with:
@@ -40,5 +40,5 @@ The present largest file is `gremlin-hero-804x770.png` at 39,097 B. The new
 set is over the 20 % budget. Steps tried on the PNG (colours → bytes): 256 →
 177,752 (shipped; near-lossless); 128 → 145,288; 64 → 109,674; 32 → 87,626
 (visible banding); 24 → 77,214; 16 → 58,949 (visible banding). WebP q80 is
-77,818 B (present 20,652) and AVIF crf 34 is 21,260 B (present 10,500). A
+77,818 B (present 20,652) and AVIF q40 (ImageMagick/libheif, alpha kept) is 24,605 B (present 10,500). A
 decision is open on the fallback size and the format quality.
