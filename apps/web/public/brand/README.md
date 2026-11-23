@@ -1,31 +1,26 @@
 # Brand hero: provenance
 
-The served hero is `gremlin-hero-at-keyboard-*`: the gremlin in goggles and a
-hoodie, at a keyboard, one finger on a key. Source: the reference-set render
-`hero-candidate-key-press.png` (22/11/2026, 1254 × 1254, accepted by the lead
-against the canonical turnaround sheet), matted to transparent with `rembg`
-(u2net, alpha matting), trimmed with a 4 % margin, padded to the 804:770 canvas
-and scaled to 804 × 770 and 402 × 385. The soft floor shadow is dropped.
-
-| File | Bytes | sha256 |
-|---|---|---|
-| `gremlin-hero-at-keyboard-804x770.avif` | 24605 | see `sha256sum` |
-| `gremlin-hero-at-keyboard-804x770.webp` | 63402 | see `sha256sum` (WebP q64; SSIM 0.9867 vs q80; size above 60000 target) |
-| `gremlin-hero-at-keyboard-402x385.avif` | 10909 | see `sha256sum` |
-| `gremlin-hero-at-keyboard-402x385.webp` | 31086 | see `sha256sum` (WebP q76; SSIM 0.9862 vs q80) |
+The served hero is `gremlin-typing.svg`: the flat, angled gremlin typing on a
+keyboard. Source: `outputs/logo-svg-2026-11-23/v6/gremlin-typing.svg` in the
+mascot-system project (traced from the v5 reference by `tools/vectorize.py`,
+k=7; pupils, claws and keyboard fixed in v6; lead-reviewed 2026-11-23).
+Viewbox 1265.8 × 1181.8, transparent background. The v6 head crop
+(`gremlin-head-from-v6.svg`) is not wired anywhere on the site.
+The raster hero (`gremlin-hero-at-keyboard-*`, 22/11/2026) is removed.
 
 Verify with:
 
 ```bash
-sha256sum apps/web/public/brand/gremlin-hero-at-keyboard-*
+sha256sum apps/web/public/brand/gremlin-typing.svg
 ```
 
 The alt text is per locale in `apps/web/messages/*.json` (`renderAlt`).
 
 ## Wiring
 
-`work-index.tsx` renders a `<picture>`: AVIF first, then WebP. The `<img>` src is the 804 WebP (no PNG fallback). `width="804" height="770"` reserves the box, so there is no
-layout shift on decode.
+`work-index.tsx` renders one `<img src="/brand/gremlin-typing.svg">`.
+`width="804" height="751"` (viewBox ratio at 804 px wide) reserves the box, so
+there is no layout shift.
 
 ## Share card
 

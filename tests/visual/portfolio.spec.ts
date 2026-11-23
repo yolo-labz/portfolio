@@ -87,7 +87,7 @@ test("home first viewport shows the work index and the gremlin render", async ({
 	const viewport = page.viewportSize()?.height ?? 0;
 	const last = await rows.last().boundingBox();
 	expect(last && last.y + last.height).toBeLessThanOrEqual(viewport);
-	const render = page.locator('#projects img[src*="gremlin-hero"]');
+	const render = page.locator('#projects img[src*="gremlin-typing"]');
 	await expect(render).toBeVisible();
 	await expect(render).not.toHaveAttribute("alt", "");
 	// Round: fractional grid distribution lands the 44 px min-height at

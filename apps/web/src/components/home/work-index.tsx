@@ -8,9 +8,8 @@ import { proofEvent } from "@/lib/analytics";
 // index of ten works fills the rest, and the gremlin render sits beside it as the
 // one doing the typing. Server component: no client JS on the LCP path.
 //
-// The art is the hero from yolo-labz/.github `profile/assets/brand/hero/`: 804x770 and
-// 402x385 crops of one window on the Mocha base plate, so it needs no frame. File sizes
-// and sha256s: public/brand/README.md.
+// The art is the flat gremlin typing, one SVG (public/brand/gremlin-typing.svg), traced
+// from the v6 reference. Provenance: public/brand/README.md.
 export function WorkIndex() {
 	const t = useTranslations("Index");
 	const hero = useTranslations("Hero");
@@ -31,29 +30,17 @@ export function WorkIndex() {
 				</h1>
 
 				{/* One element, two placements: beside the thesis on small screens, the
-				    full plate beside the index from lg up. srcSet keeps phones on 402w.
-				    AVIF first (11-25 KB), then WebP; `contents` keeps the <img> as the
-				    grid item so the placement classes still land. */}
-				<picture className="contents">
-					<source
-						type="image/avif"
-						srcSet="/brand/gremlin-hero-at-keyboard-402x385.avif 402w, /brand/gremlin-hero-at-keyboard-804x770.avif 804w"
-						sizes="(min-width: 1024px) 360px, 128px"
-					/>
-					<source
-						type="image/webp"
-						srcSet="/brand/gremlin-hero-at-keyboard-402x385.webp 402w, /brand/gremlin-hero-at-keyboard-804x770.webp 804w"
-						sizes="(min-width: 1024px) 360px, 128px"
-					/>
-					<img
-						src="/brand/gremlin-hero-at-keyboard-804x770.webp"
-						alt={t("renderAlt")}
-						width={804}
-						height={770}
-						fetchPriority="high"
-						className="col-start-2 row-start-1 -mt-1 w-24 sm:w-32 lg:sticky lg:top-24 lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:mt-0 lg:w-full"
-					/>
-				</picture>
+				    full figure beside the index from lg up. The flat SVG scales with no
+				    raster variants; width and height reserve the box (804 wide is the
+				    viewBox ratio at the old display width). */}
+				<img
+					src="/brand/gremlin-typing.svg"
+					alt={t("renderAlt")}
+					width={804}
+					height={751}
+					fetchPriority="high"
+					className="col-start-2 row-start-1 -mt-1 w-24 sm:w-32 lg:sticky lg:top-24 lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:mt-0 lg:w-full"
+				/>
 
 				<div className="col-span-2 lg:col-span-8 lg:col-start-1">
 					{/* Ten-second test: the role and one proof sit above the index, so the
