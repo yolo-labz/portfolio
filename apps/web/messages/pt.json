@@ -417,6 +417,24 @@
 			"decision": "Escrever o registro antes de encerrar o incidente: linha do tempo, cadeia de causa raiz, raio de impacto separado em confirmado e não atribuível, e cada mitigação com o comando que a verifica. Entregar a menor mudança que impede o colapso e dizer no mesmo documento que ela adia a tempestade e não a remove.",
 			"outcome": "A faixa se recuperou 38 minutos depois da entrada do piso. O registro nomeia o que continua em aberto. Com o teto em 2, a terceira requisição concorrente ainda é recusada, e o grupo das 17:57 mostra isso. Respostas 429 sem cabeçalho ainda reduzem o teto: mais seis vezes entre 19:20 e 19:27. Uma correção estrutural precisa de um piso derivado do tempo de serviço medido, ou de uma política que enfileira em vez de recusar. Custo: uma faixa com 1 requisição por duas horas e uma sessão de agente perdida."
 		},
+		"noctalia-appmenu": {
+			"tagline": "Exiba o menu do aplicativo em foco na barra do niri.",
+			"description": "Um sidecar em Rust acompanha o foco do niri, lê o menu via AT-SPI e expõe um snapshot ao widget QML. A versão publicada v1.0.36 tem foco em niri; quando não há menu acessível, o caminho documentado recorre às entradas desktop.",
+			"problemStatement": "Um widget QML não consegue construir handles D-Bus arbitrários.",
+			"solutionSummary": "Mantenha o aplicativo variável atrás de uma ponte fixa."
+		},
+		"deps-train": {
+			"tagline": "Avalie pull requests de dependências antes do merge.",
+			"description": "Um comando Python usa gh para classificar PRs do Dependabot, integrar alterações elegíveis, solicitar atualização e registrar motivos de retenção. O merge fixa o SHA avaliado.",
+			"problemStatement": "Um PR revisado pode mudar antes do merge.",
+			"solutionSummary": "Vincule o merge ao commit revisado e preserve a decisão em JSONL."
+		},
+		"zellij-vertical-tabs": {
+			"tagline": "Mantenha as abas do terminal legíveis sem assinar eventos de redesenho.",
+			"description": "Uma barra lateral vertical do Zellij mantém a aba ativa visível e grava metadados em um manifesto vivo. Evita assinaturas de PaneUpdate, apontadas no README como fonte de pressão de memória.",
+			"problemStatement": "Barras horizontais truncam nomes e eventos desnecessários consomem memória.",
+			"solutionSummary": "Assine apenas os eventos necessários e preserve um manifesto vivo."
+		},
 		"quality-gates-selftest": {
 			"tagline": "Um repositório que entrega três checagens obrigatórias rodou as próprias suítes de teste em nenhum pull request. Ligar o CI achou um bug de shell na primeira execução, e uma suíte nova achou uma chave que não fazia nada.",
 			"description": "O quality-gates empacota três gates de CI como uma única GitHub Action: code-slop, alignment e um linter de Gherkin. Os consumidores o fixam por commit, e no repositório público wa ele é uma checagem obrigatória. Em 10 de agosto de 2026 o repositório tinha zero workflows e zero execuções, então as suítes dos gates não rodavam em nenhum pull request. Um bug em um gate chegaria a todos os consumidores no próximo avanço de versão, sem nada no meio do caminho.",

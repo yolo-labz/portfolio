@@ -417,6 +417,24 @@
 			"decision": "Write the record before closing the incident: timeline, root-cause chain, blast radius split into confirmed and not attributable, and each mitigation with the command that verifies it. Ship the smallest change that stops the collapse, and say in the same document that it defers the storm and does not remove it.",
 			"outcome": "The lane recovered 38 minutes after the floor went in. The record names what is still open. At a ceiling of 2 the third concurrent request is still refused, and the 17:57 cluster shows it. Headerless 429s still shrink the ceiling: six more times between 19:20 and 19:27. A structural fix needs a floor derived from measured service time, or a policy that queues instead of refusing. Cost: one lane at 1 request for two hours and one lost agent session."
 		},
+		"noctalia-appmenu": {
+			"tagline": "Expose the focused application menu in a niri top bar.",
+			"description": "A Rust sidecar follows niri focus events, reads the application menu through AT-SPI and exposes a snapshot to a QML widget. The published v1.0.36 release targets niri; when no accessible menu is available, the documented path falls back to desktop entries.",
+			"problemStatement": "A QML widget cannot construct arbitrary D-Bus menu handles.",
+			"solutionSummary": "Keep the changing application behind a fixed bridge."
+		},
+		"deps-train": {
+			"tagline": "Evaluate dependency pull requests before merging them.",
+			"description": "A Python command uses gh to classify Dependabot PRs, merge eligible changes, nudge stale ones and record reasons for holds. Merges are pinned to the evaluated head SHA.",
+			"problemStatement": "A reviewed dependency PR can change before the merge.",
+			"solutionSummary": "Bind the merge to the reviewed commit and retain a JSONL decision record."
+		},
+		"zellij-vertical-tabs": {
+			"tagline": "Keep terminal tabs readable without subscribing to pane redraws.",
+			"description": "A vertical Zellij sidebar keeps the focused tab visible and writes live tab metadata to a manifest. It avoids PaneUpdate subscriptions, identified in the project README as a memory pressure source under heavy redraws.",
+			"problemStatement": "Horizontal bars truncate names and unnecessary events consume guest memory.",
+			"solutionSummary": "Subscribe only to the events the sidebar needs and retain a live manifest."
+		},
 		"quality-gates-selftest": {
 			"tagline": "A repository that ships three required checks ran its own test suites on no pull request. Turning CI on found a shell bug on the first run, and a new suite found a switch that did nothing.",
 			"description": "quality-gates packages three CI gates as one GitHub Action: code-slop, alignment and a Gherkin linter. Consumers pin it by commit, and on the public wa repository it is a required check. On 10 August 2026 the repository had zero workflows and zero runs, so the gate suites ran on no pull request. A bug in a gate would have reached every consumer on the next pin bump with nothing in between.",
