@@ -1,0 +1,47 @@
+{
+	"schema": "yl-brand-runtime-manifest/v1",
+	"lane": "YL-NEXT-BROWSER-10",
+	"state": "needs_recovery",
+	"founderApproved": false,
+	"releaseAuthorized": false,
+	"expected": {
+		"commonSvgSha256": "bb94717462fdf75a7bf7d172e42982439c5739a6f09eebae299bd4e43e39c330",
+		"technicalReceiptSha256": "11886fe02114d9ea4b4fa1b38864838a7c9981d3ea658e4f3da8ed7ef110cf99",
+		"frozenRasterSha256": "4c26105181a3fba030f916b1fb2446f84811b1d992702462ee3d75e171c23b7e"
+	},
+	"source": {
+		"repository": "yolo-labz/portfolio",
+		"root": null,
+		"commit": null
+	},
+	"evidence": {
+		"root": null,
+		"technicalReceiptPath": null
+	},
+	"build": {
+		"root": null,
+		"treeSha256": null,
+		"serverEntry": null,
+		"buildIdPath": null,
+		"buildId": null
+	},
+	"hero": {
+		"sourcePath": null,
+		"builtPath": null,
+		"publicPath": null,
+		"selector": null,
+		"alt": {
+			"en": null,
+			"pt": null,
+			"es": null
+		},
+		"sha256": "bb94717462fdf75a7bf7d172e42982439c5739a6f09eebae299bd4e43e39c330"
+	},
+	"icon": null,
+	"runtime": {
+		"baseURL": "http://localhost:3000",
+		"playwrightVersion": "1.65.1",
+		"container": "mcr.microsoft.com/playwright:v1.65.1-noble",
+		"upstreamConfigSha256": "141e623da0b833512a91e33016f4420f704c16f8071812c089f69abb1d8f3be8"
+	}
+}
