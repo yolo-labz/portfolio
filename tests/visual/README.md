@@ -14,11 +14,11 @@ committed in-repo and gated by CI on every PR that touches `apps/`,
 
 The blog shipped a silent visual regression in PR #26 (PaperMod theme
 upstream change) that no automated check caught. The portfolio has the same
-risk surface — Tailwind class drift, font fallback shift, motion component
-animation timing — except the project page template fans out to 12+ project
+risk surface (Tailwind class drift, font fallback shift, motion component
+animation timing), except the project page template fans out to 12+ project
 detail pages, so the surface is wider. This harness pins it.
 
-## Run / update baselines (Docker — canonical)
+## Run / update baselines (Docker: canonical)
 
 Seed and refresh baselines using the same image CI uses. This is the only
 path that produces baselines CI will accept (font/freetype byte-stability):
@@ -44,7 +44,7 @@ git add tests/visual/portfolio.spec.ts-snapshots/
 ```
 
 `fullPage: true` snapshots are committed in-repo. The `-noble` image pin is
-load-bearing — bump it in lockstep with `@playwright/test` in `package.json`
+load-bearing: bump it in lockstep with `@playwright/test` in `package.json`
 and bump the same tag in `.github/workflows/visual-regression.yml`.
 
 ## Organization showcase acceptance
@@ -86,7 +86,7 @@ image's freetype + harfbuzz:
 ```bash
 pnpm install
 pnpm exec playwright install chromium
-pnpm test:visual           # macOS — diffs vs CI baselines are normal
+pnpm test:visual           # macOS: diffs vs CI baselines are normal
 ```
 
 CI is the source of truth.
@@ -120,7 +120,7 @@ lockfile. The job fails closed when a snapshot diff exceeds
 `maxDiffPixelRatio: 0.02` (configured in `playwright.config.ts`).
 
 The HTML report ships as a `playwright-report-<run-id>` artifact when the
-run fails — open it from the failed check to inspect diffs.
+run fails; open it from the failed check to inspect diffs.
 
 ## Adding a new route
 

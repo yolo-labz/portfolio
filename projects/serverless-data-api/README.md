@@ -1,16 +1,16 @@
-# Serverless Data API — Terraform + AWS
+# Serverless Data API: Terraform + AWS
 
-Production-ready serverless CRUD API provisioned entirely via Terraform. API Gateway with API key authentication and rate limiting, Lambda (Python 3.12) with structured logging, DynamoDB with single-table design, and CloudWatch monitoring — all created with `terraform apply`.
+Production-ready serverless CRUD API provisioned entirely via Terraform. API Gateway with API key authentication and rate limiting, Lambda (Python 3.12) with structured logging, DynamoDB with single-table design, and CloudWatch monitoring, all created with `terraform apply`.
 
 [Portfolio](https://portfolio.home301server.com.br)
 
 ## What This Demonstrates
 
-- **Full Infrastructure-as-Code** — `terraform apply` creates 15 resources, `terraform destroy` removes them all
-- **Modular Terraform** — 5 reusable modules (DynamoDB, IAM, Lambda, API Gateway, Monitoring)
-- **Serverless CRUD API** — Lambda + API Gateway with validation, auth, and rate limiting
-- **Zero-cost architecture** — on-demand DynamoDB + Lambda free tier = $0/month when idle
-- **CI/CD governance** — GitHub Actions validates Terraform on every PR
+- **Full Infrastructure-as-Code**: `terraform apply` creates 15 resources, `terraform destroy` removes them all
+- **Modular Terraform**: 5 reusable modules (DynamoDB, IAM, Lambda, API Gateway, Monitoring)
+- **Serverless CRUD API**: Lambda + API Gateway with validation, auth, and rate limiting
+- **Zero-cost architecture**: on-demand DynamoDB + Lambda free tier = $0/month when idle
+- **CI/CD governance**: GitHub Actions validates Terraform on every PR
 
 ## Architecture
 
