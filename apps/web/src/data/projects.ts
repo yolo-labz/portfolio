@@ -444,6 +444,59 @@ export const projects: Project[] = [
 		featured: false,
 		hasArc: true,
 	},
+	{
+		slug: "noctalia-appmenu",
+		title: "noctalia-appmenu: an application menu across toolkit boundaries",
+		techStack: [
+			{ name: "Rust", category: "language" },
+			{ name: "QML", category: "language" },
+			{ name: "AT-SPI", category: "service" },
+			{ name: "D-Bus", category: "service" },
+			{ name: "niri IPC", category: "service" },
+		],
+		metrics: [
+			{ label: "Stage", value: "v1.0.36 published release" },
+			{ label: "Architecture", value: "AT-SPI → Rust bridge → QML widget" },
+			{ label: "Scope", value: "niri only · AT-SPI and desktop fallback" },
+			{ label: "Boundary", value: "No fresh toolkit compatibility or latency audit" },
+		],
+		links: { source: "https://github.com/yolo-labz/noctalia-appmenu" },
+		featured: false,
+	},
+	{
+		slug: "deps-train",
+		title: "deps-train: dependency updates with commit-bound merge decisions",
+		techStack: [
+			{ name: "Python", category: "language" },
+			{ name: "GitHub CLI", category: "service" },
+			{ name: "GitHub REST API", category: "service" },
+		],
+		metrics: [
+			{ label: "Runtime", value: "one Python file · gh CLI" },
+			{ label: "Merge guard", value: "exact evaluated head SHA" },
+			{ label: "Recovery", value: "branch deleted only after confirmed merge" },
+			{ label: "Audit", value: "one JSONL decision record per PR" },
+		],
+		links: { source: "https://github.com/yolo-labz/deps-train" },
+		featured: false,
+	},
+	{
+		slug: "zellij-vertical-tabs",
+		title: "zellij-vertical-tabs: a bounded-event terminal sidebar",
+		techStack: [
+			{ name: "Rust", category: "language" },
+			{ name: "WebAssembly", category: "infrastructure" },
+			{ name: "Zellij", category: "service" },
+		],
+		metrics: [
+			{ label: "Event scope", value: "tab events without PaneUpdate subscription" },
+			{ label: "Constraint", value: "16 MB guest memory cap documented in README" },
+			{ label: "Recovery", value: "live tab manifest with freshness touch" },
+			{ label: "Interface", value: "scrolling sidebar with focus visibility" },
+		],
+		links: { source: "https://github.com/yolo-labz/zellij-vertical-tabs" },
+		featured: false,
+	},
 ];
 
 // The home index and the case-study prev/next walk share one order: the four

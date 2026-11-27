@@ -373,7 +373,7 @@
 			"tagline": "Regula el tráfico de la API de Anthropic entre clientes con colas por bearer y un panel en vivo.",
 			"description": "Un gateway e ingress self-hosted que aplica el límite de concurrencia por cuenta una sola vez, de forma justa, donde el operador controla. Round-robin entre conexiones de cliente distintas, un techo AIMD que se reduce con 429/503 y vuelve a subir con 2xx consecutivos, pacing guiado por anthropic-ratelimit-* y Retry-After, panel HTMX y métricas Prometheus. Python, aiohttp, despliegue en Dokku.",
 			"problemStatement": "El límite de streams concurrentes por cuenta de Anthropic no escala con el tier Max, así que muchas sesiones paralelas de Claude detrás de un único bearer OAuth producen una tormenta de reintentos en la capa HTTP.",
-			"solutionSummary": "El proxy pone el límite una vez para toda la flota: colas justas por bearer, techo vivo guiado por el pushback del proveedor y pacing que respeta Retry-After. Los modos de cola son opt-in, así que el comportamiento por defecto sigue siendo pass-through."
+			"solutionSummary": "El proxy pone el límite una vez para toda la flota: colas justas por bearer, techo vivo guiado por el pushback del proveedor y pacing que respeta Retry-After. Los modos de cola son opt-in, así que el comportamiento por defecto sigue siendo pass-through. Un flujo de investigación separado exporta los marts de DuckDB a Parquet, publica los archivos con un manifiesto y un ID de ejecución y verifica el SHA-256 tras la descarga. Una prueba sintética leyó cuatro marts en DuckDB con un simulador de S3 en loopback. La prueba no usó S3 real ni ejecutó Rill."
 		},
 		"chrome-bridge": {
 			"tagline": "Controla un perfil Chromium dedicado desde una CLI local, mediante una extensión y un relay.",
@@ -416,6 +416,24 @@
 			"constraint": "Un gateway que marca el ritmo de los agentes no puede convertirse en la caída. Sin Retry-After ni cabeceras de límite, no distingue su propia sobrecarga de la del proveedor, y la regla de reducción se dispara en ambos casos.",
 			"decision": "Escribir el registro antes de cerrar el incidente: línea de tiempo, cadena de causa raíz, radio de impacto separado en confirmado y no atribuible, y cada mitigación con el comando que la verifica. Entregar el cambio más pequeño que detiene el colapso y decir en el mismo documento que aplaza la tormenta y no la elimina.",
 			"outcome": "El carril se recuperó 38 minutos después de que entró el piso. El registro nombra lo que sigue abierto. Con el techo en 2, la tercera solicitud concurrente aún se rechaza, y el grupo de las 17:57 lo muestra. Los 429 sin cabecera aún reducen el techo: seis veces más entre las 19:20 y las 19:27. Un arreglo estructural necesita un piso derivado del tiempo de servicio medido, o una política que encole en lugar de rechazar. Costo: un carril con 1 solicitud durante dos horas y una sesión de agente perdida."
+		},
+		"noctalia-appmenu": {
+			"tagline": "Muestra el menú de la aplicación enfocada en la barra de niri.",
+			"description": "Un sidecar Rust sigue el foco de niri, lee el menú mediante AT-SPI y expone una instantánea al widget QML. La versión publicada v1.0.36 se centra en niri; cuando no hay un menú accesible, la ruta documentada recurre a entradas de escritorio.",
+			"problemStatement": "Un widget QML no puede construir handles D-Bus arbitrarios.",
+			"solutionSummary": "Mantén la aplicación cambiante detrás de un puente fijo."
+		},
+		"deps-train": {
+			"tagline": "Evalúa las solicitudes de cambios de dependencias antes de fusionarlas.",
+			"description": "Un comando Python usa gh para clasificar PRs de Dependabot, fusionar cambios elegibles, solicitar actualizaciones y registrar motivos de espera. La fusión fija el SHA evaluado.",
+			"problemStatement": "Un PR revisado puede cambiar antes de la fusión.",
+			"solutionSummary": "Vincula la fusión al commit revisado y conserva la decisión en JSONL."
+		},
+		"zellij-vertical-tabs": {
+			"tagline": "Mantén legibles las pestañas del terminal sin suscribirte a redibujos.",
+			"description": "Una barra lateral vertical de Zellij mantiene visible la pestaña activa y escribe metadatos en un manifiesto vivo. Evita las suscripciones a PaneUpdate, identificadas en el README como fuente de presión de memoria.",
+			"problemStatement": "Las barras horizontales truncan nombres y los eventos innecesarios consumen memoria.",
+			"solutionSummary": "Suscríbete solo a los eventos necesarios y conserva un manifiesto vivo."
 		},
 		"quality-gates-selftest": {
 			"tagline": "Un repositorio que entrega tres checks obligatorios corrió sus propias suites de pruebas en ningún pull request. Encender el CI encontró un error de shell en la primera ejecución, y una suite nueva encontró un interruptor que no hacía nada.",
