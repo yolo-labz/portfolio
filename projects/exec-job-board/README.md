@@ -6,11 +6,11 @@ Automated daily pipeline that collects executive-level job listings from 4 publi
 
 ## What This Demonstrates
 
-- **Multi-source API integration** — 4 job board APIs with unified data schema
-- **Data normalization** — Pydantic models, SHA-256 deduplication, seniority classification
-- **Automated pipeline** — GitHub Actions runs daily, commits fresh data, deploys automatically
-- **Static site generation** — Next.js builds from JSON at compile time, zero runtime costs
-- **Client-side search** — Fuse.js fuzzy search + 4-dimension filtering, under 200ms
+- **Multi-source API integration**: 4 job board APIs with unified data schema
+- **Data normalization**: Pydantic models, SHA-256 deduplication, seniority classification
+- **Automated pipeline**: GitHub Actions runs daily, commits fresh data, deploys automatically
+- **Static site generation**: Next.js builds from JSON at compile time, zero runtime costs
+- **Client-side search**: Fuse.js fuzzy search + 4-dimension filtering, under 200ms
 
 ## Architecture
 
@@ -67,7 +67,7 @@ cd projects/exec-job-board
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-# Set API keys (optional — site works with seed data without them)
+# Set API keys (optional; site works with seed data without them)
 export JSEARCH_API_KEY="..."
 export ADZUNA_APP_ID="..."
 export ADZUNA_API_KEY="..."

@@ -1,16 +1,16 @@
 # AI Document Processing Pipeline
 
-Upload PDFs, images, or DOCX files. The system extracts text (OCR for scanned documents), classifies the document type using AI, and pulls out structured fields — vendor names, amounts, dates, parties — automatically.
+Upload PDFs, images, or DOCX files. The system extracts text (OCR for scanned documents), classifies the document type using AI, and pulls out structured fields (vendor names, amounts, dates, parties) automatically.
 
 [Live Demo](https://ai-docs.home301server.com.br) · [Portfolio](https://portfolio.home301server.com.br)
 
 ## What This Demonstrates
 
-- **AI-powered classification** — Claude identifies document types (invoice, contract, receipt) with confidence scores
-- **Structured field extraction** — AI extracts vendor, amount, dates, line items into clean JSON
-- **Multi-format pipeline** — PDF (text + scanned), JPEG/PNG images, DOCX — with automatic OCR fallback
-- **Full-stack architecture** — FastAPI backend, PostgreSQL with JSONB + full-text search, Next.js dashboard
-- **Docker orchestration** — One command to run the entire stack
+- **AI-powered classification**: Claude identifies document types (invoice, contract, receipt) with confidence scores
+- **Structured field extraction**: AI extracts vendor, amount, dates, line items into clean JSON
+- **Multi-format pipeline**: PDF (text + scanned), JPEG/PNG images, DOCX, with automatic OCR fallback
+- **Full-stack architecture**: FastAPI backend, PostgreSQL with JSONB + full-text search, Next.js dashboard
+- **Docker orchestration**: One command to run the entire stack
 
 ## Architecture
 
@@ -77,7 +77,7 @@ open http://localhost:3000
 
 ## Cost
 
-~$0.006 per document (Haiku classification + Sonnet extraction). The system works without an API key — it extracts text but skips AI classification.
+~$0.006 per document (Haiku classification + Sonnet extraction). The system works without an API key; it extracts text but skips AI classification.
 
 ## License
 
