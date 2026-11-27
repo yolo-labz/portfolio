@@ -373,7 +373,7 @@
 			"tagline": "Faça o pacing do tráfego da API da Anthropic entre clientes, com filas por bearer e um dashboard ao vivo.",
 			"description": "Um gateway e ingress self-hosted que aplica o limite de concorrência por conta uma única vez, de forma justa, onde o operador controla. Round-robin entre conexões de cliente distintas, um teto AIMD que encolhe em 429/503 e volta a subir em 2xx consecutivos, pacing guiado por anthropic-ratelimit-* e Retry-After, dashboard HTMX e métricas Prometheus. Python, aiohttp, deploy em Dokku.",
 			"problemStatement": "O limite de streams concorrentes por conta da Anthropic não escala com o tier Max, então muitas sessões paralelas do Claude atrás de um único bearer OAuth geram uma tempestade de retries na camada HTTP.",
-			"solutionSummary": "O proxy coloca o limite uma vez para a frota inteira: filas justas por bearer, teto vivo guiado pelo pushback do provedor e pacing que respeita Retry-After. Os modos de fila são opt-in, então o padrão continua pass-through."
+			"solutionSummary": "O proxy coloca o limite uma vez para a frota inteira: filas justas por bearer, teto vivo guiado pelo pushback do provedor e pacing que respeita Retry-After. Os modos de fila são opt-in, então o padrão continua pass-through. Um pipeline separado de pesquisa exporta os marts do DuckDB para Parquet, publica os arquivos com um manifesto e um ID de execução e verifica o SHA-256 após o download. Um teste sintético leu quatro marts no DuckDB usando um simulador de S3 em loopback. O teste não usou S3 real nem executou o Rill."
 		},
 		"chrome-bridge": {
 			"tagline": "Controle um perfil Chromium dedicado a partir de uma CLI local, via extensão e relay.",

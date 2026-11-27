@@ -373,7 +373,7 @@
 			"tagline": "Pace Anthropic API traffic across clients with per-bearer queues and a live dashboard.",
 			"description": "A self-hosted gateway and ingress that applies the per-account concurrency cap once, fairly, where the operator controls it. Round-robin across distinct client connections, an AIMD ceiling that shrinks on 429/503 and ramps back on consecutive 2xx, header-aware pacing from anthropic-ratelimit-* and Retry-After, an HTMX dashboard and Prometheus metrics. Python, aiohttp, Dokku deploy.",
 			"problemStatement": "Anthropic's per-account concurrent-stream cap does not scale with the Max tier, so many parallel Claude sessions behind one OAuth bearer produce a retry storm at the HTTP layer.",
-			"solutionSummary": "The proxy places the cap once for the whole fleet: fair per-bearer queues, a live ceiling driven by provider pushback, and pacing that honors Retry-After. Queue modes are opt-in, so the default stays pass-through."
+			"solutionSummary": "The proxy places the cap once for the whole fleet: fair per-bearer queues, a live ceiling driven by provider pushback, and pacing that honors Retry-After. Queue modes are opt-in, so the default stays pass-through. A separate research pipeline exports DuckDB marts to Parquet, publishes them under a run ID with a manifest, and verifies SHA-256 after download. A synthetic check read four marts in DuckDB using an S3 stand-in on loopback. It did not exercise live S3 or the Rill runtime."
 		},
 		"chrome-bridge": {
 			"tagline": "Drive a dedicated Chromium profile from a local CLI through an extension and relay.",
